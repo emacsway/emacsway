@@ -42,9 +42,10 @@ blog_authors = {
 # links of these languages. Similar to :confval:`blog_authors`, dictionary
 # keys should be used in ``post`` directive to refer to the locations.
 # Default is ``{}``.
-#blog_languages = {
-#    'en': ('English', None),
-#}
+blog_languages = {
+    'en': ('English', 'en/'),
+    'ru': ('Russian', 'ru/'),
+}
 
 
 # A dictionary of location names mapping to full display names and
