@@ -1,0 +1,8 @@
+syntax: glob
+.env
+_website
+.doctrees
+*.orig
+*.diff
+*.pyc
+*~
