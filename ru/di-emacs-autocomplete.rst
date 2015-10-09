@@ -13,8 +13,8 @@ Emacs autocomplete and Dependency injection (DI)
 
 Вариантов решения здесь несколько.
 
-#. Устанавливать зависимости через конструктор класса.
-#. Устанавливать и получать зависимость через геттер и сеттер, учитывая, что у бэкенда `jedi <https://github.com/davidhalter/jedi>`__ `автокомплит работает для аргументов функций на основании их типов указанных в докстрингах <http://jedi.jedidjah.ch/en/latest/docs/features.html#type-hinting>`__.
+#. Устанавливать зависимости через конструктор класса, учитывая, что бэкенд `jedi <https://github.com/davidhalter/jedi>`__ `учитывает типы аргументов функций и возвращаемых значений, указанных в докстрингах <http://jedi.jedidjah.ch/en/latest/docs/features.html#type-hinting>`__.
+#. Устанавливать и получать зависимость через геттер и сеттер. В отличии от первого варианта, работать будет декларация типов возвращаемых значений, а не аргументов.
 #. Использовать `Service Locator <http://www.martinfowler.com/articles/injection.html>`__ или паттерн `Plugin <http://martinfowler.com/eaaCatalog/plugin.html>`__, которые инициируют запрос и делегируют его исполнение резольверу зависимостей.
 
 Но мы пойдем самым сложным путем, и заставим emacs решать эту проблему, параллельно `попросив разработчиков <https://github.com/davidhalter/jedi/issues/631>`__ jedi обеспечить автокомплит на основании типов атрибутов класса, указанных в докстрингах класса.
@@ -32,7 +32,7 @@ self = StatsFactory().make_api()
 
 В итоге в интерпретатор будет объявлена переменная self.dao.engine
 
-\4. Поскольку elpy заглушает вызов completion-at-point в дропдауне company-nome, вызываем вручную M-x completion-at-point или M-x python-shell-completion-complete-or-indent
+\4. Поскольку `elpy заглушает вызов completion-at-point <https://github.com/jorgenschaefer/elpy/blob/3e7e08d14998063ce254cd1934786e7e212b99e3/elpy.el#L3101>`__ в дропдауне company-mode, вызываем вручную M-x completion-at-point или M-x python-shell-completion-complete-or-indent
 
 Чтобы не вызывать вручную, биндим их на любую удобную комбинацию клавиш, например C-c TAB.
 
