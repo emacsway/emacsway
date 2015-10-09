@@ -3,7 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Ivan Zakrevsky's Blog!
+.. meta::
+   :yandex-verification: 7e0b1a85ed2055a3
+
+
+Welcome to emacsway's Blog!
 ====================================
 
 Hello World! Find more about me here: :ref:`about`

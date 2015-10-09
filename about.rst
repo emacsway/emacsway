@@ -1,7 +1,7 @@
 
 .. _about:
 
-About Ivan Zakrevsky
+About me
 ============================
 
 The world wants to know more about you.
