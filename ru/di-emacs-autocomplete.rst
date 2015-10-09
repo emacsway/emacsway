@@ -21,20 +21,21 @@ Emacs autocomplete and Dependency injection (DI)
 
 Итак.
 
-\1. Стартуем интерпретатор M-x run-python (предварительно настраиваем elpy на использование ipython чтобы автокомплит работал и в шеле тоже)
-(when (executable-find "ipython") (elpy-use-ipython))
+\1. Стартуем интерпретатор ``M-x run-python`` (предварительно настраиваем elpy на использование ipython чтобы автокомплит работал и в шеле тоже)::
 
-\2. посылаем в интерпретатор файл с которым работаем: python-shell-send-file
+    (when (executable-find "ipython") (elpy-use-ipython))
 
-\3. определяем в интерпретаторе переменную, которая нужна. В моем случае нужна self.dao.engine. Делаем в шелле что-то типа
-self = StatsFactory().make_api()
+\2. посылаем в интерпретатор файл с которым работаем: ``M-x python-shell-send-file``.
+
+\3. определяем в интерпретаторе переменную, которая нужна. В моем случае нужна ``self.dao.engine``. Делаем в шелле что-то типа
+``self = StatsFactory().make_api()``
 у которого по счастливому стечению обстоятельств есть атрибут .dao.engine, который мне и нужен.
 
-В итоге в интерпретатор будет объявлена переменная self.dao.engine
+В итоге в интерпретаторе будет объявлена переменная ``self.dao.engine``.
 
-\4. Поскольку `elpy заглушает вызов completion-at-point <https://github.com/jorgenschaefer/elpy/blob/3e7e08d14998063ce254cd1934786e7e212b99e3/elpy.el#L3101>`__ в дропдауне company-mode, вызываем вручную M-x completion-at-point или M-x python-shell-completion-complete-or-indent
+\4. Поскольку `elpy заглушает вызов completion-at-point <https://github.com/jorgenschaefer/elpy/blob/3e7e08d14998063ce254cd1934786e7e212b99e3/elpy.el#L3101>`__ в дропдауне company-mode, вызываем вручную ``M-x completion-at-point`` или ``M-x python-shell-completion-complete-or-indent``.
 
-Чтобы не вызывать вручную, биндим их на любую удобную комбинацию клавиш, например C-c TAB.
+Чтобы не вызывать вручную, биндим их на любую удобную комбинацию клавиш, например "``C-c TAB``".
 
 \5. Таким образом можно автокомплитить любые недостающие переменные, - просто объявляем их в интерпретаторе, и они будут подсвечиваться в буфере редактирования файла.
 
