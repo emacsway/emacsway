@@ -11,6 +11,7 @@ import os
 import sys
 import ablog
 import alabaster
+import datetime
 
 # -- General ABlog Options ----------------------------------------------------
 
@@ -18,11 +19,11 @@ import alabaster
 #blog_path = 'blog'
 
 # The “title” for the blog, used in acthive pages.  Default is ``'Blog'``.
-blog_title = u'emacsway Blog'
+blog_title = u"emacsway's Blog"
 
 # Base URL for the website, required for generating feeds.
 # e.g. blog_baseurl = "http://example.com/"
-blog_baseurl = u'True'
+blog_baseurl = u'http://emacsway.bitbucket.org/'
 
 # Choose to archive only post titles. Archiving only titles can speed
 # up project building.
@@ -59,7 +60,7 @@ blog_languages = {
 
 # -- Blog Post Related --------------------------------------------------------
 
-# post_date_format = '%b %d, %Y'
+#post_date_format = '%b %d, %Y'
 
 
 # Number of paragraphs (default is ``1``) that will be displayed as an excerpt
@@ -142,14 +143,14 @@ fontawesome_link_cdn = True
 
 # You can enable Disqus_ by setting ``disqus_shortname`` variable.
 # Disqus_ short name for the blog.
-#disqus_shortname = None
+disqus_shortname = 'emacsway'
 
 # Choose to disqus pages that are not posts, default is ``False``.
-#disqus_pages = False
+disqus_pages = False
 
 # Choose to disqus posts that are drafts (without a published date),
 # default is ``False``.
-#disqus_drafts = False
+disqus_drafts = False
 
 # -- Sphinx Options -----------------------------------------------------------
 
@@ -181,7 +182,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'emacsway'
-copyright = u'2015, Ivan Zakrevsky'
+copyright = u'{}, Ivan Zakrevsky'.format(datetime.datetime.now().strftime('%Y'))
 author = u'Ivan Zakrevsky'
 
 # The version info for the project you're documenting, acts as replacement for
