@@ -1,7 +1,6 @@
 syntax: glob
 .env
 _website
-_deploy
 _deploy.sh
 .doctrees
 *.orig
