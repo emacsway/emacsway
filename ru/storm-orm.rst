@@ -9,7 +9,7 @@
 Я выбираю Storm ORM
 ===================
 
-В промышленных решениях я стал использовать `KISS-style <https://en.wikipedia.org/wiki/KISS_principle>`__ `Storm ORM <https://storm.canonical.com/>`__, и здесь я попытаюсь объяснить почему.
+В промышленных решениях я чаще стал использовать `KISS-style <https://en.wikipedia.org/wiki/KISS_principle>`__ `Storm ORM <https://storm.canonical.com/>`__, и здесь я попытаюсь объяснить почему.
 
 .. contents:: Содержание
 
