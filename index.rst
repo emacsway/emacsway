@@ -10,8 +10,8 @@
 Welcome to emacsway's Blog!
 ====================================
 
-Hello World! Find more about me here: :ref:`about`
-
+- `Atom feeds <http://emacsway.bitbucket.org/blog/atom.xml>`_
+- :ref:`Archive pages <blog-posts>`
 
 Here is a list of most recent posts:
 
