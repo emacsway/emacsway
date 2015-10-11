@@ -9,7 +9,7 @@
 Я выбираю Storm ORM
 ===================
 
-В промышленных решениях я стал использовать `Storm ORM <https://storm.canonical.com/>`__, и, как мне кажется, небезосновательно.
+В промышленных решениях я стал использовать `KISS-style <https://en.wikipedia.org/wiki/KISS_principle>`__ `Storm ORM <https://storm.canonical.com/>`__, и здесь я попытаюсь объяснить почему.
 
 
 Мои критерии к ORM
@@ -108,3 +108,48 @@ Storm ORM контрастирует своей простотой на фоне
 Хотя я не уверен, что сама реализация такого сложного механизма соответствует принципу KISS.
 Быть может, простота реализации здесь была бы предпочтительней, нежели простота интерфейса.
 И тем не менее, это делает одним аргументом против ORM меньше.
+
+
+FAQ
+===
+
+*q: Storm ORM не поддерживает Python3.*
+
+a: Если Вы мигрировали хотя бы одну библиотеку на Python3, то понимаете, что этот процесс больших трудностей не вызывает.
+95% работы делает команда ``2to3``. 
+Единственный вопрос, который может иметь значение, - это мирация Си-расширения.
+Впрочем, даже без него Storm ORM работает достаточно быстро, и не сильно теряет в производительности.
+Найти Си-расширение под Python3 можно `здесь <http://bazaar.launchpad.net/~martin-v/storm/storm3k/view/head:/storm/cextensions.c>`__ (`diff <http://bazaar.launchpad.net/~martin-v/storm/storm3k/revision/438>`__)
+
+
+*q: Как использовать Storm ORM с фрагментами RAW-SQL*
+
+a: Вообще-то так лучше не делать. Лучше расширить SQL-builder. Но если очень надо::
+
+    >>> from storm.expr import SQL
+    >>> from authors.models import Author
+    >>> store = get_my_store()
+    >>> list(store.find(Author, SQL("auth_user.id = %s", (1,), Author)))
+    [<authors.models.Author object at 0x7fcd64cea750>]
+
+
+*q: Как использовать Storm ORM с полностью чистым SQL, чтобы результат запроса содержал инстанции моделей?*
+
+a: Поскольку Шторм использует паттерны Data Mapper, Identity Map и Unit of Work, мы должны указать в выборке все поля модели, и использовать для загрузки метод ``Store._load_object()``::
+
+    >>> store = get_my_store()
+    >>> from storm.info import get_cls_info
+    >>> from authors.models import Author
+
+    >>> author_info = get_cls_info(Author)
+
+    >>> # Load single object
+    >>> result = store.execute("SELECT " + store._connection.compile(author_info.columns) + " FROM author where id = %s", (1,))
+    >>> store._load_object(author_info, result, result.get_one())
+    <authors.models.Author at 0x7fcc76a85090>
+
+    >>> # Load collection of objects
+    >>> result = store.execute("SELECT " + store._connection.compile(author_info.columns) + " FROM author where id IN (%s, %s)", (1, 2))
+    >>> [store._load_object(author_info, result, row) for row in result.get_all()]
+    [<authors.models.Author at 0x7fcc76a85090>,
+     <authors.models.Author at 0x7fcc76a854d0>]
