@@ -1,10 +1,12 @@
 
 .. _about:
 
+
 About me
 ============================
 
-The world wants to know more about you.
+Me on:
 
-.. `LinkedIn <http://www.linkedin.com/profile/view?id=94851890>`__
-   
+- `LinkedIn <http://www.linkedin.com/profile/view?id=94851890>`__
+- E-mail: ivzak@yandex.ru
+- Open Source: https://bitbucket.org/emacsway 
