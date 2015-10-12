@@ -1,7 +1,7 @@
 
 .. emacsway post example, created by `ablog start` on Oct 07, 2015.
 
-.. post:: Oct 07, 2015
+.. post:: 
    :language: en
    :tags: atag
    :author: Ivan Zakrevsky
