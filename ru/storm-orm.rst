@@ -85,9 +85,9 @@ Storm ORM контрастирует своей простотой на фоне
 
 В моей практике было три случая, когда в Storm ORM требовалось "допиливать" то, что SQLAlchemy (или ее сообщество) предоставляет в готовом виде.
 
-1. `Массовая вставка объектов <http://docs.sqlalchemy.org/en/rel_1_0/orm/session_api.html?highlight=bulk_save#sqlalchemy.orm.session.Session.bulk_save_objects>`__, причем, с условием ON DUPLICATE KEY UPDATE.
+1. `Массовая вставка объектов <http://docs.sqlalchemy.org/en/rel_1_1/orm/session_api.html#sqlalchemy.orm.session.Session.bulk_save_objects>`__, причем, с условием ON DUPLICATE KEY UPDATE.
 2. Адаптация `SQL Builder под интерфейс Django ORM <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
-3. Поддержка паттерна `Concrete Table Inheritance <http://docs.sqlalchemy.org/en/latest/orm/extensions/declarative/inheritance.html#concrete-table-inheritance>`__
+3. Поддержка паттерна `Concrete Table Inheritance <http://docs.sqlalchemy.org/en/rel_1_1/orm/extensions/declarative/inheritance.html#concrete-table-inheritance>`__
 
 В Storm ORM `нет блокировки потоков <https://bugs.launchpad.net/storm/+bug/1412845>`__ при ленивой модификации критически важных глобальных метаданных. Это не проблема, и легко решается (достаточно исполнить их сразу, под блокировкой). Но об этом нужно знать, иначе в условиях высоко-конкурентных потоков можно завалить прод.
 
