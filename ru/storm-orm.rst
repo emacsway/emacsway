@@ -29,13 +29,13 @@ ORM должен иметь `Identity Map <http://martinfowler.com/eaaCatalog/id
 
 \- **Архитектура**. Грамотное разделение уровней абстракции, соблюдение базовых принципов архитектуры, таких как `SOLID <https://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29>`__.
 
-Если Вы не можете использовать отдельно взятый компонент ORM, например SQLBuilder, изолированно от всей системы, то, наверное, такой ORM лучше вообще не использовать (в пользу "низкоуровневых" паттернов обработки данных). Хорошо спроектированный ORM позволяет использовать свои компоненты по отдельности, SQLBuilder, Connection, DataMapper, Identity Map, `Unit of Work <http://martinfowler.com/eaaCatalog/unitOfWork.html>`__, `Repository <http://martinfowler.com/eaaCatalog/repository.html>`__. Можете ли Вы в своем ORM использовать Raw-SQL (полностью или частично)? Можете ли Вы изолированно использовать только DataMapper? Можете ли Вы подменить DataMapper, например, на `фиктивную службу <http://martinfowler.com/eaaCatalog/serviceStub.html>`__, которая не будет осуществлять запросы в БД?
+Если Вы не можете использовать отдельно взятый компонент ORM, например SQLBuilder, изолированно от всей системы, то, наверное, такой ORM лучше вообще не использовать (в пользу "низкоуровневых" паттернов обработки данных). Хорошо спроектированный ORM позволяет использовать свои компоненты по отдельности, `Query Object <http://martinfowler.com/eaaCatalog/queryObject.html>`__ (SQLBuilder), Connection, `DataMapper <http://martinfowler.com/eaaCatalog/dataMapper.html>`__, `Identity Map <http://martinfowler.com/eaaCatalog/identityMap.html>`__, `Unit of Work <http://martinfowler.com/eaaCatalog/unitOfWork.html>`__, `Repository <http://martinfowler.com/eaaCatalog/repository.html>`__. Можете ли Вы в своем ORM использовать Raw-SQL (полностью или частично)? Можете ли Вы изолированно использовать только DataMapper? Можете ли Вы подменить DataMapper, например, на `фиктивную службу <http://martinfowler.com/eaaCatalog/serviceStub.html>`__, которая не будет осуществлять запросы в БД?
 
 Возможности любого ORM приходится расширять. Насколько легко расширить Ваш ORM без форков, патчей, манкипатчей? Соблюдается ли в нем `Open/closed principle <https://en.wikipedia.org/wiki/Open/closed_principle>`__?
 
     "The primary occasion for using Data Mapper is when you want the database schema and the object model to evolve independently. The most common case for this is with a Domain Model (116). Data Mapper's primary benefit is that when working on the domain model you can ignore the database, both in design and in the build and testing process. The domain objects have no idea what the database structure is, because all the correspondence is done by the mappers." (Patterns of Enterprise Application Architecture, By Martin Fowler)
 
-\- `ACID <https://en.wikipedia.org/wiki/ACID>`__. Хорошая система следит за соответствием объекта в памяти его записи в БД. Представьте, что Вы загрузили объект, и затем сделали коммит. На этот объект уже ссылаются десятки других объектов, но он был изменен в БД другим потоком. Если после этого Вы приступите к изменению этого объекта, - изменения, внесенные другим потоком будут утрачены. В момент коммита Вам необходимо согласовать состояние объектов в памяти с данными на диске, и при этом сохранить все ссылки на них.
+\- `ACID <https://en.wikipedia.org/wiki/ACID>`__. Хорошая система следит за соответствием объекта в памяти его записи в БД. Представьте, что Вы загрузили объект, и затем сделали коммит. На этот объект уже ссылаются десятки других объектов, но он был изменен в БД другим потоком. Если после этого Вы приступите к изменению этого объекта, - то изменения, внесенные другим потоком будут утрачены. В момент коммита Вам необходимо согласовать состояние объектов в памяти с данными на диске, и при этом сохранить все ссылки на них.
 
 \- **Сокрытие источника**. Хороший ORM позволяет Вам позабыть о своем существовании, и обращаться с объектами моделей так, будто это обычные объекты. Он не будет раскрывать источник данных, требуя от Вас явного вызова метода для сохранения объектов. Не будет вынуждать Вас "перезагружать" объекты. Позволит легко подменить маппер, даже если Вы смените реляционную БД на нереляционную.
 
@@ -279,7 +279,7 @@ a: Поскольку Storm ORM использует паттерны Data Mappe
 `Class Table Inheritance <http://martinfowler.com/eaaCatalog/classTableInheritance.html>`__ и
 `Entity–attribute–value <https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model>`__.
 
-Поэтому я затрону только два существенных на мой взгляд вопроса.
+Поэтому я затрону только два существенных на мой взгляд вопроса:
 
 1. Представлять данные в памяти объектами, или структурами данных?
 2. ACID, согласованность объекта в памяти и его данными на диске.
