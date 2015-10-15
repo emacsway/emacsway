@@ -13,6 +13,7 @@ About me
 
 Me on:
 
-- `LinkedIn <http://www.linkedin.com/profile/view?id=94851890>`__
+- Blog: http://emacsway.bitbucket.org/
 - E-mail: ivzak@yandex.ru
-- Open Source: https://bitbucket.org/emacsway 
+- Open Source: https://bitbucket.org/emacsway
+- LinkedIn: http://www.linkedin.com/profile/view?id=94851890
