@@ -1,2 +1,3 @@
 User-Agent: *
 Disallow: /about/
+Disallow: /_static/media/about/
