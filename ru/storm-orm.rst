@@ -107,7 +107,7 @@ Storm ORM `не обязывает <https://lists.ubuntu.com/archives/storm/2009
 По поводу SQLAlchemy
 ====================
 
-В общем-то любой ORM хорош, если он реализует принципы нашумевшей книги "Patterns of Enterprise Application Architecture", By Martin Fowler.
+В общем-то любой ORM хорош, если он `реализует принципы <http://techspot.zzzeek.org/2012/02/07/patterns-implemented-by-sqlalchemy/>`__ нашумевшей книги "Patterns of Enterprise Application Architecture", By Martin Fowler.
 Storm ORM контрастирует своей простотой на фоне SQLAlchemy так же, как VIM на фоне Emacs, или jQuery на фоне Dojo.
 Идеологически между ними много общего, я бы даже сказал, что Storm ORM - это упрощенная версия SQLAlchemy.
 Исходники Storm ORM изучаются быстрее, нежели вводный tutorial SQLAlchemy.
@@ -265,7 +265,7 @@ a: Поскольку Storm ORM использует паттерны Data Mappe
 Метод, создающий такой запрос, будет принимать много аргументов, что отразится на чистоте кода.
 Можно разделить ответственности, чтобы каждый метод строил свою часть запроса.
 Но во-первых, такой подход создаст SQL-билдер в частном порядке (отступление от принципа `DRY <https://en.wikipedia.org/wiki/Don't_repeat_yourself>`__).
-А во-вторых, если продолжить полученные методы "вычищать", освобождать от зависимостей и повышать связанность классов, - то мы в конечном итоге прийдем к классам Criteria и реализуем паттерн `Query Object <http://martinfowler.com/eaaCatalog/queryObject.html>`__. Повторюсь, попытки разбить этот метод приведут к падению связанности класса. Восстановление связанности выделит классы Criteria.
+А во-вторых, если продолжить полученные методы "вычищать", освобождать от зависимостей и повышать `связанность <https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29>`__ классов, - то мы в конечном итоге прийдем к классам Criteria и реализуем паттерн `Query Object <http://martinfowler.com/eaaCatalog/queryObject.html>`__. Повторюсь, попытки разбить этот метод приведут к падению `связанности <https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29>`__ класса. Восстановление связанности выделит классы Criteria.
 
 Т.е. фактически создадим SQL-билдер, который может быть выделен в отдельную утилиту, которая сможет развиваться отдельно.
 
