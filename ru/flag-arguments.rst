@@ -4,7 +4,7 @@
 
 .. post:: Oct 22, 2015
    :language: ru
-   :tags: python, programming
+   :tags: Python, programming
    :category:
    :author: Ivan Zakrevsky
 
