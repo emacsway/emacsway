@@ -59,6 +59,8 @@ Storm ORM поддерживает композитные ключи и связ
 
 Работает с любым количеством БД.
 
+Реализует `DataMapper <http://martinfowler.com/eaaCatalog/dataMapper.html>`__ pattern, а значит классы моделей свободны от метаданных и логики доступа к БД, как это сделано в `ActiveRecord <http://www.martinfowler.com/eaaCatalog/activeRecord.html>`__. Классы моделей могут наследоваться от простого `object <https://docs.python.org/2/library/functions.html#object>`__.
+
 Благодаря Identity Map, Storm ORM очень быстр.
 На странице одного из проектов, после внедрения Storm ORM (вместо Django ORM), затраты на работу ORM упали с 0.21 сек до 0.014 сек, т.е. в 15 раз, а совокупное время генерации страницы сократилось в два раза, с 0.48 сек до 0.24 сек.
 Количество запросов в БД сократилось с 88 до 7.
