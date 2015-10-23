@@ -3,7 +3,7 @@
 
 
 About me
-============================
+========
 
 .. image:: /_media/about/me.jpg
    :height: 100px
@@ -11,9 +11,72 @@ About me
    :alt: me
    :align: right
 
-Me on:
+Python, Django, Debian, Emacs, PostgreSQL, MySQL, GIS, and KISS principle
 
+- Ivan Zakrevsky, Python-developer.
 - Blog: http://emacsway.bitbucket.org/
 - E-mail: ivzak@yandex.ru
 - Open Source: https://bitbucket.org/emacsway
 - LinkedIn: http://www.linkedin.com/profile/view?id=94851890
+
+
+Education
+---------
+
+1994-1999 - The Dnepropetrovsk State technical university of a railway transportation
+
+
+About
+-----
+
+Bearded developer since 2004.
+
+My philosophy is: «Shorter», «clearly».
+
+
+Preferences
+-----------
+
+* Programming languages: Python (mainly, since 2008), JavaScript (strong), Ruby (sometimes),  PHP (in the past).
+* Development environment: Emacs (sometimes VIM).
+* DB & storages: MySQL, Spatial, PostgreSQL, PostGIS, tsearch2, MongoDB, Redis, Memcached, replication, sharding, analysing, SQL optimization.
+* Frameworks: Django (mainly), Tornado, Flask, Twisted, Pyramid, Werkzeug, CherryPy, Ruby on Rails, etc.
+* JavaScript Frameworks: Dojo, jQuery.
+* OS: Debian (server), ArchLinux (desktop, server), Ubuntu (desktop, server), Fedora (desktop, server).
+* Bug-tracking: Trac (mainly), Redmine, Pivotal Tracker.
+* HTTP servers: Nginx (mainly), Apache2, Lighttpd, Unicorn.
+* CVS: Mercurial (mainly), GIT, SVN, Bazar.
+* Others: Eventlet, GDB, Celery, geographic information system (GIS), Storm ORM, multiprocessing, threading, queue, async, Solr, morphology, Pinax, Design Patterns, refactoring, business-transactions, high-load, high level concurrency, Remote Facade, DTO, cache invalidation based on tagging, AOT, ACL, social networks integration, KISS principle.
+* Also, I've a good (5+ years) experience with PHP, Zend Framework, Drupal, but it, mainly, in the past (2004-2009).
+
+
+Read
+----
+
+* «Learning Python» Mark Lutz
+* «Design Patterns: Elements of Reusable Object-Oriented Software» Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
+* «Pattern Hatching: Design Patterns Applied» John Vlissides
+* «Patterns of Enterprise Application Architecture» Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
+* «Refactoring: Improving the Design of Existing Code» Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
+* «Clean Code. A Handbook of Agile Software Craftsmanship.» Robert C. Martin
+* «Unix and Linux System Administration Handbook» Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley
+* «The Linux® Kernel Primer: A Top-Down Approach for x86 and PowerPC Architectures» Claudia Salzberg Rodriguez, Gordon Fischer, Steven Smolski
+* «Digital computers and microprocessors» Aliyev / «Цифровая вычислительная техника и микропроцессоры» М.М.Алиев
+* «JavaScript Patterns» Stoyan Stefanov
+* «JavaScript: The Definitive Guide» David Flanagan
+
+
+In the queue
+------------
+
+* «High Performance MySQL» Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
+* «PostgreSQL 9.0 High Performance» Gregory Smith
+* «Pattern-Oriented Software Architecture Volume (POSA)» 5-volume edition, Frank Buschmann and others.
+
+
+P.S.
+----
+
+    "The design goal for Eventlet’s API is simplicity and readability. You should be able to read its code and understand what it’s doing. Fewer lines of code are preferred over excessively clever implementations.", Eventlet’s docs http://eventlet.net/doc/basic_usage.html
+
+    "I like my code to be elegant and efficient. The logic should be straightforward to make it hard for bugs to hide, the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy, and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations. Clean code does one thing well.", Bjarne Stroustrup, inventor of C++ and author of The C++ Programming Language.
