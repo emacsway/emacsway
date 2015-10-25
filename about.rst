@@ -69,6 +69,7 @@ Read
 In the queue
 ------------
 
+* «Agile Software Development. Principles, Patterns, and Practices.» Robert C. Martin, James W. Newkirk, Robert S. Koss
 * «High Performance MySQL» Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
 * «PostgreSQL 9.0 High Performance» Gregory Smith
 * «Pattern-Oriented Software Architecture: A System of Patterns, Volume 1» by Frank Buschmann, Regine Meunier, Hans Rohnert, Peter Sommerlad, Michael Stal
