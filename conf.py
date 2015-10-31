@@ -13,6 +13,9 @@ import ablog
 import alabaster
 import datetime
 
+PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, PROJECT_ROOT)
+
 # -- General ABlog Options ----------------------------------------------------
 
 # A path relative to the configuration directory for blog archive pages.
@@ -166,6 +169,7 @@ extensions = [
     'sphinx.ext.todo',
     'alabaster',
     'ablog',
+    '_sitemap',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -209,7 +213,7 @@ language = None
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['.env', 'README.rst']
+exclude_patterns = ['.*', '_*', 'README.rst']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
