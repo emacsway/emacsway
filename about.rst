@@ -83,6 +83,10 @@ Read
 P.S.
 ----
 
-    "The design goal for Eventlet’s API is simplicity and readability. You should be able to read its code and understand what it’s doing. Fewer lines of code are preferred over excessively clever implementations.", Eventlet’s docs http://eventlet.net/doc/basic_usage.html
+    "The design goal for Eventlet’s API is simplicity and readability. You should be able to read its code and understand what it’s doing. Fewer lines of code are preferred over excessively clever implementations." (`Eventlet’s docs <http://eventlet.net/doc/basic_usage.html>`__)
 
-    "I like my code to be elegant and efficient. The logic should be straightforward to make it hard for bugs to hide, the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy, and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations. Clean code does one thing well.", Bjarne Stroustrup, inventor of C++ and author of The C++ Programming Language.
+    "I like my code to be elegant and efficient. The logic should be straightforward to make it hard for bugs to hide, the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy, and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations. Clean code does one thing well." (Bjarne Stroustrup, inventor of C++ and author of The C++ Programming Language.)
+
+    "A little time spent refactoring can make the code better communicate its purpose. Programming in this mode is all about saying exactly what you mean." ("Refactoring: Improving the Design of Existing Code", Martin Fowler)
+
+    "Clean code - is ability of code to express the truth about itself, and not misleading."
