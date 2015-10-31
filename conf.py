@@ -169,7 +169,7 @@ extensions = [
     'sphinx.ext.todo',
     'alabaster',
     'ablog',
-    '_sitemap',
+    '_sitemaps',
 ]
 
 # Add any paths that contain templates here, relative to this directory.
