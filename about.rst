@@ -73,6 +73,7 @@ Read
     * «Agile Software Development. Principles, Patterns, and Practices.» Robert C. Martin, James W. Newkirk, Robert S. Koss
     * «High Performance MySQL» Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
     * «PostgreSQL 9.0 High Performance» Gregory Smith
+    * «Refactoring To Patterns» Joshua Kerievsky
     * «Pattern-Oriented Software Architecture: A System of Patterns, Volume 1» by Frank Buschmann, Regine Meunier, Hans Rohnert, Peter Sommerlad, Michael Stal
     * «Pattern-Oriented Software Architecture: Patterns for Concurrent and Networked Objects, Volume 2» by Douglas C. Schmidt, Michael Stal, Hans Rohnert, Frank Buschmann
     * «Pattern-Oriented Software Architecture: Patterns for Resource Management, Volume 3» by Michael Kircher, Prashant Jain
