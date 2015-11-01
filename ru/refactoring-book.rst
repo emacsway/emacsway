@@ -17,7 +17,7 @@
 
 Там есть ответ на главный вопрос: *Нужно ли выделять время на рефакторинг и как убедить в этом руководство?*
 
-Правильный ответ, - время выделять не нужно, и руководство вы не убедите (глава "What Do I Tell My Manager?" и "When Should You Refactor?").
+Правильный ответ, - время выделять не нужно, и руководство вы не убедите (главы "What Do I Tell My Manager?" и "When Should You Refactor?").
 
     Of course, many people say they are driven by quality but are more driven by schedule. In these
     cases I give my more controversial advice: Don't tell!
@@ -50,7 +50,7 @@
 
 Единственная загвоздка, - чтобы ее читать, нужно сперва прочитать «Design Patterns: Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides и «Patterns of Enterprise Application Architecture» by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford, иначе будет сложно понимать.
 
-Да и вообще, единственная проблема, из-за которой рефакторинг часто не практикуется - это отсутствие единого мнения в команде на расслоение архитектуры и распределение обязанностей классов. Из-за чего сложно проводить маленькие шажки, так как другой разработчик совершит маленькие шажки в другую сторону. Эти вопросы M.Fowler тоже рассматривает, как согласовать мнение всех разработчиков (глава "Refactor As You Do a Code Review" и "Refactoring Safely").
+Да и вообще, единственная проблема, из-за которой рефакторинг часто не практикуется - это отсутствие единого мнения в команде на расслоение архитектуры и распределение обязанностей классов. Из-за чего сложно проводить маленькие шажки, так как другой разработчик совершит маленькие шажки в другую сторону. Эти вопросы M.Fowler тоже рассматривает, как согласовать мнение всех разработчиков (главы "Refactor As You Do a Code Review" и "Refactoring Safely").
 
 Систематизированные каталоги
 ----------------------------
