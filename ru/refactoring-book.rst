@@ -43,7 +43,8 @@
     to refactor first and then add the function. If I need to fix a bug, I need to understand how the
     software works—and I find refactoring is the fastest way to do this. A schedule-driven manager
     wants me to do things the fastest way I can; how I do it is my business. The fastest way is to
-    refactor; therefore I refactor." ("Refactoring: Improving the Design of Existing Code", Martin Fowler)
+    refactor; therefore I refactor."
+    ("Refactoring: Improving the Design of Existing Code", Martin Fowler)
 
 Все дело в правильных привычках, благодаря которым код маленькими шажками преобразуется во время выполнения обычных тасков. Главное, - там рассказывается, как сделать эти шаги минимальными, и парировать главный контраргумент: "если я это изменю, то полсайта сломается". Не сломается. Там рассказано как изолировать изменения (глава "Problems with Refactoring").
 
@@ -100,7 +101,13 @@
     Возможные изменения все равно надо пытаться предвидеть, как и рассматривать гибкие решения.
     Но вместо реализации этих гибких решений следует задаться вопросом:
     «Насколько сложно будет с помощью рефакторинга преобразовать обычное решение в гибкое?»
-    Если, как чаще всего случается, ответ будет «весьма несложно», то надо просто реализовать обычное решение."
+    Если, как чаще всего случается, ответ будет «весьма несложно», то надо просто реализовать обычное решение.
+
+    Рефакторинг позволяет создавать более простые проекты, не жертвуя гибкостью,
+    благодаря чему процесс проектирования становится более легким и менее напряженным.
+    Научившись в целом распознавать то, что легко поддается рефакторингу, о гибкости решений даже перестаешь задумываться.
+    Появляется уверенность в возможности применения рефакторинга, когда это понадобится.
+    Создаются самые простые решения, которые могут работать, а гибкие и сложные решения по большей части не потребуются."
 
     "Before I used refactoring, I always looked for flexible solutions. With any requirement I would
     wonder how that requirement would change during the life of the system. Because design
@@ -118,7 +125,14 @@
     changes, you still consider flexible solutions. But instead of implementing these flexible solutions,
     you ask yourself, "How difficult is it going to be to refactor a simple solution into the flexible
     solution?" If, as happens most of the time, the answer is "pretty easy," then you just implement
-    the simple solution." ("Refactoring: Improving the Design of Existing Code", Martin Fowler)
+    the simple solution.
+
+    Refactoring can lead to simpler designs without sacrificing flexibility. This makes the design
+    process easier and less stressful. Once you have a broad sense of things that refactor easily, you
+    57don't even think of the flexible solutions. You have the confidence to refactor if the time comes.
+    You build the simplest thing that can possibly work. As for the flexible, complex design, most of
+    the time you aren't going to need it."
+    ("Refactoring: Improving the Design of Existing Code", Martin Fowler)
 
 
 Чистота кода кроется в его честности
@@ -128,7 +142,8 @@
 
     "Потратив немного времени на рефакторинг, можно добиться того, что код станет лучше информировать о своей цели. В таком режиме суть программирования состоит в том, чтобы точно сказать, что вы имеете в виду."
 
-    "A little time spent refactoring can make the code better communicate its purpose. Programming in this mode is all about saying exactly what you mean." ("Refactoring: Improving the Design of Existing Code", Martin Fowler)
+    "A little time spent refactoring can make the code better communicate its purpose. Programming in this mode is all about saying exactly what you mean."
+    ("Refactoring: Improving the Design of Existing Code", Martin Fowler)
 
 Я пришел к умозаключению, что стремление к чистому коду - это стремление к истине, и устранение лжи. Основная проблема запутанного кода - введение в заблуждение. Ложь - его единственная проблема. Чистый код выражает о себе точную и правдивую информацию. Чистый код - это способ достижения истины.
 
