@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block footer %}
-{{ super() }}
+{{ super().replace("Powered by ", "Powered by <a href=\"http://ablog.readthedocs.org/\">ABlog</a> &amp; ") }}
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function (d, w, c) {
