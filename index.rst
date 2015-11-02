@@ -16,7 +16,7 @@ Welcome to emacsway's Blog!
 
 Here is a list of most recent posts:
 
-.. postlist:: 5
+.. postlist:: 20
    :excerpts:
 
 
