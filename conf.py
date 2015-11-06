@@ -22,7 +22,7 @@ sys.path.insert(0, PROJECT_ROOT)
 #blog_path = 'blog'
 
 # The “title” for the blog, used in acthive pages.  Default is ``'Blog'``.
-blog_title = u"Emacsway's Blog"
+blog_title = u"@emacsway's blog"
 
 # Base URL for the website, required for generating feeds.
 # e.g. blog_baseurl = "http://example.com/"
@@ -185,7 +185,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'emacsway'
+project = u"@emacsway's blog"
 copyright = u'{}, Ivan Zakrevsky'.format(datetime.datetime.now().strftime('%Y'))
 author = u'Ivan Zakrevsky'
 
@@ -262,7 +262,7 @@ html_theme_path = [alabaster.get_path()]
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
-html_title = u"Emacsway's Blog"
+html_title = u"@emacsway's blog"
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
 #html_short_title = None

@@ -8,8 +8,8 @@
    :google-site-verification: evpZJDTe4S9pSdxtNyJz5FvvUI9W4QW-XZjfvskgYV4
 
 
-Welcome to emacsway's Blog!
-====================================
+Welcome to @emacsway's blog!
+============================
 
 - `Atom feeds <http://emacsway.bitbucket.org/blog/atom.xml>`_
 - :ref:`Archive pages <blog-posts>`
