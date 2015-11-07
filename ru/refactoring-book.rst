@@ -9,15 +9,15 @@
    :author: Ivan Zakrevsky
 
 Хочу ответить на уже ставший популярным вопрос, нужно ли читать 
-«`Refactoring: Improving the Design of Existing Code <http://martinfowler.com/books/refactoring.html>`__» by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
+«Refactoring: Improving the Design of Existing Code» [#fnr]_
 если уже прочитал
-«`Clean Code. A Handbook of Agile Software Craftsmanship. <http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884>`__» by Robert C. Martin?
+«Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_?
 
-Ответ, да, нужно. И не потому, что она будет полнее второй книги, поскольку вторая писалась с оглядкой на первую.
+Ответ, да, нужно. И не потому, что она может быть полнее второй книги, поскольку вторая писалась с оглядкой на первую.
 
 Там есть ответ на главный вопрос: *Нужно ли выделять время на рефакторинг и как убедить в этом руководство?*
 
-Правильный ответ, - время выделять не нужно, а чтобы убедить руководство можно и не надеяться (главы "What Do I Tell My Manager?" и "When Should You Refactor?").
+Правильный ответ, - время выделять не нужно, а чтобы убедить руководство можно и не надеяться (главы "What Do I Tell My Manager?" [#fnr]_ и "When Should You Refactor?" [#fnr]_).
 
     "Конечно, многие говорят, что главное для них качество, а на самом деле главное для них – выполнение графика работ.
     В таких случаях я даю несколько спорный совет: не говорите им ничего!
@@ -44,15 +44,19 @@
     software works—and I find refactoring is the fastest way to do this. A schedule-driven manager
     wants me to do things the fastest way I can; how I do it is my business. The fastest way is to
     refactor; therefore I refactor."
-    ("Refactoring: Improving the Design of Existing Code", Martin Fowler)
+    («Refactoring: Improving the Design of Existing Code» [#fnr]_)
 
-Все дело в правильных привычках, благодаря которым код маленькими шажками преобразуется во время выполнения обычных тасков. Главное, - там рассказывается, как сделать эти шаги минимальными, и парировать главный контраргумент: "если я это изменю, то полсайта сломается". Не сломается. Там рассказано как изолировать изменения (глава "Problems with Refactoring").
+Все дело в правильных привычках, благодаря которым код маленькими шажками преобразуется во время выполнения обычных тасков.
+Главное, - там рассказывается, как сделать эти шаги минимальными, и парировать главный контраргумент: "если я это изменю, то полсайта сломается".
+Не сломается.
+Там рассказано как изолировать изменения (глава "Problems with Refactoring" [#fnr]_).
 
     "Я не считаю себя замечательным программистом. Я просто хороший программист с замечательными привычками."
 
-    "I'm not a great programmer; I'm just a good programmer with great habits." (Kent Beck)
+    "I'm not a great programmer; I'm just a good programmer with great habits."
+    (Kent Beck) [#fnr]_
 
-Если кто-то считает что книга уже стара, то в 2009 году в книге «`Refactoring Ruby Edition <http://martinfowler.com/books/refactoringRubyEd.html>`__» M.Fowler подтвердил актуальность первой книги:
+Если кто-то считает что книга уже стара, то в 2009 году в книге «Refactoring Ruby Edition» [#fnrre]_ M.Fowler подтвердил актуальность первой книги:
 
     I Have the Original Book—Should I Get This?
     Probably not. If you’re familiar with the original book you won’t find a lot
@@ -65,18 +69,41 @@
     work with. The second reason is if you’re leading a Ruby team that has people
     who would struggle with the original book’s Java focus. In that case a Ruby
     book would be a better tool to help pass on your understanding of refactoring.
+    («Refactoring Ruby Edition» [#fnrre]_)
 
-Есть один момент, - чтобы ее читать, нужно знать «Design Patterns: Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides и «Patterns of Enterprise Application Architecture» by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford, иначе будет сложно понимать.
+Есть один момент, - чтобы ее читать, нужно знать «Design Patterns: Elements of Reusable Object-Oriented Software» [#fngof]_ и «Patterns of Enterprise Application Architecture» [#fnpoeaa]_, иначе будет сложно понимать.
 
-Да и вообще, единственная проблема, из-за которой рефакторинг часто не практикуется - это отсутствие единого мнения в команде на расслоение архитектуры и распределение обязанностей классов. Из-за чего сложно проводить маленькие шажки, так как другой разработчик на полдороге может совершить маленькие шажки в другую сторону. Эти вопросы M.Fowler тоже рассматривает, как согласовать мнение всех разработчиков (главы "Refactor As You Do a Code Review" и "Refactoring Safely").
+Да и вообще, единственная проблема, из-за которой рефакторинг часто не практикуется - это отсутствие единого мнения в команде на расслоение архитектуры и распределение обязанностей классов.
+Из-за чего сложно проводить маленькие шажки, так как другой разработчик на полдороге может совершить маленькие шажки в другую сторону.
+Эти вопросы M.Fowler тоже рассматривает, как согласовать мнение всех разработчиков (главы "Refactor As You Do a Code Review" [#fnr]_ и "Refactoring Safely" [#fnr]_).
 
 
 Систематизированные каталоги
 ----------------------------
 
-Каталог рефакторингов "`Catalog of Refactorings <http://www.refactoring.com/catalog/>`__" на http://www.refactoring.com/ и каталог "запахов" кода и эвристических правил "Smells and Heuristics" из книги «Clean Code. A Handbook of Agile Software Craftsmanship.» можно применять при Code Review, освобождая время от необходимости объяснять почему и как нужно исправить код (достаточно просто сослаться на конкретное правило).
+Я помню, как пол-вечера объяснял одному коллеге, почему метод, перенасыщенный условиями проверки кода типа, нужно заменить полиморфизмом. А можно было просто дать ссылку на пример из каталога рефакторингов "`Replace Conditional with Polymorphism <http://www.refactoring.com/catalog/replaceConditionalWithPolymorphism.html>`__".
+Тут же, на странице примера указан номер страницы книги, на которой можно найти дополнительную информацию.
 
-Систематизированная форма этих знаний легко входит в привычку, а значит, может сделать работу всей команды согласованной при наименьших затратах времени.
+Подобные систематизированные каталоги способны значительно сократить время затрачиваемое на Code Review.
+Достаточно просто оставить сноску, чтобы разработчик знал где получить исчерпывающую информацию, и каким образом улучшить код в этом месте.
+Эти каталоги учать разработчиков понимать друг друга "с полуслова".
+
+
+Каталоги критериев качества кода и методов его улучшения
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. "`Catalog of Refactorings`_" на http://www.refactoring.com/ из книг «Refactoring: Improving the Design of Existing Code» [#fnr]_ и «Refactoring Ruby Edition» [#fnrre]_.
+#. Каталог "запахов" кода и эвристических правил "Smells and Heuristics" из книги «Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_.
+#. `Code Smell`_
+
+
+Базовые каталоги паттернов
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+#. «Design Patterns: Elements of Reusable Object-Oriented Software» [#fngof]_
+#. "`Catalog of Patterns of Enterprise Application Architecture`_" из книги «Patterns of Enterprise Application Architecture» [#fnpoeaa]_
+
+Систематизированная форма этих знаний легко входит в привычку, и может сделать работу всей команды согласованной при наименьших затратах времени.
 
 
 Философия рефакторинга
@@ -132,7 +159,7 @@
     57don't even think of the flexible solutions. You have the confidence to refactor if the time comes.
     You build the simplest thing that can possibly work. As for the flexible, complex design, most of
     the time you aren't going to need it."
-    ("Refactoring: Improving the Design of Existing Code", Martin Fowler)
+    («Refactoring: Improving the Design of Existing Code» [#fnr]_)
 
 
 Чистота кода кроется в его честности
@@ -143,11 +170,11 @@
     "Потратив немного времени на рефакторинг, можно добиться того, что код станет лучше информировать о своей цели. В таком режиме суть программирования состоит в том, чтобы точно сказать, что вы имеете в виду."
 
     "A little time spent refactoring can make the code better communicate its purpose. Programming in this mode is all about saying exactly what you mean."
-    ("Refactoring: Improving the Design of Existing Code", Martin Fowler)
+    («Refactoring: Improving the Design of Existing Code» [#fnr]_)
 
-Я пришел к умозаключению, что стремление к чистому коду - это стремление к истине, и устранение лжи.
+Я пришел к умозаключению, что стремление к чистому коду - это стремление к истине, и предотвращение лжи.
 Основная проблема запутанного кода - введение в заблуждение.
-Ложь - его единственная проблема.
+Возможность ложного трактования - его единственная проблема.
 Чистый код выражает о себе точную и правдивую информацию.
 Чистый код - это способ достижения истины.
 
@@ -163,8 +190,8 @@
 Удивительно, но суть честности тоже заключается в простоте, - чтобы освободиться от всего лишнего, ненужного, и оставить только то, что действительно имеет значение.
 Эти слова и отличаются-то всего двумя буквами, "чистый" и "чЕстНый". Ненужность лжи кроется в ее бесполезности, и даже вредности, - она отнимает ресурсы.
 Она не нужна.
-Поэтому она портит красоту кода.
-Robert C. Martin в книге «Clean Code. A Handbook of Agile Software Craftsmanship.» много говорит о лжи в коде, и как от нее освободиться.
+Поэтому она портит красоту кода и отнимает эффективность.
+Robert C. Martin в книге «Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_ много говорит о лжи в коде, и как от нее освободиться.
 
 Представьте себе работу литературного переводчика, который не смог передать литературные художественные образы на другой язык.
 Программы тоже являются языком, пусть и языком программирования.
@@ -189,8 +216,29 @@ Robert C. Martin в книге «Clean Code. A Handbook of Agile Software Crafts
     You cannot write code if you cannot read the surrounding code.
     The code you are trying to write today will be hard or easy to write depending on how hard or easy the surrounding code is to read.
     So if you want to go fast, if you want to get done quickly, if you want your code to be easy to write, make it easy to read."
-    ("Clean Code. A Handbook of Agile Software Craftsmanship." by C.Martin)
+    («Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_)
 
-Принцип простоты вылился в целое философское направление `KISS principle <https://en.wikipedia.org/wiki/KISS_principle>`__.
+Принцип простоты вылился в целое философское направление `KISS principle`_.
 
 Деятельность программиста во многом напоминает мне работу скульптора. Нужно увидеть образ, и отсечь от него все лишнее. Освободить образ, проявить его, т.е. явить его в явь.
+
+.. rubric:: Footnotes
+
+.. [#fnr] «`Refactoring: Improving the Design of Existing Code`_» by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
+.. [#fnrre] «`Refactoring Ruby Edition`_» by Jay Fields, Shane Harvie, `Martin Fowler`_, Kent Beck
+.. [#fncc] «`Clean Code: A Handbook of Agile Software Craftsmanship`_» `Robert C. Martin`_
+.. [#fngof] «Design Patterns: Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
+.. [#fnpoeaa] «Patterns of Enterprise Application Architecture» by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
+
+
+.. _Refactoring\: Improving the Design of Existing Code: http://martinfowler.com/books/refactoring.html
+.. _Refactoring Ruby Edition: http://martinfowler.com/books/refactoringRubyEd.html
+.. _Catalog of Refactorings: http://www.refactoring.com/catalog/
+.. _Catalog of Patterns of Enterprise Application Architecture: http://martinfowler.com/eaaCatalog/
+.. _Martin Fowler: http://martinfowler.com/
+
+.. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
+.. _Robert C. Martin: http://informit.com/martinseries
+
+.. _Code Smell: http://c2.com/cgi/wiki?CodeSmell
+.. _KISS principle: https://en.wikipedia.org/wiki/KISS_principle
