@@ -81,7 +81,8 @@
 Систематизированные каталоги
 ----------------------------
 
-Я помню, как пол-вечера объяснял одному коллеге, почему метод, перенасыщенный условиями проверки кода типа, нужно заменить полиморфизмом. А можно было просто дать ссылку на пример из каталога рефакторингов "`Replace Conditional with Polymorphism <http://www.refactoring.com/catalog/replaceConditionalWithPolymorphism.html>`__".
+Я помню, как пол-вечера объяснял одному коллеге, почему метод, перенасыщенный условиями проверки кода типа, нужно заменить полиморфизмом.
+А можно было просто дать ссылку на пример из каталога рефакторингов "`Replace Conditional with Polymorphism <http://www.refactoring.com/catalog/replaceConditionalWithPolymorphism.html>`__".
 Тут же, на странице примера указан номер страницы книги, на которой можно найти дополнительную информацию.
 
 Подобные систематизированные каталоги способны значительно сократить время затрачиваемое на Code Review.
@@ -94,7 +95,8 @@
 
 #. "`Catalog of Refactorings`_" на http://www.refactoring.com/ из книг «Refactoring: Improving the Design of Existing Code» [#fnr]_ и «Refactoring Ruby Edition» [#fnrre]_.
 #. Каталог "запахов" кода и эвристических правил "Smells and Heuristics" из книги «Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_.
-#. `Code Smell`_
+#. «Refactoring To Patterns» [#fnrtp]_
+#. `Code Smell`_.
 
 
 Базовые каталоги паттернов
@@ -109,7 +111,8 @@
 Философия рефакторинга
 ----------------------
 
-Одно правило мне показалось особенно важным для наших, славянских ребят (и меня в том числе), которые нередко увлекаются поиском совершенства в коде. Поэтому я решил его процитировать:
+Одно правило мне показалось особенно важным для наших, славянских ребят (и меня в том числе), которые нередко увлекаются поиском совершенства в коде.
+Поэтому я решил его процитировать:
 
     "До введения рефакторинга в свою работу я всегда искал гибкие решения.
     Для каждого технического требования я рассматривал возможности его изменения в течение срока жизни системы.
@@ -184,11 +187,13 @@
 
 Я так же по новому взглянул на определение красоты.
 Красота - это, на самом деле, простота, когда нет ничего лишнего.
-Вообразите легковой автомобиль с колесами от трактора МТЗ, которые, мягко говоря, излишни и по габаритам, и по назначению. Красиво?
+Вообразите легковой автомобиль с колесами от трактора МТЗ, которые, мягко говоря, излишни и по габаритам, и по назначению.
+Красиво?
 Кто-то красиво сказал, что идеал - это когда нечего добавить, и нечего отнять.
 
 Удивительно, но суть честности тоже заключается в простоте, - чтобы освободиться от всего лишнего, ненужного, и оставить только то, что действительно имеет значение.
-Эти слова и отличаются-то всего двумя буквами, "чистый" и "чЕстНый". Ненужность лжи кроется в ее бесполезности, и даже вредности, - она отнимает ресурсы.
+Эти слова и отличаются-то всего двумя буквами, "чистый" и "чЕстНый".
+Ненужность лжи кроется в ее бесполезности, и даже вредности, - она отнимает ресурсы.
 Она не нужна.
 Поэтому она портит красоту кода и отнимает эффективность.
 Robert C. Martin в книге «Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_ много говорит о лжи в коде, и как от нее освободиться.
@@ -220,12 +225,15 @@ Robert C. Martin в книге «Clean Code: A Handbook of Agile Software Crafts
 
 Принцип простоты вылился в целое философское направление `KISS principle`_.
 
-Деятельность программиста во многом напоминает мне работу скульптора. Нужно увидеть образ, и отсечь от него все лишнее. Освободить образ, проявить его, т.е. явить его в явь.
+Деятельность программиста во многом напоминает мне работу скульптора.
+Нужно увидеть образ, и отсечь от него все лишнее.
+Освободить образ, проявить его, т.е. явить его в явь.
 
 .. rubric:: Footnotes
 
 .. [#fnr] «`Refactoring: Improving the Design of Existing Code`_» by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
 .. [#fnrre] «`Refactoring Ruby Edition`_» by Jay Fields, Shane Harvie, `Martin Fowler`_, Kent Beck
+.. [#fnrtp] «`Refactoring To Patterns`_» Joshua Kerievsky
 .. [#fncc] «`Clean Code: A Handbook of Agile Software Craftsmanship`_» `Robert C. Martin`_
 .. [#fngof] «Design Patterns: Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
 .. [#fnpoeaa] «Patterns of Enterprise Application Architecture» by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
@@ -234,6 +242,7 @@ Robert C. Martin в книге «Clean Code: A Handbook of Agile Software Crafts
 .. _Refactoring\: Improving the Design of Existing Code: http://martinfowler.com/books/refactoring.html
 .. _Refactoring Ruby Edition: http://martinfowler.com/books/refactoringRubyEd.html
 .. _Catalog of Refactorings: http://www.refactoring.com/catalog/
+.. _Refactoring To Patterns: http://martinfowler.com/books/r2p.html
 .. _Catalog of Patterns of Enterprise Application Architecture: http://martinfowler.com/eaaCatalog/
 .. _Martin Fowler: http://martinfowler.com/
 
