@@ -70,7 +70,7 @@ ORM должен иметь `Identity Map`_ для предотвращения 
 ==============
 
 Несмотря на номер релиза, - код достаточно стабилен.
-Удачная архитектура в сочетании с `принципом KISS <KISS principle_>`_ создает ложную иллюзию, что Storm ORM якобы не развивается.
+Удачная архитектура в сочетании с `принципом KISS <KISS_>`_ создает ложную иллюзию, что Storm ORM якобы не развивается.
 Это не так.
 На самом деле, там просто нечего развивать.
 За три года копания в исходниках Storm ORM я не нашел ничего, что можно было бы улучшить.
@@ -489,7 +489,8 @@ SQL-код, даже если он в Python-файлах, все равно о�
 .. _Cohesion: https://en.wikipedia.org/wiki/Cohesion_%28computer_science%29
 .. _Composite pattern: https://en.wikipedia.org/wiki/Composite_pattern
 .. _DRY: https://en.wikipedia.org/wiki/Don't_repeat_yourself
-.. _KISS principle: https://en.wikipedia.org/wiki/KISS_principle
-.. _KISS-style: `KISS principle`_
+.. _KISS: https://en.wikipedia.org/wiki/KISS_principle
+.. _KISS principle: `KISS`_
+.. _KISS-style: `KISS`_
 .. _object: https://docs.python.org/2/library/functions.html#object
 .. _Storm ORM: https://storm.canonical.com/
