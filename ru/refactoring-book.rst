@@ -176,6 +176,24 @@
 Важно не количество энтропии в конкретном месте, а сила, создающая порядок.
 Важен не частный случай, а общее понятие.
 
+Тут уместно упомянуть еще:
+
+    "Однако мы часто забываем, что принятие решений лучше всего откладывать до последнего момента.
+    Дело не в лени или безответственности;
+    просто это позволяет принять информированное решение с максимумом возможной информации. 
+    Преждевременное решение принимается на базе неполной информации.
+    Принимая решение слишком рано, мы лишаемся всего полезного, что происходит на более поздних стадиях:
+    обратной связи от клиентов, возможности поразмышлять над текущим состоянием проекта и опыта применения решений из области реализации."
+
+    "We often forget that it is also best to postpone decisions until the last possible moment.
+    This isn’t lazy or irresponsible; it lets us make informed choices with the best possible information.
+    A premature decision is a decision made with suboptimal knowledge. We will have that
+    much less customer feedback, mental reflection on the project, and experience with our
+    implementation choices if we decide too soon."
+    («Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_)
+
+См. так же "Speculative Generality" [#fnr]_.
+
 
 Чистота кода кроется в его честности
 ------------------------------------
