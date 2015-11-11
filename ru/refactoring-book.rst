@@ -259,6 +259,16 @@ Robert C. Martin в книге «Clean Code: A Handbook of Agile Software Crafts
 Нужно увидеть образ, и отсечь от него все лишнее.
 Освободить образ, проявить его, т.е. явить его в явь.
 
+
+Тестирование очищает код
+------------------------
+
+Все просто. Класс, который делает слишком много, имеет жесткие привязки, сложнее тестировать.
+Класс, следующий "`Single responsibility principle`_", легче тестировать.
+См. "Simple Design Rule 1: Runs All the Tests" [#fncc]_.
+
+
+
 .. rubric:: Footnotes
 
 .. [#fnr] «`Refactoring: Improving the Design of Existing Code`_» by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
@@ -281,3 +291,5 @@ Robert C. Martin в книге «Clean Code: A Handbook of Agile Software Crafts
 
 .. _Code Smell: http://c2.com/cgi/wiki?CodeSmell
 .. _KISS principle: https://en.wikipedia.org/wiki/KISS_principle
+.. _Single responsibility principle: https://en.wikipedia.org/wiki/Single_responsibility_principle
+.. _SRP: `Single responsibility principle`_
