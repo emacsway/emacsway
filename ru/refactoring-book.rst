@@ -263,8 +263,8 @@ Robert C. Martin в книге «Clean Code: A Handbook of Agile Software Crafts
 Тестирование очищает код
 ------------------------
 
-Все просто. Класс, который делает слишком много, имеет жесткие привязки, сложнее тестировать.
-Класс, следующий "`Single responsibility principle`_", легче тестировать.
+Все просто. Класс, который делает слишком много и имеет жесткие привязки, сложнее тестировать.
+Класс, соответствующий "`Single responsibility principle`_", легче тестировать.
 См. "Simple Design Rule 1: Runs All the Tests" [#fncc]_.
 
 
