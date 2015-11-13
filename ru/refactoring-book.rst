@@ -108,8 +108,12 @@
 Базовые каталоги паттернов
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. «Design Patterns: Elements of Reusable Object-Oriented Software» [#fngof]_
-#. "`Catalog of Patterns of Enterprise Application Architecture`_" из книги «Patterns of Enterprise Application Architecture» [#fnpoeaa]_
+#. «Design Patterns: Elements of Reusable Object-Oriented Software» [#fngof]_ - паттерны проектирования.
+#. "`Catalog of Patterns of Enterprise Application Architecture`_" из книги «Patterns of Enterprise Application Architecture» [#fnpoeaa]_ - архитектурные паттерны.
+#. «Pattern-Oriented Software Architecture Volume (POSA)» 5-volume edition, Buschmann, Meunier, Rohnert, Sommerlad, and Sta.
+#. «Pattern-Oriented Software Architecture (known as POSA) by Buschmann, Meunier, Rohnert, Sommerlad, and Sta;
+#. «Enterprise Integration Patterns» by Hohpe and Woolf.
+#. «The Design of Sites: Patterns, Principles, and Processes for Crafting a Customer-Centered Web Experience» by Duyne, Landay, and Hong.
 
 Систематизированная форма этих знаний легко входит в привычку, и может сделать работу всей команды согласованной при наименьших затратах времени.
 
@@ -174,6 +178,7 @@
 Это как в физике.
 Важна не скорость, а ее производная, - ускорение, т.е. то, что создает скорость.
 Важно не количество энтропии в конкретном месте, а сила, создающая порядок.
+Важно не конкретное решение, а используемые подходы.
 Важен не частный случай, а общее понятие.
 
 Тут уместно упомянуть еще:
