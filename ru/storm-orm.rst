@@ -157,7 +157,7 @@ Storm ORM `не обязывает <https://lists.ubuntu.com/archives/storm/2009
 По поводу SQLAlchemy
 ====================
 
-В общем-то любой ORM хорош, если он `реализует принципы <http://techspot.zzzeek.org/2012/02/07/patterns-implemented-by-sqlalchemy/>`__ нашумевшей книги «Patterns of Enterprise Application Architecture» [#fnpoeaa]_.
+В общем-то любой `ORM хорош <http://aosabook.org/en/sqlalchemy.html>`__, если он `реализует принципы <http://techspot.zzzeek.org/2012/02/07/patterns-implemented-by-sqlalchemy/>`__ нашумевшей книги «Patterns of Enterprise Application Architecture» [#fnpoeaa]_.
 Storm ORM контрастирует своей простотой на фоне SQLAlchemy так же, как VIM на фоне Emacs, или jQuery на фоне Dojo.
 Идеологически между ними много общего, я бы даже сказал, что Storm ORM - это упрощенная версия SQLAlchemy.
 Исходники Storm ORM изучаются быстрее, нежели вводный tutorial SQLAlchemy.
