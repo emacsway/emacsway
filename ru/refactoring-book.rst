@@ -117,6 +117,15 @@
 
 Систематизированная форма этих знаний легко входит в привычку, и может сделать работу всей команды согласованной при наименьших затратах времени.
 
+    "В основной книге «банды четырех» сказано, что «паттерны проектирования... предоставляют объекты для проведения рефакторинга».
+    Существует естественная связь между паттернами и рефакторингом.
+    Паттерны представляют собой цели; рефакторинг дает методы их достижения."
+
+    "As the essential Gang of Four book says, "Design Patterns ... provide targets for your refactorings."
+    There is a natural relation between patterns and refactorings.
+    Patterns are where you want to be; refactorings are ways to get there from somewhere else."
+    («Refactoring: Improving the Design of Existing Code» [#fnr]_)
+
 
 Философия рефакторинга
 ----------------------
