@@ -14,7 +14,7 @@
 .. contents:: Содержание
 
 
-.. _criteria:
+.. _orm-criteria:
 
 Мои критерии к ORM
 ==================
@@ -158,7 +158,7 @@ Storm ORM `не обязывает <https://lists.ubuntu.com/archives/storm/2009
 Другие достоинства хорошо отражены в `Tutorial <https://storm.canonical.com/Tutorial>`__ и в `Manual <https://storm.canonical.com/Manual>`__
 
 
-.. _sqlalchemy:
+.. _about-sqlalchemy:
 
 По поводу SQLAlchemy
 ====================
@@ -503,7 +503,6 @@ SQL-код, даже если он в Python-файлах, все равно о�
 .. _DataMapper: http://martinfowler.com/eaaCatalog/dataMapper.html
 .. _Data Transfer Object: http://martinfowler.com/eaaCatalog/dataTransferObject.html
 .. _Domain Model: http://martinfowler.com/eaaCatalog/domainModel.html
-.. _Criteria: `Query Object`_
 .. _Entity Attribute Value: https://en.wikipedia.org/wiki/Entity%E2%80%93attribute%E2%80%93value_model
 .. _Gateway: http://martinfowler.com/eaaCatalog/gateway.html
 .. _Identity Map: http://martinfowler.com/eaaCatalog/identityMap.html
@@ -511,10 +510,11 @@ SQL-код, даже если он в Python-файлах, все равно о�
 .. _Repository: http://martinfowler.com/eaaCatalog/repository.html
 .. _Service Stub: http://martinfowler.com/eaaCatalog/serviceStub.html
 .. _Single Table Inheritance: http://martinfowler.com/eaaCatalog/singleTableInheritance.html
-.. _SQLBuilder: `Query Object`_
 .. _Table Data Gateway: http://martinfowler.com/eaaCatalog/tableDataGateway.html
 .. _Transaction Script: http://martinfowler.com/eaaCatalog/transactionScript.html
 .. _Unit of Work: http://martinfowler.com/eaaCatalog/unitOfWork.html
+.. _Criteria: `Query Object`_
+.. _SQLBuilder: `Query Object`_
 
 .. _Introduce Parameter Object: http://www.refactoring.com/catalog/introduceParameterObject
 .. _Replace Conditional with Polymorphism: http://www.refactoring.com/catalog/replaceConditionalWithPolymorphism.html
@@ -533,7 +533,7 @@ SQL-код, даже если он в Python-файлах, все равно о�
 .. _Composite pattern: https://en.wikipedia.org/wiki/Composite_pattern
 .. _DRY: https://en.wikipedia.org/wiki/Don't_repeat_yourself
 .. _KISS: https://en.wikipedia.org/wiki/KISS_principle
-.. _KISS principle: `KISS`_
-.. _KISS-style: `KISS`_
 .. _object: https://docs.python.org/2/library/functions.html#object
 .. _Storm ORM: https://storm.canonical.com/
+.. _KISS principle: `KISS`_
+.. _KISS-style: `KISS`_
