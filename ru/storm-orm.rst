@@ -1,7 +1,7 @@
 
 .. post:: Oct 10, 2015
    :language: ru
-   :tags: ORM, Storm ORM, DataMapper
+   :tags: ORM, Storm ORM, DataMapper, DB, SQL, Python
    :category:
    :author: Ivan Zakrevsky
 
