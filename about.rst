@@ -29,7 +29,7 @@ Education
 About
 -----
 
-Bearded developer since 2004. I'm an adherent of `KISS principle <KISS_>`_. My philosophy is: «Shorter», «clearly».
+Bearded developer since 2004. Adherent of `KISS principle <KISS_>`_. My philosophy is: «Shorter», «clearly».
 
 
 Preferences
