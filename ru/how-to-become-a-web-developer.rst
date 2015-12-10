@@ -35,10 +35,10 @@
 
 5. Получаем архитектурные знания из книг:
 
-    5.1. «Design Patterns: Elements of Reusable Object-Oriented Software» Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
+    1. «Design Patterns: Elements of Reusable Object-Oriented Software» Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
 
-    5.2. «Patterns of Enterprise Application Architecture» Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
+    2. «Patterns of Enterprise Application Architecture» Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 
-    5.3. «Clean Code: A Handbook of Agile Software Craftsmanship» Robert C. Martin
+    3. «Clean Code: A Handbook of Agile Software Craftsmanship» Robert C. Martin
 
 6. Углубляем полученные знания по всем направлениям. Поскольку необходимая база знаний уже есть, дальнейшую литературу читаем на английском языке, параллельно развивая английский.
