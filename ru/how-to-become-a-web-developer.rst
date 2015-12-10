@@ -2,7 +2,7 @@
 Как стать веб-программистом?
 ============================
 
-.. post::
+.. post:: Dec 10, 2015
    :language: ru
    :tags: DB, SQL, Python
    :category:
