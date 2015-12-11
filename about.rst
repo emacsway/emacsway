@@ -57,6 +57,7 @@ Read
 * «Patterns of Enterprise Application Architecture» Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 * «Refactoring: Improving the Design of Existing Code» Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
 * «Clean Code: A Handbook of Agile Software Craftsmanship» Robert C. Martin
+* «PostgreSQL» Korry Douglas, Susan Douglas
 * «Unix and Linux System Administration Handbook» Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley
 * «The Linux® Kernel Primer: A Top-Down Approach for x86 and PowerPC Architectures» Claudia Salzberg Rodriguez, Gordon Fischer, Steven Smolski
 * «Digital computers and microprocessors» Aliyev / «Цифровая вычислительная техника и микропроцессоры» М.М.Алиев
