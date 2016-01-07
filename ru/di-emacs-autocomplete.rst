@@ -42,7 +42,14 @@ Emacs autocomplete and Dependency injection (DI)
 
 P.S.: это старейшая возможность питон-мода, которая лего забывается из-за наличия jedi и rope)) `IDLE <https://docs.python.org/3/library/idle.html>`__ работает по аналогичному принципу.
 
-P.P.S.: ropemacs-mode должен быть выключен, если он установлен.
+P.P.S.: ropemacs-mode должен быть выключен, если он установлен. Можно не выключать, а просто снять ``'ropemacs-completion-at-point`` с ``'ropemacs-mode-hook``:
+
+.. code-block:: elisp
+
+    (add-hook 'ropemacs-mode-hook (lambda ()
+      (if ropemacs-mode
+          (remove-hook 'completion-at-point-functions 'ropemacs-completion-at-point t))
+    ))
 
 
 .. update:: Jan 03, 2016
