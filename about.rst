@@ -16,8 +16,8 @@ Python, Django, Debian, Emacs, PostgreSQL, MySQL, GIS, and KISS principle
 - Ivan Zakrevsky, Python-developer.
 - Blog: http://emacsway.bitbucket.org/
 - E-mail: ivzak@yandex.ru
-- Open Source: https://bitbucket.org/emacsway
-- LinkedIn: http://www.linkedin.com/profile/view?id=94851890
+- Find my open source at: `Bitbucket <https://bitbucket.org/emacsway>`__ (primary), `Github <https://github.com/emacsway>`__
+- Find me at `LinkedIn <http://www.linkedin.com/profile/view?id=94851890>`__
 
 
 Education
