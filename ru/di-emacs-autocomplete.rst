@@ -59,4 +59,4 @@ P.P.S.: ropemacs-mode должен быть выключен, если он ус
 
 .. update:: Jan 05, 2016
 
-   Добавил в `forked rope <https://github.com/emacsway/rope>`__ поддержку `подсказок типов <https://github.com/emacsway/rope/blob/master/docs/overview.rst#type-hinting>`__ в комментариях согласно `PEP 0484 <https://www.python.org/dev/peps/pep-0484/#type-comments>`__ для присваиваний.
+   Добавил в `forked rope <https://github.com/emacsway/rope>`__ поддержку `подсказок типов <https://github.com/emacsway/rope/blob/master/docs/overview.rst#type-hinting>`__ на основании комментирования типов согласно `PEP 0484 <https://www.python.org/dev/peps/pep-0484/#type-comments>`__ для присваиваний.
