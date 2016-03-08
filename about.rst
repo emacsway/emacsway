@@ -36,7 +36,7 @@ Preferences
 -----------
 
 * Programming languages: Python (mainly, since 2008), JavaScript (strong), Ruby (sometimes),  PHP (in the past).
-* Development environment: Emacs (sometimes VIM).
+* Development environment: Emacs (sometimes VIM, PyCharm).
 * DB & storages: MySQL, Spatial, PostgreSQL, PostGIS, tsearch2, MongoDB, Redis, Memcached, replication, sharding, analysing, SQL optimization.
 * Frameworks: Django (mainly), Tornado, Flask, Twisted, Pyramid, Werkzeug, CherryPy, Ruby on Rails, etc.
 * JavaScript Frameworks: Dojo, jQuery.

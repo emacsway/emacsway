@@ -57,9 +57,14 @@ P.P.S.: ropemacs-mode должен быть выключен, если он ус
 
 .. update:: Jan 03, 2016
 
-   Добавил в `forked rope <https://github.com/emacsway/rope>`__ поддержку `подсказок типов <https://github.com/emacsway/rope/blob/master/docs/overview.rst#type-hinting>`__  в строках документирования для параметров функций, возвращаемого значения и атрибутов класса.
+   Добавил в `forked rope <https://github.com/emacsway/rope/tree/type-hinting>`__ поддержку `подсказок типов <https://github.com/emacsway/rope/blob/type-hinting/docs/overview.rst#type-hinting>`__  в строках документирования для параметров функций, возвращаемого значения и атрибутов класса.
 
 
 .. update:: Jan 05, 2016
 
-   Добавил в `forked rope <https://github.com/emacsway/rope>`__ поддержку `подсказок типов <https://github.com/emacsway/rope/blob/master/docs/overview.rst#type-hinting>`__ на основании комментирования типов согласно `PEP 0484 <https://www.python.org/dev/peps/pep-0484/#type-comments>`__ для присваиваний.
+   Добавил в `forked rope <https://github.com/emacsway/rope/tree/type-hinting>`__ поддержку `подсказок типов <https://github.com/emacsway/rope/blob/type-hinting/docs/overview.rst#type-hinting>`__ на основании комментирования типов согласно `PEP 0484 <https://www.python.org/dev/peps/pep-0484/#type-comments>`__ для присваиваний.
+
+
+.. update:: Feb 16, 2016
+
+   Форк принят в мастер (`bd89775 <https://github.com/python-rope/rope/commit/d2496d25a1301dfc17e2173683e45d44c013c290>`__).
