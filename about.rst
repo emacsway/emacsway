@@ -69,6 +69,7 @@ Read
     In the queue
     ------------
 
+    * «Code Complete» Steve McConnell
     * «Agile Software Development. Principles, Patterns, and Practices.» Robert C. Martin, James W. Newkirk, Robert S. Koss
     * «Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development» Craig Larman
     * «High Performance MySQL» Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
