@@ -57,6 +57,7 @@ Read
 * «Patterns of Enterprise Application Architecture» Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 * «Refactoring: Improving the Design of Existing Code» Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
 * «Clean Code: A Handbook of Agile Software Craftsmanship» Robert C. Martin
+* «Code Complete» Steve McConnell
 * «PostgreSQL» Korry Douglas, Susan Douglas
 * «Unix and Linux System Administration Handbook» Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley
 * «The Linux® Kernel Primer: A Top-Down Approach for x86 and PowerPC Architectures» Claudia Salzberg Rodriguez, Gordon Fischer, Steven Smolski
@@ -69,7 +70,6 @@ Read
     In the queue
     ------------
 
-    * «Code Complete» Steve McConnell
     * «Agile Software Development. Principles, Patterns, and Practices.» Robert C. Martin, James W. Newkirk, Robert S. Koss
     * «Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development» Craig Larman
     * «High Performance MySQL» Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
