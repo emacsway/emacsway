@@ -73,6 +73,8 @@ Read
     * «Agile Software Development. Principles, Patterns, and Practices.» Robert C. Martin, James W. Newkirk, Robert S. Koss
     * «Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development» Craig Larman
     * «Extreme Programming Explained» Kent Beck
+    * «Implementation Patterns» Kent Beck
+    * «Test-Driven Development By Example» Kent Beck
     * «Planning Extreme Programming» Kent Beck, Martin Fowler
     * «The Clean Coder» Robert C. Martin
     * «High Performance MySQL» Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
