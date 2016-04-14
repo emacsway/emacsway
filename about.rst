@@ -77,6 +77,7 @@ Read
     * «Test-Driven Development By Example» Kent Beck
     * «Planning Extreme Programming» Kent Beck, Martin Fowler
     * «The Clean Coder» Robert C. Martin
+    * «The Definitive Guide to MongoDB» David Hows, Peter Membrey, Eelco Plugge, Tim Hawkins
     * «High Performance MySQL» Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
     * «PostgreSQL 9.0 High Performance» Gregory Smith
     * «Refactoring To Patterns» Joshua Kerievsky
