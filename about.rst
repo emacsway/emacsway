@@ -79,6 +79,7 @@ Read
     * «The Clean Coder» Robert C. Martin
     * «The Definitive Guide to MongoDB» David Hows, Peter Membrey, Eelco Plugge, Tim Hawkins
     * «High Performance MySQL» Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
+    * «PostgreSQL: Up and Running» Regina Obe and Leo Hsu
     * «PostgreSQL 9.0 High Performance» Gregory Smith
     * «Refactoring To Patterns» Joshua Kerievsky
     * «Pattern-Oriented Software Architecture: A System of Patterns, Volume 1» by Frank Buschmann, Regine Meunier, Hans Rohnert, Peter Sommerlad, Michael Stal
