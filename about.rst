@@ -64,6 +64,7 @@ Read
 * «Digital computers and microprocessors» Aliyev / «Цифровая вычислительная техника и микропроцессоры» М.М.Алиев
 * «JavaScript Patterns» Stoyan Stefanov
 * «JavaScript: The Definitive Guide» David Flanagan
+* «Python Tutorial» and «Python HOWTOs» (official)
 
 
 ..
