@@ -35,7 +35,7 @@
 
 Так же смотрите:
 
-- `cache dependency in wheezy.caching <https://pypi.python.org/pypi/wheezy.caching>`_
+- `Cache dependency in wheezy.caching <https://pypi.python.org/pypi/wheezy.caching>`_
 - `TaggableInterface of ZF <http://framework.zend.com/manual/current/en/modules/zend.cache.storage.adapter.html#the-taggableinterface>`_
 - `Dklab_Cache: правильное кэширование — тэги в memcached, namespaces, статистика <http://dklab.ru/lib/Dklab_Cache/>`_
 
