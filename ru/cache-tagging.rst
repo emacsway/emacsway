@@ -37,6 +37,7 @@
 
 - `Cache dependency in wheezy.caching <https://pypi.python.org/pypi/wheezy.caching>`_
 - `TaggableInterface of ZF <http://framework.zend.com/manual/current/en/modules/zend.cache.storage.adapter.html#the-taggableinterface>`_
+- `TagDependency of YII framework <http://www.yiiframework.com/doc-2.0/yii-caching-tagdependency.html>`_
 - `Dklab_Cache: правильное кэширование — тэги в memcached, namespaces, статистика <http://dklab.ru/lib/Dklab_Cache/>`_
 
 
