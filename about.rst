@@ -48,8 +48,8 @@ Preferences
 * Also, I've a good (5+ years) experience with PHP, Zend Framework, Drupal, but it, mainly, in the past (2004-2009).
 
 
-Read
-----
+Bibliography
+------------
 
 * «Learning Python» Mark Lutz
 * «Design Patterns: Elements of Reusable Object-Oriented Software» Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
@@ -93,13 +93,14 @@ Read
 P.S.
 ----
 
-    "The design goal for Eventlet’s API is simplicity and readability. You should be able to read its code and understand what it’s doing. Fewer lines of code are preferred over excessively clever implementations." (`Eventlet’s docs <http://eventlet.net/doc/basic_usage.html>`__)
-
     "I like my code to be elegant and efficient. The logic should be straightforward to make it hard for bugs to hide, the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy, and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations. Clean code does one thing well." (Bjarne Stroustrup, inventor of C++ and author of The C++ Programming Language.)
 
-    "Simplicity is prerequisite for reliability." (Edsger W. Dijkstra)
+..
+    "The design goal for Eventlet’s API is simplicity and readability. You should be able to read its code and understand what it’s doing. Fewer lines of code are preferred over excessively clever implementations." (`Eventlet’s docs <http://eventlet.net/doc/basic_usage.html>`__)
 
     "Simplicity and elegance are unpopular because they require hard work and discipline to achieve and education to be appreciated." (Edsger W. Dijkstra)
+
+    "Simplicity is prerequisite for reliability." (Edsger W. Dijkstra)
 
     "Simplicity is a great virtue but it requires hard work to achieve it and education to appreciate it. And to make matters worse: complexity sells better." (Edsger W. Dijkstra, 1984 `On the nature of Computing Science <http://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD896.html>`__ (EWD896))
 
