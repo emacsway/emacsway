@@ -115,7 +115,15 @@ Read committed
 Тем не менее, этот уровень изоляции не является достаточно серьезным, и выбирается, как правило, для повышения степени параллелизма, т.е. с той же целью что и репликация.
 А в таком случае, эта проблема обычно поглощается проблемой репликации, ведь чтение делается все равно из slave.
 
-Поэтому, дорогостоящая блокировка может быть заменена просто повторной инвалидацией после фиксации транзакции.
+Поэтому, дорогостоящая блокировка может быть заменена просто повторной инвалидацией в момент фиксации транзакции.
+
+Отдельно стоит упомянуть (спасибо `@akorn <https://bitbucket.org/akorn>`_) возможность `блокировки <https://www.postgresql.org/docs/9.5/static/explicit-locking.html>`__ строк в БД при использовании выражения `SELECT FOR UPDATE <https://www.postgresql.org/docs/9.5/static/sql-select.html#SQL-FOR-UPDATE-SHARE>`_. Но это будет работать только в том случае, если обе транзакции используют выражение `SELECT FOR UPDATE`_, в `противном случае <https://www.postgresql.org/docs/9.5/static/transaction-iso.html#XACT-READ-COMMITTED>`__:
+
+    When a transaction uses this isolation level, a SELECT query (without a FOR UPDATE/SHARE clause) sees only data committed before the query began; it never sees either uncommitted data or changes committed during query execution by concurrent transactions. In effect, a SELECT query sees a snapshot of the database as of the instant the query begins to run.
+
+Поскольку выборку для модификации никто не кеширует (да и вообще, в веб-приложениях ее мало кто использует), то она мало может быть нам полезна в этом вопросе.
+
+Говоря о блокировках, нужно упомянуть о еще `одном подходе <https://bitbucket.org/akorn/wheezy.caching/src/586b4debff62f885d97e646f0aa2e5d22d088bcf/src/wheezy/caching/patterns.py?at=default&fileviewer=file-view-default#patterns.py-348>`__.
 
 
 Repeatable reads
