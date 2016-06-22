@@ -121,9 +121,9 @@ Read committed
 
     When a transaction uses this isolation level, a SELECT query (without a FOR UPDATE/SHARE clause) sees only data committed before the query began; it never sees either uncommitted data or changes committed during query execution by concurrent transactions. In effect, a SELECT query sees a snapshot of the database as of the instant the query begins to run.
 
-Поскольку выборку для модификации никто не кеширует (да и вообще, в веб-приложениях ее мало кто использует), то она мало может быть нам полезна в этом вопросе.
+Поскольку выборку для модификации никто не кеширует (да и вообще, в веб-приложениях ее мало кто использует), то она мало может быть нам полезна в этом вопросе. К тому же она не решает проблему репликации.
 
-Говоря о блокировках, нужно упомянуть о еще `одном подходе <https://bitbucket.org/akorn/wheezy.caching/src/586b4debff62f885d97e646f0aa2e5d22d088bcf/src/wheezy/caching/patterns.py?at=default&fileviewer=file-view-default#patterns.py-348>`__.
+Говоря о блокировках, нужно упомянуть о еще одном подходе - `пессимистической блокировке <https://bitbucket.org/akorn/wheezy.caching/src/586b4debff62f885d97e646f0aa2e5d22d088bcf/src/wheezy/caching/patterns.py?at=default&fileviewer=file-view-default#patterns.py-348>`__.
 
 
 Repeatable reads
