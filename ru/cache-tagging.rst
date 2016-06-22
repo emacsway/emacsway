@@ -123,7 +123,7 @@ Read committed
 
 Поскольку выборку для модификации никто не кеширует (да и вообще, в веб-приложениях ее мало кто использует), то она мало может быть нам полезна в этом вопросе. К тому же она не решает проблему репликации.
 
-Говоря о блокировках, нужно упомянуть о еще одном подходе - `пессимистической блокировке <https://bitbucket.org/akorn/wheezy.caching/src/586b4debff62f885d97e646f0aa2e5d22d088bcf/src/wheezy/caching/patterns.py?at=default&fileviewer=file-view-default#patterns.py-348>`__.
+Говоря о блокировках, стоит упомянуть о `Pessimistic Offline Lock`_ и `Mutual Exclusion`_, одним из примеров которых является `class OnePass <https://bitbucket.org/akorn/wheezy.caching/src/586b4debff62f885d97e646f0aa2e5d22d088bcf/src/wheezy/caching/patterns.py?at=default&fileviewer=file-view-default#patterns.py-348>`__.
 
 
 Repeatable reads
@@ -172,10 +172,12 @@ Serializable
 .. _cache-tagging: https://bitbucket.org/emacsway/cache-tagging
 
 .. _Decorator: https://en.wikipedia.org/wiki/Decorator_pattern
-.. _Strategy: https://en.wikipedia.org/wiki/Strategy_pattern
 .. _Isolation: https://en.wikipedia.org/wiki/Isolation_(database_systems)
+.. _Mutual Exclusion: https://en.wikipedia.org/wiki/Mutual_exclusion
 .. _Observer: https://en.wikipedia.org/wiki/Observer_pattern
+.. _Strategy: https://en.wikipedia.org/wiki/Strategy_pattern
 
 .. _ActiveRecord: http://www.martinfowler.com/eaaCatalog/activeRecord.html
 .. _DataMapper: http://martinfowler.com/eaaCatalog/dataMapper.html
+.. _Pessimistic Offline Lock: http://martinfowler.com/eaaCatalog/pessimisticOfflineLock.html
 .. _Unit of Work: http://martinfowler.com/eaaCatalog/unitOfWork.html
