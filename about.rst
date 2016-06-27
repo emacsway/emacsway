@@ -11,7 +11,7 @@ About me
    :alt: me
    :align: right
 
-Python, Django, Debian, Emacs, PostgreSQL, MySQL, GIS, and KISS principle
+Python, Django, Debian, Emacs, PostgreSQL, MySQL, GIS
 
 - Ivan Zakrevsky, Python-developer.
 - Blog: http://emacsway.bitbucket.org/
@@ -29,7 +29,7 @@ Education
 About
 -----
 
-Bearded developer since 2004. Adherent of `KISS principle <KISS_>`_. My philosophy: «Shorter», «clearly».
+Bearded developer since 2004. Adherent of `KISS principle <KISS_>`_. My philosophy is «Shorter», «clearly».
 
 
 Preferences
@@ -46,6 +46,13 @@ Preferences
 * CVS: Mercurial (mainly), GIT, SVN, Bazar.
 * Others: Eventlet, GDB, Celery, geographic information system (GIS), Storm ORM, multiprocessing, threading, queue, async, Solr, morphology, Pinax, Design Patterns, refactoring, business-transactions, high-load, high level concurrency, Remote Facade, DTO, cache invalidation based on tagging, automatic text processing, ACL, social networks integration, KISS principle.
 * Also, I've a good (5+ years) experience with PHP, Zend Framework, Drupal, but it, mainly, in the past (2004-2009).
+
+
+Projects
+--------
+
+* `SQLBuilder <https://bitbucket.org/emacsway/sqlbuilder>`_ - Lightweight Python SQLBuilder. Can be integrated with Django.
+* `cache-tagging <https://bitbucket.org/emacsway/cache-tagging>`_ - Cache-tagging allows you easily invalidate all cache records tagged with a given tag(s). Supports Django.
 
 
 Bibliography
