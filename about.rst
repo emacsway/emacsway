@@ -116,4 +116,4 @@ P.S.
     "Clean code - is ability of code to express the truth about itself, and not misleading."
 
 
-.. _KISS: https://en.wikipedia.org/wiki/KISS_principle
+.. _KISS: https://people.apache.org/~fhanik/kiss.html
