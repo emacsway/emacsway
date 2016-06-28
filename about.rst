@@ -51,7 +51,7 @@ Preferences
 Projects
 --------
 
-* `SQLBuilder <https://bitbucket.org/emacsway/sqlbuilder>`_ - Lightweight Python SQLBuilder. Can be integrated into Django.
+* `SQLBuilder <https://bitbucket.org/emacsway/sqlbuilder>`_ - Lightweight Python SQLBuilder. Can be integrated with Django.
 * `cache-tagging <https://bitbucket.org/emacsway/cache-tagging>`_ - Cache-tagging allows you easily invalidate all cache records tagged with a given tag(s). The package supports Django.
 
 
