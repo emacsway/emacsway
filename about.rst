@@ -23,13 +23,13 @@ Python, Django, Debian, Emacs, PostgreSQL, MySQL, GIS
 Education
 ---------
 
-1994-1999 - The Dnepropetrovsk State technical university of a railway transportation
+1994-1999 - The Dnepropetrovsk State Technical University of Railway Transportation
 
 
 About
 -----
 
-Bearded developer since 2004. Adherent of `KISS principle <KISS_>`_. My philosophy is «Shorter», «clearly».
+Bearded developer since 2004. Adherent of `KISS principle <KISS_>`_. My philosophy is: «Shorter», «clearly».
 
 
 Preferences
@@ -45,14 +45,14 @@ Preferences
 * HTTP servers: Nginx (mainly), Apache2, Lighttpd, Unicorn.
 * CVS: Mercurial (mainly), GIT, SVN, Bazar.
 * Others: Eventlet, GDB, Celery, geographic information system (GIS), Storm ORM, multiprocessing, threading, queue, async, Solr, morphology, Pinax, Design Patterns, refactoring, business-transactions, high-load, high level concurrency, Remote Facade, DTO, cache invalidation based on tagging, automatic text processing, ACL, social networks integration, KISS principle.
-* Also, I've a good (5+ years) experience with PHP, Zend Framework, Drupal, but it, mainly, in the past (2004-2009).
+* Also, I've a good (5+ years) experience in PHP, Zend Framework, Drupal, but it, mainly, in the past (2004-2009).
 
 
 Projects
 --------
 
-* `SQLBuilder <https://bitbucket.org/emacsway/sqlbuilder>`_ - Lightweight Python SQLBuilder. Can be integrated with Django.
-* `cache-tagging <https://bitbucket.org/emacsway/cache-tagging>`_ - Cache-tagging allows you easily invalidate all cache records tagged with a given tag(s). Supports Django.
+* `SQLBuilder <https://bitbucket.org/emacsway/sqlbuilder>`_ - Lightweight Python SQLBuilder. Can be integrated into Django.
+* `cache-tagging <https://bitbucket.org/emacsway/cache-tagging>`_ - Cache-tagging allows you easily invalidate all cache records tagged with a given tag(s). The package supports Django.
 
 
 Bibliography
