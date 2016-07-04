@@ -44,7 +44,7 @@ Preferences
 * Bug-tracking: Trac (mainly), Redmine, Pivotal Tracker.
 * HTTP servers: Nginx (mainly), Apache2, Lighttpd, Unicorn.
 * CVS: Mercurial (mainly), GIT, SVN, Bazar.
-* Others: Eventlet, GDB, Celery, geographic information system (GIS), Storm ORM, multiprocessing, threading, queue, async, Solr, morphology, Pinax, Design Patterns, refactoring, business-transactions, high-load, high level concurrency, Remote Facade, DTO, cache invalidation based on tagging, automatic text processing, ACL, social networks integration, KISS principle.
+* Others: Eventlet, GDB, Celery, geographic information system (GIS), Storm ORM, multiprocessing, threading, queue, async, Solr, morphology, Pinax, Design Patterns, refactoring, business-transactions, high-load, high level concurrency, Remote Facade, DTO, cache invalidation based on tagging, automatic text processing, ACL, social networks integration.
 * Also, I've a good (5+ years) experience in PHP, Zend Framework, Drupal, but it, mainly, in the past (2004-2009).
 
 
