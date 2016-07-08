@@ -78,6 +78,7 @@ Bibliography
     In the queue
     ------------
 
+    * «An Introduction to Database Systems» C.J.Date
     * «Agile Software Development. Principles, Patterns, and Practices.» Robert C. Martin, James W. Newkirk, Robert S. Koss
     * «Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development» Craig Larman
     * «Extreme Programming Explained» Kent Beck
