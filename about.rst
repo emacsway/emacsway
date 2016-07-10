@@ -17,7 +17,7 @@ Python, Django, Debian, Emacs, PostgreSQL, MySQL, GIS
 - Blog: http://emacsway.bitbucket.org/
 - E-mail: ivzak@yandex.ru
 - Find my open source at: `Bitbucket <https://bitbucket.org/emacsway>`__ (primary), `Github <https://github.com/emacsway>`__
-- Find me at `LinkedIn <http://www.linkedin.com/profile/view?id=94851890>`__
+- Find me at `LinkedIn <https://www.linkedin.com/in/emacsway>`__
 
 
 Education
