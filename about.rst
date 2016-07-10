@@ -55,6 +55,13 @@ Projects
 * `cache-tagging <https://bitbucket.org/emacsway/cache-tagging>`_ - Cache-tagging allows you easily invalidate all cache records tagged with a given tag(s). The package supports Django.
 
 
+Articles
+--------
+
+* «:doc:`О проблемах инвалидации кэша. Тегирование кэша. <ru/cache-tagging>`»
+* «:doc:`Почему я выбираю Storm ORM. <ru/storm-orm>`»
+
+
 Bibliography
 ------------
 
@@ -73,12 +80,13 @@ Bibliography
 * «JavaScript: The Definitive Guide» David Flanagan
 * «Python Tutorial» and «Python HOWTOs» (official)
 
+The next book will be «An Introduction to Database Systems» C.J. Date
 
 ..
     In the queue
     ------------
 
-    * «An Introduction to Database Systems» C.J.Date
+    * «An Introduction to Database Systems» C.J. Date
     * «Agile Software Development. Principles, Patterns, and Practices.» Robert C. Martin, James W. Newkirk, Robert S. Koss
     * «Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development» Craig Larman
     * «Extreme Programming Explained» Kent Beck
@@ -96,6 +104,16 @@ Bibliography
     * «Pattern-Oriented Software Architecture: Patterns for Resource Management, Volume 3» by Michael Kircher, Prashant Jain
     * «Pattern-Oriented Software Architecture: A Pattern Language for Distributed Computing, Volume 4» by Frank Buschmann, Kevin Henney, Douglas C. Schmidt
     * «Pattern-Oriented Software Architecture: On Patterns and Pattern Languages, Volume 5» by Frank Buschmann, Kevin Henney, Douglas C. Schmidt
+
+
+Experience
+----------
+
+* 2013 – to present – working on popular social network rebelmouse.com, Senior Python-Developer (Django, MySQL, MongoDB, Redis, Celery, Memcached, Eventlet, GDB, Social networks integration, SQL optimization, replication, clustering, document-oriented data storage, polymorphic relations, ACL, statistics, etc.)
+* 2011 - 2013 – working on Russian travel portal tripster.ru, Senior Full-Stack Developer (Django, GIS, jQuery, MySQL, Solr, Nginx, Memcached, Social networks integration, HTML5 API History with legacy browsers, geonames services, partner's API, advanced ACL, flexible user notification, variouse Ajax widgets, sub-processing, threading, Queue, Async, cache-tagging, nocache fragments (phased cache), 3-d SQL Builders, morphology, alternative fast template engines, cache cleaning synchronization with DB transactions, automatic text processing, SQL optimization (more than 2 000 000 rows), etc.)
+* 2010 – 2011 – Soft-Ukraine, Team Leader (Django, Dojo, PostgreSQL, Rest API, MVVM, dojox.data.JsonRestStore, Ajax UI, Multilingual, System Administration, Ruby On Rails, Pinax)
+* 2009 – 2010 – Dstudio, co-founder and CTO (Python, Drupal, Django, Pinax, Redmine, Trac, Debian, System Administration, Bash, etc.)
+* 2004 – 2009 – Zakrevsky Entrepreneur, PHP and Python development
 
 
 P.S.
