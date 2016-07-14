@@ -213,7 +213,7 @@ language = None
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['.*', '_*', 'README.rst']
+exclude_patterns = ['.*', 'README.rst']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -253,6 +253,7 @@ html_theme = 'alabaster'
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
+    'logo': "logo.jpg",
     'github_button': False,
     # 'analytics_id': 'UA-69288289-1',
 }
@@ -279,12 +280,12 @@ html_title = u"@emacsway's blog"
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['_static', ]
 
 # Add any extra paths that contain custom files (such as robots.txt or
 # .htaccess) here, relative to this directory. These files are copied
 # directly to the root of the documentation.
-html_extra_path = ['_html_extra']
+html_extra_path = ['_html_extra', ]
 
 # If not '', a 'Last updated on:' timestamp is inserted at every page bottom,
 # using the given strftime format.
