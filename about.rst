@@ -80,12 +80,13 @@ Bibliography
 * «JavaScript: The Definitive Guide» David Flanagan
 * «Python Tutorial» and «Python HOWTOs» (official)
 
-The next book will be «An Introduction to Database Systems» C.J. Date
+The next book will be «Algorithms and Data Structures» N. Wirth
 
 ..
     In the queue
     ------------
 
+    * «Algorithms and Data Structures» N. Wirth
     * «An Introduction to Database Systems» C.J. Date
     * «Agile Software Development. Principles, Patterns, and Practices.» Robert C. Martin, James W. Newkirk, Robert S. Koss
     * «Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development» Craig Larman
