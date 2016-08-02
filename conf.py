@@ -254,6 +254,7 @@ html_theme = 'alabaster'
 # documentation.
 html_theme_options = {
     'logo': "logo.jpg",
+    'logo_name': True,
     'github_button': False,
     # 'analytics_id': 'UA-69288289-1',
 }
