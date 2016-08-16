@@ -48,11 +48,14 @@ Preferences
 * Also, I've a good (5+ years) experience in PHP, Zend Framework, Drupal, but it, mainly, in the past (2004-2009).
 
 
-Projects
---------
+Open Source Projects
+--------------------
 
-* `SQLBuilder <https://bitbucket.org/emacsway/sqlbuilder>`_ - Lightweight Python SQLBuilder. Can be integrated with Django.
-* `cache-tagging <https://bitbucket.org/emacsway/cache-tagging>`_ - Cache-tagging allows you easily invalidate all cache records tagged with a given tag(s). The package supports Django.
+* `rope <https://github.com/python-rope/rope>`_ (contributor) - a python refactoring library.
+* `SQLBuilder <https://bitbucket.org/emacsway/sqlbuilder>`_ (owner) - a lightweight Python SQLBuilder. Can be integrated with Django.
+* `cache-tagging <https://bitbucket.org/emacsway/cache-tagging>`_ (owner). Cache-tagging allows you easily invalidate all cache records tagged with a given tag(s). The package supports Django.
+
+.. * `Ascetic ORM <https://bitbucket.org/emacsway/ascetic>`_ (owner) - a lightweight Python datamapper ORM
 
 
 Articles
