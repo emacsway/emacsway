@@ -29,9 +29,7 @@ Education
 About
 -----
 
-Bearded developer since 2004. Adherent of `KISS principle <KISS_>`_.
-
-.. My philosophy is: «Shortly», «clearly».
+Bearded developer since 2004. Adherent of `KISS principle <KISS_>`_. My philosophy is: «Shortly», «clearly».
 
 
 Preferences
@@ -84,8 +82,9 @@ Bibliography
 * «JavaScript Patterns» Stoyan Stefanov
 * «JavaScript: The Definitive Guide» David Flanagan
 * «Python Tutorial» and «Python HOWTOs» (official)
+* «Friendly meetings with the English language» Maria A. Kolpakchi
 
-The next book will be «Algorithms and Data Structures» N. Wirth
+The next books will be «Algorithms and Data Structures» N. Wirth and «An Introduction to Database Systems» C.J. Date
 
 ..
     In the queue
