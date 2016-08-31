@@ -86,6 +86,7 @@ Bibliography
 
 The next books will be «Algorithms and Data Structures» N. Wirth and «An Introduction to Database Systems» C.J. Date
 
+
 ..
     In the queue
     ------------
@@ -111,20 +112,22 @@ The next books will be «Algorithms and Data Structures» N. Wirth and «An Intr
     * «Pattern-Oriented Software Architecture: On Patterns and Pattern Languages, Volume 5» by Frank Buschmann, Kevin Henney, Douglas C. Schmidt
 
 
-Experience
-----------
+..
+    Experience
+    ----------
 
-* 2013 – to present – working on popular social network rebelmouse.com, Senior Python-Developer (Django, MySQL, MongoDB, Redis, Celery, Memcached, Eventlet, GDB, Social networks integration, SQL optimization, replication, clustering, document-oriented data storage, polymorphic relations, ACL, statistics, etc.)
-* 2011 - 2013 – working on Russian travel portal tripster.ru, Senior Full-Stack Developer (Django, GIS, jQuery, MySQL, Solr, Nginx, Memcached, Social networks integration, HTML5 API History with legacy browsers, geonames services, partner's API, advanced ACL, flexible user notification, variouse Ajax widgets, sub-processing, threading, Queue, Async, cache-tagging, nocache fragments (phased cache), 3-d SQL Builders, morphology, alternative fast template engines, cache cleaning synchronization with DB transactions, automatic text processing, SQL optimization (more than 2 000 000 rows), etc.)
-* 2010 – 2011 – Soft-Ukraine, Team Leader (Django, Dojo, PostgreSQL, Rest API, MVVM, dojox.data.JsonRestStore, Ajax UI, Multilingual, System Administration, Ruby On Rails, Pinax)
-* 2009 – 2010 – Dstudio, co-founder and CTO (Python, Drupal, Django, Pinax, Redmine, Trac, Debian, System Administration, Bash, etc.)
-* 2004 – 2009 – Zakrevsky Entrepreneur, PHP and Python development
+    * 2013 – to present – working on popular social network rebelmouse.com, Senior Python-Developer (Django, MySQL, MongoDB, Redis, Celery, Memcached, Eventlet, GDB, Social networks integration, SQL optimization, replication, clustering, document-oriented data storage, polymorphic relations, ACL, statistics, etc.)
+    * 2011 - 2013 – working on Russian travel portal tripster.ru, Senior Full-Stack Developer (Django, GIS, jQuery, MySQL, Solr, Nginx, Memcached, Social networks integration, HTML5 API History with legacy browsers, geonames services, partner's API, advanced ACL, flexible user notification, variouse Ajax widgets, sub-processing, threading, Queue, Async, cache-tagging, nocache fragments (phased cache), 3-d SQL Builders, morphology, alternative fast template engines, cache cleaning synchronization with DB transactions, automatic text processing, SQL optimization (more than 2 000 000 rows), etc.)
+    * 2010 – 2011 – Soft-Ukraine, Team Leader (Django, Dojo, PostgreSQL, Rest API, MVVM, dojox.data.JsonRestStore, Ajax UI, Multilingual, System Administration, Ruby On Rails, Pinax)
+    * 2009 – 2010 – Dstudio, co-founder and CTO (Python, Drupal, Django, Pinax, Redmine, Trac, Debian, System Administration, Bash, etc.)
+    * 2004 – 2009 – Zakrevsky Entrepreneur, PHP and Python development
 
 
 P.S.
 ----
 
     "I like my code to be elegant and efficient. The logic should be straightforward to make it hard for bugs to hide, the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy, and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations. Clean code does one thing well." (Bjarne Stroustrup, inventor of C++ and author of The C++ Programming Language.)
+
 
 ..
     "The design goal for Eventlet’s API is simplicity and readability. You should be able to read its code and understand what it’s doing. Fewer lines of code are preferred over excessively clever implementations." (`Eventlet’s docs <http://eventlet.net/doc/basic_usage.html>`__)
