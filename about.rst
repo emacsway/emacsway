@@ -26,10 +26,21 @@ Education
 1994-1999 - The Dnepropetrovsk State Technical University of Railway Transportation
 
 
-About
------
+About me
+--------
 
-Bearded developer since 2004. Adherent of `KISS principle <KISS_>`_. My philosophy is: «Shortly», «clearly».
+I'm a bearded developer since 2004))
+
+My main interest is to make the code clean, simple, readable, modifiable and maintainable.
+My approaches is TDD_, OOP_, OOD_, DDD_, `Design Patterns`_, `Inversion Of Control`_, Refactoring_, `Software Architectural Design`_ and so on.
+
+Terms such as the Coupling_, Cohesion_, SRP_, OCP_ is not empty phrases for me.
+
+Also I'm an Open Source developer. Sure, I'm an adherent of `KISS principle <KISS_>`_. My philosophy is: «Do it shortly, clearly».
+
+My guiding quote is:
+
+    "I like my code to be elegant and efficient. The logic should be straightforward to make it hard for bugs to hide, the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy, and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations. Clean code does one thing well." (Bjarne Stroustrup, inventor of C++ and author of The C++ Programming Language.)
 
 
 Preferences
@@ -37,6 +48,7 @@ Preferences
 
 * Programming languages: Python (mainly, since 2008), JavaScript (strong), Ruby (sometimes),  PHP (in the past).
 * Development environment: Emacs (sometimes VIM, PyCharm).
+* Approaches: TDD, OOP, OOD, DDD, Design Patterns, Inversion Of Control, Refactoring, Software Architectural Design, Database Architecture, Low Coupling, High Cohesion, SRP, OCP, SOLID, GRASP etc.
 * DB & storages: MySQL, Spatial, PostgreSQL, PostGIS, tsearch2, MongoDB, Redis, Memcached, replication, sharding, analysing, SQL optimization.
 * Frameworks: Django (mainly), Tornado, Flask, Twisted, Pyramid, Werkzeug, CherryPy, Ruby on Rails, etc.
 * JavaScript Frameworks: Dojo, jQuery.
@@ -44,7 +56,7 @@ Preferences
 * Bug-tracking: Trac (mainly), Redmine, Pivotal Tracker.
 * HTTP servers: Nginx (mainly), Apache2, Lighttpd, Unicorn.
 * CVS: Mercurial (mainly), GIT, SVN, Bazar.
-* Others: Eventlet, GDB, Celery, geographic information system (GIS), Storm ORM, multiprocessing, threading, queue, async, Solr, morphology, Pinax, Design Patterns, refactoring, business-transactions, high-load, high level concurrency, Remote Facade, DTO, cache invalidation based on tagging, automatic text processing, ACL, social networks integration.
+* Others: Eventlet, GDB, Celery, geographic information system (GIS), Storm ORM, multiprocessing, threading, queue, async, Solr, morphology, Pinax, business-transactions, high-load, high level concurrency, Remote Facade, DTO, cache invalidation based on tagging, automatic text processing, ACL, social networks integration.
 * Also, I've a good (5+ years) experience in PHP, Zend Framework, Drupal, but it, mainly, in the past (2004-2009).
 
 
@@ -123,12 +135,6 @@ The next books will be «Algorithms and Data Structures» N. Wirth and «An Intr
     * 2004 – 2009 – Zakrevsky Entrepreneur, PHP and Python development
 
 
-P.S.
-----
-
-    "I like my code to be elegant and efficient. The logic should be straightforward to make it hard for bugs to hide, the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy, and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations. Clean code does one thing well." (Bjarne Stroustrup, inventor of C++ and author of The C++ Programming Language.)
-
-
 ..
     "The design goal for Eventlet’s API is simplicity and readability. You should be able to read its code and understand what it’s doing. Fewer lines of code are preferred over excessively clever implementations." (`Eventlet’s docs <http://eventlet.net/doc/basic_usage.html>`__)
 
@@ -144,3 +150,20 @@ P.S.
 
 
 .. _KISS: https://people.apache.org/~fhanik/kiss.html
+
+.. _TDD: https://en.wikipedia.org/wiki/Test-driven_development
+.. _OOP: https://en.wikipedia.org/wiki/Object-oriented_programming
+.. _OOD: https://en.wikipedia.org/wiki/Object-oriented_design
+.. _DDD: https://en.wikipedia.org/wiki/Domain-driven_design
+.. _Design Patterns: https://en.wikipedia.org/wiki/Software_design_pattern
+.. _Inversion Of Control: http://martinfowler.com/articles/injection.html
+.. _Refactoring: http://www.refactoring.com/catalog/
+.. _Software Architectural Design: https://en.wikipedia.org/wiki/Software_architecture
+.. _Database Architecture: https://en.wikipedia.org/wiki/Data_architecture
+
+.. _Coupling: https://en.wikipedia.org/wiki/Coupling_(computer_programming)
+.. _Cohesion: https://en.wikipedia.org/wiki/Cohesion_(computer_science)
+.. _SRP: https://en.wikipedia.org/wiki/Single_responsibility_principle
+.. _OCP: https://en.wikipedia.org/wiki/Open/closed_principle
+.. _SOLID: https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)
+.. _GRASP: https://en.wikipedia.org/wiki/GRASP_(object-oriented_design)
