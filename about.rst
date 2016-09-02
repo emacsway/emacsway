@@ -38,7 +38,7 @@ Terms such as the Coupling_, Cohesion_, SRP_, OCP_ is not empty phrases for me.
 
 Also I'm an Open Source developer. Sure, I'm an adherent of `KISS principle <KISS_>`_. My philosophy is: «Do it shortly, clearly».
 
-My guiding quote is:
+My guiding light is:
 
     "I like my code to be elegant and efficient. The logic should be straightforward to make it hard for bugs to hide, the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy, and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations. Clean code does one thing well." (Bjarne Stroustrup, inventor of C++ and author of The C++ Programming Language.)
 
