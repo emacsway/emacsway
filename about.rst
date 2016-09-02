@@ -20,12 +20,6 @@ Python, Django, Debian, Emacs, PostgreSQL, MySQL, GIS
 - Find me at `LinkedIn <https://www.linkedin.com/in/emacsway>`__, `Twitter <https://twitter.com/emacsway>`__
 
 
-Education
----------
-
-1994-1999 - The Dnepropetrovsk State Technical University of Railway Transportation
-
-
 About me
 --------
 
@@ -41,6 +35,12 @@ Also I'm an Open Source developer. Sure, I'm an adherent of `KISS principle <KIS
 My guiding light is:
 
     "I like my code to be elegant and efficient. The logic should be straightforward to make it hard for bugs to hide, the dependencies minimal to ease maintenance, error handling complete according to an articulated strategy, and performance close to optimal so as not to tempt people to make the code messy with unprincipled optimizations. Clean code does one thing well." (Bjarne Stroustrup, inventor of C++ and author of The C++ Programming Language.)
+
+
+Education
+---------
+
+1994-1999 - The Dnepropetrovsk State Technical University of Railway Transportation
 
 
 Preferences
