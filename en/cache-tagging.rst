@@ -30,7 +30,7 @@ All user's posts can be marked by tag ``user.id:10``.
 Post lists can be marked by composite tag, composed of selection criteria, for example ``type.id:1;category.id:15;region.id:239``.
 
 Now it's enough to invalidate the tag, in order to invalidate all dependent caches.
-This aproach is not new, and widely used in other programming languages.
+This approach is not new, and widely used in other programming languages.
 At one time it was even implemented in memcache, see `memcached-tag <http://code.google.com/p/memcached-tag/>`_.
 
 See also:
@@ -44,23 +44,24 @@ See also:
 Should overhead be at cache reading, or at cache creation?
 ==========================================================
 
-Возникает вопрос реализации инвалидации зависимых от метки кэшей.
-Возможны два варианта:
+How to implement invalidation of caches dependent on the tag?
+There are exist two options:
 
-\1. При инвалидации метки физически уничтожать все зависимые кэши.
-Для реализации такого подхода потребуются накладные расходы при создании кэша, чтобы добавить информацию о нем в список (точнее, множество) зависимостей каждой метки (например, используя `SADD <http://redis.io/commands/sadd>`_).
-Недостаток заключается в том, что инвалидация большого количества зависимых кэшей требует определенного времени.
+\1. Destroy physically all dependent caches on the tag invalidation.
+Implementation of this approach requires some overhead on the cache creation to add key of the cache into the cache list (or set) of tag (for example, using `SADD <http://redis.io/commands/sadd>`_).
+The disadvantage is that the invalidation of too many dependent caches takes some time.
 
-\2. При инвалидации метки просто изменять версию этой метки.
-Для реализации потребуется добавлять в кэш информацию о версиях меток.
-При чтении кэша потребуются накладные расходы для сверки версии каждой его метки, и, если версия устарела, то кэш считается недействительным.
-Достоинство этого подхода заключается в мгновенной инвалидации метки и всех ее зависимых кэшей.
+\2. Just change the version of tag on the tag invalidation.
+Implementation of this approach requires some overhead on the cache reading to compare version of each tag of the cache with the actual tag version.
+So, the cache should contain all tag versions on creation.
+If any tag version is expired on the cache reading, the cache is invalid.
+The advantage of this approach is immediate invalidation of the tag and all dependent caches.
 
-Я выбрал второй вариант.
+I chose the second option.
 
 
-Многоуровневое кэширование и тегирование
-========================================
+Tagging of nested caches
+========================
 
 Поскольку метки сверяются в момент чтения кэша, давайте представим, что произойдет, если один кэш поглощается другим кэшем.
 Многоуровневый кэш - не редкость.
