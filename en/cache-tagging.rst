@@ -1,6 +1,6 @@
 ﻿
 About problems of cache invalidation. Cache tagging.
-===============================================
+====================================================
 
 
 .. post::
@@ -71,17 +71,19 @@ If we pass tags from inner cache to outer cache it in explicit way, it violates 
 So, cache system must keep track the relations between all nested caches, and pass automatically all tags from an inner cache to outer cache.
 
 
-Проблема репликации
-===================
+Problems of replication
+=======================
 
-При инвалидации кэша параллельный поток может успеть воссоздать кэш с устаревшими данными, прочитанными из slave в перид времени после инвалидации кэша, но до момента обновления slave.
+When tag has been invalidated, a concurrent thread/process can recreate a dependent cache with stale data from slave, in period of time between cache invalidation and slave updating.
 
-Лучшим решением было бы блокирование создания кэша до момента обновления slave.
-Но, во-первых, это сопряжено с определенными накладными расходами, а во-вторых, все потоки (в том числе и текущий) продолжают считывать устаревшие данные из slave (если не указано явное чтение из мастера).
-Поэтому, компромиссным решением может быть просто повторная инвалидация кэша через период времени гарантированного обновления slave.
+The best solution to avoid this problem is lock the tag for cache creation until slave will be updated.
+But, first, this implies a certain overhead, and secondly, all threads (including current one) continue to read stale data from the slave (unless reading from master specified explicitly).
 
-Под **блокировкой метки** имеется ввиду обход параллельными потоками процедуры сохранения кэша, помеченного этой меткой, а не блокирование параллельных потоков до освобождения метки.
-Поскольку логика блокировки возложена на отдельный интерфейс, возможно реализовать любую другую логику блокировки, включая, `Pessimistic Offline Lock`_ или `Mutual Exclusion`_, как это сделано, например, в `wheezy.caching.patterns.OnePass <https://bitbucket.org/akorn/wheezy.caching/src/586b4debff62f885d97e646f0aa2e5d22d088bcf/src/wheezy/caching/patterns.py?at=default&fileviewer=file-view-default#patterns.py-348>`__).
+A compromise solution can be simple re-invalidation of the tag after period of time when the slave is guaranteed to be updated.
+
+By **tag lock** I mean the bypass of creation a cache, which dependent on the tag, by concurrent threads, but not locking concurrent threads until the tag will be released.
+
+Because tag lock algorithm is assigned to a separate interface, it's possible to implement any other algorithm, including `Pessimistic Offline Lock`_ or `Mutual Exclusion`_, as it's implemented, for example, in `wheezy.caching.patterns.OnePass <https://bitbucket.org/akorn/wheezy.caching/src/586b4debff62f885d97e646f0aa2e5d22d088bcf/src/wheezy/caching/patterns.py?at=default&fileviewer=file-view-default#patterns.py-348>`__).
 
 Однако, ожидание параллельных потоков до момента обновления slave, который может иногда длиться 8 секунд и более, практически нереализуемо в веб-приложениях. Основных причин здесь две: рост количества ожидающих потоков может привести к перерасходу памяти и исчерпанию максимально допустимого числа коннектов к БД, а так же чрезмерное время ожидания клиентом ответа с сервера (клиент может попросту не дождаться ответа). Тем не менее, в некоторых (хотя и в редких) случаях, Мьютекс является единственно возможным вариантом.
 
