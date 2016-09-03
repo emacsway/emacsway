@@ -63,12 +63,12 @@ I chose the second option.
 Tagging of nested caches
 ========================
 
-Поскольку метки сверяются в момент чтения кэша, давайте представим, что произойдет, если один кэш поглощается другим кэшем.
-Многоуровневый кэш - не редкость.
-В таком случае, метки низлежащего, дочернего кэша никогда не пройдут сверку, и родительский кэш останется с неактуальными данными.
-Необходимо явно передать метки родительскому кэшу в момент его создания, что может нарушать принцип инкапсуляции.
-
-Поэтому система кэширования должна автоматически отслеживать связи между вложенными кэшами, и передавать метки от дочернего кэша к родительскому.
+Because tags are comparing at the moment of cache reading, let's imagine, what happens, when one cache will be nested in other cache.
+Multi-level cache is not uncommon.
+In this case, the tags of inner cache will never be verified, and outer cache will remain with outdated data.
+At the moment of creation the outer cache, it must add all tags of inner cache into own tag list.
+If we pass tags from inner cache to outer cache it in explicit way, it violates encapsulation!
+So, cache system must keep track the relations between all nested caches, and pass automatically all tags from an inner cache to outer cache.
 
 
 Проблема репликации
@@ -172,6 +172,7 @@ Serializable
 
 Надо признать, что я уделяю этой библиотеке мало внимания (а писалась она еще на заре моего освоения языка Python), и многое из того, что хотелось бы сделать, там не сделано.
 
+Эта же статья :doc:`на Русском языке <../ru/cache-tagging>`.
 
 .. _cache-tagging: https://bitbucket.org/emacsway/cache-tagging
 
