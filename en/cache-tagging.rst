@@ -3,7 +3,7 @@ About problems of cache invalidation. Cache tagging.
 ===============================================
 
 
-.. post:: May 21, 2016
+.. post::
    :language: ru
    :tags: cache
    :category:
