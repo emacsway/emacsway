@@ -9,7 +9,7 @@ About problems of cache invalidation. Cache tagging.
    :category:
    :author: Ivan Zakrevsky
 
-About my experience of solving problems of the cache invalidation, and about principles of library `cache-tagging`_.
+About my experience of solving problems in cache invalidation, and about principles of the library `cache-tagging`_.
 
 .. contents:: Contents
 
@@ -17,23 +17,23 @@ About my experience of solving problems of the cache invalidation, and about pri
 The problem of cache dependencies
 =================================
 
-When you edit the data of some model, you also must remove all dependent caches, that contains the data of this model.
-For example, when you edit instance of Product model, which present on the cached main page of firm, you have to invalidate this cache too.
+When you edit the data of some model, you must also remove all dependent caches, that contains the data of this model.
+For example, when you edit instance of Product model, which presents on the cached main page of firm, you have to invalidate this cache too.
 Another case, - if the data (for example, last_name) of User model has been updated, you have to invalidate all caches of user's posts, contained the last_name.
 
 Usually, the pattern `Observer`_ (or its variety, pattern Multicast) is responsible for cache invalidation.
 This means, the event handler should be aware of all dependent components, that violates encapsulation.
 
-И тут на выручку приходит тегирование кэша, т.е. прошивание кэша метками.
-Например, главная страница может быть прошита тэгом ``product.id:635``.
-А все посты пользователя могут быть прошиты меткой ``user.id:10``.
-Коллекции можно кэшировать составным тэгом, состоящим из критериев выборки, например ``type.id:1;category.id:15;region.id:239``.
+And then cache tagging (i.e. marking cache by tags) comes to the rescue.
+For example, main page can be marked by tag ``product.id:635``.
+All user's posts can be marked by tag ``user.id:10``.
+Post lists can be marked by composite tag, composed of selection criteria, for example ``type.id:1;category.id:15;region.id:239``.
 
-Теперь достаточно инвалидировать метку, чтобы все зависимые кэши автоматически инвалидировались.
-Эта технология не нова, и активно используется в других языках программирования.
-Одно время ее даже пытались внедрить в memcached, см. `memcached-tag <http://code.google.com/p/memcached-tag/>`_.
+Now it's enough to invalidate the tag, in order to invalidate all dependent caches.
+This aproach is not new, and widely used in other programming languages.
+At one time it was even implemented in memcache, see `memcached-tag <http://code.google.com/p/memcached-tag/>`_.
 
-Так же смотрите:
+See also:
 
 - `Cache dependency in wheezy.caching <https://pypi.python.org/pypi/wheezy.caching>`_
 - `TaggableInterface of ZF <http://framework.zend.com/manual/current/en/modules/zend.cache.storage.adapter.html#the-taggableinterface>`_
@@ -41,8 +41,8 @@ This means, the event handler should be aware of all dependent components, that 
 - `Dklab_Cache: правильное кэширование — тэги в memcached, namespaces, статистика <http://dklab.ru/lib/Dklab_Cache/>`_
 
 
-Накладные расходы при чтении кэша или его создании?
-===================================================
+Should overhead be at cache reading, or at cache creation?
+==========================================================
 
 Возникает вопрос реализации инвалидации зависимых от метки кэшей.
 Возможны два варианта:
