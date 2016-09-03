@@ -1,5 +1,5 @@
-
-О проблемах инвалидации кэша. Тегирование кэша.
+﻿
+About problems of cache invalidation. Cache tagging.
 ===============================================
 
 
@@ -9,20 +9,20 @@
    :category:
    :author: Ivan Zakrevsky
 
-О моем опыте решения проблем инвалидации кэша, и о принципах работы библиотеки `cache-tagging`_.
+About my experience of solving problems of the cache invalidation, and about principles of library `cache-tagging`_.
 
-.. contents:: Содержание
+.. contents:: Contents
 
 
-Проблема зависимостей в кэшировании
-===================================
+The problem of cache dependencies
+=================================
 
-При редактировании данных, необходимо удалить так же и все кэши, содержащие данные этой модели.
-Например, при редактировании продукта, который присутствует на закэшированной главной странице компании, требуется инвалидировать и ее кэш тоже.
-Другой случай, - обновляя данные пользователя (например, фамилию), мы должны так же удалить все кэши страниц его постов, на которых присутствуют обновленные данные.
+When you edit the data of some model, you also must remove all dependent caches, that contains the data of this model.
+For example, when you edit instance of Product model, which present on the cached main page of firm, you have to invalidate this cache too.
+Another case, - if the data (for example, last_name) of User model has been updated, you have to invalidate all caches of user's posts, contained the last_name.
 
-Обычно за инвалидацию кэша отвечает паттерн `Observer`_, или его разновидность - паттерн Multicast.
-А это значит, что обработчик события должен быть осведомлен обо всех зависимых компонетах системы, что нарушает принцип инкапсуляции.
+Usually, the pattern `Observer`_ (or its variety, pattern Multicast) is responsible for cache invalidation.
+This means, the event handler should be aware of all dependent components, that violates encapsulation.
 
 И тут на выручку приходит тегирование кэша, т.е. прошивание кэша метками.
 Например, главная страница может быть прошита тэгом ``product.id:635``.
