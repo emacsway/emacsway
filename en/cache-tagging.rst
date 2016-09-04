@@ -85,10 +85,15 @@ By **tag lock** I mean the bypass of creation a cache, which dependent on the ta
 
 Because tag lock algorithm is assigned to a separate interface, it's possible to implement any other algorithm, including `Pessimistic Offline Lock`_ or `Mutual Exclusion`_, as it's implemented, for example, in `wheezy.caching.patterns.OnePass <https://bitbucket.org/akorn/wheezy.caching/src/586b4debff62f885d97e646f0aa2e5d22d088bcf/src/wheezy/caching/patterns.py?at=default&fileviewer=file-view-default#patterns.py-348>`__).
 
-Однако, ожидание параллельных потоков до момента обновления slave, который может иногда длиться 8 секунд и более, практически нереализуемо в веб-приложениях. Основных причин здесь две: рост количества ожидающих потоков может привести к перерасходу памяти и исчерпанию максимально допустимого числа коннектов к БД, а так же чрезмерное время ожидания клиентом ответа с сервера (клиент может попросту не дождаться ответа). Тем не менее, в некоторых (хотя и в редких) случаях, Мьютекс является единственно возможным вариантом.
+Slave updating can sometimes take 8 seconds and more. Locking of concurrent threads is too expensive for this period of time, and it's almost impossible in web-applications. There is two reasons:
 
-В своей практике мне приходилось встречать использование регенерации кэша вместо его удаления/инвалидации.
-Такой подход влечет за собой не совсем эффективное использование памяти кэша (работающего по LRU-принципу).
+\1. The increase in the number of waiting threads can lead to memory overuse and too many database connection error.
+\2. Excessive client waiting for a response from the server (the client can simply leave without waiting for a response).
+
+However, in some (although rare) cases, the Mutex is the only possible option.
+
+In my practice, I have met approach cache regeneration instead of removing/invalidation.
+This approach entail ineffective memory usage (in case LRU principle).
 К тому же, он не решает проблему сложности инвалидации и по сути мало чем отличается от обычного удаления кэша, возлагая всю сложность на само приложение.
 Так же он таит множество потенциальных баг.
 Например, он чувствителен к качеству ORM, и если ORM не приводит все атрибуты инстанции модели к нужному типу при сохранении, то в кэш записываются неверные типы данных.
