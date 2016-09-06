@@ -34,6 +34,8 @@ Articles
 - `The Case for Slow Programming <https://ventrellathing.wordpress.com/2013/06/18/the-case-for-slow-programming/>`__
 - `Inversion of Control Containers and the Dependency Injection pattern <http://martinfowler.com/articles/injection.html>`__
 - `Microservices <http://martinfowler.com/articles/microservices.html>`__
+- `Mocks Aren't Stubs <http://martinfowler.com/articles/mocksArentStubs.html>`__
+- `AnemicDomainModel <http://www.martinfowler.com/bliki/AnemicDomainModel.html>`__
 - `SQLAlchemy Architecture <http://aosabook.org/en/sqlalchemy.html>`__
 - `Concurrency model and Event Loop <https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop>`__
 
