@@ -81,6 +81,7 @@
     >>> e("T.user.age <@ required_range AND NOT(T.user.is_staff OR T.user.is_admin)", locals())
     <Binary: "user"."age" <@ INT8RANGE(%s, %s) AND NOT ("user"."is_staff" OR "user"."is_admin"), [25, 30]>
 
+
 .. _AST: https://en.wikipedia.org/wiki/Abstract_syntax_tree
 .. _sqlbuilder: https://bitbucket.org/emacsway/sqlbuilder
 .. _sqlbuilder.smartsql.contrib.evaluate: http://sqlbuilder.readthedocs.io/en/latest/#module-sqlbuilder-smartsql-contrib-evaluate
