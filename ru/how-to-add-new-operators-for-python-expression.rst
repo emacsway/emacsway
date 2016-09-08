@@ -73,6 +73,13 @@
 
 Так появился модуль sqlbuilder.smartsql.contrib.evaluate_, который позволяет совмещать Python-выражения и SQL-операторы.
 
+::
+
+    >>> from sqlbuilder.smartsql import *
+    >>> from sqlbuilder.smartsql.contrib.evaluate import e
+    >>> required_range = func.int8range(25, 30)
+    >>> e("T.user.age <@ required_range AND NOT(T.user.is_staff OR T.user.is_admin)", locals())
+    <Binary: "user"."age" <@ INT8RANGE(%s, %s) AND NOT ("user"."is_staff" OR "user"."is_admin"), [25, 30]>
 
 .. _AST: https://en.wikipedia.org/wiki/Abstract_syntax_tree
 .. _sqlbuilder: https://bitbucket.org/emacsway/sqlbuilder
