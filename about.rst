@@ -105,8 +105,9 @@ The next books will be «Algorithms and Data Structures» N. Wirth and «An Intr
 
     * «Algorithms and Data Structures» N. Wirth
     * «An Introduction to Database Systems» C.J. Date
-    * «Agile Software Development. Principles, Patterns, and Practices.» Robert C. Martin, James W. Newkirk, Robert S. Koss
+    * «Domain-Driven Design» Eric Evans
     * «Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development» Craig Larman
+    * «Agile Software Development. Principles, Patterns, and Practices.» Robert C. Martin, James W. Newkirk, Robert S. Koss
     * «Extreme Programming Explained» Kent Beck
     * «Implementation Patterns» Kent Beck
     * «Test-Driven Development By Example» Kent Beck
