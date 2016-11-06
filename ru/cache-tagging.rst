@@ -199,6 +199,7 @@ Serializable
 
 Надо признать, что я уделяю этой библиотеке мало внимания (а писалась она еще на заре моего освоения языка Python), и многое из того, что хотелось бы сделать, там не сделано.
 
+
 .. _cache-tagging: https://bitbucket.org/emacsway/cache-tagging
 
 .. _Decorator: https://en.wikipedia.org/wiki/Decorator_pattern
