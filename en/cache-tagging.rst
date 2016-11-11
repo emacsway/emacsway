@@ -178,7 +178,7 @@ This approach entail ineffective memory usage (in case LRU principle).
 Thundering herd
 ===============
 
-Но что делать, закэшированная логика действительно очень ресурсоемка?
+Но что делать, если закэшированная логика действительно очень ресурсоемка?
 
 Dogpile известен так же как `thundering herd <http://en.wikipedia.org/wiki/Thundering_herd_problem>`_ effect или cache stampede.
 
