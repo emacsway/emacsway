@@ -159,6 +159,9 @@ Dogpile известен так же как `thundering herd <http://en.wikipedi
 Ответ прост, - пессимистическая блокировка. Только не меток кэше, а ключа кэша.
 Потому что при освобождении блокировки кэш должен быть гарантированно создан (а кэш и метки связаны отношением many to many).
 
+Блокировка должна охватывать весь фрагмент кода от чтения кэша до его создания.
+Она решает другую задачу, которая не связана с инвалидацией.
+
 Существует ряд решений для реализации такой блокировки, вот только некоторые из них:
 
 - `wheezy.caching.patterns.OnePass <https://bitbucket.org/akorn/wheezy.caching/src/586b4debff62f885d97e646f0aa2e5d22d088bcf/src/wheezy/caching/patterns.py?at=default&fileviewer=file-view-default#patterns.py-348>`_
