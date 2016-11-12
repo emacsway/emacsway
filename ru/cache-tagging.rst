@@ -295,7 +295,7 @@ Serializable
 Благодарности
 =============
 
-Выражаю благодарность `@akorn <https://bitbucket.org/akorn>`_ за содержательное обсуждение проблематики кэширования.
+Моя благодарность `@akorn <https://bitbucket.org/akorn>`_ за содержательное обсуждение проблематики кэширования.
 
 
 .. _cache-tagging: https://bitbucket.org/emacsway/cache-tagging
