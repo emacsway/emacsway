@@ -173,7 +173,7 @@ Thundering herd
 
 Dogpile известен так же как `Thundering Herd`_ effect или cache stampede.
 
-Ответ прост, - пессимистическая блокировка. Только не меток кэша, а ключа кэша.
+Ответ прост, - пессимистическая блокировка. Только не меток кэша, а ключа кэша (или группы связанных ключей, см. `Coarse-Grained Lock`_, особенно при использовании агрегирования запросов).
 Потому что при освобождении блокировки кэш должен быть гарантированно создан (а кэш и метки связаны отношением many to many).
 
 Блокировка должна охватывать весь фрагмент кода от чтения кэша до его создания.
@@ -313,6 +313,7 @@ Serializable
 .. _Thundering Herd: http://en.wikipedia.org/wiki/Thundering_herd_problem
 
 .. _ActiveRecord: http://www.martinfowler.com/eaaCatalog/activeRecord.html
+.. _Coarse-Grained Lock: http://martinfowler.com/eaaCatalog/coarseGrainedLock.html
 .. _Identity Map: http://martinfowler.com/eaaCatalog/identityMap.html
 .. _DataMapper: http://martinfowler.com/eaaCatalog/dataMapper.html
 .. _Pessimistic Offline Lock: http://martinfowler.com/eaaCatalog/pessimisticOfflineLock.html
