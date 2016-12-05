@@ -20,6 +20,7 @@ Sites
 - `Catalog of Refactorings <http://www.refactoring.com/catalog/>`__
 - `Code Smell <http://c2.com/cgi/wiki?CodeSmell>`__
 - `Anti Patterns Catalog <http://c2.com/cgi/wiki?AntiPatternsCatalog>`__
+- `Coupling And Cohesion <http://wiki.c2.com/?CouplingAndCohesion>`__
 - `A visualization of the most famous Sorting Algorithms. <http://sorting.at/>`__
 
 
