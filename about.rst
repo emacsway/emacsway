@@ -13,7 +13,7 @@ About me
 
 Python, Django, Debian, Emacs, PostgreSQL, MySQL, GIS
 
-- Ivan Zakrevsky, Python-developer.
+- Ivan Zakrevskyi, Python-developer.
 - Blog: http://emacsway.bitbucket.org/
 - E-mail: ivzak@yandex.ru
 - Open source: `Bitbucket <https://bitbucket.org/emacsway>`__ (primary), `Github <https://github.com/emacsway>`__
@@ -133,7 +133,7 @@ The next books will be «Algorithms and Data Structures» N. Wirth and «An Intr
     * 2011 - 2013 – working on Russian travel portal tripster.ru, Senior Full-Stack Developer (Django, GIS, jQuery, MySQL, Solr, Nginx, Memcached, Social networks integration, HTML5 API History with legacy browsers, geonames services, partner's API, advanced ACL, flexible user notification, variouse Ajax widgets, sub-processing, threading, Queue, Async, cache-tagging, nocache fragments (phased cache), 3-d SQL Builders, morphology, alternative fast template engines, cache cleaning synchronization with DB transactions, automatic text processing, SQL optimization (more than 2 000 000 rows), etc.)
     * 2010 – 2011 – Soft-Ukraine, Team Leader (Django, Dojo, PostgreSQL, Rest API, MVVM, dojox.data.JsonRestStore, Ajax UI, Multilingual, System Administration, Ruby On Rails, Pinax)
     * 2009 – 2010 – Dstudio, co-founder and CTO (Python, Drupal, Django, Pinax, Redmine, Trac, Debian, System Administration, Bash, etc.)
-    * 2004 – 2009 – Zakrevsky Entrepreneur, PHP and Python development
+    * 2004 – 2009 – Zakrevskyi Entrepreneur, PHP and Python development
 
 
 ..
