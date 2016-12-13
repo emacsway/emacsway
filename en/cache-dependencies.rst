@@ -9,7 +9,7 @@ About problems of cache invalidation. Cache tagging.
    :category:
    :author: Ivan Zakrevsky
 
-About my experience of solving problems in cache invalidation, and about principles of the library `cache-tagging`_.
+About my experience of solving problems in cache invalidation, and about principles of the library `cache-dependencies`_.
 
 .. contents:: Contents
 
@@ -102,7 +102,7 @@ This approach entail ineffective memory usage (in case LRU_ principle).
 Хотя он и записывался в БД корректно, но модель не делала приведение типов без дополнительных манипуляций при сохранении (семантическое сопряжение).
 
 
-.. _cache-tagging: https://bitbucket.org/emacsway/cache-tagging
+.. _cache-dependencies: https://bitbucket.org/emacsway/cache-tagging
 
 .. _Deadlock: https://en.wikipedia.org/wiki/Deadlock
 .. _Decorator: https://en.wikipedia.org/wiki/Decorator_pattern

@@ -65,7 +65,7 @@ Open Source Projects
 
 * `rope <https://github.com/python-rope/rope>`_ (contributor) - a python refactoring library.
 * `SQLBuilder <https://bitbucket.org/emacsway/sqlbuilder>`_ (owner) - a lightweight Python SQLBuilder. Can be integrated with Django.
-* `cache-tagging <https://bitbucket.org/emacsway/cache-tagging>`_ (owner). Cache-tagging allows you easily invalidate all cache records tagged with a given tag(s). The package supports Django.
+* `cache-dependencies <https://bitbucket.org/emacsway/cache-tagging>`_ (owner). Cache-tagging allows you easily invalidate all cache records tagged with a given tag(s). The package supports Django.
 
 .. * `Ascetic ORM <https://bitbucket.org/emacsway/ascetic>`_ (owner) - a lightweight Python datamapper ORM
 
@@ -73,7 +73,7 @@ Open Source Projects
 Articles
 --------
 
-* «:doc:`О проблемах инвалидации кэша. Тегирование кэша. <ru/cache-tagging>`»
+* «:doc:`О проблемах инвалидации кэша. Тегирование кэша. <ru/cache-dependencies>`»
 * «:doc:`Почему я выбираю Storm ORM. <ru/storm-orm>`»
 
 
@@ -130,7 +130,7 @@ The next books will be «Algorithms and Data Structures» N. Wirth and «An Intr
     ----------
 
     * 2013 – to present – working on popular social network rebelmouse.com, Senior Python-Developer (Django, MySQL, MongoDB, Redis, Celery, Memcached, Eventlet, GDB, Social networks integration, SQL optimization, replication, clustering, document-oriented data storage, polymorphic relations, ACL, statistics, etc.)
-    * 2011 - 2013 – working on Russian travel portal tripster.ru, Senior Full-Stack Developer (Django, GIS, jQuery, MySQL, Solr, Nginx, Memcached, Social networks integration, HTML5 API History with legacy browsers, geonames services, partner's API, advanced ACL, flexible user notification, variouse Ajax widgets, sub-processing, threading, Queue, Async, cache-tagging, nocache fragments (phased cache), 3-d SQL Builders, morphology, alternative fast template engines, cache cleaning synchronization with DB transactions, automatic text processing, SQL optimization (more than 2 000 000 rows), etc.)
+    * 2011 - 2013 – working on Russian travel portal tripster.ru, Senior Full-Stack Developer (Django, GIS, jQuery, MySQL, Solr, Nginx, Memcached, Social networks integration, HTML5 API History with legacy browsers, geonames services, partner's API, advanced ACL, flexible user notification, variouse Ajax widgets, sub-processing, threading, Queue, Async, cache dependencies, nocache fragments (phased cache), 3-d SQL Builders, morphology, alternative fast template engines, cache cleaning synchronization with DB transactions, automatic text processing, SQL optimization (more than 2 000 000 rows), etc.)
     * 2010 – 2011 – Soft-Ukraine, Team Leader (Django, Dojo, PostgreSQL, Rest API, MVVM, dojox.data.JsonRestStore, Ajax UI, Multilingual, System Administration, Ruby On Rails, Pinax)
     * 2009 – 2010 – Dstudio, co-founder and CTO (Python, Drupal, Django, Pinax, Redmine, Trac, Debian, System Administration, Bash, etc.)
     * 2004 – 2009 – Zakrevskyi Entrepreneur, PHP and Python development

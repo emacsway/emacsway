@@ -8,8 +8,9 @@
    :tags: cache
    :category:
    :author: Ivan Zakrevsky
+   :redirect: ru/cache-tagging
 
-О моем опыте решения проблем инвалидации кэша, и о принципах работы библиотеки `cache-tagging`_.
+О моем опыте решения проблем инвалидации кэша, и о принципах работы библиотеки `cache-dependencies`_.
 
 .. contents:: Содержание
 
@@ -311,7 +312,7 @@ Serializable
 Моя благодарность `@akorn <https://bitbucket.org/akorn>`_ за содержательное обсуждение проблематики кэширования.
 
 
-.. _cache-tagging: https://bitbucket.org/emacsway/cache-tagging
+.. _cache-dependencies: https://bitbucket.org/emacsway/cache-tagging
 
 .. _Deadlock: https://en.wikipedia.org/wiki/Deadlock
 .. _Decorator: https://en.wikipedia.org/wiki/Decorator_pattern
