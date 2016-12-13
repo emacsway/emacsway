@@ -102,7 +102,7 @@ This approach entail ineffective memory usage (in case LRU_ principle).
 Хотя он и записывался в БД корректно, но модель не делала приведение типов без дополнительных манипуляций при сохранении (семантическое сопряжение).
 
 
-.. _cache-dependencies: https://bitbucket.org/emacsway/cache-tagging
+.. _cache-dependencies: https://bitbucket.org/emacsway/cache-dependencies
 
 .. _Deadlock: https://en.wikipedia.org/wiki/Deadlock
 .. _Decorator: https://en.wikipedia.org/wiki/Decorator_pattern
