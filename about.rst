@@ -87,6 +87,7 @@ Bibliography
 * «Refactoring: Improving the Design of Existing Code» Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
 * «Clean Code: A Handbook of Agile Software Craftsmanship» Robert C. Martin
 * «Code Complete» Steve McConnell
+* «Algorithms and Data Structures» N.Wirth
 * «PostgreSQL» Korry Douglas, Susan Douglas
 * «Unix and Linux System Administration Handbook» Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley
 * «The Linux® Kernel Primer: A Top-Down Approach for x86 and PowerPC Architectures» Claudia Salzberg Rodriguez, Gordon Fischer, Steven Smolski
@@ -103,7 +104,7 @@ The next books will be «Algorithms and Data Structures» N. Wirth and «An Intr
     In the queue
     ------------
 
-    * «Algorithms and Data Structures» N. Wirth
+    * «Compiler Construction» N.Wirth 
     * «An Introduction to Database Systems» C.J. Date
     * «Domain-Driven Design» Eric Evans
     * «Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development» Craig Larman

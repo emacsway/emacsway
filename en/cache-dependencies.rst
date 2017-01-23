@@ -17,8 +17,8 @@ About my experience of solving problems in cache invalidation, and about princip
 The problem of cache dependencies
 =================================
 
-When you edit the data of some model, you must also remove all dependent caches, that contains the data of this model.
-For example, when you edit instance of Product model, which presents on the cached main page of firm, you have to invalidate this cache too.
+When you are editing the data of some model, you must also remove all dependent caches, what contains the data of this model.
+For example, when you are editing instance of Product model, which presents on the cached main page of firm, you also have to invalidate this cache too.
 Another case, - if the data (for example, last_name) of User model has been updated, you have to invalidate all caches of user's posts, contained the last_name.
 
 Usually, the pattern `Observer`_ (or its variety, pattern Multicast) is responsible for cache invalidation.
