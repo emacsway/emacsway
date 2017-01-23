@@ -97,8 +97,6 @@ Bibliography
 * «Python Tutorial» and «Python HOWTOs» (official)
 * «Friendly meetings with the English language» Maria A. Kolpakchi
 
-The next books will be «Algorithms and Data Structures» N. Wirth and «An Introduction to Database Systems» C.J. Date
-
 
 ..
     In the queue
