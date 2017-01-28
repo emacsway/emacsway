@@ -26,7 +26,7 @@ blog_title = u"@emacsway's blog"
 
 # Base URL for the website, required for generating feeds.
 # e.g. blog_baseurl = "http://example.com/"
-blog_baseurl = u'http://emacsway.bitbucket.org/'
+blog_baseurl = u'https://emacsway.bitbucket.io/'
 
 # Choose to archive only post titles. Archiving only titles can speed
 # up project building.
