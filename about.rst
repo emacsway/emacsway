@@ -17,7 +17,7 @@ Python, Django, Debian, Emacs, PostgreSQL, MySQL, GIS
 - Blog: http://emacsway.bitbucket.org/
 - E-mail: ivzak@yandex.ru
 - Open source: `Bitbucket <https://bitbucket.org/emacsway>`__ (primary), `Github <https://github.com/emacsway>`__
-- Find me at `LinkedIn <https://www.linkedin.com/in/emacsway>`__, `Twitter <https://twitter.com/emacsway>`__
+- Find me at `LinkedIn <https://www.linkedin.com/in/emacsway>`__, `Twitter <https://twitter.com/emacsway>`__, `Facebook <https://www.facebook.com/emacsway>`__
 
 
 About me
@@ -145,6 +145,10 @@ Bibliography
     "Simplicity is a great virtue but it requires hard work to achieve it and education to appreciate it. And to make matters worse: complexity sells better." (Edsger W. Dijkstra, 1984 `On the nature of Computing Science <http://www.cs.utexas.edu/users/EWD/transcriptions/EWD08xx/EWD896.html>`__ (EWD896))
 
     "A little time spent refactoring can make the code better communicate its purpose. Programming in this mode is all about saying exactly what you mean." ("Refactoring: Improving the Design of Existing Code", Martin Fowler)
+
+    "programmers will have to wrestle with the messy real world." (Steve McConnel)
+
+    "We become authorities and experts in the practical and scientific spheres by so many separate acts and hours of work. If a person keeps faithfully busy each hour of the working day, he can count on waking up some morning to find himself one of the competent ones of his generation." (William James)
 
     "Clean code - is ability of code to express the truth about itself, and not misleading."
 
