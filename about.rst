@@ -80,43 +80,43 @@ Articles
 Bibliography
 ------------
 
-* «Learning Python» Mark Lutz
-* «Design Patterns: Elements of Reusable Object-Oriented Software» Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
-* «Pattern Hatching: Design Patterns Applied» John Vlissides
-* «Patterns of Enterprise Application Architecture» Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
-* «Refactoring: Improving the Design of Existing Code» Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
-* «Clean Code: A Handbook of Agile Software Craftsmanship» Robert C. Martin
-* «Code Complete» Steve McConnell
-* «Algorithms and Data Structures» N.Wirth
-* «PostgreSQL» Korry Douglas, Susan Douglas
-* «Unix and Linux System Administration Handbook» Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley
-* «The Linux® Kernel Primer: A Top-Down Approach for x86 and PowerPC Architectures» Claudia Salzberg Rodriguez, Gordon Fischer, Steven Smolski
-* «Digital computers and microprocessors» Aliyev / «Цифровая вычислительная техника и микропроцессоры» М.М.Алиев
-* «JavaScript Patterns» Stoyan Stefanov
-* «JavaScript: The Definitive Guide» David Flanagan
+* «Learning Python» by Mark Lutz
+* «Design Patterns: Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides
+* «Pattern Hatching: Design Patterns Applied» by John Vlissides
+* «Patterns of Enterprise Application Architecture» by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
+* «Refactoring: Improving the Design of Existing Code» by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
+* «Clean Code: A Handbook of Agile Software Craftsmanship» by Robert C. Martin
+* «Code Complete» by Steve McConnell
+* «Domain-Driven Design» by Eric Evans
+* «Algorithms and Data Structures» by N.Wirth
+* «PostgreSQL» by Korry Douglas, Susan Douglas
+* «Unix and Linux System Administration Handbook» by Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley
+* «The Linux® Kernel Primer: A Top-Down Approach for x86 and PowerPC Architectures» by Claudia Salzberg Rodriguez, Gordon Fischer, Steven Smolski
+* «Digital computers and microprocessors» by Aliyev / «Цифровая вычислительная техника и микропроцессоры» М.М.Алиев
+* «JavaScript Patterns» by Stoyan Stefanov
+* «JavaScript: The Definitive Guide» by David Flanagan
 * «Python Tutorial» and «Python HOWTOs» (official)
-* «Friendly meetings with the English language» Maria A. Kolpakchi
+* «Friendly meetings with the English language» by Maria A. Kolpakchi
 
 
 ..
     In the queue
     ------------
 
-    * «Compiler Construction» N.Wirth 
-    * «An Introduction to Database Systems» C.J. Date
-    * «Domain-Driven Design» Eric Evans
-    * «Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development» Craig Larman
-    * «Agile Software Development. Principles, Patterns, and Practices.» Robert C. Martin, James W. Newkirk, Robert S. Koss
-    * «Extreme Programming Explained» Kent Beck
-    * «Implementation Patterns» Kent Beck
-    * «Test-Driven Development By Example» Kent Beck
-    * «Planning Extreme Programming» Kent Beck, Martin Fowler
-    * «The Clean Coder» Robert C. Martin
-    * «The Definitive Guide to MongoDB» David Hows, Peter Membrey, Eelco Plugge, Tim Hawkins
-    * «High Performance MySQL» Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
-    * «PostgreSQL: Up and Running» Regina Obe and Leo Hsu
-    * «PostgreSQL 9.0 High Performance» Gregory Smith
-    * «Refactoring To Patterns» Joshua Kerievsky
+    * «Compiler Construction» by N.Wirth 
+    * «An Introduction to Database Systems» by C.J. Date
+    * «Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development» by Craig Larman
+    * «Agile Software Development. Principles, Patterns, and Practices.» by Robert C. Martin, James W. Newkirk, Robert S. Koss
+    * «Extreme Programming Explained» by Kent Beck
+    * «Implementation Patterns» by Kent Beck
+    * «Test-Driven Development By Example» by Kent Beck
+    * «Planning Extreme Programming» by Kent Beck, Martin Fowler
+    * «The Clean Coder» by Robert C. Martin
+    * «The Definitive Guide to MongoDB» by David Hows, Peter Membrey, Eelco Plugge, Tim Hawkins
+    * «High Performance MySQL» by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
+    * «PostgreSQL: Up and Running» by Regina Obe and Leo Hsu
+    * «PostgreSQL 9.0 High Performance» by Gregory Smith
+    * «Refactoring To Patterns» by Joshua Kerievsky
     * «Pattern-Oriented Software Architecture: A System of Patterns, Volume 1» by Frank Buschmann, Regine Meunier, Hans Rohnert, Peter Sommerlad, Michael Stal
     * «Pattern-Oriented Software Architecture: Patterns for Concurrent and Networked Objects, Volume 2» by Douglas C. Schmidt, Michael Stal, Hans Rohnert, Frank Buschmann
     * «Pattern-Oriented Software Architecture: Patterns for Resource Management, Volume 3» by Michael Kircher, Prashant Jain

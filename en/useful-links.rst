@@ -31,6 +31,7 @@ Articles
 - `Simple Top-Down Parsing in Python <http://effbot.org/zone/simple-top-down-parsing.htm>`__
 - `Top Down Operator Precedence <http://javascript.crockford.com/tdop/tdop.html>`__
 - `Why extends is evil <http://www.javaworld.com/article/2073649/core-java/why-extends-is-evil.html>`__
+- `Why getter and setter methods are evil <http://www.javaworld.com/article/2073723/core-java/why-getter-and-setter-methods-are-evil.html>`__
 - `The Kiss Principle <https://people.apache.org/~fhanik/kiss.html>`__
 - `The Case for Slow Programming <https://ventrellathing.wordpress.com/2013/06/18/the-case-for-slow-programming/>`__
 - `Inversion of Control Containers and the Dependency Injection pattern <http://martinfowler.com/articles/injection.html>`__
