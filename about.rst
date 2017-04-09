@@ -23,7 +23,7 @@ Python, Django, Debian, Emacs, PostgreSQL, MySQL, GIS
 About me
 --------
 
-I'm a bearded developer since 2004))
+A bearded developer since 2004...
 
 My main interest is to make the code clean, simple, readable, modifiable and maintainable.
 My approaches is TDD_, OOP_, OOD_, DDD_, `Design Patterns`_, `Inversion Of Control`_, Refactoring_, `Software Architectural Design`_ and so on.
