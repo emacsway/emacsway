@@ -485,6 +485,18 @@ SQL-код, даже если он в Python-файлах, все равно о�
     it actually is in. The most common focus of the envy is the data."
     («Refactoring: Improving the Design of Existing Code» [#fnr]_)    
 
+..
+
+    "Now this design has some problems. Most important, the details of the table structure have leaked
+    into the DOMAIN LAYER ; they should be isolated in a mapping layer that relates the domain objects
+    to the relational tables. Implicitly duplicating that information here could hurt the modifiability and
+    maintainability of the Invoice and Customer objects, because any change to their mappings now
+    have to be tracked in more than one place. But this example is a simple illustration of how to keep
+    the rule in just one place. Some object-relational mapping frameworks provide the means to
+    express such a query in terms of the model objects and attributes, generating the actual SQL in
+    the infrastructure layer. This would let us have our cake and eat it too."
+    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+
 Одним из главных принципов объектно ориентированного программирования является инкапсуляция.
 Принцип единой обязанности гласит, что каждый объект должен иметь одну обязанность и эта обязанность должна быть полностью инкапсулирована в класс.
 Лишая объект поведения, мы возлагаем его поведение на другой объект, который должен обслуживать первый.
@@ -513,6 +525,7 @@ SQL-код, даже если он в Python-файлах, все равно о�
 .. [#fncc] «`Clean Code: A Handbook of Agile Software Craftsmanship`_» `Robert C. Martin`_
 .. [#fnr] «`Refactoring: Improving the Design of Existing Code`_» by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
 .. [#fnpoeaa] «Patterns of Enterprise Application Architecture» by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
+.. [#fnddd] «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans
 
 
 .. _Refactoring\: Improving the Design of Existing Code: http://martinfowler.com/books/refactoring.html
