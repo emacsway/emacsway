@@ -497,6 +497,14 @@ SQL-код, даже если он в Python-файлах, все равно о�
     the infrastructure layer. This would let us have our cake and eat it too."
     («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
+..
+
+    The greatest value I've seen delivered has been when a narrowly scoped framework automates a
+    particularly tedious and error-prone aspect of the design, such as persistence and object-relational
+    mapping. The best of these unburden developers of drudge work while leaving them complete
+    freedom to design.
+    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+
 Одним из главных принципов объектно ориентированного программирования является инкапсуляция.
 Принцип единой обязанности гласит, что каждый объект должен иметь одну обязанность и эта обязанность должна быть полностью инкапсулирована в класс.
 Лишая объект поведения, мы возлагаем его поведение на другой объект, который должен обслуживать первый.
