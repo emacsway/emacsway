@@ -14,8 +14,8 @@ About me
 Python, Django, Debian, Emacs, PostgreSQL, MySQL, GIS
 
 - Ivan Zakrevskyi, Python-developer.
-- Blog: http://emacsway.bitbucket.org/
-- E-mail: ivzak@yandex.ru
+- Blog: https://emacsway.bitbucket.io/
+- E-mail: emacsway@gmail.com
 - Open source: `Bitbucket <https://bitbucket.org/emacsway>`__ (primary), `Github <https://github.com/emacsway>`__
 - Find me at `LinkedIn <https://www.linkedin.com/in/emacsway>`__, `Twitter <https://twitter.com/emacsway>`__, `Facebook <https://www.facebook.com/emacsway>`__
 
@@ -89,6 +89,7 @@ Bibliography
 * «Code Complete» by Steve McConnell
 * «Domain-Driven Design» by Eric Evans
 * «Algorithms and Data Structures» by N.Wirth
+* «Compiler Construction» by N.Wirth
 * «PostgreSQL» by Korry Douglas, Susan Douglas
 * «Unix and Linux System Administration Handbook» by Evi Nemeth, Garth Snyder, Trent R. Hein, Ben Whaley
 * «The Linux® Kernel Primer: A Top-Down Approach for x86 and PowerPC Architectures» by Claudia Salzberg Rodriguez, Gordon Fischer, Steven Smolski
@@ -103,7 +104,6 @@ Bibliography
     In the queue
     ------------
 
-    * «Compiler Construction» by N.Wirth 
     * «An Introduction to Database Systems» by C.J. Date
     * «Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development» by Craig Larman
     * «Agile Software Development. Principles, Patterns, and Practices.» by Robert C. Martin, James W. Newkirk, Robert S. Koss
