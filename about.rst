@@ -23,7 +23,7 @@ Python, Django, Debian, Emacs, PostgreSQL, MySQL, GIS
 About me
 --------
 
-A bearded developer since 2004...
+A bearded developer since 2004.
 
 My main interest is to make the code clean, simple, readable, modifiable and maintainable.
 My approaches is TDD_, OOP_, OOD_, DDD_, `Design Patterns`_, `Inversion Of Control`_, Refactoring_, `Software Architectural Design`_ and so on.
@@ -46,12 +46,12 @@ Education
 Preferences
 -----------
 
-* Programming languages: Python (mainly, since 2008), JavaScript (strong), Ruby (sometimes),  PHP (in the past).
+* Programming languages: Python (primary, since 2008), JavaScript (strong), Ruby (sometimes),  PHP (in the past).
 * Development environment: Emacs (sometimes VIM, PyCharm).
 * Approaches: TDD, OOP, OOD, DDD, Design Patterns, Inversion Of Control, Refactoring, Software Architectural Design, Database Architecture, Low Coupling, High Cohesion, SRP, OCP, SOLID, GRASP etc.
 * DB & storages: MySQL, Spatial, PostgreSQL, PostGIS, tsearch2, MongoDB, Redis, Memcached, replication, sharding, analysing, SQL optimization.
-* Frameworks: Django (mainly), Tornado, Flask, Twisted, Pyramid, Werkzeug, CherryPy, Ruby on Rails, etc.
-* JavaScript Frameworks: Dojo, jQuery.
+* Frameworks: Django (mainly), Flask, also used Tornado, Twisted, Ruby on Rails, etc.
+* JavaScript Frameworks: Dojo, jQuery, Angular.
 * OS: Debian (server), ArchLinux (desktop, server), Ubuntu (desktop, server), Fedora (desktop, server).
 * Bug-tracking: Trac (mainly), Redmine, Pivotal Tracker.
 * HTTP servers: Nginx (mainly), Apache2, Lighttpd, Unicorn.
@@ -104,12 +104,13 @@ Bibliography
     In the queue
     ------------
 
+    * «SQL Antipatterns. Avoiding the Pitfalls of Database Programming.» by Bill Karwin
     * «An Introduction to Database Systems» by C.J. Date
+    * «Extreme Programming Explained» by Kent Beck
+    * «Test-Driven Development By Example» by Kent Beck
     * «Applying UML and Patterns: An Introduction to Object-Oriented Analysis and Design and Iterative Development» by Craig Larman
     * «Agile Software Development. Principles, Patterns, and Practices.» by Robert C. Martin, James W. Newkirk, Robert S. Koss
-    * «Extreme Programming Explained» by Kent Beck
     * «Implementation Patterns» by Kent Beck
-    * «Test-Driven Development By Example» by Kent Beck
     * «Planning Extreme Programming» by Kent Beck, Martin Fowler
     * «The Clean Coder» by Robert C. Martin
     * «The Definitive Guide to MongoDB» by David Hows, Peter Membrey, Eelco Plugge, Tim Hawkins
