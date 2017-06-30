@@ -26,9 +26,9 @@ About me
 A bearded developer since 2004.
 
 My main interest is to make the code clean, simple, readable, modifiable and maintainable.
-My approaches is TDD_, OOP_, OOD_, DDD_, `Design Patterns`_, `Inversion Of Control`_, Refactoring_, `Software Architectural Design`_ and so on.
+My approaches are TDD_, OOP_, OOD_, DDD_, `Design Patterns`_, `Inversion Of Control`_, Refactoring_, `Software Architectural Design`_ and so on.
 
-Terms such as the Coupling_, Cohesion_, SRP_, OCP_ is not empty phrases for me.
+Terms such as the Coupling_, Cohesion_, SRP_, OCP_ are not empty words for me.
 
 Also I'm an Open Source developer. Sure, I'm an adherent of `KISS principle <KISS_>`_. My philosophy is: «Do it shortly, clearly».
 
@@ -129,11 +129,12 @@ Bibliography
     Experience
     ----------
 
-    * 2013 – to present – working on popular social network rebelmouse.com, Senior Python-Developer (Django, MySQL, MongoDB, Redis, Celery, Memcached, Eventlet, GDB, Social networks integration, SQL optimization, replication, clustering, document-oriented data storage, polymorphic relations, ACL, statistics, etc.)
-    * 2011 - 2013 – working on Russian travel portal tripster.ru, Senior Full-Stack Developer (Django, GIS, jQuery, MySQL, Solr, Nginx, Memcached, Social networks integration, HTML5 API History with legacy browsers, geonames services, partner's API, advanced ACL, flexible user notification, variouse Ajax widgets, sub-processing, threading, Queue, Async, cache dependencies, nocache fragments (phased cache), 3-d SQL Builders, morphology, alternative fast template engines, cache cleaning synchronization with DB transactions, automatic text processing, SQL optimization (more than 2 000 000 rows), etc.)
-    * 2010 – 2011 – Soft-Ukraine, Team Leader (Django, Dojo, PostgreSQL, Rest API, MVVM, dojox.data.JsonRestStore, Ajax UI, Multilingual, System Administration, Ruby On Rails, Pinax)
-    * 2009 – 2010 – Dstudio, co-founder and CTO (Python, Drupal, Django, Pinax, Redmine, Trac, Debian, System Administration, Bash, etc.)
-    * 2004 – 2009 – Zakrevskyi Entrepreneur, PHP and Python development
+    * 2016 – to present – Full-Stack Software Engineer at jooraccess.com (Django, PostgreSQL, AngularJS, Dojo, CORS, JWT, Django-rest-framework, CakePHP, Pl/SQL, Scrum). Introduced TDD, DDD, Design By Refactoring, code review based on catalogs of refactorings and code smells. Solved a lot of problems of Architecture and Design. Created the high-level tool to handle data on client-side (similar to `dstore <http://dstorejs.io/>`_ but for relational data with support for the pattern `Unit Of Work`_).
+    * 2013 – 2016 – Senior Python-Developer at popular social network rebelmouse.com (Django, MySQL, MongoDB, Redis, Celery, Memcached, Eventlet, GDB, Social networks integration, SQL optimization, replication, clustering, document-oriented data storage, polymorphic relations, ACL, statistics, etc.)
+    * 2011 – 2013 – Senior Full-Stack Developer at Russian travel portal tripster.ru​ (Django, GIS, jQuery, MySQL, Solr, Nginx, Memcached, Social networks integration, HTML5 API History with legacy browsers, geonames services, partner's API, advanced ACL, flexible user notification, variouse Ajax widgets, sub-processing, threading, Queue, Async, cache dependencies, nocache fragments (phased cache), 3-d SQL Builders, morphology, alternative fast template engines, cache cleaning synchronization with DB transactions, automatic text processing, SQL optimization (more than 2 000 000 rows), etc.)
+    * 2010 – 2011 – Team Leader at Soft-Ukraine (Django, Dojo, PostgreSQL, Rest API, MVVM, dojox.data.JsonRestStore, Ajax UI, Multilingual, System Administration, Ruby On Rails, Pinax)
+    * 2009 – 2010 – Co-founder and CTO at Dstudio (Python, Drupal, Django, Pinax, Redmine, Trac, Debian, System Administration, Bash, etc.)
+    * 2004 – 2009 – Zakrevskyi Entrepreneur, PHP and Python Development
 
 
 ..
@@ -165,6 +166,7 @@ Bibliography
 .. _Refactoring: http://www.refactoring.com/catalog/
 .. _Software Architectural Design: https://en.wikipedia.org/wiki/Software_architecture
 .. _Database Architecture: https://en.wikipedia.org/wiki/Data_architecture
+.. _Unit Of Work: https://martinfowler.com/eaaCatalog/unitOfWork.html
 
 .. _Coupling: https://en.wikipedia.org/wiki/Coupling_(computer_programming)
 .. _Cohesion: https://en.wikipedia.org/wiki/Cohesion_(computer_science)
