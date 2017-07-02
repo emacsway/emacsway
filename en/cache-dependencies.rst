@@ -91,8 +91,8 @@ For example, it requires to use a high quality ORM.
 Some ORMs does not perform type conversion of instance attributes on save, therefore, the cache can be wrong (for example, there can be a string instead of a datetime instance).
 I saw such case in my practice, the cache saved the string from the HTTP-client instead of the datatime instance. Although the data had been saved correctly, the model logic didn't performed type conversion until some another method had been called (semantic coupling).
 
-
-.. update:: Nov 10, 2016
+..
+   .. update:: Nov 10, 2016
 
     Added description of implementation of tag locking.
 
