@@ -206,7 +206,7 @@ Transaction problem
 When web-application has good traffic, it's possible the concurrent process recreates the cache with the outdated data since the tag has been invalidated but before the transaction is committed.
 In contrast to replication problem, here is the manifestation of the problem strongly depends on the quality of the ORM, and the probability of problems is reduced when you use a pattern `Unit of Work`_.
 
-Let to consider the problem for each transaction isolation level <Isolation_>`_ separately.
+Let to consider the problem for each `transaction isolation level <Isolation_>`_ separately.
 
 
 Read uncommitted
