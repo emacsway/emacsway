@@ -73,6 +73,7 @@ Open Source Projects
 Articles
 --------
 
+* «:doc:`About problems of cache invalidation. Cache tagging. <en/cache-dependencies>`»
 * «:doc:`О проблемах инвалидации кэша. Тегирование кэша. <ru/cache-dependencies>`»
 * «:doc:`Почему я выбираю Storm ORM. <ru/storm-orm>`»
 
