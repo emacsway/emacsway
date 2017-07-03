@@ -5,7 +5,7 @@
 
 .. meta::
    :yandex-verification: 6042874d91ee9cd3
-   :google-site-verification: evpZJDTe4S9pSdxtNyJz5FvvUI9W4QW-XZjfvskgYV4
+   :google-site-verification: -RX4yy0Sbqn0Mh-xHupzHI-WeD8_DeyceuCmCiBQxt4
 
 
 Welcome to @emacsway's blog!
