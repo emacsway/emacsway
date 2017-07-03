@@ -1,9 +1,9 @@
-﻿
+
 About problems of cache invalidation. Cache tagging.
 ====================================================
 
 
-.. post::
+.. post:: May 21, 2016
    :language: en
    :tags: cache
    :category:
@@ -65,7 +65,7 @@ I've chose the second option.
 Tagging of nested caches
 ========================
 
-Because tags are verified at the moment of cache reading, let's imagine, what happens, when one cache will be nested in other cache.
+Because tags are verified at the moment of cache reading, let's imagine, what happens, when one cache will be nested to other cache.
 Multi-level cache is not so rarely.
 In this case, the tags of inner cache will never be verified, and outer cache will alive with outdated data.
 At the moment of creation the outer cache, it must accept the all tags from the inner cache into own tag list.
@@ -73,8 +73,8 @@ If we pass the tags from the inner cache to the outer cache in an explicit way, 
 So, cache system must keep track the relations between all nested caches, and pass automatically all tags from an inner cache to its outer cache.
 
 
-Problems of replication
-=======================
+Replication problem
+===================
 
 When tag has been invalidated, a concurrent thread/process can recreate a dependent cache with outdated data from slave, before slave will be updated.
 
@@ -86,13 +86,12 @@ A compromise solution can be simple re-invalidation of the tag after period of t
 I saw also an approach of cache regeneration instead of removing/invalidation.
 This approach entail ineffective memory usage (in case LRU_ principle).
 Also, this approach does not resolve the problem of complexity of invalidation logic.
-Usualy, this approach is the cause of a lot of bugs.
+Usually, this approach is the cause of a lot of bugs.
 For example, it requires to use a high quality ORM.
 Some ORMs does not perform type conversion of instance attributes on save, therefore, the cache can be wrong (for example, there can be a string instead of a datetime instance).
 I saw such case in my practice, the cache saved the string from the HTTP-client instead of the datatime instance. Although the data had been saved correctly, the model logic didn't performed type conversion until some another method had been called (semantic coupling).
 
-..
-   .. update:: Nov 10, 2016
+.. update:: Nov 10, 2016
 
     Added description of implementation of tag locking.
 
@@ -118,15 +117,15 @@ The main purpose of the library is cache invalidation.
 
 Suppose, the process P1 has begun transaction with isolation level of "Repeatable read".
 
-Then the process P2 has begun the transaction, updated data in the DB, invalidated tag T1, and ascuired the lock for the tag T1 until the transaction will be commited.
+Then the process P2 has begun the transaction, updated data in the DB, invalidated tag T1, and ascuired the lock for the tag T1 until the transaction will be committed.
 
 Process P1 are trying to read the cache with key C1, which is tagged by the tag T1, and is not valid anymore.
 Not being able to read the invalid cache C1, the process P1 receives the outdated data from the DB (remember, the transaction isolation level is "Repeatable read").
 Then the process P1 are trying to create the cache C1, and waiting while the tag T1 will be released.
 
-When the transaction of process P2 is commited, the process P2 releases the tag T1.
+When the transaction of process P2 is committed, the process P2 releases the tag T1.
 Then the process P1 writes the outdated data into the cache C1.
-There is no ane sense from this locking.
+This locking does not make sense.
 
 But what will be happened, if we check the status of tag T1 on the cache reading (not writing)?
 Can this approach to change something?
@@ -149,23 +148,23 @@ Except the constructive obstacle to implementing pessimistic locking, there is a
 The library is focused mainly on web applications.
 Waiting for parallel process until the end of the transaction, or until the slave is updated, which in some cases can take 8 seconds or more, is practically not feasible in web applications.
 
-There is 3 main reasons:
+There is the 3 main reasons:
 
-- Для веб-приложения важна быстрота отклика, так как клиент может просто не дождаться ответа.
-- Нет смысла ожидать создание кэша более, чем требуется времени на само создание кэша.
-- Рост количества ожидающих потоков может привести к перерасходу памяти, или доступных воркеров сервера, или исчерпанию максимально допустимого числа коннектов к БД или других ресурсов.
+- The quickness of response is important for web-application, otherwise a client simply can not wait for the response.
+- There is no any reason to wait for lock release longer than it takes time to create the cache itself.
+- An increase in the number of pending processes can lead to a memory overflow, or reaching of available workers of the server, or reaching of the maximum allowed number of connections to the database or other resources.
 
-Так же возникла бы проблема с реализацией, поскольку корректно заблокировать все метки одним запросом невозможно.
+Also, there would be a problem with the implementation, since it is impossible to correctly block all tags by single query.
 
-- Во-первых, для блокировки метки нужно использовать метод ``cache.add()`` вместо ``cache.set_many()``, чтобы гарантировать атомарность проверки существования и создания кэша.
-- Во-вторых, каждую метку нужно блокировать отдельным запросом, что увеличило бы накладные расходы.
-- В-третьих, поодиночное блокирование чревато взаимной блокировкой (Deadlock_), вероятность которой можно заметно сократить с помощью топологической сортировки.
+- First, we have to use method ``cache.add()`` instead of ``cache.set_many()`` for locking, to ensure the atomicity of the existence check and cache creation.
+- Second, each tag should be locked by separate query, that increases the overhead.
+- Third, the locking by single query per tag can lead to Deadlock_, the probability of which can be significantly reduced by topological sorting.
 
-Отдельно стоит упомянуть возможность `блокировки строк в БД <https://www.postgresql.org/docs/9.5/static/explicit-locking.html>`__ при использовании выражения `SELECT FOR UPDATE <https://www.postgresql.org/docs/9.5/static/sql-select.html#SQL-FOR-UPDATE-SHARE>`_. Но это будет работать только в том случае, если обе транзакции используют выражение `SELECT FOR UPDATE`_, в `противном случае <https://www.postgresql.org/docs/9.5/static/transaction-iso.html#XACT-READ-COMMITTED>`__:
+We should also mention the possibility of `row-level locking by DB <https://www.postgresql.org/docs/9.5/static/explicit-locking.html>`__ using `SELECT FOR UPDATE <https://www.postgresql.org/docs/9.5/static/sql-select.html#SQL-FOR-UPDATE-SHARE>`_. But it works only when both transactions use `SELECT FOR UPDATE`_, otherwise `it does not work <https://www.postgresql.org/docs/9.5/static/transaction-iso.html#XACT-READ-COMMITTED>`__:
 
     When a transaction uses this isolation level, a SELECT query (without a FOR UPDATE/SHARE clause) sees only data committed before the query began; it never sees either uncommitted data or changes committed during query execution by concurrent transactions. In effect, a SELECT query sees a snapshot of the database as of the instant the query begins to run.
 
-Однако, выборку для модификации не имеет смысла кэшировать (да и вообще, в веб-приложениях ее мало кто использует, так как этот вопрос перекрывается уже вопросом организации бизнес-транзакций), соответственно, ее блокировка мало чем может быть полезна в этом вопросе. К тому же она не решает проблему репликации.
+But no one uses cache of select for update (it doesn't make sense to do it, and usually select for update is not used by web-applications because business transaction is used instead). Also, this approach is not able to solve the problem of replication.
 
 
 .. _thundering-herd-en:
@@ -173,17 +172,17 @@ There is 3 main reasons:
 Thundering herd
 ===============
 
-Но что делать, если закэшированная логика действительно очень ресурсоемка?
+But what we can to do if cached logic is really resource intensive?
 
-Dogpile известен так же как `Thundering Herd`_ effect или cache stampede.
+Dogpile is also known as `Thundering Herd`_ effect or cache stampede.
 
-Ответ прост, - пессимистическая блокировка. Только не меток кэша, а ключа кэша (или группы связанных ключей, см. `Coarse-Grained Lock`_, особенно при использовании агрегирования запросов).
-Потому что при освобождении блокировки кэш должен быть гарантированно создан (а кэш и метки связаны отношением many to many).
+The answer is simple - Pessimistic Lock. But we have to lock not tags, but the key of the cache (or group of related keys, see `Coarse-Grained Lock`_, especially when using aggregate queries).
+It's because of when the cache key is released, the cache must be guaranteed to be created (but tags has many-to-many relation to caches).
 
-Блокировка должна охватывать весь фрагмент кода от чтения кэша до его создания.
-Она решает другую задачу, которая не связана с инвалидацией.
+The lock must cover the entire code fragment from reading the cache to creating it.
+And this responsibility is not related to invalidation.
 
-Существует ряд решений для реализации такой блокировки, вот только некоторые из них:
+There is a lot of libraries which solve the issue, for example:
 
 - `wheezy.caching.patterns.OnePass <https://bitbucket.org/akorn/wheezy.caching/src/586b4debff62f885d97e646f0aa2e5d22d088bcf/src/wheezy/caching/patterns.py?at=default&fileviewer=file-view-default#patterns.py-348>`_
 - `memcached_lock <https://pypi.python.org/pypi/memcached_lock>`_
@@ -199,6 +198,120 @@ Dogpile известен так же как `Thundering Herd`_ effect или cac
 - `redlock <https://pypi.python.org/pypi/redlock>`_
 - `retools <https://github.com/bbangert/retools/blob/master/retools/lock.py>`_
 - `score.distlock <https://pypi.python.org/pypi/score.distlock>`_
+
+
+Transaction problem
+===================
+
+When web-application has good traffic, it's possible the concurrent process recreates the cache with the outdated data since the tag has been invalidated but before the transaction is committed.
+In contrast to replication problem, here is the manifestation of the problem strongly depends on the quality of the ORM, and the probability of problems is reduced when you use a pattern `Unit of Work`_.
+
+Let to consider the problem for each transaction isolation level <Isolation_>`_ separately.
+
+
+Read uncommitted
+----------------
+
+Тут все просто, и никакой проблемы не может быть в принципе. В случае использования репликации достаточно сделать отложенный повтор инвалидации через интервал времени гарантированного обновления slave.
+
+
+Read committed
+--------------
+
+Тут уже проблема может присутствовать, особенно если Вы используете `ActiveRecord`_.
+Использование паттерна `DataMapper`_ в сочетании с `Unit of Work`_ заметно снижает интервал времени между сохранением данных и фиксацией транзакции, но вероятность проблемы все равно остается.
+
+В отличии от проблемы репликации, здесь предпочтительней было бы блокирование создания кэша до момента фиксации транзакции, так как текущий поток видит в БД не те данные, которые видят параллельные потоки.
+А поскольку нельзя гарантированно сказать какой именно поток, текущий или параллельный, создаст новый кэш, то создание кэша до фиксации транзакции было бы желательно избежать.
+
+Тем не менее, этот уровень изоляции не является достаточно серьезным, и выбирается, как правило, для повышения степени параллелизма, т.е. с той же целью что и репликация.
+А в таком случае, эта проблема обычно поглощается проблемой репликации, ведь чтение делается все равно из slave.
+
+Поэтому, дорогостоящая блокировка может быть компромисно заменена повторной инвалидацией в момент фиксации транзакции.
+
+
+Repeatable read
+---------------
+
+Этот случай наиболее интересен.
+Здесь уже без блокировки создания кэша не обойтись, хотя бы потому, что нам нужно знать не только список меток, но и время фиксации транзакции, которая осуществила инвалидацию метки кэша.
+
+Мало того, что мы должны заблокировать метку с момента инвалидации до момента фиксации транзакции, так мы еще и не можем создавать кэш в тех параллельных транзакциях, которые были открыты до момента фиксации текущей транзакции.
+
+Хорошая новость заключается в том, что раз уж мы и вынуждены мириться с накладными расходами на блокировку меток, то можно блокировать их вплоть до обновления slave, и обойтись без компромисов.
+
+
+Serializable
+------------
+
+Поскольку несуществующие объекты обычно не кэшируются, то здесь достаточно ограничится той же проблематикой, что и для уровня `Repeatable read`_.
+
+
+Множественные соединения с БД
+=============================
+
+Если Вы используете разные БД, и их транзакции синхронны, или просто используется репликация, Вы можете использовать по одному экземляру внешнего кэша (враппера) для каждого экземпляра внутреннего кэша (бэкенда).
+Транзакции кэша не обязаны строго соответствовать системным транзакциям каждой БД.
+Достаточно того, чтобы они выполняли свое предназначение, - не допускать подмену данных посредством кэша в параллельных потоках.
+Поэтому, они могут охватывать несколько системных транзакций БД.
+
+Но если Вы используете несколько соединений к одной и той же БД (что само по себе странно, но теоретически могут быть случаи когда нет возможности расшарить коннект для нескольких ORM в едином проекте), или же просто транзакции различных БД не синхронны, то Вы можете сконфигурировать внешний кэш так, чтобы иметь по одному экземпляру внешнего кэша на каждое соединение с БД для каждого экземпляра внутреннего кэша.
+
+
+Динамические окна в кэше
+========================
+
+Есть два взаимно-дополняющих паттерна, основанных на диаметрально противоположных принципах, - `Decorator`_ и `Strategy`_.
+В первом случае изменяемая логика располагается вокруг объявленного кода, во втором - передается внутрь него.
+Обычное кэширование имеет черты паттерна `Decorator`_, когда динамический код расположен вокруг закэшированной логики.
+Но иногда в кэше небольшой фрагмент логики не должен подлежать кэшированию.
+Например, персонализированные данные пользователя, проверка прав и т.п.
+
+Один из вариантов решения этой проблемы - это использование технологии `Server Side Includes`_.
+
+Другой вариант - это использование двухфазной шаблонизации, например, используя библиотеку `django-phased <https://pypi.python.org/pypi/django-phased>`_.
+Справедливости ради нужно отметить, что решение имеет немаленькое ресурсопотребление, и в некоторых случаях может нивелировать (если не усугублять) эффект от кэширования.
+Возможно, именно поэтому, оно не получило широкого распространения.
+
+Популярный шаблонный движок Smarty на PHP имеет функцию `{nocache} <http://www.smarty.net/docs/en/language.function.nocache.tpl>`_.
+
+Но более интересной мне показалась возможность использовать в качестве динамического окна обычный Python-код, и абстрагироваться от сторонних технологий.
+
+
+.. update:: Nov 06, 2016
+
+    Добавлен абстрактный менеджер зависимостей.
+
+
+Абстрактный менеджер зависимостей
+=================================
+
+Долгое время мне не нравилось то, что о логике, ответственной за обработку тегов, были осведомлены сразу несколько различных классов с различными обязанностями.
+
+Было желание инкапсулировать эту обязанность в отдельном `классе-стратегии <Strategy_>`_, как это сделано, например, в `TagDependency of YII framework`_,
+но не хотелось ради этого увеличивать накладные расходы в виде `дополнительного запроса на каждый ключ кэша для сверки его меток <https://github.com/yiisoft/yii2/blob/32f4dc8997500f05ac3f62f0505c0170d7e58aed/framework/caching/Cache.php#L187>`_, что означало бы лишение метода ``cache.get_many()`` своего смысла - агрегирования запросов.
+По моему мнению, накладные расходы не должны превышать одного запроса в совокупности на каждое действие, даже если это действие агрегированное, такое как ``cache.get_many()``.
+
+Кроме того, у меня там был еще один метод со спутанными обязанностями для обеспечения возможности агрегации запросов в хранилище, что большого восторга не вызывало.
+
+Но мысль инкапсулировать управление тегами в отдельном абстрактном классе, отвечающем за управления зависимостями, и получить возможность использовать для управления инвалидацией не только теги, но и любой иной принцип, включая компоновку различных принципов, мне нравилась.
+
+Решение появилось с введение класса `Deferred <https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_tagging/defer.py>`_.
+Собственно это не Deferred в чистом виде, в каком его привыкли видеть в асинхронном программировании, иначе я просто использовал бы эту `элегантную и легковесную библиотечку <https://pypi.python.org/pypi/defer>`_, любезно предоставленную ребятами из Canonical.
+
+В моем же случае, требуется не только отложить выполнение задачи, но и накапливать их с целью агрегации однотипных задач, которые допускают возможность агрегации (``cache.get_many()`` является как раз таким случаем).
+
+Возможно, название Queue или Aggregator здесь подошло бы лучше, но так как с точки зрения интерфейса мы всего лишь откладываем выполнение задачи, не вникая в детали ее реализации, то я предпочел оставить название Deferred.
+
+Все это позволило выделить интерфейс абстрактного класса, ответственного за управление зависимостями, и теперь управление метками кэша стало всего лишь одной из его возможных реализаций в виде класса `TagsDependency <https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_tagging/dependencies.py>`_.
+
+Это открывает перспективы создания других вариантов реализаций управления зависимостями, например, на основе наблюдения за изменением какого-либо файла, или SQL-запроса, или какого-то системного события.
+
+
+Gratitude
+=========
+
+Thanks a lot to `@akorn <https://bitbucket.org/akorn>`_ for the meaningful discussion of the problem of caching.
 
 
 .. _cache-dependencies: https://bitbucket.org/emacsway/cache-dependencies
