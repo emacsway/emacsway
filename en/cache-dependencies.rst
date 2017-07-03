@@ -247,15 +247,15 @@ Serializable
 Because non-existent objects usually are not cached, we are able to limit the problem of this transaction isolation level by the level of `Repeatable read`_.
 
 
-Множественные соединения с БД
-=============================
+Multiple connections to Database
+================================
 
-Если Вы используете разные БД, и их транзакции синхронны, или просто используется репликация, Вы можете использовать по одному экземляру внешнего кэша (враппера) для каждого экземпляра внутреннего кэша (бэкенда).
-Транзакции кэша не обязаны строго соответствовать системным транзакциям каждой БД.
-Достаточно того, чтобы они выполняли свое предназначение, - не допускать подмену данных посредством кэша в параллельных потоках.
-Поэтому, они могут охватывать несколько системных транзакций БД.
+When you use multiple databases, and its transactions are synchronous, or you use simple replication, then you can use by one instance of outer cache (wrapper) per one instance of inner cache (backend).
+The transaction of the cache does not have to strictly follow to system transactions of the DB.
+It is enough to fulfill its purpose - to prevent the substitution of the cached actual data by concurrent process until the actual data will be visible for the concurrent process.
+Therefore, a single transaction of the cache can cover several system database transactions.
 
-Но если Вы используете несколько соединений к одной и той же БД (что само по себе странно, но теоретически могут быть случаи когда нет возможности расшарить коннект для нескольких ORM в едином проекте), или же просто транзакции различных БД не синхронны, то Вы можете сконфигурировать внешний кэш так, чтобы иметь по одному экземпляру внешнего кэша на каждое соединение с БД для каждого экземпляра внутреннего кэша.
+When you use multiple connections to the same database (it sounds a little strange, but theoretically it's possible, for example, when you don't have ability to share connection between several ORMs in the single application), or the system database transactions are not synchronous, then you can configure the outer cache (wrapper) in the way to have by one instance of outer cache (wrapper) per one connection to DB for each instance of inner cache (backend).
 
 
 Динамические окна в кэше
