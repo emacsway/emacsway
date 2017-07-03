@@ -59,7 +59,7 @@ If any tag version is expired on the cache reading, the cache is invalid.
 The advantage of this approach is immediate invalidation of the tag and all dependent caches.
 Another advantage is that premature discarding of a tag info is not possible (using LRU_), because the tag info is read mush often than dependent caches.
 
-I've chose the second option.
+I've chosen the second option.
 
 
 Tagging of nested caches
