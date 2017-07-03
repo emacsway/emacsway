@@ -212,39 +212,39 @@ Let to consider the problem for each `transaction isolation level <Isolation_>`_
 Read uncommitted
 ----------------
 
-Тут все просто, и никакой проблемы не может быть в принципе. В случае использования репликации достаточно сделать отложенный повтор инвалидации через интервал времени гарантированного обновления slave.
+This is a simple case without any problems. If replication is used, it's enough to repeat invalidation when the slave is guaranteed to be updated.
 
 
 Read committed
 --------------
 
-Тут уже проблема может присутствовать, особенно если Вы используете `ActiveRecord`_.
-Использование паттерна `DataMapper`_ в сочетании с `Unit of Work`_ заметно снижает интервал времени между сохранением данных и фиксацией транзакции, но вероятность проблемы все равно остается.
+There is a problem, especially when you are using the pattern `ActiveRecord`_.
+The probability of the problem can be reduced by using the pattern `DataMapper`_ together with `Unit of Work`_, this reduces the interval of time between data saving and transaction commit. But the problem is still possible.
 
-В отличии от проблемы репликации, здесь предпочтительней было бы блокирование создания кэша до момента фиксации транзакции, так как текущий поток видит в БД не те данные, которые видят параллельные потоки.
-А поскольку нельзя гарантированно сказать какой именно поток, текущий или параллельный, создаст новый кэш, то создание кэша до фиксации транзакции было бы желательно избежать.
+In contrast to the replication problem, it would be preferable to use tag locking here until the transaction will be committed, because the current process reads different data than concurrent processes.
+It's impossible to say which process (the current process or concurrent one) will have created the cache, thus it would be desirable to avoid cache creation until transaction is committed.
 
-Тем не менее, этот уровень изоляции не является достаточно серьезным, и выбирается, как правило, для повышения степени параллелизма, т.е. с той же целью что и репликация.
-А в таком случае, эта проблема обычно поглощается проблемой репликации, ведь чтение делается все равно из slave.
+But this transaction isolation level is not so serious, and most often used to increase the degree of parallelism, i.e. has the same purpose as replication.
+In this case, the problem of the transaction isolation level "Read committed" is usually absorbed by the replication problem, because process usually reads data from a slave.
 
-Поэтому, дорогостоящая блокировка может быть компромисно заменена повторной инвалидацией в момент фиксации транзакции.
+Therefore, the expensive lock can be replaced by a re-invalidation when transaction is committed, as tradeoff.
 
 
 Repeatable read
 ---------------
 
-Этот случай наиболее интересен.
-Здесь уже без блокировки создания кэша не обойтись, хотя бы потому, что нам нужно знать не только список меток, но и время фиксации транзакции, которая осуществила инвалидацию метки кэша.
+This case is more interesting.
+We can't avoid tag locking here because we have to know not only the list of cache's tags, but also the time of each transaction commit which has invalidated the tag.
 
-Мало того, что мы должны заблокировать метку с момента инвалидации до момента фиксации транзакции, так мы еще и не можем создавать кэш в тех параллельных транзакциях, которые были открыты до момента фиксации текущей транзакции.
+Thus, we have to lock the tag from the moment of the invalidation, but, moreover, we are not able to create cache in transactions which has been begun earlier than the current transaction is committed.
 
-Хорошая новость заключается в том, что раз уж мы и вынуждены мириться с накладными расходами на блокировку меток, то можно блокировать их вплоть до обновления slave, и обойтись без компромисов.
+The good news is that we can lock the tag until the slave will be updated, if we have to use tag locking in any case.
 
 
 Serializable
 ------------
 
-Поскольку несуществующие объекты обычно не кэшируются, то здесь достаточно ограничится той же проблематикой, что и для уровня `Repeatable read`_.
+Because non-existent objects usually are not cached, we are able to limit the problem of this transaction isolation level by the level of `Repeatable read`_.
 
 
 Множественные соединения с БД
