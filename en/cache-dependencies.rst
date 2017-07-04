@@ -46,14 +46,14 @@ Overhead of cache reading vs overhead of cache creation
 =======================================================
 
 How to implement invalidation of caches dependent on the tag?
-There are exist two options:
+There are two options:
 
 \1. Destroy physically all dependent caches on the tag invalidation.
 Implementation of this approach requires some overhead on the cache creation to add key of the cache into the cache list (or set) of the tag (for example, using `SADD <http://redis.io/commands/sadd>`_).
 The disadvantage is that the invalidation of too many dependent caches takes some time.
 
 \2. Just change the version of tag on the tag invalidation.
-Implementation of this approach requires some overhead on the cache reading to compare version of each tag of the cache with the actual tag version.
+Implementation of this approach requires some overhead on the cache reading to verify the version of each tag of the cache with the actual tag version.
 So, the cache should contain all tag versions on the cache creation.
 If any tag version is expired on the cache reading, the cache is invalid.
 The advantage of this approach is immediate invalidation of the tag and all dependent caches.
@@ -76,10 +76,10 @@ So, cache system must keep track the relations between all nested caches, and pa
 Replication problem
 ===================
 
-When tag has been invalidated, a concurrent thread/process can recreate a dependent cache with outdated data from slave, before slave will be updated.
+When tag has been invalidated, a concurrent thread/process can recreate a dependent cache with outdated data from a slave, before the slave will be updated.
 
 The best solution of this problem is a :ref:`locking the tag <tags-lock-en>` for cache creation until slave will be updated.
-But, first, this implies a certain overhead, and secondly, all threads (including current one) continue to read stale data from the slave (unless reading from master specified explicitly).
+But, first, this implies a certain overhead, and secondly, all threads (including current one) continue to read outdated data from the slave (unless reading from master specified explicitly).
 
 A compromise solution can be simple re-invalidation of the tag after period of time when the slave is guaranteed to be updated.
 
