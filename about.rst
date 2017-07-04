@@ -19,7 +19,7 @@ Python, Django, Debian, Emacs, PostgreSQL, MySQL, GIS
 - Open source: `Bitbucket <https://bitbucket.org/emacsway>`__ (primary), `Github <https://github.com/emacsway>`__
 - Find me at `LinkedIn <https://www.linkedin.com/in/emacsway>`__, `Twitter <https://twitter.com/emacsway>`__, `Facebook <https://www.facebook.com/emacsway>`__
 
-My status: open for new offers
+Current status: open for new offers
 
 
 About me
