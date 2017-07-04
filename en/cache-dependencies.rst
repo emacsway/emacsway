@@ -297,14 +297,14 @@ Also I had another method with tangled responsibilities to provide aggregation q
 
 But I like the idea to extract an abstract dependency manager, and obtain ability to use not only tags for invalidation, but any another principle, even an composite principle.
 
-The problem was solved by class `Deferred <https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_tagging/defer.py>`_.
+The problem was solved by class `Deferred <https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_dependencies/defer.py>`_.
 It's not pure Deferred as we know it from asynchronous programming, otherwise I would like to use this `elegant and lightweight library <https://pypi.python.org/pypi/defer>`_, kindly provided by the guys from Canonical.
 
 My case requires not only delay the query execution, but also aggregation queries when it possible, for example, by using of ``cache.get_many()``.
 
 Probably, the name Queue or Aggregator would be better, but since from the interface point of view we just postpone the task execution without going into details of its implementation, I preferred to leave the name Deferred.
 
-This approach allows me to extract the abstract dependency manager, and now the logic of invalidation by cache tagging is simple an implementation of the intarface as class strategy `TagsDependency <https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_tagging/dependencies.py>`_.
+This approach allows me to extract the abstract dependency manager, and now the logic of invalidation by cache tagging is simple an implementation of the intarface as class strategy `TagsDependency <https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_dependencies/dependencies.py>`_.
 
 This opens prospects for the creation of other implementations of dependency management, for example, by observing a file changing, or SQL query, or some system events.
 
