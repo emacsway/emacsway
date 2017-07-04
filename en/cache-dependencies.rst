@@ -79,7 +79,7 @@ Replication problem
 When tag has been invalidated, a concurrent thread/process can recreate a dependent cache with outdated data from a slave, before the slave will be updated.
 
 The best solution of this problem is a :ref:`locking the tag <tags-lock-en>` for cache creation until slave will be updated.
-But, first, this implies a certain overhead, and secondly, all threads (including current one) continue to read outdated data from the slave (unless reading from master specified explicitly).
+But, first, this implies a certain overhead, and secondly, all threads (including current one) continue to read outdated data from the slave (unless reading from the master is specified explicitly).
 
 A compromise solution can be simple re-invalidation of the tag after period of time when the slave is guaranteed to be updated.
 
