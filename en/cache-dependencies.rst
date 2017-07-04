@@ -298,8 +298,7 @@ Also I had another method with tangled responsibilities to provide aggregation q
 But I like the idea to extract an abstract dependency manager, and obtain ability to use not only tags for invalidation, but any another principle, even an composite principle.
 
 The problem was solved by class `Deferred <https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_tagging/defer.py>`_.
-It's not pure Deferred as we know it from asynchronous programming, otherwise I would like to use this `elegant and lightweight library
- <https://pypi.python.org/pypi/defer>`_, kindly provided by the guys from Canonical.
+It's not pure Deferred as we know it from asynchronous programming, otherwise I would like to use this `elegant and lightweight library <https://pypi.python.org/pypi/defer>`_, kindly provided by the guys from Canonical.
 
 My case requires not only delay the query execution, but also aggregation queries when it possible, for example, by using of ``cache.get_many()``.
 
