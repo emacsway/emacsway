@@ -258,24 +258,25 @@ Therefore, a single transaction of the cache can cover several system database t
 When you use multiple connections to the same database (it sounds a little strange, but theoretically it's possible, for example, when you don't have ability to share connection between several ORMs in the single application), or the system database transactions are not synchronous, then you can configure the outer cache (wrapper) in the way to have by one instance of outer cache (wrapper) per one connection to DB for each instance of inner cache (backend).
 
 
-Динамические окна в кэше
-========================
+Non-cached fragment. Dynamic window in cache.
+=============================================
 
-Есть два взаимно-дополняющих паттерна, основанных на диаметрально противоположных принципах, - `Decorator`_ и `Strategy`_.
-В первом случае изменяемая логика располагается вокруг объявленного кода, во втором - передается внутрь него.
-Обычное кэширование имеет черты паттерна `Decorator`_, когда динамический код расположен вокруг закэшированной логики.
-Но иногда в кэше небольшой фрагмент логики не должен подлежать кэшированию.
-Например, персонализированные данные пользователя, проверка прав и т.п.
+There are two mutually complementary patterns based on diametrically opposite principles - `Decorator`_ и `Strategy`_.
+The first one places variable logic around a code, 
+In the first case, the variable logic is placed around the declared code, in the second case it is passed into it.
+Usual cache is similar to the pattern `Decorator`_, when the dynamic logic is located around the cached logic.
+But sometimes a little fragment of the logic should not to be cached inside the cache.
+For example, it can be some data of user, permission checking etc.
 
-Один из вариантов решения этой проблемы - это использование технологии `Server Side Includes`_.
+This problem can be solved by using `Server Side Includes`_.
 
-Другой вариант - это использование двухфазной шаблонизации, например, используя библиотеку `django-phased <https://pypi.python.org/pypi/django-phased>`_.
-Справедливости ради нужно отметить, что решение имеет немаленькое ресурсопотребление, и в некоторых случаях может нивелировать (если не усугублять) эффект от кэширования.
-Возможно, именно поэтому, оно не получило широкого распространения.
+Another approach is using two-phase template rendering, for example `django-phased <https://pypi.python.org/pypi/django-phased>`_.
+To be honest, this approach has a considerable resource consumption, and in some cases the achieved effect can be gone.
+Probably, due to this reason the approach is not widely used.
 
-Популярный шаблонный движок Smarty на PHP имеет функцию `{nocache} <http://www.smarty.net/docs/en/language.function.nocache.tpl>`_.
+The popular template engine Smarty written by PHP has the function `{nocache} <http://www.smarty.net/docs/en/language.function.nocache.tpl>`_.
 
-Но более интересной мне показалась возможность использовать в качестве динамического окна обычный Python-код, и абстрагироваться от сторонних технологий.
+But the more interesting approach would be to use python code inside the dynamic window to abstract from third-party technologies.
 
 
 .. update:: Nov 06, 2016
