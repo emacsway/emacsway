@@ -281,32 +281,33 @@ But the more interesting approach would be to use python code inside the dynamic
 
 .. update:: Nov 06, 2016
 
-    Добавлен абстрактный менеджер зависимостей.
+    Added abstract dependency manager.
 
 
-Абстрактный менеджер зависимостей
-=================================
+Abstract dependency manager
+===========================
 
-Долгое время мне не нравилось то, что о логике, ответственной за обработку тегов, были осведомлены сразу несколько различных классов с различными обязанностями.
+For a long time I did not like the fact that several classes with different responsibilities were aware about the logic of tags handling.
 
-Было желание инкапсулировать эту обязанность в отдельном `классе-стратегии <Strategy_>`_, как это сделано, например, в `TagDependency of YII framework`_,
-но не хотелось ради этого увеличивать накладные расходы в виде `дополнительного запроса на каждый ключ кэша для сверки его меток <https://github.com/yiisoft/yii2/blob/32f4dc8997500f05ac3f62f0505c0170d7e58aed/framework/caching/Cache.php#L187>`_, что означало бы лишение метода ``cache.get_many()`` своего смысла - агрегирования запросов.
-По моему мнению, накладные расходы не должны превышать одного запроса в совокупности на каждое действие, даже если это действие агрегированное, такое как ``cache.get_many()``.
+It would be good to encapsulate this logic into separate `class strategy <Strategy_>`_, for example, similar to `TagDependency of YII framework`_,
+but this approach creates overhead as `extra query per each cache key to verify its tags <https://github.com/yiisoft/yii2/blob/32f4dc8997500f05ac3f62f0505c0170d7e58aed/framework/caching/Cache.php#L187>`_, that means depriving the method ``cache.get_many()`` of the sense - aggregation queries.
+I think, the overhead should not be more than one extra query per action, even for case this action is aggregated like ``cache.get_many()``.
 
-Кроме того, у меня там был еще один метод со спутанными обязанностями для обеспечения возможности агрегации запросов в хранилище, что большого восторга не вызывало.
+Also I had another method with tangled responsibilities to provide aggregation queries, that does not cause delight.
 
-Но мысль инкапсулировать управление тегами в отдельном абстрактном классе, отвечающем за управления зависимостями, и получить возможность использовать для управления инвалидацией не только теги, но и любой иной принцип, включая компоновку различных принципов, мне нравилась.
+But I like the idea to extract an abstract dependency manager, and obtain ability to use not only tags for invalidation, but any another principle, even an composite principle.
 
-Решение появилось с введение класса `Deferred <https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_tagging/defer.py>`_.
-Собственно это не Deferred в чистом виде, в каком его привыкли видеть в асинхронном программировании, иначе я просто использовал бы эту `элегантную и легковесную библиотечку <https://pypi.python.org/pypi/defer>`_, любезно предоставленную ребятами из Canonical.
+The problem was solved by class `Deferred <https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_tagging/defer.py>`_.
+It's not pure Deferred as we know it from asynchronous programming, otherwise I would like to use this `elegant and lightweight library
+ <https://pypi.python.org/pypi/defer>`_, kindly provided by the guys from Canonical.
 
-В моем же случае, требуется не только отложить выполнение задачи, но и накапливать их с целью агрегации однотипных задач, которые допускают возможность агрегации (``cache.get_many()`` является как раз таким случаем).
+My case requires not only delay the query execution, but also aggregation queries when it possible, for example, by using of ``cache.get_many()``.
 
-Возможно, название Queue или Aggregator здесь подошло бы лучше, но так как с точки зрения интерфейса мы всего лишь откладываем выполнение задачи, не вникая в детали ее реализации, то я предпочел оставить название Deferred.
+Probably, the name Queue or Aggregator would be better, but since from the interface point of view we just postpone the task execution without going into details of its implementation, I preferred to leave the name Deferred.
 
-Все это позволило выделить интерфейс абстрактного класса, ответственного за управление зависимостями, и теперь управление метками кэша стало всего лишь одной из его возможных реализаций в виде класса `TagsDependency <https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_tagging/dependencies.py>`_.
+This approach allows me to extract the abstract dependency manager, and now the logic of invalidation by cache tagging is simple an implementation of the intarface as class strategy `TagsDependency <https://bitbucket.org/emacsway/cache-dependencies/src/default/cache_tagging/dependencies.py>`_.
 
-Это открывает перспективы создания других вариантов реализаций управления зависимостями, например, на основе наблюдения за изменением какого-либо файла, или SQL-запроса, или какого-то системного события.
+This opens prospects for the creation of other implementations of dependency management, for example, by observing a file changing, or SQL query, or some system events.
 
 
 Gratitude
