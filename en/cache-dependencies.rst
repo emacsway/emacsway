@@ -9,7 +9,7 @@ About problems of cache invalidation. Cache tagging.
    :category:
    :author: Ivan Zakrevsky
 
-About my experience of solving problems in cache invalidation, and about principles of the library `cache-dependencies`_.
+About my experience of solving problems of cache invalidation and principles of the library `cache-dependencies`_.
 
 .. contents:: Contents
 
