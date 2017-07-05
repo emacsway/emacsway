@@ -78,46 +78,46 @@ Advantages
 Despite the release number, the code is fairly stable.
 Successful architecture in combination with the KISS_ principle creates a false illusion that the Storm ORM is allegedly not developing.
 This is not true.
-На самом деле, там просто нечего развивать.
-За три года копания в исходниках Storm ORM я не нашел ничего, что можно было бы улучшить.
-Расширить - да, можно.
-Но не изменить.
-`Коммиты происходят регулярно <https://code.launchpad.net/storm>`__.
-Но их можно охарактеризовать как "вылизывание", или "полирование".
+In fact, there's simply nothing to develop.
+For three years of investigation of the source code of Storm ORM, I did not find anything that could be improved.
+Storm ORM can be extended, but not improved.
+`Commits occur regularly <https://code.launchpad.net/storm>`__.
+But they can be described as "polishing".
 
-Storm ORM поддерживает композитные ключи и связи (после Django ORM я облегченно вздохнул).
+Storm ORM supports composite keys and relations (after Django ORM I sighed with relief).
 
-Позволяет выражать SQL-запросы практически любой сложности (по крайней мере, конструктивно).
+It allows you to express SQL queries of almost any complexity (at least constructively).
 
-Работает с любым количеством БД.
+It works with any number of databases.
 
-Реализует `DataMapper`_ pattern, а значит классы моделей свободны от метаданных и логики доступа к БД, как это свойственно для `ActiveRecord`_.
-Классы моделей могут наследоваться от простого класса `object`_.
+It implements `DataMapper`_ pattern, which means classes of models free of metadata and database access logic, as is typical for `ActiveRecord`_.
+Model class can be inherited from the bare class `object`_.
 
-Благодаря `Identity Map`_, `Storm ORM`_ очень быстр.
-На странице одного из проектов, после внедрения Storm ORM (вместо Django ORM), затраты на работу ORM упали с 0.21 сек до 0.014 сек, т.е. в 15 раз, а совокупное время генерации страницы сократилось в два раза, с 0.48 сек до 0.24 сек.
-Количество запросов в БД сократилось с 88 до 7.
-Identity Map так же делает ненужными утилиты типа prefetch_related(), правда только для внешних ключей ссылающихся на первичный ключ.
+Due to `Identity Map`_, `Storm ORM`_ is very fast.
+On the page of one of the projects, after the introduction of Storm ORM (instead of Django ORM), the time consumption by ORM reduced from 0.21 seconds to 0.014 seconds (i.e. 15 times), and the total page generation time was reduced by half, from 0.48 seconds to 0.24 seconds.
+The number of queries to the database reduced from 88 to 7.
+Identity Map also makes utilities of the prefetch_related() type unnecessary, but only for foreign keys referencing the primary key.
 
-Работать с кодом Storm ORM приятно.
-Можно найти много интересных методик по оптимизации кода.
-Нужно отдать должное разработчикам Storm ORM, - они совершили настоящий умственный подвиг.
-Весь код тщательно продуман.
-Любые попытки его улучшить обычно только убеждают в правильности существующего решения.
+It is very pleasant to work with the code Storm ORM.
+Here you can find a lot of interesting techniques for code optimization.
+We must pay tribute to the developers Storm ORM, - they made a real intellectual feat.
+All the code is carefully thought out.
+Any attempt to improve it usually only convince the correctness of existing solutions.
 
-Storm ORM очень грамотно обрабатывает транзакции.
-Здесь нельзя встретить бездумный реконнект в случае обрыва соединения во время незавершенной транзакции.
-Соединение восстановится только в том случае, если это не может отразиться на целостности данных.
-Сами транзакции сделаны двухуровневыми.
-В случае rollback откатывается так же состояние объектов в памяти.
+Storm ORM correctly processes transactions.
+There can not be found thoughtless reconnect when connection is lost during an incomplete transaction.
+The connection can be restored only if it can not affect the integrity of the data.
+The transactions are implemented in two levels.
+In the case of transaction rollback, the state of objects in the memory is also rolled back.
 
-Благодаря наличию у Storm ORM возможности скомпилировать критерии выборки в коллекцию фильтров Python-кода, применимых к любой коллекции объектов в памяти, Storm ORM предоставляет неплохие возможности для создания фиктивного маппера для тестов.
-А для выборки объектов из ``Store()`` по первичному ключу (в том числе и посредством вызова Foreign Key) и создавать вообще ничего не нужно, так как благодаря паттерну Identity Map можно просто не посылать объекты в БД, и использовать реальный маппер как фиктивный.
+Storm ORM is able to compile a selection criteria to the collection of filters of Python-code, which can be applied to any collection of objects in the memory.
+This feature allows you to create a dummy mapper for tests.
+To select objects from ``Store()`` by primary key (even from a Foreign Key) you don't have to do anything, because due to `Identity Map`_ pattern you don't have to send objects to the database, thus you are able to use (partially) `Identity Map`_ as dummy mapper.
 
-Storm ORM не производит конвертации значений сразу, в момент загрузки объекта.
-Вместо этого он просто заворачивает значение во враппер (адаптер) - класс Variable.
+Storm ORM does not convert values immediately, at the time of loading the object.
+Instead, it simply wraps the value in the wrapper (adapter) - the Variable class.
 
-Это позволяет:
+It allows you:
 
 - Контролировать политику присваивания и доступа.
 - Оптимизировать ресурсы (конвертация не производится до фактической востребованности).
