@@ -20,62 +20,64 @@ My requirements for ORM
 =======================
 
 \- **Quickness**. ORM should be fast.
-ORM должен иметь `Identity Map`_ для предотвращения запросов в БД, если объект уже был загружен.
-Этот момент особенно важен, когда различные изолированные компоненты приложения пытаются загрузить один и тот же объект из БД в собственную область видимости.
-Кроме того, я считаю, что Identity Map должен конфигурироваться под уровни изоляции транзакции, чтобы, например, не повторять запросы в БД, если такого объекта не существует.
+ORM should to have `Identity Map`_ to prevent duplicated queries to DB if the object is already loaded to the memory.
+This is important when several isolated scopes are trying to load the same object to the own namespace.
+Also, I think, `Identity Map`_ should be configurable for different transaction isolation levels, for example, to prevent query to DB when object does not exist and transaction isolation level is "Serializable".
 
-\- **Простота**. ORM не должен пугать своим видом в отладчике, а понять что он делает можно было не более чем из просмотра исходников. 
-Любой продукт рано или поздно умирает, или хотя бы теряет интерес к себе со стороны автора, поэтому всегда нужно быть готовым взять сопровождение выбранного продукта на себя.
-Новые люди должны легко осваивать продукт.
-А единственным источником истины о коде служит сам код.
-Комментарии, документирование, конечно, облегчают осваивание продукта, но часто они освещают далеко не все, и нередко отстают от реального кода.
-И я не встречал в своей практике ни одной библиотеки, которую не было бы необходимости адаптировать или расширять.
-А в таких вопросах простота выходит на первый план.
+\- **Simplicity**. ORM should not scare you from debugger, you have to understand what it does by browsing the source code.
+Any product sooner or later can be dead, or author can lose an interest in it, thus you should be able to support the product yourself.
+New developers of a team should be able to master the ORM quickly.
+And the only source of truth about the code is the code itself.
+Documentation and comments is good, but they are not always comprehensive and actual.
+And often the product should be adapted, extended for your requirements.
+Thus, simplicity is important.
 
-\- **Архитектура**. Грамотное разделение уровней абстракции, соблюдение базовых принципов архитектуры, таких как `SOLID`_.
+\- **Architecture**. Proper separation of levels of abstraction, adherence to the basic principles of architecture (such as `SOLID`_).
 
-Если Вы не можете использовать отдельно взятый компонент ORM, например SQLBuilder, изолированно от всей системы, то, наверное, такой ORM лучше вообще не использовать (в пользу "низкоуровневых" паттернов обработки данных).
-Хорошо спроектированный ORM позволяет использовать свои компоненты по отдельности, `Query Object`_ (SQLBuilder), Connection, `DataMapper`_, `Identity Map`_, `Unit of Work`_, `Repository`_.
-Можете ли Вы в своем ORM использовать Raw-SQL (полностью или частично)?
-Можете ли Вы изолированно использовать только DataMapper?
-Можете ли Вы подменить DataMapper, например, на `фиктивную службу <Service Stub_>`_, которая не будет осуществлять запросы в БД?
+If you are not able to use some component of the ORM separately, for example SQLBuilder, then, probably, it would be better to use raw pattern DataMapper_ instead of the ORM.
+Well designed ORM allows you to use its components separately, such as `Query Object`_ (SQLBuilder), Connection, `DataMapper`_, `Identity Map`_, `Unit of Work`_, `Repository`_.
+Does the ORM allow you to use Raw-SQL (entirely or partially)?
+Are you able to use only DataMapper (without Connection, SQLBuilder etc.)?
+Are you able to substitute the DataMapper by `Service Stub`_, to be free from DB for testing?
 
-Возможности любого ORM приходится расширять.
-Насколько легко расширить Ваш ORM без форков, патчей, манкипатчей? Соблюдается ли в нем `Open/Closed Principle`_ (OCP)?
+The possibilities of any ORM have to be expanded.
+Are you able to extend your ORM without monkey-patching, forks, patches?
+Does the ORM follow to the `Open/Closed Principle`_ (OCP)?
 
     "The primary occasion for using Data Mapper is when you want the database schema and the object model to evolve independently. The most common case for this is with a Domain Model (116). Data Mapper's primary benefit is that when working on the domain model you can ignore the database, both in design and in the build and testing process. The domain objects have no idea what the database structure is, because all the correspondence is done by the mappers."
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-\- `ACID`_. Хорошая система следит за соответствием объекта в памяти его записи в БД.
-Представьте, что Вы загрузили объект, и затем сделали коммит.
-На этот объект уже ссылаются десятки других объектов, но он был изменен в БД другим потоком.
-Если после этого Вы приступите к изменению этого объекта, - то изменения, внесенные другим потоком будут утрачены.
-В момент коммита Вам необходимо согласовать состояние объектов в памяти с данными на диске, и при этом сохранить все ссылки на них.
-Смотрите так же эту `статью <http://techspot.zzzeek.org/2012/11/14/pycon-canada-the-sqlalchemy-session-in-depth/>`__ и `презентацию <http://techspot.zzzeek.org/files/2012/session.key.pdf>`__.
-Для гарантирования целостности данных, одной только подержки транзакций приложением недостаточно.
-Разумеется, это не критическое требование, однако без его выполнения невозможно полностью сокрыть источник данных в коде.
+\- `ACID`_. Good ORM takes care of that the object has always been consistent to the record of the DB.
 
-\- **Сокрытие источника**. Хороший ORM позволяет Вам позабыть о своем существовании, и обращаться с объектами моделей так, будто это обычные объекты.
-Он не будет раскрывать источник данных, требуя от Вас явного вызова метода для сохранения объектов.
-Не будет вынуждать Вас "перезагружать" объекты.
-Позволит легко подменить маппер, даже если Вы смените реляционную БД на нереляционную.
+Suppose, you have loaded the object to the memory, and then executed transaction commit.
+The object has a lot of references to it, but the object has been updated by a concurrent process.
+If you try to modify the object, the changes of the concurrent process will be lost.
+When you are doing transaction commit, you have to synchronize the object to the record of the DB, and at the same time to keep alive all references to the object.
+See also this `article <http://techspot.zzzeek.org/2012/11/14/pycon-canada-the-sqlalchemy-session-in-depth/>`__ and `presentation <http://techspot.zzzeek.org/files/2012/session.key.pdf>`__.
+To ensure the integrity of data, the transaction support alone is not enough for the application.
+Of course, this is not a critical requirement, but without it you can not completely hide the source of data in the code.
 
-Представьте, что Вы создали два новых объекта, из которых один ссылается на другой по внешнему ключу.
-Можете ли Вы создать между ними связь до того, как хотя бы один из них будет сохранен в БД и получит первичный ключ?
-Обновится ли значение внешнего ключа связанного объекта в тот момент когда первый объект будет сохранен и получит первичный ключ?
+\- **Hiding the data source**. A good ORM allows you to forget about its existence, and handle instances of models as if they were ordinary objects.
+It would not disclose the source of the data by requiring you to explicitly call the method to save the objects.
+It would not oblige you to "reload" objects.
+It makes it easy to replace the mapper, even if you change the relational database to non-relational.
 
-Хороший ORM предотвращает дедлоки, потому что сохраняет все объекты непосредственно перед коммитом, минимизируя интервал времени от первого сохранения до коммита.
-Кроме того, он позволит Вам влиять на порядок сохранения объектов, например, используя топологическую сортировку для предотвращения дедлоков.
+Imagine that you have created two new objects, one of which refers to another by foreign key.
+Can you create a link between them before at least one of them is stored in the database and received the primary key?
+Will the value of the foreign key of the associated object be updated when the first object is saved and the primary key is received?
+
+A good ORM prevents the deadlock, because it saves all objects just before the commit, minimizing the time interval from the first save to the commit.
+Also it allows you to influence the order of saving objects, for example, using topological sorting to prevent the deadlock.
 
 
 .. _storm-orm-advantages-en:
 
-О достоинствах
-==============
+Advantages
+==========
 
-Несмотря на номер релиза, - код достаточно стабилен.
-Удачная архитектура в сочетании с `принципом KISS <KISS_>`_ создает ложную иллюзию, что Storm ORM якобы не развивается.
-Это не так.
+Despite the release number, the code is fairly stable.
+Successful architecture in combination with the KISS_ principle creates a false illusion that the Storm ORM is allegedly not developing.
+This is not true.
 На самом деле, там просто нечего развивать.
 За три года копания в исходниках Storm ORM я не нашел ничего, что можно было бы улучшить.
 Расширить - да, можно.
