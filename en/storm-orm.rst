@@ -7,7 +7,7 @@
 
 
 Why I prefer Storm ORM
-==========================
+======================
 
 For enterprise aplications I began to use `KISS-style`_ `Storm ORM`_, let me explaine why.
 
@@ -62,7 +62,7 @@ It would not disclose the source of the data by requiring you to explicitly call
 It would not oblige you to "reload" objects.
 It makes it easy to replace the mapper, even if you change the relational database to non-relational.
 
-Imagine that you have created two new objects, one of which refers to another by foreign key.
+Imagine that you have created two new objects, one of which refers to another with foreign key.
 Can you create a link between them before at least one of them is stored in the database and received the primary key?
 Will the value of the foreign key of the associated object be updated when the first object is saved and the primary key is received?
 
@@ -119,88 +119,89 @@ Instead, it simply wraps the value in the wrapper (adapter) - the Variable class
 
 It allows you:
 
-- Контролировать политику присваивания и доступа.
-- Оптимизировать ресурсы (конвертация не производится до фактической востребованности).
-- Сохранять первоначальное значение атрибута, следить за его изменениями, реализовывать откат (rollback) на уровне объектов языка программирования.
-- Наблюдать за изменениями значения (обсервер) и обновлять связанные объекты.
-- Синхронизировать значение объекта со значением на диске.
-- Предотвратить присваивание невалидного значения. Что, кроме следования базовым принципам ООП, так же устраняет проблему "G22: Make Logical Dependencies Physical" [#fncc]_ и "G31: Hidden Temporal Couplings" [#fncc]_, которая обычно заключается в сохранении объекта с забыванием его провалидировать.
-- Валидировать значение только при присваивании его извне, но не из БД. Это исключает проблему невозможности пересохранения данных в случае изменения правил валидации.
-- Конвертировать значение в нужное представление в зависимости от контекста использования (Python или DB).
+- Control the assignment and access policy.
+- Optimize resource consumption (call-by-need lazy conversion which delays the conversion until its value is needed).
+- Keep the initial value of each attribute, observe its changes, perform rollback at the object level.
+- Watch for value changes (the observer) and update related objects.
+- Synchronize the value of the object with the value of the database record.
+- Implement "Defensive Programming" and prevent assignment of invalid value. You are not able to forget validation before to save anymore. This solves "G22: Make Logical Dependencies Physical" [#fncc]_ and "G31: Hidden Temporal Couplings" [#fncc]_.
+- Validate the value only when assigning it from the outside, but not from the database. This eliminates the problem of the impossibility of re-saving the objects when validation rules are changed.
+- Convert the value to the required representation, depending on the context of the usage (Python or DB).
 
-С последним, правда, тоже есть некоторые нюансы.
+The last one, however, has some nuances.
 
-Например, мы добавляем критерий выборки::
+For example, we add a selection criterion::
 
     (GeoObjectModel.point == author_instance.location)
 
-Конвертор какого атрибута здесь должен работать, ``GeoObjectModel.point`` или ``AuthorModel.location``?
-Очевидно что ``AuthorModel.location``, так как именно он предоставляет значение.
-Но работать будет ``GeoObjectModel.point``.
-Что если эти конверторы имеют различное поведение?
-И что произойдет если мы передадим такой критерий: ``Func('SOME_FUNCTION_NAME', AuthorModel.location)``?
+Converter of which attribute should be used here, ``GeoObjectModel.point`` or ``AuthorModel.location``?
+Obviously ``AuthorModel.location`` because it provides value.
+But here converter of ``GeoObjectModel.point`` will be used.
+What happens if these converters have different behavior?
+And what happens if we pass such a criterion: ``Func('SOME_FUNCTION_NAME', AuthorModel.location)``?
 
-Справедливости ради нужно сказать, что Storm ORM сделал большой прорыв по упорядочиванию данного аспекта, по сравнению большинством других ORM, и заложил правильный фундамент для построения идеальной конвертации.
-При соблюдении несложных правил конверторы будут работать идеально правильно (для этого в критерии выборки нужно передавать `инстанцию Variable() <http://bazaar.launchpad.net/~storm/storm/trunk/view/477/storm/store.py#L597>`__, т.е. "завернутое" значение).
-В то время как во многих других ORM такая возможность технически отсутствует из-за того, что конвертации делаются в момент создания объекта.
-Иными словами, там конверторы фактически привязываются к типу значения а не к конкретному атрибуту (как это декларируется), что делает их практически бесполезными, учитывая что эти функции итак `возложены на коннектор <http://initd.org/psycopg/docs/advanced.html#adapting-new-python-types-to-sql-syntax>`__.
+To be fair, Storm ORM made a major breakthrough in ordering the conversion issue, compared to most other ORMs, and created the right grounding to create the ideal conversion.
+If you follow simple rules, converters will work perfectly correctly (to achieve this, you must pass the `Variable() instance  <http://bazaar.launchpad.net/~storm/storm/trunk/view/477/storm/store.py#L597>`__ to the selection criteria, i.e. wrapped value).
+Many other ORMs do not have this technical capability at all, because they perform the conversion when the object is created.
+In other words, the converters of other ORMs are actually tied to the type of values and not to a particular attribute (as declared), which makes them virtually useless, because this `responsibility already is imposed for the connector <http://initd.org/psycopg/docs/advanced.html#adapting-new-python-types-to-sql-syntax>`__.
 
-Storm ORM не навязывает способ получения коннекта.
-Вы `легко можете <http://bazaar.launchpad.net/~storm/storm/trunk/view/477/storm/database.py#L502>`__ расшарить коннект между двумя ORM или использовать какой-то `особый способ <http://eventlet.net/doc/modules/db_pool.html>`__ получения коннекта.
+Storm ORM does not impose you a way to obtain a connection.
+You `can easily <http://bazaar.launchpad.net/~storm/storm/trunk/view/477/storm/database.py#L502>`__ share a connection between two ORMs or use `some special way <http://eventlet.net/doc/modules/db_pool.html>`__ of getting a connection.
 
-Storm ORM `не обязывает <https://lists.ubuntu.com/archives/storm/2009-June/001010.html>`__ декларировать схему БД в коде.
-Это соответствует принципу `DRY`_, - схема уже есть в БД.
-Кроме того, полный контроль над схемой БД `легче всего достигнуть средствами самой БД <https://blogs.gnome.org/jamesh/2007/09/28/orm-schema-generation/>`__.
-Обычно в крупных проектах, использующих репликацию и шардинг, используются собственные инструменты для контроля за схемой.
-Как вариант, можно воспользоваться поставляемым вместе со Storm ORM пакетом `storm.schema <http://bazaar.launchpad.net/~storm/storm/trunk/files/477/storm/schema/>`__.
-Вместе с этим, в Storm ORM не предусмотрена и автоматическая подгрузка незадекларированных свойств модели из БД.
-При желании это несложно реализовать, но обращаться к БД придется на стадии инициализации кода, а неявность кода затруднит его визуальное восприятие (просмотра исходников будет недостаточно для получения представления о моделях).
-Кроме того, различные типы данных в Python могут иметь один и тот же тип данных в БД, а значит, данных БД для полноценной декларации классов недостаточно.
+Storm ORM `does not oblige <https://lists.ubuntu.com/archives/storm/2009-June/001010.html>`__ to declare a database schema in the code.
+This corresponds to the `DRY`_ principle, since the schema already exists in the database.
+Also, complete control of the database schema `can be achieved easier by the facilities of the database <https://blogs.gnome.org/jamesh/2007/09/28/orm-schema-generation/>`__.
+Usually large projects, which use replication and sharding, use own tools to control the database schema.
+You also able to use package `storm.schema <http://bazaar.launchpad.net/~storm/storm/trunk/files/477/storm/schema/>`__ which is the part of Storm ORM.
+`Unlike to SQLAlchemy <http://docs.sqlalchemy.org/en/rel_1_1/core/reflection.html>`__, Storm ORM does not provide automatical loading of undeclared properties of model from the DB.
+It can be implemented easily, but there is two points. First, you have to perform DB-query at the level of initialization of the code of module. Second, it's not enough anymore to browse source code to understand the schema of model.
+Also, different types of Python can use the same data-type of DB, thus, DB schema is not enough to deplare model classes correctly.
 
-Другие достоинства хорошо отражены в `Tutorial <https://storm.canonical.com/Tutorial>`__ и в `Manual <https://storm.canonical.com/Manual>`__
+Other advanteges you can see at the `Tutorial <https://storm.canonical.com/Tutorial>`__ and `Manual <https://storm.canonical.com/Manual>`__
 
 
 .. _about-sqlalchemy-en:
 
-По поводу SQLAlchemy
-====================
+About SQLAlchemy
+================
 
-В общем-то любой `ORM хорош <http://aosabook.org/en/sqlalchemy.html>`__, если он `реализует принципы <http://techspot.zzzeek.org/2012/02/07/patterns-implemented-by-sqlalchemy/>`__ нашумевшей книги «Patterns of Enterprise Application Architecture» [#fnpoeaa]_.
-Storm ORM контрастирует своей простотой на фоне SQLAlchemy так же, как VIM на фоне Emacs, или jQuery на фоне Dojo.
-Идеологически между ними много общего, я бы даже сказал, что Storm ORM - это упрощенная версия SQLAlchemy.
-Исходники Storm ORM изучаются быстрее, нежели вводный tutorial SQLAlchemy.
-Раширяется и адаптируется Storm ORM быстрее, чем приходит понимание того, как это можно сделать под SQLAlchemy.
+Any `ORM could be good <http://aosabook.org/en/sqlalchemy.html>`__, if it `implements principles <http://techspot.zzzeek.org/2012/02/07/patterns-implemented-by-sqlalchemy/>`__ of popular book «Patterns of Enterprise Application Architecture» [#fnpoeaa]_.
+Storm ORM contrasts with simplicity against the background of SQLAlchemy, just like VIM on the background of Emacs, or jQuery on the background of Dojo.
+Ideologically, they have a lot in common, I would say that the Storm ORM is a simplified version of SQLAlchemy.
+You would have studied the source code of Storm ORM much faster than introduction of tutorial of SQLAlchemy.
+You can extend and adapt Storm ORM for your requirements much faster than you would have understood the way to implement it for SQLAlchemy.
 
-Но существует грань, которая делает SQLAlchemy более предпочтительной, чем Storm ORM.
-Если функционал Storm ORM Вас устраивает, Вы "владеете пером", и располагаете временем на адаптацию библиотеки под свои нужды, то Storm ORM выглядит привлекательней.
-В противном случае, SQLAlchemy становится предпочтительней, даже невзирая на уровень ее сложности, поскольку многие решения предоставляет "из коробки".
+But there is a border that makes SQLAlchemy more preferable than Storm ORM.
+If the functionality of Storm ORM suits you, you "wield a pen", and have the time to adapt the library to your needs, then Storm ORM looks more attractive.
+Otherwise, SQLAlchemy becomes preferable, even despite the level of complexity, because it provides a lot of solutions "out of the box".
 
 
 .. _storm-orm-disadvantages-en:
 
-О недостатках
+Disadvantages
 =============
 
-В моей практике было три случая, когда в Storm ORM требовалось "допиливать" то, что SQLAlchemy (или ее сообщество) предоставляет в готовом виде.
+Еhere were three cases in my practice, when I had to add to Storm ORM a few features, which already are implemented by SQLAlchemy (or its community).
 
-1. `Массовая вставка объектов <http://docs.sqlalchemy.org/en/rel_1_1/orm/session_api.html#sqlalchemy.orm.session.Session.bulk_save_objects>`__, причем, с условием ON DUPLICATE KEY UPDATE.
-2. Адаптация `SQL Builder под интерфейс Django ORM <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
-3. Поддержка паттерна `Concrete Table Inheritance <http://docs.sqlalchemy.org/en/rel_1_1/orm/extensions/declarative/inheritance.html#concrete-table-inheritance>`__
+1. `Bulk inserting of objects <http://docs.sqlalchemy.org/en/rel_1_1/orm/session_api.html#sqlalchemy.orm.session.Session.bulk_save_objects>`__, moreover, using the clause ON DUPLICATE KEY UPDATE.
+2. Adaptation of `SQL Builder for interface of Django ORM <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
+3. Support the pattern `Concrete Table Inheritance <http://docs.sqlalchemy.org/en/rel_1_1/orm/extensions/declarative/inheritance.html#concrete-table-inheritance>`__
 
-В Storm ORM `нет блокировки потоков <https://bugs.launchpad.net/storm/+bug/1412845>`__ при ленивой модификации критически важных глобальных метаданных.
-Это не проблема, и легко решается (достаточно исполнить их сразу, под блокировкой).
-Но об этом нужно знать, иначе в условиях высоко-конкурентных потоков можно завалить прод.
+Storm ORM `does not use thread locking <https://bugs.launchpad.net/storm/+bug/1412845>`__ for lazy modification of critical global metadata.
+This is not a problem, and can be easily solved (enough to fulfill them immediately, under the lock).
+But you have to know this, otherwise your server will have gone down for highly concurrent threads.
 
-Расширять функциональность Storm ORM все-таки придется.
-Возможности SQL-билдера нужно расширять.
-Утилита prefetch_related() для OneToMany() тоже не помешала бы.
-Возможно, понадобится реализовать каскадное удаление средствами ORM, а не базы данных.
-И добавить сериализатор объектов.
+Most likely, you would have to extend Storm ORM.
+The possibilities of SQL-builder should be extended.
+Utils prefetch_related() for OneToMany() would be useful.
+Probably, you may need to implement a cascade deletion using ORM, not a database.
+And implement an object serializer.
+Storm ORM does not implement the topological sort, but allows it to easily implement.
 
-То что класс Store (по сути паттерн Repository) совмещает в себе обязанности маппера, не очень удобно.
-Например, это создает проблему в реализации паттерна `Class Table Inheritance`_.
-Сами разработчики Storm ORM советуют `заменить наследование композицией <https://storm.canonical.com/Infoheritance>`__ (впрочем, postgresql сам `поддерживает наследование <postgresql inheritance_>`__ (`DDL <postgresql inheritance DDL_>`__)).
-Отсутствие выделенного класса для маппера вынуждает так же загромождать доменную модель `служебной логикой <https://storm.canonical.com/Manual#A__storm_pre_flush__>`__.
+Class Store (which is the implementation of pattern Repository) combines also the responsibility of DataMapper_ and it's not so well.
+For example, this creates a problem for implementing the pattern `Class Table Inheritance`_.
+Storm ORM core developers advice `to replace Inheritance with Delegation <https://storm.canonical.com/Infoheritance>`__ (However, postgresql `supports inheritance <postgresql inheritance_>`__ itself (`DDL <postgresql inheritance DDL_>`__)).
+The lack of a dedicated class for DataMapper forces you to clutter the domain model with `service logic <https://storm.canonical.com/Manual#A__storm_pre_flush__>`__.
 
 .. Дескрипторы связей Storm ORM запрашивают store у объекта.
    Таким образом, если объект приаттачен к фиктивному стору, то и связи он будет искать в фиктивном сторе.
@@ -458,7 +459,6 @@ SQL-код, даже если он в Python-файлах, все равно о�
 В чем отличие между структурой данных и объектом? В Python это отличие сугубо условное.
 Объекты используют представление данных на абстрактном уровне.
 
-    "Объекты скрывают свои данные за абстракциями и предоставляют функции, работающие с этими данными. Структуры данных раскрывают свои данные и не имеют осмысленных функций."
     "Objects hide their data behind abstractions and expose functions that operate on that data. Data structure expose their data and have no meaningful functions."
     («Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_)
 
@@ -477,10 +477,6 @@ SQL-код, даже если он в Python-файлах, все равно о�
 Вопросы реализации не должны диктовать бизнес-логику.
 Вопросы хранения информации должны удовлетворять нашим требованиям, а не указывать нам требования.
 Если бы это было не так, то объектно-ориентированное программирование до сих пор не возникло бы.
-
-    "Весь смысл объектов в том, что они позволяют хранить данные вместе с процедурами их обработки.
-    Классический пример дурного запаха – метод, который больше интересуется не тем классом, в котором он находится, а каким то другим.
-    Чаще всего предметом зависти являются данные."
 
     "The whole point of objects is that they are a technique to package data with the processes used
     on that data. A classic smell is a method that seems more interested in a class other than the one
@@ -515,7 +511,6 @@ SQL-код, даже если он в Python-файлах, все равно о�
 Объект поведения начинает "завидовать" объекту данных "G14: Feature Envy" [#fncc]_, ("Feature Envy" [#fnr]_), обретая признаки "F2: Output Arguments" [#fncc]_, "Convert Procedural Design to Objects" [#fnr]_,  "Primitive Obsession" [#fnr]_ и "Data Class" [#fnr]_.
 Рассуждения M.Fowler по этому поводу в статье "`Anemic Domain Model`_".
 
-    "Многочисленность классов и методов иногда является результатом бессмысленного догматизма. В качестве примера можно привести стандарт кодирования, который требует создания интерфейса для каждого без исключения класса. Или разработчиков, настаивающих, что поля данных и поведение всегда должны быть разделены на классы данных и классы поведения. Избегайте подобных догм, а в своей работе руководствуйтесь более прагматичным подходом."
     "High class and method counts are sometimes the result of pointless dogmatism. Consider, for example, a coding standard that insists on creating an interface for each and every class. Or consider developers who insist that fields and behavior must always be separated into data classes and behavior classes. Such dogma should be resisted and a more pragmatic approach adopted."
     («Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_)
 
@@ -523,7 +518,9 @@ SQL-код, даже если он в Python-файлах, все равно о�
 Из всех ORM, что я встречал в своей практике (не только на Python), поддержка ACID в Storm ORM и SQLAlchemy реализована наилучшим образом.
 Надо сказать, в подавляющем большинстве существующих ORM такие попытки даже не предпринимаются.
 
-Рассуждения M.Fowler на этот счет в статье "`Orm Hate`_".
+Martin Fowler reasoning on this point in the article "`Orm Hate`_".
+
+Article "`Dance you Imps! <https://8thlight.com/blog/uncle-bob/2013/10/01/Dance-You-Imps.html>`__" by Robert Martin.
 
 В целом у меня отношение к ORM неоднозначное.
 Слишком много существующих ORM создает больше "запахов" в коде, чем устраняет.
