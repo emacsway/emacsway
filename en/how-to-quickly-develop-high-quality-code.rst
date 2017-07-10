@@ -117,7 +117,7 @@ Thus, each developer in the team MUST be a senior developer.
 The best way to achieve it is the XP by Kent Beck.
 
 Experience sharing is the rule №1 for the high-skilled team.
-If your team still has a junior developer after a few weeks, you are a bad manager.
+If your team still has a junior developer after a few weeks, your team needs a better manager.
 
 
 **The second myth**. We don't have time to write high-quality code, because we have hot deadline.
