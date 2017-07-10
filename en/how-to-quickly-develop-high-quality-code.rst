@@ -21,7 +21,7 @@ There are several myths:
 The first myth. Horizontal stratification of team.
 --------------------------------------------------
 
-There is an opinion that developers should be separated into three layers: junior, middle and senior.
+There is an opinion that a team should be broken by three layers: junior, middle and senior.
 
 The truth is that it's enough to have at least one weak developer in the team to lose a lot of time for the whole team.
 
