@@ -10,10 +10,18 @@ How to quickly develop high-quality code. Team work.
 
 This article is about how to write high-quality code quickly.
 
+.. contents:: Contents
+
+Myths
+=====
+
 There are several myths:
 
 
-**The first myth**. Developers should be separated into three categories: junior, middle and senior.
+The first myth. Horizontal stratification of team.
+--------------------------------------------------
+
+There is an opinion that developers should be separated into three layers: junior, middle and senior.
 
 The truth is that it's enough to have at least one weak developer in the team to lose a lot of time for the whole team.
 
@@ -120,7 +128,10 @@ Experience sharing is the rule №1 for the high-skilled team.
 If your team still has a junior developer after a few weeks, your team needs a better manager.
 
 
-**The second myth**. We don't have time to write high-quality code, because we have hot deadline.
+The second myth. Quality code is not combined with hot deadline.
+----------------------------------------------------------------
+
+Team doesn't have time to write high-quality code, because they have a hot deadline.
 
 In reality you have the hot deadline because you have the unpredictable codebase which requires a lot of your time.
 You spend a lot of time to try to understand messy mishmash of a code.
@@ -199,7 +210,10 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
 There is only one way to develop a software quickly: to do it in the right way for the first time.
 
 
-**The third myth**. Pair programming reduces the velocity of development.
+The third myth. Pair programming reduces the velocity of development.
+---------------------------------------------------------------------
+
+There is an opinion that pair programming reduces the velocity of development.
 
     Studies at the Software Engineering
     Institute have found that developers insert an average of 1 to 3
@@ -305,12 +319,15 @@ There is only one way to develop a software quickly: to do it in the right way f
     reduction is desired. Some developers prefer working in pairs to working solo. [#fncodec]_
 
 
-**The fourth myth**. Theory and practice are two different things.
+The fourth myth. Theory and practice are two different things.
+--------------------------------------------------------------
+
+There is an opinion that theory and practice are two different things.
 
 In reality the theory is the research of the practice.
 Do you want to solder own processor, or write own assembler to create own website?
 You use the collective knowledges instead of it.
-Your life is to short to reproduce evolution of IT-industry yourself.
+The life of a human is to short to reproduce the evolutional way of the IT-industry in isolation.
 Code development is too complicated science today.
 Several outstanding developers have dedicated their lives to collecting and systematizing collective knowledges.
 They wrote books with the collectives knowledge for you.
@@ -328,12 +345,44 @@ There is 5 fundamental books which must be read by each professional:
 I recommend to read the books in the given order.
 
 
+Advices
+=======
+
+Use catalog of refactorings.
+----------------------------
+
+Don't spend a lot of time for code reviews.
+You can simple use link to certain method of refactoring by using `Catalog of Refactorings`_.
+Pay attention, each method of refactoring has the page number of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring] by Martin Fowler, where any developer can find the comprehensive information for the method with examples.
+
+
+Use catalogs of code smells.
+----------------------------
+
+Do you want to avoid a wars of opinions and save a lot of team's time?
+Ground your arguments on knowledges, instead of opinions.
+Use catalogs of Code Smells.
+There is three most frequently used catalogs:
+
+- Chapter 17: «Smells and Heuristics» of the book «Clean Code: A Handbook of Agile Software Craftsmanship» [#fnccode] Robert C. Martin
+- Chapter 3. «Bad Smells in Code» of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring] by Martin Fowler
+- `Code Smell`_
+- «Refactoring To Patterns» [#fnrtp]_
+
+
 .. rubric:: Footnotes
 
 .. [#fnccode] «`Clean Code: A Handbook of Agile Software Craftsmanship`_» `Robert C. Martin`_
 .. [#fncodec] «`Code Complete`_» Steve McConnell
+.. [#fnrefactoring] «`Refactoring: Improving the Design of Existing Code`_» by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
+.. [#fnrtp] «`Refactoring To Patterns`_» Joshua Kerievsky
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
 .. _Robert C. Martin: http://informit.com/martinseries
 .. _Code Complete: http://www.informit.com/store/code-complete-9780735619678
 .. _Steve McConnell: http://www.informit.com/authors/bio/754ffba3-b7b2-45ef-be37-3d9995e8e409
+.. _Refactoring\: Improving the Design of Existing Code: https://martinfowler.com/books/refactoring.html
+.. _Refactoring To Patterns: http://martinfowler.com/books/r2p.html
+.. _Catalog of Refactorings: http://www.refactoring.com/catalog/
+.. _Code Smell: http://c2.com/cgi/wiki?CodeSmell
+.. _Martin Fowler: https://martinfowler.com/aboutMe.html
