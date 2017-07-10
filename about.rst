@@ -76,6 +76,7 @@ Articles
 --------
 
 * «:doc:`About problems of cache invalidation. Cache tagging. <en/cache-dependencies>`»
+* «:doc:`How to quickly develop high-quality code. Team work. <en/how-to-quickly-develop-high-quality-code>`»
 * «:doc:`О проблемах инвалидации кэша. Тегирование кэша. <ru/cache-dependencies>`»
 * «:doc:`Почему я выбираю Storm ORM. <ru/storm-orm>`»
 
