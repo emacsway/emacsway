@@ -126,7 +126,7 @@ In reality you have the hot deadline because you have the unpredictable codebase
 You spend a lot of time to try to understand messy mishmash of a code.
 Sometimes you are able to understand the code only with debugger.
 Your code has a poor test coverage, therefore you spend a lot of time for bugfixes.
-Sometime you are not able to implement a some feature due to poor design, but you also can't to refactor the code because of the poor test coverage.
+Sometimes you are not able to implement a some feature due to poor design, but you also can't to refactor the code because of the poor test coverage.
 Your code has a lot of duplicates which are the cause of a lot of bugs.
 
     The General Principle of Software Quality is
