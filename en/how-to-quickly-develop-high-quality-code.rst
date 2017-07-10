@@ -114,7 +114,7 @@ When developer writes code, he 91% of the time reads code, and only 9% of time h
     members, consider whether the class should be decomposed into multiple smaller
     classes (Riel 1996). [#fncodec]_
 
-Thus, when one developer writes an unreadable code for 9% of his time, he slows down the development velocity of the whole team by 91%.
+Thus, when one developer writes an unreadable code for 9% of his time, this code slows down the development velocity of the whole team by 91%.
 The code is written once, but is read incommensurably many times in the development process.
 
 The emphasis on "fast writing" code actually leads to a reduction in the development velocity in geometric progression. And the emphasis on "readability" of code leads to an increase in the development velocity, also in an geometric progression.
@@ -348,24 +348,24 @@ I recommend to read the books in the given order.
 Advices
 =======
 
-Use catalog of refactorings.
-----------------------------
+Use catalog of refactorings
+---------------------------
 
 Don't spend a lot of time for code reviews.
 You can simple use link to certain method of refactoring by using `Catalog of Refactorings`_.
-Pay attention, each method of refactoring has the page number of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring] by Martin Fowler, where any developer can find the comprehensive information for the method with examples.
+Pay attention, each method of refactoring has the page number of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_ by Martin Fowler, where any developer can find the comprehensive information for the method with examples.
 
 
-Use catalogs of code smells.
-----------------------------
+Use catalogs of code smells
+---------------------------
 
 Do you want to avoid a wars of opinions and save a lot of team's time?
-Ground your arguments on knowledges, instead of opinions.
+Ground your arguments on knowledge, instead of opinion, when you do code review.
 Use catalogs of Code Smells.
-There is three most frequently used catalogs:
+There is a few of most frequently used catalogs:
 
-- Chapter 17: «Smells and Heuristics» of the book «Clean Code: A Handbook of Agile Software Craftsmanship» [#fnccode] Robert C. Martin
-- Chapter 3. «Bad Smells in Code» of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring] by Martin Fowler
+- Chapter 17: «Smells and Heuristics» of the book «Clean Code: A Handbook of Agile Software Craftsmanship» [#fnccode]_ Robert C. Martin
+- Chapter 3. «Bad Smells in Code» of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_ by Martin Fowler
 - `Code Smell`_
 - «Refactoring To Patterns» [#fnrtp]_
 
