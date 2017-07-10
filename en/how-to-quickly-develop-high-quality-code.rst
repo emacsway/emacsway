@@ -119,7 +119,7 @@ The code is written once, but is read incommensurably many times in the developm
 
 The emphasis on "fast writing" code actually leads to a reduction in the development velocity in geometric progression. And the emphasis on "readability" of code leads to an increase in the development velocity, also in an geometric progression.
 
-If code is not readable, has a bad code navigation, a bad decomposition, a lot of code smells, hight coupling, low cohesion, violates SRP, OC principles, has poor test coverage, doesn't uses type hinting and doesn't allow to use automatically refactoring, this code slows rate of development for 91% of time of the whole team.
+If code is not readable, has a bad code navigation, a bad decomposition, a lot of code smells, hight coupling, low cohesion, violates SRP, OC principles, has poor test coverage, doesn't uses type hinting and doesn't allow to use automated refactoring, this code slows rate of development for 91% of time of the whole team.
 
 Thus, each developer in the team MUST be a senior developer.
 The best way to achieve it is the XP by Kent Beck.
@@ -368,6 +368,13 @@ There is a few of most frequently used catalogs:
 - Chapter 3. «Bad Smells in Code» of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_ by Martin Fowler
 - `Code Smell`_
 - «Refactoring To Patterns» [#fnrtp]_
+
+
+Use design by refactoring
+-------------------------
+
+More info on topic of "Design by refactoring" you can find in the chapter «Refactoring and Design» of the book «Refactoring: Improving the Design of Existing Code» [#fnrefactoring]_ by Martin Fowler.
+This approach is unbelievable effective when you use Type Hinting declaration (more info `here <https://github.com/python-rope/rope/blob/master/docs/overview.rst#type-hinting>`__, `here <http://jedi.readthedocs.io/en/latest/docs/features.html#type-hinting>`__ and `here <https://www.jetbrains.com/help/pycharm/type-hinting-in-pycharm.html>`__) with a tool for automated refactoring (`rope <https://github.com/python-rope/rope>`_, `refactoring tool of PyCharm <https://www.jetbrains.com/help/pycharm/refactoring-source-code.html>`_).
 
 
 .. rubric:: Footnotes
