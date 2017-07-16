@@ -29,7 +29,8 @@ The truth is that it's enough to have at least one weak developer in the team to
 
 Do you know the Primary Technical Imperative of software development?
 
-    Managing complexity is the most important technical topic in software development. In my view, it's so important that Software's Primary Technical Imperative has to be managing complexity. [#fncodec]_
+    Managing complexity is the most important technical topic in software development. In my view, it's so important that Software's Primary Technical Imperative has to be managing complexity.
+    («Code Complete» [#fncodec]_)
 
 When developer writes code, he 91% of the time reads code, and only 9% of time he types text from keyboard.
 
@@ -69,7 +70,8 @@ When developer writes code, he 91% of the time reads code, and only 9% of time h
     rounding code. The code you are trying to write today will be hard or easy to write
     depending on how hard or easy the surrounding code is to read. So if you want to go fast,
     if you want to get done quickly, if you want your code to be easy to write, make it easy to
-    read. [#fnccode]_
+    read.
+    («Clean Code: A Handbook of Agile Software Craftsmanship» [#fnccode]_)
 
 ..
 
@@ -96,7 +98,8 @@ When developer writes code, he 91% of the time reads code, and only 9% of time h
 
     The bottom line is that programmers who compensate for inherent human limitations
     write code that's easier for themselves and others to understand and that has fewer
-    errors." [#fncodec]_
+    errors."
+    («Code Complete» [#fncodec]_)
 
 ..
 
@@ -104,7 +107,8 @@ When developer writes code, he 91% of the time reads code, and only 9% of time h
     aided by a design focus on simplicity.
     Simplicity is achieved in two general ways: minimizing the amount of essential
     complexity that anyone's brain has to deal with at any one time, and keeping
-    accidental complexity from proliferating needlessly. [#fncodec]_
+    accidental complexity from proliferating needlessly.
+    («Code Complete» [#fncodec]_)
 
 ..
 
@@ -112,7 +116,8 @@ When developer writes code, he 91% of the time reads code, and only 9% of time h
     "7±2" has been found to be a number of discrete items a person can remember while
     performing other tasks (Miller 1956). If a class contains more than about seven data
     members, consider whether the class should be decomposed into multiple smaller
-    classes (Riel 1996). [#fncodec]_
+    classes (Riel 1996).
+    («Code Complete» [#fncodec]_)
 
 Thus, when one developer writes an unreadable code for 9% of his time, this code slows down the development velocity of the whole team by 91%.
 The code is written once, but is read incommensurably many times in the development process.
@@ -189,7 +194,8 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
     The two slowest groups took about five times as long to achieve roughly the same
     defect rate as the fastest group. It's not necessarily the case that writing software without
     defects takes more time than writing software with defects. As the graph shows, it can
-    take less. [#fncodec]_
+    take less.
+    («Code Complete» [#fncodec]_)
 
 ..
 
@@ -205,7 +211,8 @@ Your code has a lot of duplicates which are the cause of a lot of bugs.
     fully checked-out code is closer to 250–300 lines per work-month, including all
     noncoding overhead (Cusumano et al 2003). The cost savings and productivity come
     from the fact that virtually no time is devoted to debugging on TSP or cleanroom
-    projects. No time spent on debugging? That is truly a worthy goal! [#fncodec]_
+    projects. No time spent on debugging? That is truly a worthy goal!
+    («Code Complete» [#fncodec]_)
 
 There is only one way to develop a software quickly: to do it in the right way for the first time.
 
@@ -219,7 +226,8 @@ There is an opinion that pair programming reduces the velocity of development.
     Institute have found that developers insert an average of 1 to 3
     defects per hour into their designs and 5 to 8 defects per hour into
     code (Humphrey 1997), so attacking these blind spots is a key to
-    effective construction. [#fncodec]_
+    effective construction.
+    («Code Complete» [#fncodec]_)
 
 ..
 
@@ -241,7 +249,8 @@ There is an opinion that pair programming reduces the velocity of development.
     but the reduction in development time appears to be on the order of
     45 percent, which in some cases may be a decisive advantage over
     solo development (Boehm and Turner 2004), although not over
-    inspections which have produced similar results. [#fncodec]_
+    inspections which have produced similar results.
+    («Code Complete» [#fncodec]_)
 
 ..
 
@@ -259,7 +268,8 @@ There is an opinion that pair programming reduces the velocity of development.
     that when people know their work will be reviewed, they scrutinize
     it more carefully. Thus, even when testing is done effectively,
     reviews or other kinds of collaboration are needed as part of a
-    comprehensive quality program. [#fncodec]_
+    comprehensive quality program.
+    («Code Complete» [#fncodec]_)
 
 ..
 
@@ -282,7 +292,8 @@ There is an opinion that pair programming reduces the velocity of development.
     opportunity for cultivating quality improvements in the future as much as in the present.
 
     One team that used formal inspections reported that inspections quickly brought all the
-    developers up to the level of the best developers (Tackett and Van Doren 1999). [#fncodec]_
+    developers up to the level of the best developers (Tackett and Van Doren 1999).
+    («Code Complete» [#fncodec]_)
 
 ..
 
@@ -301,7 +312,8 @@ There is an opinion that pair programming reduces the velocity of development.
     found that programmers don't need to pair up formally to achieve good code coverage.
     Over time we achieve cross-coverage through a combination of formal and informal
     technical reviews, pair programming when needed, and rotation of defectcorrection
-    assignments. [#fncodec]_
+    assignments.
+    («Code Complete» [#fncodec]_)
 
 ..
 
@@ -310,13 +322,16 @@ There is an opinion that pair programming reduces the velocity of development.
     - It holds up better under stress than solo development. Pairs encourage each other to keep code quality high even when there's pressure to write quick and dirty code.
     - It improves code quality. The readability and understandability of the code tends to rise to the level of the best programmer on the team.
     - It shortens schedules. Pairs tend to write code faster and with fewer errors. The project team spends less time at the end of the project correcting defects.
-    - It produces all the other general benefits of collaborative construction, including disseminating corporate culture, mentoring junior programmers, and fostering collective ownership. [#fncodec]_
+    - It produces all the other general benefits of collaborative construction, including disseminating corporate culture, mentoring junior programmers, and fostering collective ownership.
+
+    («Code Complete» [#fncodec]_)
 
 ..
 
     Pair programming typically costs about the same as inspections and produces
     similar quality code. Pair programming is especially valuable when schedule
-    reduction is desired. Some developers prefer working in pairs to working solo. [#fncodec]_
+    reduction is desired. Some developers prefer working in pairs to working solo.
+    («Code Complete» [#fncodec]_)
 
 
 The fourth myth. Theory and practice are two different things.
