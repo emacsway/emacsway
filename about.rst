@@ -75,8 +75,14 @@ Open Source Projects
 Articles
 --------
 
+Articles in English:
+
 * «:doc:`About problems of cache invalidation. Cache tagging. <en/cache-dependencies>`»
 * «:doc:`How to quickly develop high-quality code. Team work. <en/how-to-quickly-develop-high-quality-code>`»
+
+Articles in Russian:
+
+* «:doc:`Проектирование Сервисного Слоя. <ru/service-layer>`»
 * «:doc:`О проблемах инвалидации кэша. Тегирование кэша. <ru/cache-dependencies>`»
 * «:doc:`Почему я выбираю Storm ORM. <ru/storm-orm>`»
 
