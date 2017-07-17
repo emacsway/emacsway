@@ -57,6 +57,7 @@ When developer writes code, he 91% of the time reads code, and only 9% of time h
     - He pauses.
     - He erases that code again!
     - He pops up another window and looks at a subclass. Is that function overridden?
+
     . . .
 
     You get the drift. Indeed, the ratio of time spent reading vs. writing is well over 10:1.
