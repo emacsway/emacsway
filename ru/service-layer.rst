@@ -246,6 +246,17 @@
 - https://github.com/zendframework/zf2-tutorial/blob/master/module/Album/src/Album/Model/AlbumTable.php
 
 
+Инверсия Управления
+===================
+
+Используйте инверсию управления, желательно в виде "Пассивного внедрения зависимостей" [#fnccode]_, `Dependency Injection`_ Principle (DIP).
+Одна из основных обязанностей Сервисного Слоя - это сокрытие источника данных.
+Для тестирования можно использовать фиктивный Сервис (`Service Stub`_).
+Этот же прием пожно использовать для параллельной разработки, когда реализация сервисного слоя еще не готова.
+Иногда бывает полезно подменить Сервис генератором фэковых данных.
+В общем, пользы от сервисного слоя будет мало, если нет возможности его подменить (или подменить используемые им зависимости).
+
+
 Распространенная проблема Django-приложений
 ===========================================
 
@@ -484,6 +495,7 @@ Storm ORM/SQLAlchemy, реализуют аннотации более удач�
 
 .. _Coupling: http://wiki.c2.com/?CouplingAndCohesion
 .. _Cohesion: http://wiki.c2.com/?CouplingAndCohesion
+.. _Dependency Injection: https://martinfowler.com/articles/injection.html
 
 .. _ActiveRecord: http://www.martinfowler.com/eaaCatalog/activeRecord.html
 .. _DataMapper: http://martinfowler.com/eaaCatalog/dataMapper.html
@@ -491,6 +503,7 @@ Storm ORM/SQLAlchemy, реализуют аннотации более удач�
 .. _Remote Facade: https://www.martinfowler.com/eaaCatalog/remoteFacade.html
 .. _Repository: http://martinfowler.com/eaaCatalog/repository.html
 .. _Service Layer: https://martinfowler.com/eaaCatalog/serviceLayer.html
+.. _Service Stub: https://martinfowler.com/eaaCatalog/serviceStub.html
 
 .. _Extract Method: https://www.refactoring.com/catalog/extractMethod.html
 .. _Replace Method with Method Object: https://www.refactoring.com/catalog/replaceMethodWithMethodObject.html
