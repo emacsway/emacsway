@@ -84,11 +84,42 @@
 Это важно, поскольку из этого следует, что Сервисный Слой находится выше слоя уровня предметной области (domain logic), т.е. слоя объектов реального мира, который так же называет деловыми регламентами (business rules).
 Из этого так же следует и то, что объекты предметной области не должны быть осведомлены о наличии Сервисного Слоя.
 
-Следует обратить внимание на тот факт, что под термином "business rules" Eric Evans немного не то, что Martin Fowler понимает под термином "business logic".
+Следует обратить внимание на тот факт, что под термином "business rules" Eric Evans понимает логику предметной области:
+
+    User Interface (or Presentation Layer)
+        Responsible for showing information to the user and interpreting the user's
+        commands. The external actor might sometimes be another computer
+        system rather than a human user.
+    Application Layer
+        Defines the jobs the software is supposed to do and directs the expressive
+        domain objects to work out problems. The tasks this layer is responsible
+        for are meaningful to the business or necessary for interaction with the
+        application layers of other systems.
+        This layer is kept thin. It **does not contain business rules** or knowledge, but
+        only coordinates tasks and delegates work to collaborations of domain
+        objects in the next layer down. It does not have state reflecting the
+        business situation, but it can have state that reflects the progress of a task
+        for the user or the program.
+    Domain Layer (or Model Layer)
+        Responsible for representing concepts of the business, information about
+        the **business situation, and business rules**. State that reflects the business
+        situation is controlled and used here, even though the technical details of
+        storing it are delegated to the infrastructure. This layer is the heart of
+        business software.
+    Infrastructure Layer
+        Provides generic technical capabilities that support the higher layers:
+        message sending for the application, persistence for the domain, drawing
+        widgets for the UI, and so on. The infrastructure layer may also support
+        the pattern of interactions between the four layers through an
+        architectural framework.
+
+    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+
+В то время как Martin Fowler понимает под термином "business logic" не только логику предметной области.
 
     Подобно сценарию транзакции (Transaction Script, 133) и модели предметной области
     (Domain Model, 140), слой служб представляет собой типовое решение по организации
-    бизнес-логики. Многие проектировщики, и я в том числе, любят разносить бизнес-логику
+    бизнес-логики. Многие проектировщики, и я в том числе, любят разносить **бизнес-логику**
     по двум категориям: логика домена (domain logic) имеет дело только с предметной
     областью как таковой (примером могут служить стратегии вычисления зачтенного дохода
     по контракту), а логика приложения (application logic) описывает сферу ответственности
@@ -97,8 +128,8 @@
     "логикой рабочего процесса", несмотря на то что под "рабочим процессом" часто понимаются
     совершенно разные вещи.
 
-    Like Transaction Script (110) and Domain Model (116), Service Layer is a pattern for organizing business
-    logic. Many designers, including me, like to divide "business logic" into two kinds: "domain logic," having to
+    Like Transaction Script (110) and Domain Model (116), Service Layer is a pattern for organizing **business logic**.
+    Many designers, including me, like to divide "**business logic**" into two kinds: "domain logic," having to
     do purely with the problem domain (such as strategies for calculating revenue recognition on a contract), and
     "application logic," having to do with application responsibilities [Cockburn UC] (such as notifying contract
     administrators, and integrated applications, of revenue recognition calculations). Application logic is
@@ -106,7 +137,19 @@
     "workflow."
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-Кроме того, сервисный слой может выполнять следующие обязанности:
+Мы будем рассматривать под термином "business rules" (правила делового регламента) исключительно логику предметной области, тем более, что Martin Fowler на это косвенно указывает:
+
+    The problem came with domain logic: business rules, validations, calculations, and
+    the like.
+    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+
+..
+
+    Then there's the matter of what comes under the term "business logic." I find this a curious term because there
+    are few things that are less logical than business logic.
+    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+
+Кроме перечисленного выше, сервисный слой может выполнять следующие обязанности:
 
 - Компоновки атомарных операций (например, требуется одновременно сохранить данные в БД, редисе, и на фаловой системе, в рамках одной бизнес-транзации, или откатить все назад).
 - Сокрытия источника данных (здесь он дублирует функции паттерна `Repository`_) и может быть опущен, если нет других причин.
@@ -224,7 +267,7 @@
 Это не совсем верно.
 Маппер обслуживает Domain (объект предметной области), а сервисный слой обслуживает клиента (группу клиентов).
 Сервисный слой может манипулировать в рамках бизнес-транзакции или в интересах клиента несколькими маперами и другими сервисами.
-Поэтому методы сервисного слоя обычно содержат имя возвращаемого домена в качестве суффикса (например, getUser()), в то время как методы маппера в этом суффиксе не нуждается (так как имя домена присутствует в имени класса маппера, и маппер обслуживает только один домен).
+Поэтому методы сервиса обычно содержат имя возвращаемого домена в качестве суффикса (например, getUser()), в то время как методы маппера в этом суффиксе не нуждается (так как имя домена присутствует в имени класса маппера, и маппер обслуживает только один домен).
 
     Установить, какие операции должны быть размещены в слое служб, отнюдь не сложно.
     Это определяется нуждами клиентов слоя служб, первой (и наиболее важной) из
@@ -263,7 +306,7 @@
 Широко распространенная ошибка - использование класса django.db.models.Manager (а то и django.db.models.Model) в качестве сервисного слоя.
 Нередко можно встретить, как какой-то метод класса django.db.models.Model принимает в качестве аргумента объект HTTP-запроса django.http.request.HttpRequest, например, для проверки прав.
 
-Объект HTTP-запроса - это логика уровня приложения (application), в то время как класс модели - это логика уровня предметной области (domain), т.е. объекты реального мира, которые так же называет деловыми регламентами (business rules).
+Объект HTTP-запроса - это логика уровня приложения (application), в то время как класс модели - это логика уровня предметной области (domain), т.е. объекты реального мира, которую так же называют правилами делового регламента (business rules).
 
 Нижележащий слой не должен ничего знать о вышестоящем слое. Логика уровня домена не должна быть осведомлена о логике уровня приложения.
 
@@ -453,32 +496,32 @@ Storm ORM/SQLAlchemy, реализуют аннотации более удач�
     much more impact on the design of the other parts of the program.
     («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
+..
+
+    Infrastructure Layer - Provides generic technical capabilities that support the higher layers:
+    message sending for the application, persistence for the domain, drawing
+    widgets for the UI, and so on. The infrastructure layer may also support
+    the pattern of interactions between the four layers through an
+    architectural framework.
+    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+
 
 Что почитать
 ============
 
-«Clean Code: A Handbook of Agile Software Craftsmanship» by Robert C. Martin [#fnccode]_, главы:
-
-- Cross-Cutting Concerns ... 160
-- Java Proxies ... 161
-- Pure Java AOP Frameworks ... 163
-
-
-«Patterns of Enterprise Application Architecture» by Martin Fowler [#fnpoeaa]_, главы:
-
-- Part 1. The Narratives : Chapter 2. Organizing Domain Logic : Service Layer
-- Part 2. The Patterns : Chapter 9. Domain Logic Patterns : Service Layer
-
-
-«Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans [#fnddd]_, глава:
-
-- Part II: The Building Blocks of a Model-Driven Design : Chapter Five. A Model Expressed in Software : Services
-
-
-«Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma [#fngof]_, главы:
-
-- Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139
-- Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175
+- «Clean Code: A Handbook of Agile Software Craftsmanship» by Robert C. Martin [#fnccode]_, главы:
+    - Cross-Cutting Concerns ... 160
+    - Java Proxies ... 161
+    - Pure Java AOP Frameworks ... 163
+- «Patterns of Enterprise Application Architecture» by Martin Fowler [#fnpoeaa]_, главы:
+    - Part 1. The Narratives : Chapter 2. Organizing Domain Logic : Service Layer
+    - Part 1. The Narratives : Chapter 8. Putting It All Together
+    - Part 2. The Patterns : Chapter 9. Domain Logic Patterns : Service Layer
+- «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans [#fnddd]_, глава:
+    - Part II: The Building Blocks of a Model-Driven Design : Chapter Five. A Model Expressed in Software : Services
+- «Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma [#fngof]_, главы:
+    - Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139
+    - Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175
 
 
 .. rubric:: Footnotes
