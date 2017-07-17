@@ -82,7 +82,7 @@ Articles in English:
 
 Articles in Russian:
 
-* «:doc:`Проектирование Сервисного Слоя. <ru/service-layer>`»
+* «:doc:`Проектирование Сервисных Слоев. <ru/service-layer>`»
 * «:doc:`О проблемах инвалидации кэша. Тегирование кэша. <ru/cache-dependencies>`»
 * «:doc:`Почему я выбираю Storm ORM. <ru/storm-orm>`»
 
