@@ -458,7 +458,7 @@ Martin Fowler говорит что:
     which should extend a Layer Supertype (475), abstracting their responsibilities and common behaviors.
     («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
-Поскольку Martin Fowler прекрасно понимает отличие между "Domain Model" и "DataMapper",
+Поскольку Martin Fowler прекрасно понимает отличие между "`Domain Model`_" и "`DataMapper`_",
 эта цитата сильно напоминает мне "Cross-Cutting Concerns" [#fnccode]_ с тем только отличием, что "Cross-Cutting Concerns" реализует интерфейс оригинального объекта, в то время как domain facade дополняет его.
 
 
@@ -542,6 +542,7 @@ Storm ORM/SQLAlchemy, реализуют аннотации более удач�
 
 .. _ActiveRecord: http://www.martinfowler.com/eaaCatalog/activeRecord.html
 .. _DataMapper: http://martinfowler.com/eaaCatalog/dataMapper.html
+.. _Domain Model: https://martinfowler.com/eaaCatalog/domainModel.html
 .. _Query Object: http://martinfowler.com/eaaCatalog/queryObject.html
 .. _Remote Facade: https://www.martinfowler.com/eaaCatalog/remoteFacade.html
 .. _Repository: http://martinfowler.com/eaaCatalog/repository.html

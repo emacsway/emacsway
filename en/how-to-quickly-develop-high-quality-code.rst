@@ -334,6 +334,8 @@ There is an opinion that pair programming reduces the velocity of development.
     reduction is desired. Some developers prefer working in pairs to working solo.
     («Code Complete» [#fncodec]_)
 
+The main conclusion is that you can't say about affect of pair programming to velocity of development until you begin to track the time of your team for bugfixes, refactoring and debugging.
+
 
 The fourth myth. Theory and practice are two different things.
 --------------------------------------------------------------
