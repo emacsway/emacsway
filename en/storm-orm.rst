@@ -212,23 +212,24 @@ The lack of a dedicated class for DataMapper forces you to clutter the domain mo
 
 .. _storm-orm-ambiguities-en:
 
-О неоднозначном
+About ambiguous
 ===============
 
-Поддержка ACID привела к тому, что доменная модель на самом деле не является чистой.
-Тем не менее, она имеет чистый интерфейс, и ведет себя как обычный чистый объект.
-На самом деле инстанция модели не содержит данных, а ссылается на структуру данных посредством дескрипторов.
-Реализовать все это (тем более в стиле KISS), является титаническим трудом.
-Хотя я не уверен, что сама реализация такого сложного механизма соответствует принципу KISS.
-Быть может, простота реализации здесь была бы предпочтительней, нежели простота интерфейса.
-И тем не менее, это делает одним аргументом против ORM меньше.
+ACID support has led to the fact that the domain model is not really pure.
+The domain model has pure interface, behaves like realy plain object, and is inherited from the ``object`` class.
+In fact, the instance of the model does not contain data, but refers to the data structure through descriptors.
+It's a titanic work to implement it in the KISS style.
+Although I'm not sure that the implementation of such a complex mechanism corresponds to the principle of KISS.
+Perhaps, simplicity of implementation here would be preferable, rather than simplicity of the interface.
+Nevertheless, it makes one argument against ORM less.
 
-Кроме того, это решение не обеспечивает полной согласованности поведения доступного для использования.
-Предположим, вы создали два новых объекта, первый из которых ссылается на второй по внешнему ключу.
-Вы связали эти два объекта посредством дескриптора.
-В момент (отложенного) сохранения, когда второму объекту будет присвоен первичный ключ, значение внешнего ключа первого объекта автоматически примет нужное значение.
-Но еще до момента сохранения Вы можете получить доступ к второму объекту посредством обращения к связи первого объекта (благодаря дескрипторам объект будет доступен, см. `пример <https://storm.canonical.com/Tutorial#References_and_subclassing>`__).
-Тем не менее, вы не имеете возможности запросить напрямую второй объект у хранилища Store() до момента сохранения.
+In addition, this solution does not provide full consistency of the behavior available for use.
+Suppose you have created two new objects, the first of which refers to the second on the foreign key.
+Then you created a link between them with a descriptor.
+Before commit, you are able `to get the second object using the descriptor of the foreign key of the first object <https://storm.canonical.com/Tutorial#References_and_subclassing>`__.
+But you aren't able to get the second objet by using the repository (i.e. class Store).
+When you do commit, the both objects receive primary keys, and the value of the foreign key are automatically updated.
+From now on you can get the second object by the repository.
 
 
 .. _storm-orm-faq-en:
@@ -236,18 +237,18 @@ The lack of a dedicated class for DataMapper forces you to clutter the domain mo
 FAQ
 ===
 
-*q: Storm ORM не поддерживает Python3.*
+*q: Storm ORM does not support Python3.*
 
-a: Если Вы мигрировали хотя бы одну библиотеку на Python3, то понимаете, что этот процесс больших трудностей не вызывает.
-95% работы делает команда ``2to3``.
-Единственный вопрос, который может иметь значение, - это мирация Си-расширения.
-Впрочем, даже без него Storm ORM работает достаточно быстро, и не сильно теряет в производительности.
-Найти Си-расширение под Python3 можно `здесь <http://bazaar.launchpad.net/~martin-v/storm/storm3k/view/head:/storm/cextensions.c>`__ (`diff <http://bazaar.launchpad.net/~martin-v/storm/storm3k/revision/438>`__)
+a: If you migrated at least one library in Python3, then you understand that this process does not cause major difficulties.
+The command ``2to3`` does 95% of work.
+The only significant problem is the migration of the C-expansion.
+Storm ORM is fast enough even without the C-expansion, and does not lose much in performance.
+You can find the C-expansion for Python3 `here <http://bazaar.launchpad.net/~martin-v/storm/storm3k/view/head:/storm/cextensions.c>`__ (`diff <http://bazaar.launchpad.net/~martin-v/storm/storm3k/revision/438>`__)
 
 
-*q: Как использовать Storm ORM с фрагментами Raw-SQL*
+*q: How t use Storm ORM with partial Raw-SQL*
 
-a: Вообще-то так лучше не делать. Лучше расширить SQL-builder. Но если очень надо::
+a: It's better to avoid to do it, and extend the SQL-builder. But if you really need::
 
     >>> from storm.expr import SQL
     >>> from authors.models import Author
@@ -256,9 +257,9 @@ a: Вообще-то так лучше не делать. Лучше расши�
     [<authors.models.Author object at 0x7fcd64cea750>]
 
 
-*q: Как использовать Storm ORM с полностью чистым SQL, чтобы результат запроса содержал инстанции моделей?*
+*q: In which way I can use Storm ORM with a fully Raw-SQL, to get the result of query with instances of the models?*
 
-a: Поскольку Storm ORM использует паттерны Data Mapper, Identity Map и Unit of Work, мы должны указать в выборке все поля модели, и использовать для загрузки метод ``Store._load_object()``::
+A: Since Storm ORM uses the Data Mapper, Identity Map and Unit of Work patterns, you have to specify all the model fields in the query, and use the method ``Store._load_object()``::
 
     >>> store = get_my_store()
     >>> from storm.info import get_cls_info
@@ -280,39 +281,39 @@ a: Поскольку Storm ORM использует паттерны Data Mappe
 
 .. _why-orm-en:
 
-А нужен ли вообще ORM?
-======================
+Do you really need ORM?
+=======================
 
-Честно говоря, нет необходимости использовать ОРМ всегда и везде.
-Во многих случаях (например, если от приложения требуется просто выдать список JSON значений) вполне достаточно простейшего `Table Data Gateway`_, который будет возвращать простейшие значения `Data Transfer Object`_.
-Тут уже дело личных предпочтений.
+Honestly, there is no need to use ORM always and everywhere.
+In many cases (for example, if an application simply needs to issue a list of JSON values), the simplest `Table Data Gateway`_ is enough, which returns the list of simplest `Data Transfer Object`_.
+This is an issue of personal preferences.
 
 
 .. _why-query-object-en:
 
-Нужен ли Query Object?
-----------------------
+Do you really need Query Object?
+--------------------------------
 
-Единственное в чем я убежден твердо, - это в том, что без паттерна `Query Object`_ (часто именуемом как SQLBuilder) обойтись довольно трудно, если не невозможно.
+The only thing I'm absolutely sure of is that it's difficult do without without the `Query Object`_ pattern (which is also named as SQLBuilder), or rather impossible.
 
-\1. Даже самые стойкие сторонники концепции "чистого SQL" достаточно быстро сталкиваются с невозможностью выразить SQL-запрос в чистом виде, и вынуждены его динамически составлять в зависимости от условий.
-А это уже разновидность концепции SQLBuilder, пусть и в примитивном виде, и реализованном в частном порядке.
-А решения частного порядка всегда занимают много места, так как отступают от принципа `DRY`_.
+\1. Even the most staunch adherents of the "pure SQL" concept quickly encounter the inability to express the SQL query in its pure form, and are forced to dynamically compose it depending on the conditions.
+And this is already a kind of SQLBuilder concept, albeit in a primitive form, and implemented in a particular way.
+But particular solutions always take a lot of place, as they depart from the `DRY`_ principle.
 
-Проиллюстрирую это примером.
-Имеем запрос на выборку объявлений из БД по 5-ти критериям.
-Нужно позволить пользователям выбирать объявления по совокупности любого количества из перечисленных критериев:
+Let me to illustrate it with an example.
+Imagine a query to select ads from the database by 5 criteria.
+You need to allow users to select the ads using a set of any number of the following criteria:
 
-0. Без критериев.
-1. Типу объявления.
-2. Стране, области, городу.
-3. По категориям, включая вложеннные категории.
-4. По пользователям (все объявления одного пользователя)
-5. По поисковым словам.
+0. Without criteria.
+1. By ad type.
+2. By country, region, city.
+3. By categories, including nested categories.
+4. By users (all ads of the same user)
+5. By search words.
 
-Итого, пришлось бы заготовить 2^5 = 32 фиксированных SQL-запроса, и это если не учитывать вложенностей древовидных структур (иначе п.3 пришлось бы разнести на еще 3 пункта, так как нередко эти данные хранятся денормализованно).
+Altogether, you would have to prepare 2 ^ 5 = 32 fixed SQL-requests, and this if you do not take into account the nestings of tree structures (otherwise 3-d criterion would have to be divided into 3 more criteria, as often the data is stored denormalized).
 
-Список возможных комбинаций критериев::
+The list of possible combinations of criteria::
 
     0
     1
@@ -346,38 +347,38 @@ a: Поскольку Storm ORM использует паттерны Data Mappe
     4,5
     5
 
-А если добавить еще один критерий, - это будет 2^6=64 комбинации, т.е. в 2 раза больше.
-Еще один, - это будет 2^7=128 комбинаций.
+And if we add another criterion, it will be 2^6=64 combinations, i.e. in 2 times more.
+One more, it will be 2^7=128 combinations.
 
-128 фиксированных запросов вынуждают отказаться от концепции "чистого SQL" в пользу концепции "динамического построения SQL-запроса".
-Метод, создающий такой запрос, будет принимать много аргументов, что отразится на чистоте кода.
-Можно разделить ответственности, чтобы каждый метод строил свою часть запроса.
-Но во-первых, такой подход создаст SQL-билдер в частном порядке (отступление от принципа `DRY`_).
-А во-вторых, если продолжить полученные методы "вычищать", освобождать от зависимостей и повышать `связанность <Cohesion_>`_ классов, - то мы в конечном итоге прийдем к классам Criteria и реализуем паттерн `Query Object`_.
-Повторюсь, попытки разбить этот метод приведут к падению `связанности <Cohesion_>`_ класса.
-Восстановление связанности выделит классы Criteria.
+128 fixed queries forced to abandon the concept of "pure SQL" in favor of the concept of "dynamic building of SQL-query."
+The method that creates this query will take a lot of arguments, and this will affect the cleanness of the code.
+You can divide the method by responsibilities, so that each method builds its part of the query.
+But firstly, this approach will create the SQL-builder in a particular way (violation of the `DRY`_ principle).
+And secondly, if you continue to clean up the methods, to free its from dependencies, and increase the `Cohesion`_ classes, then you will eventually come to the Criteria classes and implement the `Query Object`_ pattern.
+Again, attempts to break this method will lead to a reduction in `Cohesion`_ of the class.
+To restore the `Cohesion`_, you have to extract Criteria classes.
 
-Т.е. фактически создадим SQL-билдер, который может быть выделен в отдельную утилиту, которая сможет развиваться отдельно.
+In other words, you will actually create an SQL-builder that can be extracted to a separate library, which can be evolved independently.
 
-А если же мы не будем "вычищать" полученные методы, освобождать от зависимостей и повышать связанность классов, то получим нечитаемое мессиво с кучей SQL-кусочков разбросанных по разным методам.
-Иногда такие "кусочки" оформляют в виде статических методов класса, что обретает признаки "G18: Inappropriate Static" [#fncc]_, и в полном соответствии с рекомендациями Robert C. Martin напрашивается полиморфный объект `Criteria`_.
-В любом случае, читаемость "чистого SQL" (а это один из самых весомых аргументов в его пользу) будет утрачена (она будет даже ниже, чем читаемость SQL-билдера).
+But what happens if you do not "clean up" the methods, release them from dependencies and increase the `Cohesion`_ of classes? You will get an unreadable messian with a lot of SQL pieces scattered across different methods.
+Sometimes such "pieces" are made in the form of static methods of the class, which acquires the signs "G18: Inappropriate Static" [#fncc]_, and according to the recommendations of Robert C. Martin, there should be extracted the polymorphic object `Criteria`_.
+In any case, the readability of such "pure SQL" (and this is one of the most weighty arguments in its favor) will be lost (it will be even lower than the readability of the query created by SQL-builder).
 
-Иными словами, SQL-билдеры потому и существуют, что они являются вершиной реализации `Single responsibility principle`_ (SRP) в данном случае.
-В главе "Chapter 10: Classes. Organizing for Change" известной книги  «Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_, C.Martin демонстрирует достижение принципа `SRP`_ именно на примере SQL-билдера.
+SQL-builders exists only because they are maximally implement the principle of `Single responsibility principle`_ (SRP).
+In the "Chapter 10: Classes. Organizing for Change" of the widely known book «Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_, C.Martin demonstrates the achievement of the `SRP`_ principle in the example of SQL-builder.
 
-Подобно объектам-гибридам, сочетающим в себе недостатки структур данных и объектов, SQL-билдеры реализованные в частном порядке вбирают в себя недостатки обоих концепций.
-Они не обладают ни читаемостью Raw-SQL, ни удобством полноценных SQL-билдеров.
-Это вынуждает или отказаться от динамического построения вообще, в пользу читаемости кода, или уже довести уровни абстракции до полноценного SQL-билдера.
+Similar to hybrid object, that contains disadvantages of data structures and objects, SQL-builder implemented in particular way contains disadvantages of both concepts.
+They do not have the readability of Raw-SQL, nor the convenience of complete SQL-builders.
+This forces us to abandon the dynamic construction, in favor of readability of the code, or to bring the levels of abstraction to a complete SQL-builder.
 
-Так же концепция "чистого SQL" практически неосуществима в реализации следующих паттернов и подходов:
+Also, the concept of "pure SQL" is not feasible in the implementation of the following patterns and approaches:
 
-- Динамически изменяемая сортировка
-- Мультиязычность посредством суффиксирования полей
+- Dynamically change the sorting
+- Multilanguage implemented with suffixed columns
 - `Concrete Table Inheritance`_
 - `Class Table Inheritance`_
 - `Entity Attribute Value`_
-- и т.д.
+- etc.
 
 \2. Такие запросы невозможно наследовать без `синтаксического анализа <https://pypi.python.org/pypi/sqlparse>`__ (например, чтобы просто изменить сортировку), что обычно влечет за собой их полное копирование.
 А каждую копию приходится сопровождать отдельно, что усложняет сопровождение такого кода.
