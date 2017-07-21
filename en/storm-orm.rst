@@ -380,35 +380,37 @@ Also, the concept of "pure SQL" is not feasible in the implementation of the fol
 - `Entity Attribute Value`_
 - etc.
 
-\2. Такие запросы невозможно наследовать без `синтаксического анализа <https://pypi.python.org/pypi/sqlparse>`__ (например, чтобы просто изменить сортировку), что обычно влечет за собой их полное копирование.
-А каждую копию приходится сопровождать отдельно, что усложняет сопровождение такого кода.
-Впрочем, на досуге я написал простейший `mini-builder, который представляет SQL-запрос в виде многоуровневого списка с фрагментами Raw-SQL <http://sqlbuilder.readthedocs.io/en/latest/#short-manual-for-sqlbuilder-mini>`__, что позволяет полноценно выстраивать условно-составные SQL-запросы и при этом практически полностью сохраняет читаемость Raw-SQL.
+\2. Raw-SQL can not use inheritance without `parsing <https://pypi.python.org/pypi/sqlparse>`__ (for example, to change the ORDER DY clause), this usually entails full copying of the Raw-SQL if you want to change a small its part.
+You have to support the each copy of the Raw-SQL separately, that makes the support a more difficult.
+However, at leisure I had wrote the simplest `mini-builder, which represents the Raw-SQL query in the form of a multilevel list of Raw-SQL pieces <http://sqlbuilder.readthedocs.io/en/latest/#short-manual-for-sqlbuilder-mini>`__. This approach allows you to build conditionally-compound SQL-queries and preserves the readability of Raw-SQL.
 
-\3. Мне нередко приходилось видеть среди файлов с Raw-SQL диффы на несколько сотен строк только потому, что в модель был добавлен новый атрибут, что имеет признаки "Divergent Change" [#fnr]_ и "Shotgun Surgery" [#fnr]_.
-Это потому, что SQL-запросы содержат много дубликатов выражений.
-SQL-код, даже если он в Python-файлах, все равно остается кодом.
-И к нему так же справедливо правило "G5: Duplication" [#fncc]_ ("Duplicated Code" [#fnr]_).
-В случае использования SQLBuilder таких проблем не возникает, так как необходимые метаданные для построения запроса (в частности, список выбираемых полей) хранятся в едином месте.
+\3. I often had to see diffs of Version Control System with several hundred lines among the files with Raw-SQL just because a new attribute was added to the model. This has the signs of "Divergent Change" [#fnr]_ and "Shotgun Surgery" [#fnr]_.
+This is because Raw-SQL queries contain many duplicate expressions.
+And it is also true the rule "G5: Duplication" [#fncc]_ ("Duplicated Code" [#fnr]_).
+SQLBuilder allows you to avoid this problem, because it keeps all metadata of the query (for example the list of fields) in the single place.
 
-\4. При использовании концепции "чистого SQL", критерии выборки обычно передаются  в методы выборки в виде аргументов, из-за чего нередко приходится изменять их интерфейсы (а так же добавлять новые методы), когда добавляются новые поля данных и критерии выборки к ним, что нарушает `Open/Closed Principle`_ и имеет признаки "Divergent Change" [#fnr]_ и "Shotgun Surgery" [#fnr]_.
+\4. When the concept of Raw-SQL is used, the methods which make the query usually accept the selection criteria as arguments of the method which contain the plain values.
+If you need add yet another selection criteria or field, you have to change interface of the methods (or add yet another ones), which violates the `Open/Closed Principle`_ and has signs of "Divergent Change" [#fnr]_ and "Shotgun Surgery" [#fnr]_.
 
-Напрашиватеся "`Introduce Parameter Object`_" [#fnr]_ с выделением класса Criteria паттерна `Query Object`_.
-Этот подход исключит подобные проблемы, поскольку все критерии выборки инкапсулированы в единственном объекте (`Composite pattern`_), а так же освободит методы выборки от условных операторов "`Replace Conditional with Polymorphism`_" [#fnr]_.
+This issue should be solved by using "`Introduce Parameter Object`_" [#fnr]_ in the form of the class Criteria of pattern `Query Object`_.
+In this case all selection criteria would be encapsulated in the single composite object (see `Composite pattern`_).
+This approach also eliminates the conditions from the methods, and fulfill the "`Replace Conditional with Polymorphism`_" [#fnr]_.
 
-В своем воображении (и в программном коде) человек оперирует объектами.
-Способ сортировки и ее направление - характеризуют состояние объекта.
-Критерии выборки - это тоже объекты, от которых мы ожидаем определенного поведения (образовывать композиции, влиять на выборку БД).
-Когда объекты есть, но они не выражены в коде, программа теряет способность выражать замысел разработчика ("G16: Obscured Intent" [#fncc]_).
+A human operates objects in his imagination (and in the program code).
+The sorting method and its direction - characterize the state of the object.
+Selection criteria are also objects that express the database behavior, and have own behavior (they are able to create compositions and render its state in several forms).
+And you expect this behavior from they.
+When you mean objects, but do not express them in code, the program loses the ability to express the developer's intent ("G16: Obscured Intent" [#fncc]_).
 
-\5. Если какое-то значение объекта требует особой конвертации в DB представление, - нам придется загромождать код явным вызовом этих конвертаций.
+\5. If some value of the object requires a special conversion to the DB representation, you have to clutter the code explicitly calling these conversions.
 
-\6. Существует тенденция (которая мне регулярно встречается) использования паттерна `Repository`_ в сочетании с Raw-SQL.
-Поскольку сам Repository предназначен для сокрытия источника данных, то непонятно, как передавать в Repository критерии выборки, чтобы они были полностью абстрактны от источника данных, т.е. абстрактны от Raw-SQL.
+\6. There is a tendency (which I regularly see) to use the pattern `Repository`_ in combination with Raw-SQL.
+Since the Repository pattern is designed to hide the data source, it is not clear how to pass the selection criteria in the Repository so that they are completely abstract from the data source, i.e. are abstract from Raw-SQL.
 
-В примитивных случаях, это, конечно, не проблема (можно передавать их именованными аргументами функции, хотя это, в свою очередь, вызывает проблемы описанные в п.4).
+In primitive cases, this, of course, is not a problem (you can pass them by keyword arguments to the function, although this causes the problems described in clause 4).
 
-Но если требуется хотя бы пять нефиксированных, взаимозависимых или составных критериев (сочетающих вложенные приоритизированные операции "OR", "AND", логический "XOR" и др.), то это уже проблема, решение которой и входит в обязанности паттерна Query Object.
-Передача же фрагментов SQL строк в качестве аргументов функции имеет признаки "G6: Code at Wrong Level of Abstraction" [#fncc]_ и  "G34: Functions Should Descend Only One Level of Abstraction" [#fncc]_.
+But if your Criteria have an arbitrary quantity and needs to use nested operators ("OR", "AND", "XOR") with different precedences, then there is a problem, and the solution of the problem is the responsibility of the pattern Query Object.
+Your method can accept Raw-SQL as arguments, but this approach has the signs "G6: Code at Wrong Level of Abstraction" [#fncc]_ and "G34: Functions Should Descend Only One Level of Abstraction" [#fncc]_.
 
 \7. Нередко для условного составления запроса используется форматирование строк. Проблема в том, что тот объект, который хочет использовать этот запрос в модифицированной форме, должен быть осведомлен о деталях реализации механизма его модификации.
 Возникает логическая зависимость, нарушается инкапсуляция.
