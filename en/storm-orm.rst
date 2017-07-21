@@ -1,13 +1,13 @@
 
-.. post::
+.. post:: Oct 10, 2015
    :language: en
    :tags: ORM, Storm ORM, DataMapper, DB, SQL, Python
    :category:
    :author: Ivan Zakrevsky
 
 
-Why I prefer Storm ORM
-======================
+Why I prefer Storm ORM in Python
+================================
 
 For enterprise aplications I began to use `KISS-style`_ `Storm ORM`_, let me explaine why.
 
@@ -412,21 +412,33 @@ In primitive cases, this, of course, is not a problem (you can pass them by keyw
 But if your Criteria have an arbitrary quantity and needs to use nested operators ("OR", "AND", "XOR") with different precedences, then there is a problem, and the solution of the problem is the responsibility of the pattern Query Object.
 Your method can accept Raw-SQL as arguments, but this approach has the signs "G6: Code at Wrong Level of Abstraction" [#fncc]_ and "G34: Functions Should Descend Only One Level of Abstraction" [#fncc]_.
 
-\7. Нередко для условного составления запроса используется форматирование строк. Проблема в том, что тот объект, который хочет использовать этот запрос в модифицированной форме, должен быть осведомлен о деталях реализации механизма его модификации.
-Возникает логическая зависимость, нарушается инкапсуляция.
+\7. Quite often string formatting is used to build conditionally-compound SQL-queries.
+The problem is that the object that wants to use this SQL-query in a slightly modified form should be aware of the details of the implementation of the mechanism for its modification.
+This entails the emergence of a logical dependence, a violation of encapsulation.
 
-Чтобы этого избежать, обычно объект, форматирующий запрос, наделяется методами, которые модифицируют запрос под потребности использующих его объектов.
-Получается Божественный Объект, который должен знать о потребностях всех объектов, которые потенциально могут его использовать.
+To save the encapsulation and remove the logical dependence, the object which is aware about details of implementetion of query modification, should to have all methods to create any query required by each client.
+To save the encapsulation and remove the logical dependence, the object which is aware about details of implementation of query modification, should to have all methods to create any query which can be required by each client.
+But the object should not make assumptions about clients!
 
-Это нарушает OCP и приводит к "Divergent Change" [#fnr]_ и "Shotgun Surgery" [#fnr]_. Нередко остается мусор в виде невостребованных методов, после удаления использующих их объектов.
-Очень большие классы обычно разбиваются наследованием или композицией.
-Это приводит к тому, что получить целостное представление о том, что делает метод, невозможно без неоднократного прерывания взгляда на изучение содержимого различных методов, классов, а то и файлов.
+Otherwise, we receive a God object which is aware of the needs of all objects that can potentially use it.
 
-Паттерн Query Object предоставляет унифицированный интерфейс модификации запроса, освобождая объект запроса от необходимости знать о потребностях окружающих объектов.
+This violates OCP entails the emergence of "Divergent Change" [#fnr]_ and "Shotgun Surgery" [#fnr]_.
+Often there is garbage in the form of unclaimed methods, after removing objects using them.
+Very large classes are usually broken up using inheritance or composition.
+This leads to the fact that in order to get the complete idea of what the method does, you need to repeatedly interrupt the view for research the contents of various methods, classes, and even files.
 
-\8. Отдельно хочу затронуть вопрос использвания синтаксических конструкций языка для построения SQL-запросов.
-Я скажу, возможно, субъективно, но мне больше нравится использовать для этого объекты.
-Более того, мне нравится когда сами синтаксические конструкции языка представлены объектами, как в Smalltalk.
+The Query Object pattern provides the unified interface to query modification, which frees the object with query state from the need to know about the needs of its clients.
+
+\8. I would also like to raise the issue of using the language syntax constructions to construct the SQL-queries.
+
+There is a few examples:
+
+* `A Query Language extension for Python <https://github.com/pythonql/pythonql>`_: Query files, objects, SQL and NoSQL databases with a built-in query language
+* `simpleql <https://bitbucket.org/robertodealmeida/simpleql/>`_ SQL table using nothing but Python to build the query
+* `Generator expressions <http://code.activestate.com/recipes/442447/>`__ for database requests (Python recipe)
+
+I'll say subjectively, I like to use objects for this.
+Moreover, I like when the syntactic constructions of a language are represented by objects, as in Smalltalk.
 
 
 .. _why-datamapper-en:
