@@ -443,55 +443,60 @@ Moreover, I like when the syntactic constructions of a language are represented 
 
 .. _why-datamapper-en:
 
-Нужен ли сам DataMapper?
-------------------------
+Do you really need DataMapper?
+------------------------------
 
-Что же касается самого маппера, то тут следует решить, нужна ли приложению `Domain Model`_, или вполне устроит паттерн `Transaction Script`_.
-Я не буду останавливаться на этом выборе, так как он хорошо освещен в «Patterns of Enterprise Application Architecture» [#fnpoeaa]_.
-Но если нуждам приложения больше соответствует Domain Model, то без полноценного ORM (пусть и самодельного) обойтись будет непросто, по крайней мере, для качественной, удобной и быстрой работы.
+First of all, you need to decide whether the application needs a `Domain Model`_, or just use the pattern `Transaction Script`_.
+This question is well considered by «Patterns of Enterprise Application Architecture» [#fnpoeaa]_, so I will not dwell on it.
+If the Domain Model is better suited for your application, then it will be difficult to do without an ORM (at least artisanal), for high-quality, convenient and fast work.
 
-По поводу распространенных аргументов против ORM.
-Я не буду затрагивать уже пронафталиненные темы вроде того, что базы данных не поддерживают наследования.
-Во-первых, `поддерживают <postgresql inheritance_>`__ (`DDL <postgresql inheritance DDL_>`__).
-Во-вторых, наследование можно заменить композицией. Кстати, полезность наследования в ООП до сих пор является `обсуждаемым вопросом <http://www.javaworld.com/article/2073649/core-java/why-extends-is-evil.html>`__. В Go-lang наследование отсутствует в пользу композиции.
-Сами языки программирования реализуют наследование посредством композиции.
-В-третьих, сегодня только ленивый не знает о паттернах
+There are several arguments against ORM.
+I don't consider obsolete issues like the databases do not support inheritance.
+
+First of all, some databases `support inheritance <postgresql inheritance_>`__ (`DDL <postgresql inheritance DDL_>`__).
+
+Secondly, inheritance can be replaced by a composition.
+By the way, the usefulness of inheritance in OOP is still a `discussed issue <http://www.javaworld.com/article/2073649/core-java/why-extends-is-evil.html>`__.
+Go-lang has no inheritance in favor of the composition.
+Inside programming languages inheritance is implemented using the composition.
+
+Thirdly, today only the lazy do not know about the patterns
 `Single Table Inheritance`_,
 `Concrete Table Inheritance`_,
-`Class Table Inheritance`_ и
+`Class Table Inheritance`_ and
 `Entity Attribute Value`_.
 
-Поэтому я затрону только два существенных на мой взгляд вопроса:
+Therefore, I will touch only on two important issues in my opinion:
 
-1. Представлять данные в памяти объектами, или структурами данных?
-2. ACID, согласованность объекта в памяти и его данными на диске.
+1. Shold be the data in memory an object or an data structure?
+2. ACID, consistency of the object in memory and its record in the database.
 
-По поводу первого вопроса у меня нет однозначного мнения.
-Мы живем в мире объектов, и именно поэтому появилось объектно-ориентированное программирование.
-Человеку проще мыслить объектами.
-В Python даже элементарные типы являются полноценными объектами, с методами, наследованием и т.п.
+I do not have an unequivocal opinion on the first question.
+We live in a world of objects, and that's why object-oriented programming has emerged.
+Human easier to think objects.
+In Python, even elementary types are complete objects, with methods, inheritance, and so on.
 
-В чем отличие между структурой данных и объектом? В Python это отличие сугубо условное.
-Объекты используют представление данных на абстрактном уровне.
+What is the difference between a data structure and an object? In Python, this difference is highly conditional.
+Objects use data presentation on an abstract level.
 
     "Objects hide their data behind abstractions and expose functions that operate on that data. Data structure expose their data and have no meaningful functions."
     («Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_)
 
-Тут мы снова упираемся в вопрос Domain Model vs Transaction Script, поскольку доменная модель по своему определению охватывает поведение (функции) и свойства (данные).
+Again we return to the issue of Domain Model vs Transaction Script, because the domain model grasps behavior (functions) and properties (data).
 
-Но есть еще один немаловажный момент.
-Допустим, мы храним в БД две колонки - цена и валюта.
-Или, например, данные полиморфной связи - тип объекта и его идентификатор.
-Или координаты - x и y.
-Или путь древовидной структуры - страна, область, город, улица.
-Т.е. несколько данных образуют единую сущность, и изменение части этих данных не имеет никакого смысла.
-Как задать политику доступа данных и гарантировать атомарность их изменения (кроме как использованием объектов или неизменяемых типов)?
+There is yet another important point.
+Suppose we store two columns in the database - the price and the currency.
+Or, for example, a data of polymorphic relation - the type of object and its identifier.
+Or the coordinates - x and y.
+Or the path of a tree structure - a country, a region, a city, a street.
+In other words, the aggregate of data form a single entity, and changing one part of this data does not make any sense without a corresponding change to the other part.
+How to set data access policy and ensure atomicity of their changes (except the use of objects or immutable types)?
 
-Я думаю, что мы должны думать прежде всего о бизнес-задачах.
-О том, какими объектами и как должна оперировать программа.
-Вопросы реализации не должны диктовать бизнес-логику.
-Вопросы хранения информации должны удовлетворять нашим требованиям, а не указывать нам требования.
-Если бы это было не так, то объектно-ориентированное программирование до сих пор не возникло бы.
+First of all, we need to think about the business problems.
+That's why Domain-Driven Design was emerged.
+Issues of implementation should not dictate the business logic.
+The issue of storage of information must satisfy our requirements, and not specify requirements to us.
+If this were not so, then object-oriented programming would not have arisen yet.
 
     "The whole point of objects is that they are a technique to package data with the processes used
     on that data. A classic smell is a method that seems more interested in a class other than the one
