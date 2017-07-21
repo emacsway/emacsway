@@ -6,8 +6,8 @@
    :author: Ivan Zakrevsky
 
 
-Why I prefer Storm ORM in Python
-================================
+Why I prefer Storm ORM for Python
+=================================
 
 For enterprise aplications I began to use `KISS-style`_ `Storm ORM`_, let me explaine why.
 
@@ -523,28 +523,30 @@ If this were not so, then object-oriented programming would not have arisen yet.
     freedom to design.
     («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
-Одним из главных принципов объектно ориентированного программирования является инкапсуляция.
-Принцип единой обязанности гласит, что каждый объект должен иметь одну обязанность и эта обязанность должна быть полностью инкапсулирована в класс.
-Лишая объект поведения, мы возлагаем его поведение на другой объект, который должен обслуживать первый.
-Вопрос в том, оправдано ли это?
-Если в разделении ActiveRecord на DataMapper и Domain Model это очевидно, и направлено именно на соблюдение принципа единой обязанности, то в данном случае ответ не так очевиден.
-Объект поведения начинает "завидовать" объекту данных "G14: Feature Envy" [#fncc]_, ("Feature Envy" [#fnr]_), обретая признаки "F2: Output Arguments" [#fncc]_, "Convert Procedural Design to Objects" [#fnr]_,  "Primitive Obsession" [#fnr]_ и "Data Class" [#fnr]_.
-Рассуждения M.Fowler по этому поводу в статье "`Anemic Domain Model`_".
+One of the main principles of object-oriented programming is encapsulation.
+The `Single responsibility principle`_ proclaims that each object must have one responsibility and this responsibility must be completely encapsulated in its class.
+Depriving the object of behavior, we impose its behavior on another object, which must serve the first.
+The question is whether it is justified?
+If this is obvious in the ActiveRecord partition on DataMapper and Domain Model, and is aimed at achieving the Single responsibility principle, in this case the answer is not so obvious.
+The behavior object begins to "envy" the data object "G14: Feature Envy" [#fncc]_, ("Feature Envy" [#fnr]_), with signs "F2: Output Arguments" [#fncc]_, "Convert Procedural Design to Objects" [#fnr]_,  "Primitive Obsession" [#fnr]_ and "Data Class" [#fnr]_.
+
+The arguments on this subject in the article "`Anemic Domain Model`_" of M.Fowler.
 
     "High class and method counts are sometimes the result of pointless dogmatism. Consider, for example, a coding standard that insists on creating an interface for each and every class. Or consider developers who insist that fields and behavior must always be separated into data classes and behavior classes. Such dogma should be resisted and a more pragmatic approach adopted."
     («Clean Code: A Handbook of Agile Software Craftsmanship» [#fncc]_)
 
-По поводу второго вопроса.
-Из всех ORM, что я встречал в своей практике (не только на Python), поддержка ACID в Storm ORM и SQLAlchemy реализована наилучшим образом.
-Надо сказать, в подавляющем большинстве существующих ORM такие попытки даже не предпринимаются.
+About the second question.
+
+Of all the ORMs that I met in my practice (not only in Python), ACID support in Storm ORM and SQLAlchemy is implemented in the best way.
+Most of the existing ORM do not even try to solve this issue.
 
 Martin Fowler reasoning on this point in the article "`Orm Hate`_".
 
 Article "`Dance you Imps! <https://8thlight.com/blog/uncle-bob/2013/10/01/Dance-You-Imps.html>`__" by Robert Martin.
 
-В целом у меня отношение к ORM неоднозначное.
-Слишком много существующих ORM создает больше "запахов" в коде, чем устраняет.
-Но Storm ORM к ним не относится.
+In general, my attitude towards ORM is ambiguous.
+I often use raw DataMapper_ pattern for complicated queries with annotations or aggregations (especially in Django-applications), and also I use an ORM.
+Too many existing ORMs create more "code smells" in the code than it eliminates, but Storm ORM is not one of them.
 
 
 .. rubric:: Footnotes
