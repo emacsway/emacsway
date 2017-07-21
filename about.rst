@@ -79,6 +79,7 @@ Articles in English:
 
 * «:doc:`About problems of cache invalidation. Cache tagging. <en/cache-dependencies>`»
 * «:doc:`How to quickly develop high-quality code. Team work. <en/how-to-quickly-develop-high-quality-code>`»
+* «:doc:`Why I prefer Storm ORM. <en/storm-orm>`»
 
 Articles in Russian:
 
