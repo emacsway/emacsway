@@ -9,7 +9,6 @@ Design of Service Layers
    :author: Ivan Zakrevsky
 
 Design mistakes of `Service Layer`_ are widespread.
-I have rarely met a well-designed service layers in commercial projects.
 This article is written in the hope of improving this situation somewhat.
 
 .. contents:: Contents
