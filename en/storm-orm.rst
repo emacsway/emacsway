@@ -9,7 +9,7 @@
 Why I prefer Storm ORM for Python
 =================================
 
-I began to use `KISS-style`_ `Storm ORM`_ for enterprise aplications, let me explaine why.
+I began to use `KISS`_-style `Storm ORM`_ for enterprise applications, let me explain why.
 
 .. contents:: Contents
 
