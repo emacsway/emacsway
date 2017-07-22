@@ -9,7 +9,7 @@
 Why I prefer Storm ORM for Python
 =================================
 
-For enterprise aplications I began to use `KISS-style`_ `Storm ORM`_, let me explaine why.
+I began to use `KISS-style`_ `Storm ORM`_ for enterprise aplications, let me explaine why.
 
 .. contents:: Contents
 
@@ -21,18 +21,18 @@ My requirements for ORM
 
 \- **Quickness**. ORM should be fast.
 ORM should to have `Identity Map`_ to prevent duplicated queries to DB if the object is already loaded to the memory.
-This is important when several isolated scopes are trying to load the same object to the own namespace.
+This is important for case when several isolated scopes are trying to load the same object to the own namespace.
 Also, I think, `Identity Map`_ should be configurable for different transaction isolation levels, for example, to prevent query to DB when object does not exist and transaction isolation level is "Serializable".
 
 \- **Simplicity**. ORM should not scare you from debugger, you have to understand what it does by browsing the source code.
-Any product sooner or later can be dead, or author can lose an interest in it, thus you should be able to support the product yourself.
-New developers of a team should be able to master the ORM quickly.
-And the only source of truth about the code is the code itself.
+Any product sooner or later can be dead, or author can lose the interest in it, thus you should be able to support the product yourself.
+New developers of the team should be able to master the ORM quickly.
+The single source of truth about the code is the code itself.
 Documentation and comments is good, but they are not always comprehensive and actual.
 And often the product should be adapted, extended for your requirements.
 Thus, simplicity is important.
 
-\- **Architecture**. Proper separation of levels of abstraction, adherence to the basic principles of architecture (such as `SOLID`_).
+\- **Architecture**. Proper separation of abstraction layers, adherence to the basic principles of architecture (such as `SOLID`_).
 
 If you are not able to use some component of the ORM separately, for example SQLBuilder, then, probably, it would be better to use raw pattern DataMapper_ instead of the ORM.
 Well designed ORM allows you to use its components separately, such as `Query Object`_ (SQLBuilder), Connection, `DataMapper`_, `Identity Map`_, `Unit of Work`_, `Repository`_.
@@ -40,7 +40,7 @@ Does the ORM allow you to use Raw-SQL (entirely or partially)?
 Are you able to use only DataMapper (without Connection, SQLBuilder etc.)?
 Are you able to substitute the DataMapper by `Service Stub`_, to be free from DB for testing?
 
-The possibilities of any ORM have to be expanded.
+Usually the possibilities of any ORM have to be expanded.
 Are you able to extend your ORM without monkey-patching, forks, patches?
 Does the ORM follow to the `Open/Closed Principle`_ (OCP)?
 
@@ -49,7 +49,7 @@ Does the ORM follow to the `Open/Closed Principle`_ (OCP)?
 
 \- `ACID`_. Good ORM takes care of that the object has always been consistent to the record of the DB.
 
-Suppose, you have loaded the object to the memory, and then executed transaction commit.
+Suppose, you have loaded the object in the memory, and then executed transaction commit.
 The object has a lot of references to it, but the object has been updated by a concurrent process.
 If you try to modify the object, the changes of the concurrent process will be lost.
 When you are doing transaction commit, you have to synchronize the object to the record of the DB, and at the same time to keep alive all references to the object.
