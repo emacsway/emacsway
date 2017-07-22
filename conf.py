@@ -346,4 +346,12 @@ html_extra_path = ['_html_extra', ]
 # Output file base name for HTML help builder.
 htmlhelp_basename = 'emacswaydoc'
 
+# ===
 
+rst_epilog = """
+.. |blog_baseurl| replace:: %s
+"""  % blog_baseurl
+
+extlinks = {
+    'blog_baseurl': ("%s%%s" % blog_baseurl, "Atom feeds")
+}

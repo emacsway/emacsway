@@ -11,7 +11,7 @@
 Welcome to @emacsway's blog!
 ============================
 
-- `Atom feeds <http://emacsway.bitbucket.org/blog/atom.xml>`_
+- :blog_baseurl:`Atom feeds <blog/atom.xml>`
 - :ref:`All blog posts <blog-posts>`
 
 Here is a list of most recent posts:
