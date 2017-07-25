@@ -1,2 +1,3 @@
 ablog
+# git+https://github.com/abakan/ablog.git@devel
 sitemap
