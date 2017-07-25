@@ -2,6 +2,8 @@
 
 {%- block extrahead %}
 {{ super() }}
+    <link rel="shortcut icon" href="{{ pathto('favicon.ico', 1) }}" type="image/x-icon">
+    <link rel="icon" href="{{ pathto('favicon.ico', 1) }}" type="image/x-icon">
 {% endblock %}
 
 {% block footer %}
