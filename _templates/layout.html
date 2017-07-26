@@ -1,11 +1,31 @@
 {% extends "!layout.html" %}
 
+{% if pagename in ablog %}
+    {% if ablog[pagename].language[0].name == 'English' %}
+        {% set language='en-us' %}
+    {% elif ablog[pagename].language[0].name == 'Russian' %}
+        {% set language='ru' %}
+    {% endif %}
+{% endif %}
+
 {%- block extrahead %}
 {{ super() }}
+
+    {% if pagename in ablog and not meta['description'] %}
+        <meta name="description" content="{{ ablog[pagename].to_html(pagename).strip()|striptags|e }}"> 
+    {% endif %}
+
 {% endblock %}
+
 
 {% block footer %}
 {{ super().replace("Powered by ", "Powered by <a href=\"http://ablog.readthedocs.org/\">ABlog</a> &amp; ") }}
+
+
+    {% if ablog.blog_baseurl and (not ablog[pagename].nocomments) and ((pagename in ablog and (ablog[pagename].published or ablog.disqus_drafts)) or (not pagename in ablog and ablog.disqus_pages)) %}
+
+        <script type="text/javascript" src="//platform-api.sharethis.com/js/sharethis.js#property=5977b23b80bb1d0011ab6d8a&product=sticky-share-buttons"></script>
+    {% endif %}
 
 
 <!-- google.com/analytics counter -->
