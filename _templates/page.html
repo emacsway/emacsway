@@ -1,5 +1,13 @@
 {%- extends "!page.html" %}
 
+{% if pagename in ablog %}
+    {% if ablog[pagename].language[0].name == 'English' %}
+        {% set language='en-us' %}
+    {% elif ablog[pagename].language[0].name == 'Russian' %}
+        {% set language='ru' %}
+    {% endif %}
+{% endif %}
+
 
 {%- block extrahead %}
 {{ super() }}
