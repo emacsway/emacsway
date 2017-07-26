@@ -161,7 +161,7 @@ OpenAPI и Swagger
 
 Django REST framework позволяет `генерировать схему <www.django-rest-framework.org/api-guide/schemas/>`_ в формате OpenAPI и интегрируется с `swagger <https://swagger.io/>`_ с помощью библиотеки `django-rest-swagger <https://django-rest-swagger.readthedocs.io/en/latest/>`_.
 
-Это открывает неограниченные возможности по генерированию `стабов <Service Stub>_`__ для клиента.
+Это открывает неограниченные возможности по генерированию `стабов <Service Stub_>`__ для клиента.
 Что, в свою очередь, позволяет тестировать client-side без использования server-side, разграничить ответственность между разработчиками client-side и server-side, быстро диагностировать причину проблем, фиксировать протокол обмена, а главное, позволяет вести параллельную разработку client-side даже если server-side еще не готов.
 
 
