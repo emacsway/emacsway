@@ -26,7 +26,7 @@ blog_title = u"@emacsway's blog"
 
 # Base URL for the website, required for generating feeds.
 # e.g. blog_baseurl = "http://example.com/"
-blog_baseurl = u'https://{0}/'.format(os.environ.get('HOST', 'emacsway.bitbucket.io'))
+blog_baseurl = u'https://{0}/'.format(os.environ.get('HOST', 'emacsway.github.io'))
 
 # Choose to archive only post titles. Archiving only titles can speed
 # up project building.
