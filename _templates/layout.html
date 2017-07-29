@@ -13,7 +13,7 @@
 
     {% if pagename in ablog %}
         {% if not meta['description'] %}
-            <meta name="description" content="{{ ablog[pagename].to_html(pagename).strip()|striptags|e }}">
+            <meta name="description" content="{{ ablog[pagename].to_html(pagename).strip()|striptags|e }}" />
         {% endif %}
         {% if ablog[pagename].options.image %}
             {% for node in ablog[pagename].options.excerpt %}
