@@ -170,6 +170,7 @@ extensions = [
     'alabaster',
     'ablog',
     '_sitemaps',
+    '_emacsway',
 ]
 
 # Add any paths that contain templates here, relative to this directory.

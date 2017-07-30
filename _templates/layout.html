@@ -12,6 +12,7 @@
 {{ super() }}
 
     {% if pagename in ablog %}
+        <meta http-equiv="Last-Modified" content="{{ ablog[pagename].update|http_date }}" />
         {% if not meta['description'] %}
             <meta name="description" content="{{ ablog[pagename].to_html(pagename).strip()|striptags|e }}" />
         {% endif %}
