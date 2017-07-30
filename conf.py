@@ -16,6 +16,8 @@ import datetime
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, PROJECT_ROOT)
 
+canonical_baseurl = u'https://{0}/'.format(os.environ.get('CANONICAL_HOST', 'emacsway.github.io'))
+
 # -- General ABlog Options ----------------------------------------------------
 
 # A path relative to the configuration directory for blog archive pages.

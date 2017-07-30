@@ -12,6 +12,7 @@
 {{ super() }}
 
     {% if pagename in ablog %}
+
         <meta http-equiv="Last-Modified" content="{{ ablog[pagename].update|http_date }}" />
         {% if not meta['description'] %}
             <meta name="description" content="{{ ablog[pagename].to_html(pagename).strip()|striptags|e }}" />
@@ -31,6 +32,9 @@
             <meta property="og:image" content="{{ pathto('_static/' + logo, 1) }}" />
             <link rel="image_src" href="{{ pathto('_static/' + logo, 1) }}" />
         {% endif %}
+
+        {# <link rel="canonical" href="{{ ablog.canonical_url(ablog[pagename].docname) }}" /> #}
+
     {% endif %}
 
 {% endblock %}
