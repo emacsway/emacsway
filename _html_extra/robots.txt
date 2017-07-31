@@ -2,4 +2,3 @@ User-Agent: *
 Disallow: /about/
 Disallow: /_images/me.jpg
 Disallow: /_website/_sources/
-Host: emacsway.github.io
