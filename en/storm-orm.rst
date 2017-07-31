@@ -537,7 +537,10 @@ The arguments on this subject in the article "`Anemic Domain Model`_" of M.Fowle
 
 ..
 
-    "There is only so much partitioning a mind can stitch back together, and if the framework uses 
+    "If the framework's partitioning conventions pull apart the elements implementing the
+    conceptual objects, the code no longer reveals the model.
+
+    There is only so much partitioning a mind can stitch back together, and if the framework uses 
     it all up, the domain developers lose their ability to chunk the model into meaningful pieces."
     («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
