@@ -1,4 +1,6 @@
 {% extends "!layout.html" %}
+{% set script_files = script_files + ["_static/jquery-toast-plugin/jquery.toast.min.js"] %}
+{% set css_files = css_files + ["_static/jquery-toast-plugin/jquery.toast.min.css"] %}
 
 {% if pagename in ablog %}
     {% if ablog[pagename].language[0].name == 'English' %}
@@ -34,6 +36,16 @@
         {% endif %}
 
         <link rel="canonical" href="{{ ablog.canonical_url(ablog[pagename].docname) }}" />
+
+        <script type="text/javascript">
+            setTimeout(function() {
+                $.toast({
+                    text: 'If you like this site, please support it with an external link or share it with an social nerwork. Thanks!',
+                    position: 'bottom-right',
+                    hideAfter: 7000
+                });
+            }, 30000);
+        </script>
 
     {% endif %}
 
