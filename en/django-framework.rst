@@ -100,17 +100,19 @@ This question was considered in detail in the article ":doc:`service-layer`".
 Building of complicated SQL-queries
 -----------------------------------
 
-Возможностей интерфейса Django ORM для создания сложных SQL-запросов недостаточно.
-В таком случае приходится или использовать сторонние инструменты, которые будут рассмотрены далее, или использовать Raw-SQL.
-В любом случае, детали реализации должны быть инкапсулированы внутри фабрики запроса.
+The capabilities of the Django ORM interface are not enough to build complicated SQL queries.
+In this case, you have to either use third-party tools that will be discussed later, or use Raw-SQL.
+In any case, the details of implementation should be encapsulated within a query factory class.
 
-В моей практике был случай когда нужно было в `админке <https://docs.djangoproject.com/en/1.11/ref/contrib/admin/>`__ реализовать выборку пользователей с поиском по шаблону (LIKE '%keyword%') как по строкам в таблице пользователей так и в присоединенной (LEFT JOIN) таблице профилей, причем критерии поиска должны были сочетаться условием ИЛИ (OR), что приводило к полному проходу по присоединенной таблице на каждую строку таблицы пользователей.
-Записей в БД MySQL было несколько миллионов, и это работало очень медленно.
-В той версии MySQL еще не поддерживался ngram FULLTEXT index.
-Для оптимизации запроса нужно было присоединять уже профильтрованную выборку из таблицы профилей, а не всю таблицу профилей, переместив критерий выборки в подзапрос.
-Подобный пример Вы можете найти в книге «High Performance MySQL» [#hpmysql]_.
-Для решения проблемы моему коллеге пришлось ":doc:`сделать адаптер для sqlbuilder Storm ORM <storm-orm>`" наподобие `sqlalchemy-django-query <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
-В результате была достигнута возможность выразить SQL-запрос любого уровня сложности в интерфейсе django.db.models.query.QuerySet.
+In my practice there was a case when it was necessary to implement a user search by pattern matching (LIKE '% keyword%') in the `admin panel <https://docs.djangoproject.com/en/1.11/ref/contrib/admin/>`__ using the user table joined with the table of profiles (using LEFT JOIN).
+
+Moreover, the search criteria should be combined with the OR condition, this leads to a complete pass through the attached table for each row of the user table.
+There were several million MySQL database entries, and it worked very slowly.
+That version of MySQL did not yet support ngram FULLTEXT index.
+To optimize the query, we had to join the already filtered result from the profile table instead of the entire profile table, by moving the selection criterion to a subquery.
+A similar example can be found in the book «High Performance MySQL» [#hpmysql]_.
+To solve the problem my colleague had to ":doc:`make an adapter for sql-builder Storm ORM <storm-orm>`" like `sqlalchemy-django-query <https://github.com/mitsuhiko/sqlalchemy-django-query>`__.
+As a result, it was possible to express an SQL query of any complexity in the interface of django.db.models.query.QuerySet.
 
 
 Implementation of complicated Models
