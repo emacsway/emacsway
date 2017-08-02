@@ -266,8 +266,8 @@ My friend works on the `python-easytest <https://bitbucket.org/sergeyglazyrindev
 JOIN-s problem
 --------------
 
-Django REST framework часто используется вместе с `django-filter <https://pypi.python.org/pypi/django-filter>`_.
-И тут возникает проблема, которая отражена в документации как:
+The Django REST framework is often used together with `django-filter <https://pypi.python.org/pypi/django-filter>`_.
+And here there is a problem, which is reflected in the documentation as:
 
         "To handle both of these situations, Django has a consistent way of processing filter() calls.
         Everything inside a single filter() call is applied simultaneously to filter out items matching
@@ -278,7 +278,7 @@ Django REST framework часто используется вместе с `djang
         See more info on:
         https://docs.djangoproject.com/en/1.8/topics/db/queries/#lookups-that-span-relationships
 
-Решается эта проблема легко, в классе FilterSet() следует использовать обертку с ленивым вычислением  вместо реального django.db.models.query.QuerySet, которая будет полность повторять его интерфейс, но вызвать метод filter() однократно, передавая ему все накопленные критерии выборки.
+To solve this problem, you should use a wrapper with lazy evaluation in the FilterSet() class instead of the real django.db.models.query.QuerySet, which will fully match its interface, but will call the filter() method once, passing all accumulated selection criteria to it.
 
 
 Generating \*.csv, \*.xlsx
