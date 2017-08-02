@@ -236,8 +236,9 @@ I will not dwell on the criticism of the design decisions, the Django REST frame
 Related fields with _id suffix for Django REST framework
 --------------------------------------------------------
 
-Когда на стороне клиента используются инструменты для обработки внешних ключей, возникает желание для значений внешнего ключа использовать поле с \*_id суффиксом. Здесь приводится `пример реализации <https://github.com/OpenSlides/OpenSlides/commit/f6c50a966d84b6c8251b9b8e7556623bae40f8f6>`__ как это можно достигнуть.
-Этот же пример на `gist <https://gist.github.com/ostcar/eb78515a41ab41d1755b>`__ и `обсуждение <https://github.com/encode/django-rest-framework/issues/3121>`__.
+When you use client-side tools to handle foreign keys, you might want to use \*_id suffix for the fields with foreign key values.
+Here is an `implementation example <https://github.com/OpenSlides/OpenSlides/commit/f6c50a966d84b6c8251b9b8e7556623bae40f8f6>`__ how this can be achieved.
+The same example on the `gist <https://gist.github.com/ostcar/eb78515a41ab41d1755b>`__ and `discussion <https://github.com/encode/django-rest-framework/issues/3121>`__.
 
 
 SQLAlchemy
