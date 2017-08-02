@@ -118,24 +118,24 @@ As a result, it was possible to express an SQL query of any complexity in the in
 Implementation of complicated Models
 ------------------------------------
 
-Очень часто приходится иметь дело с объектами, которые содержат агрегированную информацию, аннотации, или сочетают в себе данные нескольких таблиц.
+Very often you have to deal with objects that contain aggregated data, annotations, or combine the data of several tables.
 
-SQLAlchemy, безусловно, предоставляет `более гибкие возможности <http://docs.sqlalchemy.org/en/rel_1_1/orm/nonstandard_mappings.html>`_.
-Но даже этих возможностей `хватает не всегда <http://robbygrodin.com/2017/04/18/wayfair-blog-post-orm-bankruptcy/>`__.
+SQLAlchemy certainly provides `more flexible features <http://docs.sqlalchemy.org/en/rel_1_1/orm/nonstandard_mappings.html>`_.
+But even these features `are not always enough <http://robbygrodin.com/2017/04/18/wayfair-blog-post-orm-bankruptcy/>`__.
 
-Механизм аннотаций в Storm ORM / SQLAlchemy реализован более удачно.
-Механизм аннотаций Django ORM лучше не использовать вообще, в пользу голого паттерна Data Mapper.
-Дело в том, что схема модели постоянно эволюционирует, и в нее постоянно добавляются новые поля.
-И нередко случается так, что имя нового поля уже используется аннотацией, из-за чего возникает конфликт в пространстве имен.
-Решением проблемы может быть разделение пространства имен, используя для аннотаций отдельную модель или обертку (Wrapper) над экземпляром модели.
+The annotations of Storm ORM / SQLAlchemy are implemented more successfully.
+Annotations of Django ORM is better not to use at all, in favor of a bare implementation of the pattern Data Mapper.
+The fact is that the model scheme is constantly evolving, and new fields are constantly added to it.
+And it often happens that the name of the new field is already used by the annotation that leads the conflict in the namespace.
+The solution can be to separate the namespace by using a separate model or Wrapper for annotations over the model instance.
 
-Identity Map - еще одна из причин чтобы не использовать механизм аннотаций Django ORM (а так же отнестись с большой осторожностью к prefetch_related()).
-Ведь если в потоке может быть только один экземпляр объекта, то его состояние не может нести никаких отличий для каждого конкретного запроса.
+Identity Map is another reason not to use the Django ORM annotations (and also be careful with prefetch_related()).
+After all, if there is only one instance of an object in the thread, then its state can not have any differences for each particular request.
 
-Вот почему важно скрывать детали реализации доступа к данным последством слоя `Repository`_ или `Service Layer`_.
-В таком случае я просто выполняю реализацию в виде голого паттерна `DataMapper`_ и чистой `Domain Model`_.
+That is why it is important to hide the implementation details of the data access using `Repository`_ pattern or `Service Layer`_.
+In this case, I just make an implementation in the form of the bare pattern `DataMapper`_ and the plain `Domain Model`_.
 
-Как показывает практика, обычно такие случаи не превышают 10%, что не настолько существенно для отказа от Django ORM, ибо привлекательность легкого поиска специалистов все равно перевешивает.
+Practice shows that such cases usually do not exceed 10%, which is not so significant for refusal from Django ORM, because the attractiveness of easy hiring of specialists still outweighs.
 
 
 Third-party tools
