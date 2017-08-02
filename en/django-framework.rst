@@ -19,6 +19,7 @@ There is no sense to exceed this balance.
 Taking a decision on IT-technologies, we are also trying to find a balance between the costs of maintaining technology (including search and training of new staff) and the functionality that is being acquired.
 
 Django framework, of course, brings some trouble, but at the same time it allows you to solve a huge range of tasks quickly and easily find the developers.
+In other words, Django framework makes software development cheaper.
 With a competent approach, you can use all the advantages of Django and not become a hostage of its shortcomings.
 
 .. contents:: Contents
@@ -210,13 +211,13 @@ I use the library `cache-dependencies <https://bitbucket.org/emacsway/cache-depe
 Django REST framework
 =====================
 
-Если мы до этого рассматривали недостатки Django ORM, то `Django REST framework`_ удивительным образом превращает его недостатки в достоинства, ведь интерфейс создания запросов Django ORM великолепно подходит для REST.
+If we have previously considered the shortcomings of Django ORM, the `Django REST framework`_ surprisingly turns its disadvantages into advantages, because the interface for building Django ORM queries is great for REST.
 
-Если Вам посчастливилось использовать на стороне клиента `Dstore`_, то на стороне сервера Вы можете использовать `django-rql-filter <https://pypi.python.org/pypi/django-rql-filter>`_ или `rql <https://pypi.python.org/pypi/rql>`__.
+If you were lucky enough to use `Dstore`_ on the client side, then you can use `django-rql-filter <https://pypi.python.org/pypi/django-rql-filter>`_ or `rql <https://pypi.python.org/pypi/rql>`__ on the server side.
 
-Честно говоря, Django REST framework заставляет изрядно посидеть в отладчике, и потратить на него определенное время, что, разумеется, характеризует используемые им проектные решения не с лучшей стороны.
-Хорошая программа должна читаться, а не пониматься, и уж тем более без помощи отладчика.
-Это характеризует соблюдение главного императива разработки программного обеспечения:
+Frankly, the Django REST framework makes a lot of time for the debugger, and this, of course, characterizes its design solutions not from the best side.
+A good program should be read, not understood, and even more so without the help of a debugger.
+This characterizes the observance of the main imperative of software development:
 
     Software's Primary Technical Imperative is managing complexity. This is greatly
     aided by a design focus on simplicity.
@@ -225,11 +226,11 @@ Django REST framework
     accidental complexity from proliferating needlessly.
     («Code Complete» [#fncodec]_)
 
-Однако совокупный баланс преимуществ и недостатков делает Django REST framework весьма привлекательным для разработки, особенно если Вам нужно привлекать к работе новых (или временных) специалистов или отдать часть работы на аутсорсинг.
+However, the overall balance of advantages and disadvantages makes the Django REST framework very attractive for development, especially if you need to involve new (or temporary) developers or allocate some of the work for outsourcing.
 
-Просто нужно учитывать, что существует определенный входной барьер, который требует определенных затрат на его преодоление, и Вы должны понимать какую выгоду Вы с этого можете получить, ибо не всегда эта выгода стоит потраченных усилий для преодоления входного барьера.
+You just have to take into account that there is a certain entry barrier, which requires certain costs to overcome it, and you need to understand what benefit you can get from this, because not always this benefit is worth the effort to overcome the entrance barrier.
 
-На критике проектных решений я останавливаться не буду, конструктивно Django REST framework меня ни в чем не ограничивает, а это самое главное.
+I will not dwell on the criticism of the design decisions, the Django REST framework does not restrict me in anything constructively, and this is most important.
 
 
 Related fields with _id suffix for Django REST framework
