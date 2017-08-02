@@ -93,8 +93,24 @@ Identity Map
 Этот вопрос детально был рассмотрен в статье ":doc:`service-layer`".
 
 
-Выполнение сложных SQL-запросов
--------------------------------
+Композитные внешние ключи и Django ORM
+--------------------------------------
+
+Как видно из тикета `#373 <https://code.djangoproject.com/ticket/373>`_ и обсуждения "`Multi-Column Primary Key support <https://code.djangoproject.com/wiki/MultipleColumnPrimaryKeys>`_", Django ORM пока не поддерживают композитные связи.
+
+Это значит, что Вам придется создавать суррогатные ключи, что может вызвать определенные трудности при интеграции уже существующей базы данных, или использовать одну из этих библиотек:
+
+- `django-compositekey <https://pypi.python.org/pypi/django-compositekey>`_
+- `django-composite-foreignkey <https://pypi.python.org/pypi/django-composite-foreignkey>`_
+- `django-compositepk <https://pypi.python.org/pypi/django-compositepk>`_
+
+Скажу честно, я этими библиотеками не пользовался.
+Я в таком случае просто не использовал Django ORM.
+Но у Вас есть выбор.
+
+
+Выполнение сложных SQL-запросов c Django ORM
+--------------------------------------------
 
 Возможностей интерфейса Django ORM для создания сложных SQL-запросов недостаточно.
 В таком случае приходится или использовать сторонние инструменты, которые будут рассмотрены далее, или использовать Raw-SQL.
@@ -109,8 +125,8 @@ Identity Map
 В результате была достигнута возможность выразить SQL-запрос любого уровня сложности в интерфейсе django.db.models.query.QuerySet.
 
 
-Реализация сложных моделей
---------------------------
+Реализация сложных моделей в Django Framework
+---------------------------------------------
 
 Очень часто приходится иметь дело с объектами, которые содержат агрегированную информацию, аннотации, или сочетают в себе данные нескольких таблиц.
 
@@ -287,8 +303,8 @@ Graphql
 - `graphene-django <https://github.com/graphql-python/graphene-django>`_ - a Django integration for `graphene <https://github.com/graphql-python/graphene>`_.
 
 
-Плюсы и минусы
-==============
+Плюсы и минусы Django Framework
+===============================
 
 
 Плюсы
@@ -359,7 +375,7 @@ Django REST framework позволяет Вам абстрагироваться
 .. [#hpmysql] «High Performance MySQL» by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
 
 
-.. update:: 29 Jul, 2017
+.. update:: 02 Aug, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884

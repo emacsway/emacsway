@@ -97,8 +97,24 @@ A common mistake is using the django.db.models.Manager class as a Service Layer.
 This question was considered in detail in the article ":doc:`service-layer`".
 
 
-Building of complicated SQL-queries
------------------------------------
+Composite foreign keys and Django ORM
+-------------------------------------
+
+As you can see from the ticket `#373 <https://code.djangoproject.com/ticket/373>`_ and the discussion of "`Multi-Column Primary Key support <https://code.djangoproject.com/wiki/MultipleColumnPrimaryKeys>`_", Django ORM does not yet support composite relations.
+
+This means that you will have to create surrogate keys, which can cause certain difficulties in the integration of existing databases, or use one of these libraries:
+
+- `django-compositekey <https://pypi.python.org/pypi/django-compositekey>`_
+- `django-composite-foreignkey <https://pypi.python.org/pypi/django-composite-foreignkey>`_
+- `django-compositepk <https://pypi.python.org/pypi/django-compositepk>`_
+
+Frankly, I have not used these libraries.
+In that case, I just do not use Django ORM.
+But you have a choice.
+
+
+Building of complicated SQL-queries for Django ORM
+--------------------------------------------------
 
 The capabilities of the Django ORM interface are not enough to build complicated SQL queries.
 In this case, you have to either use third-party tools that will be discussed later, or use Raw-SQL.
@@ -115,8 +131,8 @@ To solve the problem my colleague had to ":doc:`make an adapter for sql-builder 
 As a result, it was possible to express an SQL query of any complexity in the interface of django.db.models.query.QuerySet.
 
 
-Implementation of complicated Models
-------------------------------------
+Implementation of complicated Models for Django Framework
+---------------------------------------------------------
 
 Very often you have to deal with objects that contain aggregated data, annotations, or combine the data of several tables.
 
@@ -286,8 +302,8 @@ Graphql
 - `graphene-django <https://github.com/graphql-python/graphene-django>`_ - a Django integration for `graphene <https://github.com/graphql-python/graphene>`_.
 
 
-Advantages and disadvantages
-============================
+Advantages and disadvantages of Django Framework
+================================================
 
 
 Advantages
@@ -358,7 +374,7 @@ Django REST framework позволяет Вам абстрагироваться
 .. [#hpmysql] «High Performance MySQL» by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
 
 
-.. .. update:: 29 Jul, 2017
+.. .. update:: 02 Aug, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
