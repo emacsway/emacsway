@@ -284,18 +284,18 @@ To solve this problem, you should use a wrapper with lazy evaluation in the Filt
 Generating \*.csv, \*.xlsx
 --------------------------
 
-Django и Django REST framework содержит огромное количество расширений.
-Это то главное преимущество, ради которого есть смысл терпеть их недостатки.
-Можно даже генерировать \*.csv, \*.xlsx файлы:
+Django and Django REST framework has a lot of extensions.
+This is a major advantage for which it makes sense to tolerate their shortcomings.
+You can even generate \*.csv, \*.xlsx files:
 
 - `django-rest-framework-excel <https://github.com/diegueus9/django-rest-framework-excel>`_
 - `django-rest-framework-csv <https://github.com/mjumbewu/django-rest-framework-csv>`_
 - `django-rest-pandas <https://github.com/wq/django-rest-pandas>`_
-- и др.
+- etc.
 
-Здесь, правда, возникает проблема с трансляцией вложенных структур данных в плоский список, и наоборот, с парсингом плоского списка во вложенную структуру.
-Частично эту проблему можно решить с помощью библиотеки `jsonmapping <https://github.com/pudo/jsonmapping>`_.
-Но мне это решение не подошло, и я делал полноценный декларативный маппер данных.
+However, there is a problem with translating the nested data structures into the flat list, and vice versa, with the parsing of the flat list into the nested data structure.
+Partially this problem can be solved using the library `jsonmapping <https://github.com/pudo/jsonmapping>`_.
+But this decision did not suit me, and I have done a complete declarative data mapper.
 
 
 Graphql
