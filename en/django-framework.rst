@@ -253,14 +253,14 @@ See also `discussion of the integration <https://github.com/encode/django-rest-f
 OpenAPI и Swagger
 -----------------
 
-Django REST framework позволяет `генерировать схему <www.django-rest-framework.org/api-guide/schemas/>`_ в формате OpenAPI и интегрируется с `swagger <https://swagger.io/>`_ с помощью библиотеки `django-rest-swagger <https://django-rest-swagger.readthedocs.io/en/latest/>`_.
+Django REST framework allows you to `generate scheme OpenAPI <www.django-rest-framework.org/api-guide/schemas/>`_ and integrates with `swagger <https://swagger.io/>`_ using the `django-rest-swagger <https://django-rest-swagger.readthedocs.io/en/latest/>`_ library.
 
-Это открывает неограниченные возможности по генерированию `стабов <Service Stub_>`__ для клиента и позволяет использовать один из существующих генераторов стабов для swagger.
-Что, в свою очередь, позволяет тестировать client-side без использования server-side, разграничить ответственность между разработчиками client-side и server-side, быстро диагностировать причину проблем, фиксировать протокол обмена, а главное, позволяет вести параллельную разработку client-side даже если server-side еще не готов.
+This opens up unlimited possibilities for generating `Service Stub`_ for clients and also allows using one of the existing stab generators for swagger.
+This allows you to test client-side without any server-side implementation, divide the responsibility between client-side and server-side developers, quickly find the cause of problems, freeze the communication protocol, and, most importantly, allows you to develop client-side in parallel even if server-side implementation is not finished yet.
 
-Схема OpenAPI также может быть использована для автоматической генерации тестов, например, с помощью `pyresttest <https://github.com/svanoort/pyresttest>`_.
+OpenAPI schema could also be used to automatically generate tests, for example, using the `pyresttest <https://github.com/svanoort/pyresttest>`_.
 
-Мой товарищ работает над библиотекой `python-easytest <https://bitbucket.org/sergeyglazyrindev/python-easytest>`_, которая избавляет от необходимости написания интеграционных тестов и тестирует приложение на основании схемы OpenAPI.
+My friend works on the `python-easytest <https://bitbucket.org/sergeyglazyrindev/python-easytest>`_ library, which eliminates the need for writing integration tests and performs the testing of the application using the OpenAPI scheme.
 
 
 JOIN-s problem
