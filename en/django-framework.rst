@@ -244,10 +244,10 @@ The same example on the `gist <https://gist.github.com/ostcar/eb78515a41ab41d175
 SQLAlchemy
 ----------
 
-Огромным преимуществом Django REST framework является то, что он ORM agnostic.
-Он имеет прекрасную интергацию с Django ORM, но он легко может работать с голой реализацией паттерна Data Mapper который будет возвращать `namedtuple`_ для `Data Transfer Object`_.
-Так же он имеет хорошую интеграцию с `SQLAlchemy`_ в виде стороннего приложения `djangorest-alchemy <https://github.com/dealertrack/djangorest-alchemy>`_ (`документация <http://djangorest-alchemy.readthedocs.io/en/latest/>`__).
-См. `обсуждение интеграции <https://github.com/encode/django-rest-framework/issues/2439>`__.
+The huge advantage of Django REST framework is that it is ORM agnostic.
+It has perfect interfacing with Django ORM, but it can easily work with a bare implementation of the Data Mapper pattern which returns a `namedtuple`_ collection for some `Data Transfer Object`_.
+It also has good integration with `SQLAlchemy`_ in the form of a third-party application `djangorest-alchemy <https://github.com/dealertrack/djangorest-alchemy>`_ (`docs <http://djangorest-alchemy.readthedocs.io/en/latest/>`__).
+See also `discussion of the integration <https://github.com/encode/django-rest-framework/issues/2439>`__.
 
 
 OpenAPI и Swagger
