@@ -197,14 +197,14 @@ Other generators `can be found <https://djangopackages.org/grids/g/fixtures/>`__
 Cache invalidation
 ------------------
 
-Реализация Django ORM в виде `ActiveRecord`_ вынуждает нас напрямую вызывать метод `Model.save() <https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.save>`_.
-Проблема в том, что сигналы `post_save <https://docs.djangoproject.com/en/1.11/ref/signals/#post-save>`_ и `pre_delete <https://docs.djangoproject.com/en/1.11/ref/signals/#pre-delete>`_ часто используются разработчиками для инвалидации кэша.
-Это не совсем правильно, так как Django ORM не использует паттерна `Unit of Work`_, и время между сохранением и фиксацией транзакции оказывается достаточным чтобы параллельный поток успел воссоздать кэш с устаревшими данными.
+Django ORM implements the `ActiveRecord`_ pattern, which forces us to explicitly call `Model.save() <https://docs.djangoproject.com/en/1.11/ref/models/instances/#django.db.models.Model.save>`_ method.
+The problem is that the `post_save <https://docs.djangoproject.com/en/1.11/ref/signals/#post-save>`_ and `pre_delete <https://docs.djangoproject.com/en/1.11/ref/signals/#pre-delete>`_ signals are often used by developers to invalidate the cache.
+This is not quite the right way, since Django ORM does not use the `Unit of Work`_ pattern, and the time between saving and committing the transaction is sufficient to parallel thread could recreate the cache with outdated data.
 
-В интернете можно найти библиотеки которые позволяют `послать сигнал во время фиксации транзакции <https://pypi.python.org/pypi?%3Aaction=search&term=django+commit+signal&submit=search>`__.
-Django 1.9 и выше возволяет использовать `transaction.on_commit() <https://docs.djangoproject.com/en/1.11/topics/db/transactions/#django.db.transaction.on_commit>`_, что частично решает проблему если не используется репликация.
+On the Internet, you can find libraries that allow you to send a signal when the transaction is committed (use search query "django commit signal" on pypi.python.org).
+Django 1.9 and above allows you to use `transaction.on_commit() <https://docs.djangoproject.com/en/1.11/topics/db/transactions/#django.db.transaction.on_commit>`_, which partially solves the problem if you do not use replication.
 
-Я использую библиотеку `cache-dependencies <https://bitbucket.org/emacsway/cache-dependencies>`_, о чем я писал в статье ":doc:`cache-dependencies`".
+I use the library `cache-dependencies <https://bitbucket.org/emacsway/cache-dependencies>`_, as I wrote in the article ":doc:`cache-dependencies`".
 
 
 Django REST framework
