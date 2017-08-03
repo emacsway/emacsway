@@ -1,6 +1,6 @@
 
-About my experience using Django Framework
-==========================================
+About my experience of using Django Framework
+=============================================
 
 .. post:: Jul 26, 2017
    :language: en
