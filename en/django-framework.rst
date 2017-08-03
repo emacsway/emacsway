@@ -2,7 +2,7 @@
 About my experience using the Django Framework
 ==============================================
 
-.. post:: 
+.. post:: Jul 26, 2017
    :language: en
    :tags: Django, ORM
    :category:
@@ -10,8 +10,6 @@ About my experience using the Django Framework
    :exclude:
 
    Django framework allows you to quickly solve a huge range of tasks and easily find developers. With a competent approach, you can use all the advantages of Django and not become a hostage of its shortcomings.
-
-.. Jul 26, 2017
 
 At one time, someone beautifully said that security is a balance between the cost of protection and the potential benefits of hacking.
 There is no sense to exceed this balance.
@@ -311,27 +309,27 @@ Advantages and disadvantages of Django Framework
 Advantages
 ----------
 
-Джанго имеет удачный `View <https://docs.djangoproject.com/en/1.11/topics/http/views/>`__,  который представляет собой разновидность паттерна `Page Controller`_, достаточно удачные формы и шаблонизатор (если использовать `django.template.loaders.cached.Loader <https://docs.djangoproject.com/en/1.11/ref/templates/api/#django.template.loaders.cached.Loader>`_).
+Django has a successful `View <https://docs.djangoproject.com/en/1.11/topics/http/views/>`__, which is a kind of the pattern `Page Controller`_, fairly successful forms and template (if you use `django.template.loaders.cached.Loader <https://docs.djangoproject.com/en/1.11/ref/templates/api/#django.template.loaders.cached.Loader>`_).
 
-Несмотря на все недостатки Django ORM, его интерфейс построения запросов хорошо подходит для REST API.
+Despite all the shortcomings of Django ORM, its query building interface is well suited for the REST API.
 
-Django имеет огромное сообщество с огромным количеством готовых приложений.
-Находить специалистов для Django и Django REST framework очень легко.
+Django has a huge community with a huge number of ready-made applications.
+It is very easy to find developers (and outsourcing companies) for Django and Django REST framework.
 
-Django декларирует такой способ разработки, который не требователен к уровню разработчиков.
+Django declares such a way of development, which is not exacting to the skill level of developers.
 
-Django способен экономить много времени при правильном использовании.
+Django can save a lot of time and financial resources if used properly.
 
 
 Disadvantages
 -------------
 
-Уровень сложности Django растет с каждым релизом, зачастую опережая реализуемые ею возможности, и от этого ее привлекательность постоянно уменьшается.
+The level of complexity of Django grows with each release, often outstripping the opportunities it implements, and from this its attractiveness is constantly decreasing.
 
-Если Вам нужно адаптировать Django ORM для своих потребностей, то сделать это с последним релизом будет, пожалуй, сложнее, чем адаптировать SQLAlchemy.
-При том что в адаптации он нуждается чаще чем SQLAlchemy.
-Простота больше не является главной прерогативой Django, как это было в ранних версиях.
-Практически во всех проектах, с которыми мне приходилось иметь дело, Django ORM дополнялся (или заменялся) сторонними инструментами либо голой реализацией паттерна Data Mapper.
+If you need to adapt Django ORM for your needs, then it's probably more difficult to do this with the latest release than to adapt SQLAlchemy.
+And it needs to adapt more often than SQLAlchemy.
+Simplicity is no longer the main prerogative of Django, as it was in earlier versions.
+Almost in all projects that I had to deal with, Django ORM was supplemented (or replaced) with third-party tools or bare implementation of the Data Mapper pattern.
 
 В кругу моих друзей Django framework используется в основном в силу привычки и по инерции.
 
@@ -376,7 +374,7 @@ Django REST framework позволяет Вам абстрагироваться
 .. [#hpmysql] «High Performance MySQL» by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
 
 
-.. .. update:: 02 Aug, 2017
+.. update:: 02 Aug, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
