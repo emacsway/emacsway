@@ -331,12 +331,13 @@ And it needs to adapt more often than SQLAlchemy.
 Simplicity is no longer the main prerogative of Django, as it was in earlier versions.
 Almost in all projects that I had to deal with, Django ORM was supplemented (or replaced) with third-party tools or bare implementation of the Data Mapper pattern.
 
-В кругу моих друзей Django framework используется в основном в силу привычки и по инерции.
+In the circle of my friends Django framework is used mainly because of habit and inertia.
 
-Несмотря на то, что Django framework имеет огромное количество готовых приложений, их качество зачастую оставляет желать лучшего, а то и вовсе содержит баги, причем, попадаются очень коварные баги, которые проявляются только в многопоточной среде под нагрузками, и которые отлаживать весьма затруднительно.
+Despite the fact that Django framework has a huge number of ready-made applications, their quality often leaves much to be desired, or even contains bugs.
+Moreover, very insidious bugs may appear, which only appear in a multi-threaded environment under high loads, and which are very difficult to debug.
 
-Качество специалистов, специализирующихся на Django, тоже зачастую невысокое.
-Квалифицированные специалисты среди моих друзей стараются избегать работу с Django.
+The quality of developers specializing in Django is also often low.
+Highly skilled developers from my friends try to avoid working with Django.
 
 
 Conclusion
