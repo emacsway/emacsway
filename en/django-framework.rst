@@ -343,25 +343,26 @@ Highly skilled developers from my friends try to avoid working with Django.
 Conclusion
 ==========
 
-Использовать или не использовать Django framework зависит от того, какие цели Вы перед собой ставите, и командой какой квалификации Вы располагаете.
+Whether to use Django framework depends on what goals you set for yourself and how qualified are the teams you have.
 
-Если Ваша команда высоко-квалифицированная в области архитектуры и проектирования, вы используете :doc:`методики совместной разработки <../en/how-to-quickly-develop-high-quality-code>` для распространения опыта, чувствуете в себе силы сделать проект более качественным без Django, и располагаете достаточными ресурсами и финансами для этого, тогда есть смысл использовать другой стэк технологий.
+If your team is highly qualified in the field of architecture and design, you use :doc:`collaborative development techniques <../en/how-to-quickly-develop-high-quality-code>` for the dissemination of experience, have sufficient resources and finances to make the project more better without Django, then it makes sense to use another stack of technologies.
 
-В противном случае, Django framework может сослужить Вам хорошую пользу.
-Много самонадеянных команд так и не смогли без Django сделать свои проекты лучше, чем сделали бы это с ней.
+Otherwise the Django framework can do you a good favor.
+A lot of overconfident teams could not make without Django their projects better than they would have make with it.
 
-Никто не обязывает Вас использовать Django всегда и везде.
-Django REST framework позволяет Вам абстрагироваться от Django ORM и даже от своего сериализатора.
+Nobody obliges you to use Django anytime and anywhere.
+Django REST framework allows you to abstract from Django ORM and even from its serializer.
 
-Если Вы занимаетесь аутсорсингом, Ваш средний проект длится не больше года, бюджет невысокий а сроки сжатые, то у Django есть что Вам предложить.
+If you are engaged in outsourcing, your average project lasts no more than a year, the budget is low and the deadlines are short, then Django has a lot to offer you.
 
-Если Вы работаете над большим действующим проектом, то выгоды уже не столь очевидны.
-Все дело в балансе, который Вы должны сами для себя определить.
+If you are working on a large ongoing project, the benefits are not so obvious.
+All the matter in the balance that you need to determine for themselves.
 
-Но если Вы используете `ограниченные контексты <https://martinfowler.com/bliki/BoundedContext.html>`_ или `микросервисную архитектуру <https://martinfowler.com/articles/microservices.html>`_, то каждая команда может принимать решение о стэке технологий самостоятельно.
-Вы можете использовать Джангу только для части проекта, или использовать только некоторые компоненты Джанги.
+But if you use `Bounded Contexts <https://martinfowler.com/bliki/BoundedContext.html>`_ or `Microservice Architecture <https://martinfowler.com/articles/microservices.html>`_, then each team can decide on their own technology stack.
+You can use Django only for part of the project, or use only some of the Django Framework components.
 
-А можете не использовать вообще. Среди альтернатив я советую обратить внимание на web-framework который мне импонирует `wheezy.web <https://pypi.python.org/pypi/wheezy.web>`_.
+And you can not use it at all.
+Among the alternatives, I advise you to pay attention to the web-framework that impresses me `wheezy.web <https://pypi.python.org/pypi/wheezy.web>`_.
 
 
 Эта статья на Русском языке ":doc:`../ru/django-framework`".
@@ -375,7 +376,7 @@ Django REST framework позволяет Вам абстрагироваться
 .. [#hpmysql] «High Performance MySQL» by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
 
 
-.. update:: 02 Aug, 2017
+.. update:: 03 Aug, 2017
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
