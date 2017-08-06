@@ -49,8 +49,8 @@ blog_authors = {
 # keys should be used in ``post`` directive to refer to the locations.
 # Default is ``{}``.
 blog_languages = {
-    'en': ('English', 'en/'),
-    'ru': ('Russian', 'ru/'),
+    'en': ('English', None),
+    'ru': ('Russian', None),
 }
 
 
