@@ -458,7 +458,7 @@ You are forced to understand the program using the debugger.   This violates the
                                                                    in full humility"
                                                                    (Dijkstra 1972).
 
-You are forced to debug and fix bugs.                          Introduce `Test-Driven Development`_ (TDD), improve the quality of code
+You are forced to debug and to fix bugs.                       Introduce `Test-Driven Development`_ (TDD), improve the quality of code
                                                                and the corporate culture of code construction.
                                                                The time of debugging and bug fixing is one of the important
                                                                measurement parameters.
