@@ -480,6 +480,7 @@ Domain-Driven Design подходит к связям более строго, �
 .. [#fnrefactoring] «`Refactoring: Improving the Design of Existing Code`_» by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
 .. [#fnoovsop] «`OO vs FP`_» by Robert C. Martin
 .. [#fnca] «`Clean Architecture`_» by Robert C. Martin
+.. [#fntca] «`The Clean Architecture`_» by Robert C. Martin
 .. [#fnxp] «`Extreme Programming Explained`_» by Kent Beck
 
 
@@ -495,6 +496,7 @@ Domain-Driven Design подходит к связям более строго, �
 .. _Extreme Programming Explained: http://www.informit.com/store/extreme-programming-explained-embrace-change-9780321278654
 .. _OO vs FP: http://blog.cleancoder.com/uncle-bob/2014/11/24/FPvsOO.html
 .. _Clean Architecture: https://8thlight.com/blog/uncle-bob/2011/11/22/Clean-Architecture.html
+.. _The Clean Architecture: https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html
 
 .. _ActiveRecord: http://www.martinfowler.com/eaaCatalog/activeRecord.html
 .. _Domain Model: http://martinfowler.com/eaaCatalog/domainModel.html
