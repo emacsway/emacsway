@@ -1,6 +1,6 @@
 
-Реализация паттерна Repository в браузерном JavaScript
-======================================================
+Implementation of the pattern Repository for browser JavaScript
+===============================================================
 
 .. post::
    :language: en
@@ -10,16 +10,16 @@
 
 .. 06 Aug, 2017
 
-Хорошая архитектура освобождает Вас от привязки к конкретной реализации.
-Она позволяет Вам отложить момент принятия решения о реализации, и `начать конструирование кода еще не имея этого решения <Service Stub_>`__.
-Принципиально важным моментом является то, что Вы обретаете возможность принять решение в момент наибольшей информированности, а также всегда можете легко подменить конкретную реализацию на любую другую.
-Вот эта обязанность возложена на паттерн `Repository`_.
+Good architecture makes you free from certain implementation.
+It allows you to postpone the moment of decision on implementation and `begin code construction even without the decision <Service Stub_>`__.
+The most important point is that you gain the opportunity to make a decision at the time of the greatest awareness, and you can also easily replace a specific implementation with any other.
+This responsibility is assigned to the `Repository`_.
 
 
-.. contents:: Содержание
+.. contents:: Contents
 
 
-Таким образом, у Вас появляется полная абстракция от источника данных, будь то REST-API, MBaaS, SaaS, IndexedDB, HTML, сторонний сервис по протоколу JSON-RPC или `Service Stub`_.
+Thus, you have a complete abstraction from the data source, whether it's REST-API, MBaaS, SaaS, IndexedDB, HTML, third-party service for JSON-RPC protocol or `Service Stub`_.
 
     "We often forget that it is also best to postpone decisions until the last possible moment.
     This isn’t lazy or irresponsible; it lets us make informed choices with the best possible information.
@@ -44,19 +44,19 @@
     true.
     (Kent Beck [#fnxp]_)
 
-Кроме того, у Вас появляется возможность реализовать паттерны `Identity Map`_ и `Unit of Work`_.
-Последний очень часто востребован, так как позволяет сохранять на сервере только измененные объекты окончательно сформированного агрегата вложенных объектов, либо выполнить откат состояния локальных объектов в случае, если сохранить данные невозможно (пользователь передумал или ввел невалидные данные).
+In addition, you have the opportunity to implement patterns `Identity Map`_ and `Unit of Work`_.
+The last one is very often in demand, since it allows you to save only changed objects of the finally formed aggregate of nested objects on the server, or roll back the state of local objects in case the data can not be saved (the user has changed his mind or entered invalid data).
 
 
-Модель предметной области (Domain Model)
-========================================
+Domain Model
+============
 
-Наибольшим преимуществом полноценных `Моделей предметной области <Domain Model_>`__ в программе является возможность использования принципов Domain-Driven Design (DDD) [#fnddd]_.
-Если Модели содержат исключительно бизнес-логику, и освобождены от служебной логики, то они могут легко читаться специалистами предметной области (т.е. представителем заказчика).
-Это освобождает Вас от необходимости создания UML-диаграмм для обсуждений и позволяет добиться максимально выского уровня взаимопонимания, продуктивности, и качества реализации моделей.
+The greatest advantage of the `Domain Model`_ in the program is the ability to use the principles of Domain-Driven Design (DDD) [#fnddd]_.
+If the Models contain only business logic, and are devoid of service logic, then they can easily be read by domain expert (ie, the customer's representative).
+This frees you from the need to create UML diagrams for discussions and allows you to achieve the highest level of mutual understanding, productivity, and quality of implementation of the models.
 
-В одном из проектов я пытался реализовать достаточно сложную доменную логику (которая содержала около 20 доменных Моделей) в парадигме реактивного программирования, когда атрибуты экземпляра Модели, содержащие аннотации агрегации или зависимые от них, изменяли свое значение путем реакции на изменения других моделей и хранилищ.
-Суть в том, что вся эта реактивная логика уже не принадлежала самой доменной модели, и располагалась в разного рода `слушателях <Observer_>`_ и обработчиках.
+In one project I tried to implement a fairly complex domain logic (which contained about 20 domain model) in the paradigm of reactive programming, when the attributes of the model instance, containing the aggregation annotations or dependent on them, change its values by reacting to changes in other models and storages.
+The bottom line is that all this reactive logic no longer belonged to the domain model itself, and was located in a different sort of `Observers <Observer_>`__ and handlers.
 
     "The whole point of objects is that they are a technique to package data with the processes used
     on that data. A classic smell is a method that seems more interested in a class other than the one
@@ -72,7 +72,7 @@
     it all up, the domain developers lose their ability to chunk the model into meaningful pieces."
     («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
-Это привело к такому огромному количеству хитросплетений слушателей, что превосходство в performance было утрачено, но еще раньше была утрачена читаемость кода.
+This led to such a huge number of intricacies of listeners that the superiority in performance was lost, but before that was lost readability.
 Даже я не мог на следующий день сказать что делает тот или иной фрагмент кода, не говоря уже о специалисте предметной области.
 Мало того, что это в корне разрушало принципы Domain-Driven Design, так это еще и в значительной мере :doc:`снижало скорость разработки новых функций проекта <../en/how-to-quickly-develop-high-quality-code>`.
 
