@@ -73,25 +73,25 @@ The bottom line is that all this reactive logic no longer belonged to the domain
     («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
 This led to such a huge number of intricacies of listeners that the superiority in performance was lost, but before that was lost readability.
-Даже я не мог на следующий день сказать что делает тот или иной фрагмент кода, не говоря уже о специалисте предметной области.
-Мало того, что это в корне разрушало принципы Domain-Driven Design, так это еще и в значительной мере :doc:`снижало скорость разработки новых функций проекта <../en/how-to-quickly-develop-high-quality-code>`.
+Even I could not understand the next day what a particular code fragment does, I'm not talking about the domain expert.
+This radically destroyed the principles of Domain-Driven Design, and significantly :doc:`reduced the speed of developing new project features <../en/how-to-quickly-develop-high-quality-code>`.
 
-Надежды на такой подход окончательно рухнули когда выяснилось, что каждый экземпляр модели должен изменять значения своих атрибутов, содержащих аннотации агрегации или зависимых от них, в зависимости от контекста использования (выбранной группировки отображения или критериев фильтрации).
+Hopes for this approach finally collapsed when it was revealed that each instance of the model is to change the values of its attributes that contain aggregate annotations or dependent upon, depending on the context of use (display selected group or filter criteria).
 
-Впоследствии модели вернули себе свои концептуальные контуры и читаемость кода, и вместе с тем сохранили механизм реакций при добавлении, изменении или удалении объектов.
-Для достижения этого результата пришлось своими силами создать библиотеку реализующую паттерн Repository, так как существующих решений для реляционных данных с качественной кодовой базой я не смог найти.
+Subsequently, the models recovered their conceptual outlines and code readability, and at the same time preserved the mechanism of reactions for adding, changing or deleting objects.
+To achieve this result, I had to create my own library implementing the Repository pattern, since I could not find existing solutions for relational data with quality code base.
 
 
-Парадигма реактивного программирования
-======================================
+Reactive programming paradigm
+=============================
 
-Сегодня модно увлекаться реактивным программированием.
-Знаете ли Вы, что разработчики dojo впервые `применили реактивное программирование <https://github.com/dojo/dojo/commit/4bd91a5939d4dbc8a43d673cc279bb3d39ed0895#diff-48ec1f2998cbe6d644df0c9abd32d9d0R35>`__ в своей реализации паттерна Repository еще 13 сентября 2010?
+Today it is fashionable to get involved in reactive programming.
+Did you know that dojo developers first `applied reactive programming <https://github.com/dojo/dojo/commit/4bd91a5939d4dbc8a43d673cc279bb3d39ed0895#diff-48ec1f2998cbe6d644df0c9abd32d9d0R35>`__ in their implementation of the Repository pattern as early as September 13, 2010?
 
-Реактивное программирование дополняет (а не противопоставляет) паттерн `Repository`_, о чем красноречиво свидетельствует опыт `dojo.store`_, `Dstore`_ и нового `Dojo 2 - data stores <https://github.com/dojo/stores>`_.
+Reactive programming complements (rather than contrasts) the `Repository`_ pattern, as it's evidenced by the experience of `dojo.store`_, `Dstore`_ and the new `Dojo 2 - data stores <https://github.com/dojo/stores>`_.
 
-Разработчики dojo - команда высококвалифицированных специалистов, чьи библиотеки используют такие серьезные компании как IBM.
-Примером того, насколько серьезно и комплексно они подходят к решению проблем, может служить `история библиотеки RequireJS <http://requirejs.org/docs/history.html>`_.
+The developers of dojo are a team of highly qualified specialists whose libraries are used by such reputable companies as IBM.
+An example of how seriously and comprehensively they solves problems is the `history of the RequireJS library <http://requirejs.org/docs/history.html>`_.
 
 
 Примеры реализаций паттерна Repository в JavaScript
