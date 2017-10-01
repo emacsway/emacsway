@@ -94,16 +94,16 @@ The developers of dojo are a team of highly qualified specialists whose librarie
 An example of how seriously and comprehensively they solves problems is the `history of the RequireJS library <http://requirejs.org/docs/history.html>`_.
 
 
-Примеры реализаций паттерна Repository в JavaScript
-===================================================
+Examples of implementations of Repository pattern by JavaScript
+===============================================================
 
-Примеры простейших реализаций паттерна Repository на JavaScript в проекте `todomvc.com <http://todomvc.com/>`_:
+Examples of the simplest implementations of the Repository pattern by JavaScript in the project `todomvc.com <http://todomvc.com/>`_:
 
 - Angular2: https://github.com/tastejs/todomvc/blob/gh-pages/examples/angular2/app/services/store.ts
 - Angular1: https://github.com/tastejs/todomvc/blob/gh-pages/examples/angularjs/js/services/todoStorage.js
 - React: https://github.com/tastejs/todomvc/blob/gh-pages/examples/react-alt/js/stores/todoStore.js
 
-Другие реализации:
+Other implementations:
 
 - `Dojo2 Stores <https://github.com/dojo/stores>`_ - \
   Excellent implementation of `Repository`_ pattern in paradigm of `Reactive Programming`_ for non-relational data.
@@ -120,21 +120,21 @@ An example of how seriously and comprehensively they solves problems is the `his
 - `Pocket.js <https://github.com/vincentracine/pocketjs>`_ - \
   a wrapper for the window.localStorage. It provides helpful methods which utilise MongoDB's proven syntax and provides a powerful lightweight abstraction from the complexity of managing and querying local storage.
 
-Я хотел бы добавить сюда и `Ember.js <https://emberjs.com/>`_, но он реализует паттерн `ActiveRecord`_.
+I would like to add here `Ember.js <https://emberjs.com/>`_, but it implements the `ActiveRecord`_ pattern.
 
 
-Реализация реляционных связей
-=============================
+Implementation of relational relations
+======================================
 
 
-Синхронное программирование
----------------------------
+Synchronous programming
+-----------------------
 
-На заре появления ORM, мапперы делали таким образом, чтобы они извлекали из базы данных все связанные объекты одним запросом (см. `пример реализации <https://bitbucket.org/emacsway/openorm/src/default/python/>`_).
+At the dawn of ORM, the Data Mappers retrieved from the database all related objects with a single query (see `example of implementation <https://bitbucket.org/emacsway/openorm/src/default/python/>`_).
 
-Domain-Driven Design подходит к связям более строго, и рассматривает связи с позиции концептуальных контуров агрегата вложенных объектов [#fnddd]_.
-Доступ к объекту осуществлялся либо по ссылке (от родительского объекта к вложеному), либо через Repository.
-Здесь также особую роль играет направление связей, и соблюдение принципа минимальной достаточности ("дистиляция моделей" [#fnddd]_).
+Domain-Driven Design approaches relations more strictly, and considers relations from the point of view of conceptual contour of an aggregate of nested objects [#fnddd]_.
+The object can be accessed either by reference (from the parent object to the embedded object) or through the Repository.
+It is also important the direction of relations and the principle of minimal sufficiency ("distillation of models" [#fnddd]_).
 
     In real life, there are lots of many-to-many associations, and a great number are naturally
     bidirectional. The same tends to be true of early forms of a model as we brainstorm and explore
@@ -161,23 +161,23 @@ Domain-Driven Design подходит к связям более строго, �
     which seldom obliges us with sharp boundaries. It is a problem in a software design.
     («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
-С появлением ORM, в синхронном программировании активно начали применяться ленивые вычисления для разрешения связей.
-В Python для этого активно используются `Descriptors <https://docs.python.org/3/howto/descriptor.html>`__, а в Java - AOP и Cross-Cutting Concerns [#fnccode]_.
+With the advent of ORM, lazy evaluation actively began to use to resolve ties synchronous programming.
+Python community actifely uses `Descriptors <https://docs.python.org/3/howto/descriptor.html>`__ for this purpose, but Java - AOP and Cross-Cutting Concerns [#fnccode]_.
 
-Ключевым моментом является освобождение Domain Model от логики доступа к источнику данных.
-Это необходимо как из принципа чистоты архитектуры и проектных решений, чтобы снизить сопряжение (`Coupling`_), так и из принципа простоты тестирования.
-Наибольших успехов позволяет достигнуть принцип Cross-Cutting Concerns, который полностью освобождает модель от служебной логики.
+The key is to free the Domain Model from the data access logic.
+This is required by the principle of clean architecture to reduce coupling (`Coupling`_), and by the principle of simplicity of testing.
+The greatest success is achieved by the principle of Cross-Cutting Concerns which completely frees the model from the service logic.
 
-С появлением ОРМ, организация связей стала настолько легкой, что о ней перестали задумываться.
-Там где требуются однонаправленные связи, разработчики с легкостью применяют двунаправленные связи.
-Появились механизмы оптимизации выборки связанных объектов, которые неявно предзагружают все связанные объекты, что значительно сокращает количество обращений в базу данных.
+With the advent of ORM the implementation of relations has become so easy that no one longer think about it.
+Where unidirectional relations are required, developers can easily apply bidirectional relations.
+Utilities for optimizing the selection of related objects have appeared, which implicitly preload all related objects, which significantly reduces the number of calls to the database.
 
 
-Отказ от связей
----------------
+Rejecting relations
+-------------------
 
-Стоит упомянуть и другую распространенную точку зрения, которая гласит, что объект не должен отвечать за свои связи, а исключительное право на доступ к объекту должно принадлежать только Repository.
-Такой точки зрения придерживаются некоторые уважаемые мною друзья.
+It is worth mentioning another widespread point of view, which says that an object should not be responsible for its relations, and only Repository can have an exclusive right to access the object.
+Some respected by me friends adhere to this point of view.
 
 
 Асинхронное программирование
