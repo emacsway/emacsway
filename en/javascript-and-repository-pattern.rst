@@ -180,14 +180,14 @@ It is worth mentioning another widespread point of view, which says that an obje
 Some respected by me friends adhere to this point of view.
 
 
-Асинхронное программирование
-----------------------------
+Asynchronous programming
+------------------------
 
-Рост популярности асинхронных приложений заставил пересмотреть устоявшиеся представления о ленивой реализации связей.
-Асинхронное обращение к каждой ленивой связи каждого объекта значительно усложняет ясность программного кода, и препятствует оптимизации.
+The rise in popularity of asynchronous applications has forced us to reconsider the established notions about the implementation of lazy relations.
+Asynchronous access to each lazy relation of each object significantly complicates the clarity of the program code and prevents optimization.
 
-Это привело к росту популярности объекто-ориентированных баз данных в асинхронном программировании, которые позволяют сохранять агрегаты целиком.
-Все чаще REST-frameworks стали использоваться для передачи клиенту `агрегатов вложенных объектов <http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects>`_.
+This has increased the popularity of object-oriented database in asynchronous programming that allows to save aggregates entirely.
+Increasingly, REST-frameworks began to be used to `transfer aggregates of nested objects to the client <http://www.django-rest-framework.org/api-guide/serializers/#dealing-with-nested-objects>`_.
 
     To do anything with an object, you have to hold a reference to it. How do you get that reference?
     One way is to create the object, as the creation operation will return a reference to the new
@@ -211,15 +211,15 @@ Some respected by me friends adhere to this point of view.
     find the constituents of an object and then reconstitute it.
     («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
-Необходимость обхода агрегатов активизировала интерес к функциональному программированию, особенно в сочетании с парадигмой реактивного программирования.
+The need for processing aggregates has intensified interest in functional programming, especially in combination with reactive programming paradigm.
 
-Однако, решение одной проблемы порождало другую проблему.
+However, the solution to one problem creates another problem.
 
 
-Функциональное программирование
--------------------------------
+Functional Programming
+----------------------
 
-Функциональное программирование сложнее использовать для объектов предметной области, так как его сложнее структурировать логически (особенно при отсутствии поддержки `множественной диспетчеризации <https://ru.wikipedia.org/wiki/%D0%9C%D1%83%D0%BB%D1%8C%D1%82%D0%B8%D0%BC%D0%B5%D1%82%D0%BE%D0%B4>`__), что зачастую приводит к появлению плохо читаемого кода, который выражает не то, "что" он делает, а то, "как" он делает непонятно что.
+Функциональное программирование сложнее использовать для объектов предметной области, так как его сложнее структурировать логически (особенно при отсутствии поддержки `множественной диспетчеризации <https://en.wikipedia.org/wiki/Multiple_dispatch>`__), что зачастую приводит к появлению плохо читаемого кода, который выражает не то, "что" он делает, а то, "как" он делает непонятно что.
 
     If you wanted polymophism in C, you’d have to manage those pointers yourself;
     and that’s hard. If you wanted polymorphism in Lisp you’d have to manage those pointers yourself (pass them in as arguments to some higher level algorithm (which, by the way IS the Strategy pattern.))
