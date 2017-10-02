@@ -1,10 +1,10 @@
 
-Implementation of the pattern Repository for browser JavaScript
-===============================================================
+Implementation of the pattern Repository for browser's JavaScript
+=================================================================
 
 .. post::
    :language: en
-   :tags: Repository, ORM, JavaScript
+   :tags: Repository, ORM, JavaScript, Model, DDD
    :category:
    :author: Ivan Zakrevsky
 
@@ -380,30 +380,31 @@ For in this case, the interface will follow the implementation, which fundamenta
 Also, the concept of an aggregate can not be used to emulate Many-To-Many relations and cross-link hierarchies.
 
 
-Реализация связей путем присваивания
-------------------------------------
+Implementation of relations by assigning
+----------------------------------------
 
-Принцип физического присваивания связанных объектов `реализован так же и в библиотеке js-data <http://www.js-data.io/v3.0/docs/relations#section-eagerly-loading-relations>`__.
+The principle of physical assignment of related objects is `implemented also by the library js-data <http://www.js-data.io/v3.0/docs/relations#section-eagerly-loading-relations>`__.
 
-В нашей библиотеке мы предусмотрели как возможность декомпозиции агрегатов вложенных объектов, так и возможность их композиции из плоских данных в Repositories.
-Причем, агрегат всегда сохраняет актуальное состояние, и при добавлении, изменении, удалении объекта в Repository, изменения автоматически отображаются в структурах соответствующих агрегатов.
-Библиотека реализует это поведение как в парадигме Реактивного программирования, так и в парадигме Событийно-ориентированного программирования (на выбор).
+In our library, we implemented both the ability to decompose aggregates of nested objects and the ability to compose aggregates from flat data of Repositories.
+Moreover, the aggregate always keeps the actual state.
+When you add, change, delete an object in the Repository, the changes automatically propagate to the structures of the corresponding aggregates.
+The library implements this behavior as in the paradigm of reactive programming, as well as in the paradigm of event-driven programming (optional).
 
-Существует также возможность формировать двусторонние связи.
-Но, несмотря на то, что современные интерпретаторы легко чистят мусор с кольцевыми ссылками, с концептуальной точки зрения лучше когда вложенные объекты не осведомлены о своем родителе, если на то нет веских оснований.
+There is also the ability to create bidirectional relations.
+But, despite the fact that modern interpreters able to easily collect garbage with reference cycles, it's better when child objects are not aware of their parents from a conceptual point of view, if you don't have a strong reason for that.
 
-Таким образом, для реализации связей объекту совершенно не требуется никакая служебная логика доступа к данным, что поддерживает нулевое сопряжение (`Coupling`_) и образует кристально чистые доменные модели.
-Это значит, что доменные модели могут быть инстанцией "класса" Object.
+Thus, the implementation of communications does not require any service data access logic for the object, that provides zero `Coupling`_ and absolutly clear domain models.
+This means that domain model can be instance of the "class" Object.
 
-Я также уважительно отношусь к той точке зрения, что доменная модель не должна отвечать за связи.
-Поэтому предусмотрена возможность легкого доступа к любому объекту через его Repository.
+I also took into account the point of view that the domain model should not be responsible for the relations.
+Therefore, there is the possibility of easy access to any object through its Repository.
 
 
-Исходный код
-============
+Source code
+===========
 
-На данный момент исходный код библиотеки пока еще не раскрыт.
-Но такая вероятность существует в обозримом будущем.
+Currently, the source code of the library is not open.
+But such a probability exists for the near future.
 
 
 .. rubric:: Footnotes
