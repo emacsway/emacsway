@@ -219,7 +219,8 @@ However, the solution to one problem creates another problem.
 Functional Programming
 ----------------------
 
-Функциональное программирование сложнее использовать для объектов предметной области, так как его сложнее структурировать логически (особенно при отсутствии поддержки `множественной диспетчеризации <https://en.wikipedia.org/wiki/Multiple_dispatch>`__), что зачастую приводит к появлению плохо читаемого кода, который выражает не то, "что" он делает, а то, "как" он делает непонятно что.
+Functional programming is more difficult to use for domain objects, since it is more difficult to structure logically (especially if programming language does not support `multiple dispatching <https://en.wikipedia.org/wiki/Multiple_dispatch>`__).
+This often leads to unreadable code that expresses not "what" it does, but "how" it does something incomprehensible.
 
     If you wanted polymophism in C, you’d have to manage those pointers yourself;
     and that’s hard. If you wanted polymorphism in Lisp you’d have to manage those pointers yourself (pass them in as arguments to some higher level algorithm (which, by the way IS the Strategy pattern.))
@@ -235,7 +236,7 @@ Functional Programming
     more steeply without objects than with objects.
     (Kent Beck [#fnxp]_)
 
-А между тем, неясность намерений и целей автора - это ключевая проблема при чтении чужого кода.
+And yet, not clear intentions and objectives of the author - is a key issue when reading someone else's code.
 
     A six-month study
     conducted by IBM found that maintenance programmers "most
@@ -243,12 +244,12 @@ Functional Programming
     the most difficult problem" (Fjelstad and Hamlen 1979).
     («Code Complete» [#fncodec]_)
 
-Как упоминалось в статье ":doc:`../en/how-to-quickly-develop-high-quality-code`", в процессе конструирования кода разработчик 91% времени читает код, и только 9% времени он вводит символы с клавиатуры.
-А это значит, что плохо читаемый код на 91% влияет на темпы разработки.
+As it mentioned in the article ":doc:`../en/how-to-quickly-develop-high-quality-code`", the developer reads the code 91% of the time while constructing the code, and only 9% of the time he enters the characters with keyboard.
+And this means that poorly readable code affects 91% of the development velocity.
 
-Также такой подход разрушает все выгоды использования Domain-Driven Design, и разделяет элементы, реализующие концептуальные объекты, которые оказываются физически разделенными, что приводит к появлению кода, который больше не выражает модель.
+Also, this approach destroys all the benefits of using Domain-Driven Design and pull apart the elements implementing the conceptual objects, which leads to the code that no longer expresses the model.
 
-Все `это способствовало появлению <https://groups.google.com/d/msg/reactjs/jbh50-GJxpg/82CHQKeaG54J>`__ в сообществе ReactJS таких библиотек как:
+All this `contributed to the appearance <https://groups.google.com/d/msg/reactjs/jbh50-GJxpg/82CHQKeaG54J>`__ in the ReactJS community of such libraries as:
 
 - `Normalizr <https://github.com/paularmstrong/normalizr>`_ - \
   Normalizes (decomposes) nested JSON according to a schema.
@@ -256,12 +257,12 @@ Functional Programming
   Denormalize data normalized with normalizr.
 
 
-Лирическое отступление
-----------------------
+Minor offtopic
+--------------
 
-Несмотря на то, что приемы функционального программирования часто используются совместно с парадигмой реактивного программирования, в своей сути эти парадигмы не всегда сочетаемы в каноническом виде в веб-разработке.
+Despite the fact that functional programming techniques are often used together with the paradigm of reactive programming, in their essence these paradigms are not always suitable for combination in the canonical form for web development.
 
-Это потому, что реактивное программирование основано на распространении изменений, т.е. подразумевает наличие переменных и присваивания.
+This is because reactive programming is based on the propagation of changes, i.e. it implies the existence of variables and assignment.
 
     This means that it becomes possible to express static (e.g. arrays) or dynamic (e.g. event emitters) data streams with ease via the employed programming language(s), and that an inferred dependency within the associated execution model exists, which facilitates the automatic propagation of the change involved with data flow.
 
@@ -272,9 +273,9 @@ Functional Programming
     ... For example, in an model–view–controller (MVC) architecture, reactive programming can facilitate changes in an underlying model that automatically are reflected in an associated view, and contrarily.
     ("`Reactive programming <https://en.wikipedia.org/wiki/Reactive_programming>`__", wikipedia)
 
-Именно поэтому парадигма реактивного программирования `может сочетаться с различными парадигмами <https://en.wikipedia.org/wiki/Reactive_programming#Approaches>`__, императивной, объектно-ориентированной и функциональной.
+That is why reactive programming paradigm `can be combined with different paradigms <https://en.wikipedia.org/wiki/Reactive_programming#Approaches>`__, imperative, object-oriented and functional.
 
-Однако, вся суть вопроса заключается в том, что в каноническом виде функциональное программирование не имеет переменных (от слова "переменчивость", изменяемость). т.е. изменяемого состояния:
+However, the whole point of the matter is that in the canonical form of functional programming does not has variables (from the word "vary"), i.e. changeable state:
 
     A true functional programming language has no assignment operator.
     You cannot change the state of a variable.
