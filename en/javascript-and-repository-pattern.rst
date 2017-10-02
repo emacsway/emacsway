@@ -288,8 +288,8 @@ However, the whole point of the matter is that in the canonical form of function
     And so, for the most part, you don’t.
     («OO vs FP» [#fnoovsop]_)
 
-Поэтому, использование подходов функционального программирования не делает программу функциональной до тех пор, пока программа имеет изменяемое состояние, - это просто процедурное программирование.
-А если это так, то отказ от Domain-Driven Design просто отнимает превосходства обоих подходов (ни полиморфизма объектно-ориентированного программирования, ни неизменяемости функционального программирования), объединяя все худшее, подобно объектам-гибридам [#fnccode]_, так и не делая программу по настоящему функциональной.
+Therefore, the use of functional programming techniques does not make the program functional until the program has a variable state - it's just procedural programming.
+And if so, then the rejection of Domain-Driven Design just takes away the superiority of both approaches (neither object-oriented programming polymorphism nor the immutability of functional programming), and combines the all worst, similar to hybrid objects [#fnccode]_, and does not make program really functional.
 
     Hybrids
 
@@ -304,7 +304,7 @@ However, the whole point of the matter is that in the canonical form of function
     protection from functions or types.
     («Clean Code: A Handbook of Agile Software Craftsmanship» [#fnccode]_)
 
-Каноническое функциональное программирование не имеет состояния, и поэтому идеально подходит для распределенных вычислений и обработки потоков данных.
+Canonical functional programming has no state and therefore ideally suited for distributed computing and data flow processing.
 
     The benefit of not using assignment statements should be obvious.
     You can’t have concurrent update problems if you never update anything.
@@ -316,9 +316,9 @@ However, the whole point of the matter is that in the canonical form of function
     The bottom line is that functional programs are much safer in multiprocessing and multiprocessor environments.
     («OO vs FP» [#fnoovsop]_)
 
-Но значит ли это то, что парадигма объектно-ориентированного программирования противостоит парадигме функционального программирования?
+Does this mean that the object-oriented programming paradigm is opposed to the functional programming programming?
 
-Несмотря на то, что парадигма ООП традиционно считается разновидностью императивной парадигмы, т.е. основанной на состоянии программы, Robert C. Martin делает поразительный вывод - так как объекты предоставляют свой интерфейс, т.е. поведение, и скрывают свое состояние, то они не противоречат парадигме функционального программирования.
+Despite the fact that the OOP paradigm is traditionally considered as a kind of imperative paradigm, i.e. based on the state of the program, Robert C. Martin makes an amazing conclusion - as objects provide their interface, i.e. behavior, and hide their state, they do not contradict the functional programming paradigm.
 
     "Objects are not data structures.
     Objects may use data structures; but the manner in which those data structures are used or contained is hidden.
@@ -328,7 +328,7 @@ However, the whole point of the matter is that in the canonical form of function
     Therefore Objects are about functions not about state."
     («OO vs FP» [#fnoovsop]_)
 
-Поэтому некоторые классические функциональные языки программирвания имеют поддержку ООП:
+That's why some classical functional programming languages support OOP:
 
 - `Enhanced Implementation of Emacs Interpreted Objects <https://www.gnu.org/software/emacs/manual/html_mono/eieio.html>`_
 - `Common Lisp Object System <https://en.wikipedia.org/wiki/Common_Lisp_Object_System>`_
@@ -343,12 +343,12 @@ However, the whole point of the matter is that in the canonical form of function
     It also means that all the design principles, and design patterns, used by OO programmers can be used by functional programmers if they care to accept the discipline that OO imposes on their pointers to functions.
     («OO vs FP» [#fnoovsop]_)
 
-Разумеется, объекты в функциональном программировании `должны быть неизменяемым <https://youtu.be/7Zlp9rKHGD4?t=50m>`__.
+Of course, objects in functional programming `must be immutable <https://youtu.be/7Zlp9rKHGD4?t=50m>`__.
 
-Эмулировать объекты можно даже в функциональных языках программирования с помощью замыканий, см. статью "`Function As Object <https://martinfowler.com/bliki/FunctionAsObject.html>`_" by Martin Fowler.
-Тут нельзя обойти вниманием замечательную книгу "`Functional Programming for the Object-Oriented Programmer <https://leanpub.com/fp-oo>`_" by Brian Marick.
+Objects can be emulated even by functional programming languages using closures, see article "`Function As Object <https://martinfowler.com/bliki/FunctionAsObject.html>`_" by Martin Fowler.
+Here you can not ignore the wonderful book "`Functional Programming for the Object-Oriented Programmer <https://leanpub.com/fp-oo>`_" by Brian Marick.
 
-Давайте вспомним главу "Chapter 6. Working Classes: 6.1. Class Foundations: Abstract Data Types (ADTs): Handling Multiple Instances of Data with ADTs in Non-Object-Oriented Environments" книги «Code Complete» [#fncodec]_.
+Let's remember the chapter "Chapter 6. Working Classes: 6.1. Class Foundations: Abstract Data Types (ADTs): Handling Multiple Instances of Data with ADTs in Non-Object-Oriented Environments" книги «Code Complete» [#fncodec]_.
 
     An abstract data type is a collection of data and operations that work on that data.
     («Code Complete» [#fncodec]_)
@@ -363,9 +363,10 @@ However, the whole point of the matter is that in the canonical form of function
     Thinking about ADTs first and classes second is an example of programming into a language vs. programming in one.
     («Code Complete» [#fncodec]_)
 
-Я не буду переписывать сюда достоинства АТД, их можно прочитать в указанной главе этой книги.
+I'm not here to rewrite all the advantages of ADT, you can read it in this chapter of this book.
 
-Но ведь изначально вопрос состоял в том, стоит ли отказываться от АТД в объектно-ориентированном языке при проектировании объектов предметной области в пользу "`Anemic Domain Model`_", и стоит ли приносить в жертву все выгоды Domain-Driven Design в угоду удобства конкретной реализации обработки связей?
+But the original question was whether we should abandon the ADT in an object-oriented language for the design of domain objects in favor of "`Anemic Domain Model`_"?
+And should we sacrifice all the benefits of Domain-Driven Design for the sake of the convenience of a particular implementation of relation resolving?
 
     The bottom, bottom line here is simply this.
     OO programming is good, when you know what it is.
@@ -373,9 +374,10 @@ However, the whole point of the matter is that in the canonical form of function
     And functional OO programming is also good once you know what it is.
     («OO vs FP» [#fnoovsop]_)
 
-Также стоит отметить, что далеко не все виды связей вписываются в концепцию агрегата.
-Если объект логически не принадлежит агрегату, то мы не можем вкладывать его в агрегат ради удобства разрешения связей, ибо в таком случае у нас интерфейс будет следовать за реализацией что в корне разрушает фундаментальный принцип абстракции.
-Также агрегат не совместим со связями типа Many-To-Many и перекрестными иерархиями связей.
+It is also worth noting that not all kinds of relationships fit into the concept of aggregate.
+If the object does not logically belong to the aggregate, then we can not put it into the aggregate for the sake of the convenience of resolving the relations.
+For in this case, the interface will follow the implementation, which fundamentally destroys the fundamental principle of abstraction.
+Also, the concept of an aggregate can not be used to emulate Many-To-Many relations and cross-link hierarchies.
 
 
 Реализация связей путем присваивания

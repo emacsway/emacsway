@@ -385,7 +385,7 @@ Domain-Driven Design подходит к связям более строго, �
     Therefore Objects are about functions not about state."
     («OO vs FP» [#fnoovsop]_)
 
-Поэтому некоторые классические функциональные языки программирвания имеют поддержку ООП:
+Поэтому некоторые классические функциональные языки программирования имеют поддержку ООП:
 
 - `Enhanced Implementation of Emacs Interpreted Objects <https://www.gnu.org/software/emacs/manual/html_mono/eieio.html>`_
 - `Common Lisp Object System <https://en.wikipedia.org/wiki/Common_Lisp_Object_System>`_
