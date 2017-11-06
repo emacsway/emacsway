@@ -112,7 +112,6 @@ Bibliography
     * "Code Complete" by Steve McConnell
     * "Domain-Driven Design" by Eric Evans
 * Programming languages:
-    * "Compiler Construction" by N.Wirth
     * "Learning Python" by Mark Lutz
     * "Python Tutorial" and "Python HOWTOs" (official)
     * "JavaScript: The Definitive Guide" by David Flanagan
@@ -121,6 +120,8 @@ Bibliography
     * "PostgreSQL" by Korry Douglas, Susan Douglas
 * Algorithms:
     * "Algorithms and Data Structures" by N.Wirth
+* Compilers & Parsers:
+    * "Compiler Construction" by N.Wirth
 * Methodologies:
     * "Extreme Programming Explained" by Kent Beck
 * Operational system:
@@ -136,6 +137,7 @@ Bibliography
     In the queue
     ------------
 
+    * "Rapid Development: Taming Wild Software Schedules" by Steve McConnell
     * "Planning Extreme Programming" by Kent Beck, Martin Fowler
     * "The Clean Coder" by Robert C. Martin
     * "Test-Driven Development By Example" by Kent Beck
