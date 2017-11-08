@@ -11,9 +11,9 @@ About me
    :alt: me
    :align: right
 
-Python, Django, Debian, Emacs, PostgreSQL, MySQL, GIS
+Python/FullStack Software Engineer, Software/Solution architect
 
-- Ivan Zakrevskyi, Python/FullStack Software Engineer
+- Ivan Zakrevskyi
 - Blog: https://emacsway.github.io/
 - E-mail: emacsway@gmail.com
 - Open source: `Bitbucket <https://bitbucket.org/emacsway>`__ (primary), `Github <https://github.com/emacsway>`__
