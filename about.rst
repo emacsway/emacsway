@@ -31,8 +31,6 @@ An XP_ and DDD_ expert.
 
 My main interest is to make the code clean, simple, readable, modifiable and maintainable; the implementation of new features :doc:`rapid and cheap <en/how-to-quickly-develop-high-quality-code>`; the cost of code change asymptotic (instead of exponential); the team skilled, successful, and having high self-motivation.
 
-    "The purpose of internal quality is to go faster." (Martin Fowler)
-
 My approaches are XP_, TDD_, DDD_, SOLID_, `Design Patterns`_, Refactoring_, Designing Through Refactoring, Clean Code & Clean Architecture, and so on.
 
 Also I'm an Open Source developer and an adherent of `KISS principle <KISS_>`_. My philosophy is: "Do it shortly, clearly".
