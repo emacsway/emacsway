@@ -30,6 +30,7 @@ Sites
 - `Refactoring Databases <http://www.databaserefactoring.com/>`__
 - `Microsoft Application Architecture Guide, 2nd Edition <https://msdn.microsoft.com/en-us/library/ff650706.aspx>`__
 - `Agile Alliance <https://www.agilealliance.org/>`__
+- `Passionate about data <https://www.sadalage.com/>`__
 
 
 
