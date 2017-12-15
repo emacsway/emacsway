@@ -52,6 +52,9 @@
     "But when our fears are acknowledged and our rights are accepted, then we can be courageous."
     ("Planning Extreme Programming" by Kent Beck, Martin Fowler)
 
+Не исключив субъективного влияния, сложно говорить о качественном подборе персонала.
+
+
 Компетентность
 ==============
 
