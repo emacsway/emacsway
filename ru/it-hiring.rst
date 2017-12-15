@@ -23,6 +23,33 @@
 
 Если тим-лидер не обладает достаточным уровнем храбрости, он никогда не одобрит сильного разработчика в свою команду, который может сместить его с лидерских позиций.
 
+Помните телешоу "Последний герой" про выживание на острове, которое появилось в 2001 году?
+На полуфинале участники голосовали за удаление из игры не слабых, а сильных конкурентов, чтобы те не дошли до финала.
+Не помню дословно, но один из участников прямым текстом сказал что-то вроде того, что настало время убирать сильных конкурентов.
+
+    "Why do we need a software process? For the same reason that we need laws,
+    governments, and taxes: fear."
+    ("Planning Extreme Programming" by Kent Beck, Martin Fowler)
+
+..
+
+    Developers are afraid, too. They fear that
+
+    - They will be told to do more than they know how to do.
+    - They will be told to do things that don't make sense.
+    - They are too stupid.
+    - They are falling behind technically.
+    - They will be given responsibility without authority.
+    - They won't be given clear definitions of what needs to be done.
+    - They'll have to sacrifice quality for deadlines.
+    - They'll have to solve hard problems without help.
+    - They won't have enough time to succeed.
+    ("Planning Extreme Programming" by Kent Beck, Martin Fowler)
+
+..
+
+    "But when our fears are acknowledged and our rights are accepted, then we can be courageous."
+    ("Planning Extreme Programming" by Kent Beck, Martin Fowler)
 
 Компетентность
 ==============
