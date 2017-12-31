@@ -11,7 +11,7 @@ About me
    :alt: me
    :align: right
 
-Python/FullStack Software Engineer, Solution Architect
+Python/FullStack Software Engineer, XP coach, Solution Architect
 
 - Ivan Zakrevskyi
 - Blog: https://emacsway.github.io/
@@ -91,11 +91,13 @@ Bibliography
     * "Clean Code: A Handbook of Agile Software Craftsmanship" by Robert C. Martin
     * "Code Complete" by Steve McConnell
     * "Domain-Driven Design" by Eric Evans
+    * "Test-Driven Development By Example" by Kent Beck
 * Programming languages:
     * "Learning Python" by Mark Lutz
     * "Python Tutorial" and "Python HOWTOs" (official)
     * "JavaScript: The Definitive Guide" by David Flanagan
     * "JavaScript Patterns" by Stoyan Stefanov
+    * "ng-book 2: The Complete Guide to Angular" by Nate Murray, Felipe Coury, Ari Lerner, and Carlos Taborda
 * Databases:
     * "PostgreSQL" by Korry Douglas, Susan Douglas
     * "NoSQL Distilled. A Brief Guide to the Emerging World of Polyglot Persistence." by Pramod J. Sadalage, Martin Fowler
@@ -120,7 +122,6 @@ Bibliography
     In the queue
     ------------
 
-    * "Test-Driven Development By Example" by Kent Beck
     * "Microsoft Application Architecture Guide" by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat)
     * "Analysis Patterns. Reusable Object Models" by Martin Fowler
     * "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf
