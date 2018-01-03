@@ -31,7 +31,7 @@
 Это особенно хорошо это ощутимо в языках программирования, которые не поддерживают дескрипторы.
 
 Существуют языки, ориентированные на сообщения (`Message Oriented Languages <http://wiki.c2.com/?MessageOrientedProgramming>`__), Objective-C, Ruby, Smalltalk...
-Собственно, Smalltalk оказал огромное влияние на ООП, и даже, в определенной мере, выступил его прородителем.
+Собственно, Smalltalk оказал огромное влияние на ООП, и даже, в определенной мере, выступил его прародителем.
 
     | As noted below, this is primarily a description of Smalltalk
     | 1. EverythingIsAnObject.
