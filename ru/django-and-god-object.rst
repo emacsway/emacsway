@@ -204,7 +204,7 @@ Django Framework и Божественный Объект
 А это - лишнее Сопряжение (Coupling), которое снижает повторную используемость класса.
 Что если Вы захотите использовать этот класс в другом приложении, которое имеет другой интерфейс для запросов?
 
-В этом и заключается превосходство "Пассивного Внедрения Зависимостей" ("Passive Dependency Injection") [#fnccode]_ над "Локатором Служб" ("Service locator"), смотрите более подробно в статье "`Inversion of Control Containers and the Dependency Injection pattern <https://martinfowler.com/articles/injection.html>`__" by Martin Fowler.
+В этом и заключается превосходство "Пассивного Внедрения Зависимостей" ("Passive Dependency Injection") [#fnccode]_ над "Локатором Служб" ("Service Locator"), смотрите более подробно в статье "`Inversion of Control Containers and the Dependency Injection pattern <https://martinfowler.com/articles/injection.html>`__" by Martin Fowler.
 
     Истинное внедрение зависимостей идет еще на один шаг вперед. Класс не
     предпринимает непосредственных действий по разрешению своих зависимостей;
