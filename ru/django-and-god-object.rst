@@ -187,6 +187,24 @@ Django и Божественный Объект
     ("Refactoring: Improving the Design of Existing Code" [#fnrefactoring]_ by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts)
 
 
+Повышенное сопряжение (High Coupling)
+-------------------------------------
+
+Вы заметили, что класс RobotsTxtView должен быть осведемленным об интерфейсе/структуре объекта settings?
+
+Хорошая программа сопровождается "Низким Сопряжением (Зацеплением) и Высокой Связанностью" ("`Low coupling & High cohesion <http://wiki.c2.com/?CouplingAndCohesion>`__").
+
+Существуют Push и Pull модели данных.
+В первом случае приложение должно установить зависимости в объект.
+Во втором случае, объект должен запросить зависимости у приложения.
+
+Проблема в том, что для того, чтобы запросить, объект должен быть осведомлен об интерфейсе, по которому он может это сделать.
+А это - лишнее Сопряжение (Coupling), которое снижает повторную используемость класса.
+Что если Вы захотите использовать класс в другом приложении, которое имеет другой интерфейс для запросов?
+
+В этом и заключается превосходство "Пассивного Внедрения Зависимостей" ("Passive Dependency Injection") [#fnccode]_ над "Локатором Служб" ("Service locator"), смотрите более подробно в статье "`Inversion of Control Containers and the Dependency Injection pattern <https://martinfowler.com/articles/injection.html>`__" by Martin Fowler.
+
+
 Решение
 -------
 
