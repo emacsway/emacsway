@@ -1,6 +1,6 @@
 
-Django и Божественный Объект
-============================
+Django Framework и Божественный Объект
+======================================
 
 .. post:: Jan 02, 2018
    :language: ru
@@ -9,13 +9,13 @@ Django и Божественный Объект
    :author: Ivan Zakrevsky
 
 
-Божественные Объекты - распространенное явление для Django приложений, поэтому рассмотрим этот вопрос в подробностях.
+Божественные Объекты - распространенное явление для Django приложений, поэтому рассмотрим этот вопрос более детально.
 
 .. contents:: Содержание
 
 Здесь уместно упомянуть, что эту проблему уже озвучивал небезызвестный Андрей Светлов в статье "`Почему я не люблю конфигурацию в django-style <http://asvetlov.blogspot.com/2015/05/global-config.html>`__". Поэтому, я просто углублюсь в эту тему.
 
-В качестве примера рассмотрим простейшую ситуацию для выдачи файла robots.txt с различным содержимым для staging и production. Будем считать, что ограничить доступ к сайту мы по каким-то причинам не можем, а вариант использования статического сервера не предоставляется облачным сервисом.
+В качестве примера рассмотрим простейший пример для выдачи файла robots.txt с различным содержимым в зависимости от окружения (staging или production). Будем считать, что ограничить доступ к staging-сайту мы по каким-то причинам не можем, а вариант использования статического сервера не предоставляется облачным сервисом.
 
 Я часто наблюдаю в Django-приложениях нечто подобное:
 
@@ -74,7 +74,7 @@ Django и Божественный Объект
 Для решения этой проблемы, заменим волшебные строки константами.
 Здесь нам пригодится тип данных `Enum <https://docs.python.org/3/library/enum.html>`__.
 
-На первый взгляд, мы могли бы перечислить допустимые значения окружения в файле с настройками проекта.
+На первый взгляд, мы могли бы перечислить допустимые значения окружений в файле с настройками проекта.
 Но проблема в том, что приложение (application) не может зависеть от конкретного проекта (project).
 
 Зато приложение может зависеть от другого приложения, и объявить зависимости в установочном файле пакета (package).
@@ -144,14 +144,14 @@ Django и Божественный Объект
 Проблема с тестированием
 ------------------------
 
-Как нам убедиться что этот класс будет работать во всех окружениях?
+Как нам убедиться в том, что этот класс будет работать во всех окружениях?
 Что если мы забыли загрузить какой-то templatetag в шаблоне ``robots.production.txt``?
-Итак, мы должны протестировать класс RobotsTxtView для всех окружений, в том числе и для PRODUCTION-окружения, при этом реально находясь в LOCAL-окружении.
+Итак, мы должны протестировать класс RobotsTxtView для всех окружений, в том числе и для PRODUCTION-окружения, при этом находясь реально в LOCAL-окружении.
 
-Но как нам протестировать этот класс для всех окружений, не изменяя самих окружений?
+Но как нам протестировать этот класс для всех окружений, не изменяя реального окружения?
 Если я переопределю значение settings.ENVIRONMENT согласно документации, используя `@override_settings(ENVIRONMENT=AVAILABLE_ENVIRONMENT.PRODUCTION) <https://docs.djangoproject.com/en/2.0/topics/testing/tools/#django.test.override_settings>`__, то где гарантия, что я не изменю поведения какой-нибудь Middleware, использующей этот же параметр конфига?
 
-Да, в Django есть небольшие трудности с изолированными юнит-тестами, которые решаются принципами "Чистой Архитектуры", к этому вопросу мы еще вернемся чуть позже.
+Да, в Django Framework есть небольшие трудности с изолированными юнит-тестами, которые решаются принципами "Чистой Архитектуры", к этому вопросу мы еще вернемся чуть позже.
 А пока нам нужно подменить значение окружения для класса, и при этом не затронуть его для всех остальных компонентов сайта.
 
 
@@ -162,9 +162,9 @@ Django и Божественный Объект
 А инкапсуляция создана для защиты абстракции, которая, в свою очередь, создана укрощения сложности.
 
 Нарушив инкапсуляцию всего одной глобальной переменной, мы уже больше не можем рассматривать отдельно взятый метод.
-Мы должны так же осознать все обращения к этой глобальной переменной по всей программе.
+Мы должны, вместе с этим методом, так же осознать все обращения к этой глобальной переменной по всей программе.
 Декомпозиция сложности нарушена. Ее последствия я уже рассматривал в статье ":doc:`../en/how-to-quickly-develop-high-quality-code`".
-А пока просто напомню, что рост сложности программы снижает темпы ее разработки, и делает разработку дорогой.
+А пока просто напомню, что рост сложности программы снижает темпы ее разработки, и делает разработку программы дорогой (обычно в экспоненциальной зависимости).
 
 
 "Завистливые функции" (Code Smell "Feature Envy")
@@ -192,9 +192,9 @@ Django и Божественный Объект
 Повышенное сопряжение (High Coupling)
 -------------------------------------
 
-Вы заметили, что класс RobotsTxtView должен быть осведемленным об интерфейсе/структуре объекта settings?
+Вы заметили, что класс RobotsTxtView должен быть осведемленным об интерфейсе (либо структуре) объекта settings?
 
-Хорошая программа сопровождается "Низким Сопряжением (Зацеплением) и Высокой Связанностью" ("`Low coupling & High cohesion <http://wiki.c2.com/?CouplingAndCohesion>`__").
+Хорошая программа обладает "Низким Сопряжением (Зацеплением) и Высокой Связанностью" ("`Low coupling & High cohesion <http://wiki.c2.com/?CouplingAndCohesion>`__").
 
 Существуют Push и Pull модели данных.
 В первом случае приложение должно установить зависимости в объект.
@@ -202,9 +202,29 @@ Django и Божественный Объект
 
 Проблема в том, что для того, чтобы запросить, объект должен быть осведомлен об интерфейсе, по которому он может это сделать.
 А это - лишнее Сопряжение (Coupling), которое снижает повторную используемость класса.
-Что если Вы захотите использовать класс в другом приложении, которое имеет другой интерфейс для запросов?
+Что если Вы захотите использовать этот класс в другом приложении, которое имеет другой интерфейс для запросов?
 
 В этом и заключается превосходство "Пассивного Внедрения Зависимостей" ("Passive Dependency Injection") [#fnccode]_ над "Локатором Служб" ("Service locator"), смотрите более подробно в статье "`Inversion of Control Containers and the Dependency Injection pattern <https://martinfowler.com/articles/injection.html>`__" by Martin Fowler.
+
+    Истинное внедрение зависимостей идет еще на один шаг вперед. Класс не
+    предпринимает непосредственных действий по разрешению своих зависимостей;
+    он остается абсолютно пассивным. Вместо этого он предоставляет set-методы
+    и/или аргументы конструктора, используемые для внедрения зависимостей.
+    В процессе конструирования контейнер DI создает экземпляры необходимых
+    объектов (обычно по требованию) и использует аргументы конструктора или
+    set-методы для скрепления зависимостей. Фактически используемые
+    зависимые объекты задаются в конфигурационном файле или на программном уровне
+    в специализированном конструирующем модуле.
+
+    True Dependency Injection goes one step further. The class takes no direct steps to
+    resolve its dependencies; it is completely passive. Instead, it provides setter methods or
+    constructor arguments (or both) that are used to inject the dependencies. During the con-
+    struction process, the DI container instantiates the required objects (usually on demand)
+    and uses the constructor arguments or setter methods provided to wire together the depen-
+    dencies. Which dependent objects are actually used is specified through a configuration
+    file or programmatically in a special-purpose construction module.
+
+    ("Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_)
 
 
 Решение
@@ -242,7 +262,6 @@ Django и Божественный Объект
 
    class RobotsTxtView(TemplateView):
        AVAILABLE_ENVIRONMENT = AVAILABLE_ENVIRONMENT
-       environment = None
 
        def __init__(self, *args, **kwargs):
            super().__init__(*args, **kwargs)
@@ -419,7 +438,7 @@ Code Smell "Switch Statements"
            if environment == AVAILABLE_ENVIRONMENT.PRODUCTION:
                return cls._make_production_template_names_accessor()
            return cls._make_default_template_names_accessor()
-       
+
        @staticmethod
        def _make_default_template_names_accessor():
            return views.DefaultTemplateNamesAccessor()
@@ -445,7 +464,7 @@ Code Smell "Switch Statements"
 
 Как видите, чистое решение оказалось намного более многословным. Какое же решение предпочесть?
 
-Лично я всегда следую принципу "Designing Through Refactoring" [#fnxp]_, и, в соответствии с принципом Экстремального Программирования "The simplest thing that could possibly work", - всегда достигаю мнинимально-необходимого уровня косвенности (inderection).
+Лично я использую методику "Designing Through Refactoring" [#fnxp]_, и, в соответствии с принципом Экстремального Программирования "The simplest thing that could possibly work", - всегда достигаю мнинимально-необходимого уровня косвенности (inderection).
 
 Если решение простое, и оно работает (т.е. проходит тесты), и оно не содержит дубликатов, - то работа завершена.
 Не должно быть принципов ради принципов.
@@ -456,13 +475,114 @@ Code Smell "Switch Statements"
 Задача Agile-методологии - поддерживать стоимость изменения программы низкой.
 Если эта цель соблюдена - нет смысла усложнять дальше. Любое усложнение - это удорожание стоимости изменения программы.
 
+Благодаря рефакторингу, всегда можно ввести необходимый уровень косвенности когда в этом возникнет необходимость. Самое главное - постоянно обеспечивать условия для облегчения рефакторинга (использовать Type Hinting для автоматизированных средств рефакторинга и т.п.).
+
+
+Чистая архитектура
+==================
+
+Внимательный читатель может заметить что такой подход нарушает принципы "`Чистой Архитектуры <https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html>`__".
+Пример достижения чистой архитектуры Django приложений Вы можете посмотреть в статье "`Clean Architecture in Django <https://engineering.21buttons.com/clean-architecture-in-django-d326a4ab86a9>`__".
+
+В данном случае, логика класса RobotsTxtView сильно вырождена для того, чтобы выделять из нее какой-нибудь Use Case.
+Основное назначение Use Case - упростить тестирование путем отделения его обязанности от обязанности Delivery Mechanism.
+
+Конечно, Django Framework не позволяет так просто произвести изолированное тестирование класса RobotsTxtView, но предоставляет инструменты для того чтобы это можно было сделать.
+
+
+.. code-block:: python
+   :caption: robots/tests/test_robots.py
+   :name: robots-tests-test-robots-py-v5
+   :linenos:
+
+   from django.test import TestCase, override_settings
+
+
+   class RobotsDefaultTests(TestCase):
+       @override_settings(ROOT_URLCONF='robots.tests.robots_app.urls_default')
+       def test_robots_txt(self):
+           response = self.client.get('/robots.txt')
+           self.assertEqual(response.status_code, 200)
+           self.assertContains(response, "User-Agent")
+           self.assertNotContains(response, "Host: https://myproject.com")
+
+
+   class RobotsProductionTests(TestCase):
+       @override_settings(ROOT_URLCONF='robots.tests.robots_app.urls_production')
+       def test_robots_txt(self):
+           response = self.client.get('/robots.txt')
+           self.assertEqual(response.status_code, 200)
+           self.assertContains(response, "User-Agent")
+           self.assertContains(response, "Host: https://myproject.com")
+
+
+.. code-block:: python
+   :caption: robots/tests/robots_app/urls_default.py
+   :name: robots-tests-robots-app-urls-default-py-v5
+   :linenos:
+
+   from django.urls import path
+   from robots.views import RobotsTxtView
+
+   urlpatterns = [
+       path('robots.txt', RobotsTxtView.as_view(
+           content_type="text/plain",
+           environment=RobotsTxtView.AVAILABLE_ENVIRONMENT.STAGING
+       ), name='robots.txt'),
+   ]
+
+
+.. code-block:: python
+   :caption: robots/tests/robots_app/urls_production.py
+   :name: robots-tests-robots-app-urls-production-py-v5
+   :linenos:
+
+   from django.urls import path
+   from robots.views import RobotsTxtView
+
+   urlpatterns = [
+       path('robots.txt', RobotsTxtView.as_view(
+           content_type="text/plain",
+           environment=RobotsTxtView.AVAILABLE_ENVIRONMENT.PRODUCTION
+       ), name='robots.txt'),
+   ]
+
+
+Другой проблемой является то, что мы лишены возможности подменить реализацию класса RobotsTxtView, поскольку не используем "Dependency Inversion Principle".
+Однако, такого же эффекта можно достигнуть и на уровне конфигурации URL-роутера.
+
+Что касается вычленения Сервисного Слоя, то на этот вопрос ответил Martin Fowler:
+
+    Гораздо легче ответить на вопрос, когда слой служб не нужно использовать. Скорее
+    всего, вам не понадобится слой служб, если у логики приложения есть только одна категория
+    клиентов, например пользовательский интерфейс, отклики которого на варианты
+    использования не охватывают несколько ресурсов транзакций. В этом случае управление
+    транзакциями и выбор откликов можно возложить на контроллеры страниц (Page
+    Controller, 350), которые будут обращаться непосредственно к слою источника данных.
+    Тем не менее, как только у вас появится вторая категория клиентов или начнет
+    использоваться второй ресурс транзакции, вам неизбежно придется ввести слой служб, что
+    потребует полной переработки приложения.
+
+    The easier question to answer is probably when not to use it. You probably don't need a Service Layer if your
+    application's business logic will only have one kind of client say, a user interface and its use case responses
+    don't involve multiple transactional resources. In this case your Page Controllers can manually control
+    transactions and coordinate whatever response is required, perhaps delegating directly to the Data Source
+    layer.
+    But as soon as you envision a second kind of client, or a second transactional resource in use case responses, it
+    pays to design in a Service Layer from the beginning.
+
+    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_ by Martin Fowler)
+
+
+Более подробна тема Сервисного Слоя освещеня в статье ":doc:`service-layer`".
+
 
 .. rubric:: Footnotes
 
 .. [#fnccode] "`Clean Code: A Handbook of Agile Software Craftsmanship`_" by `Robert C. Martin`_
 .. [#fnrefactoring] "`Refactoring: Improving the Design of Existing Code`_" by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
 .. [#fnxp] "`Extreme Programming Explained`_" by Kent Beck
-
+.. [#fnpoeaa] «`Patterns of Enterprise Application Architecture`_» by `Martin Fowler`_, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 
 .. update:: Jan 02, 2018
 
@@ -472,3 +592,4 @@ Code Smell "Switch Statements"
 .. _Refactoring\: Improving the Design of Existing Code: https://martinfowler.com/books/refactoring.html
 .. _Martin Fowler: https://martinfowler.com/aboutMe.html
 .. _Extreme Programming Explained: http://www.informit.com/store/extreme-programming-explained-embrace-change-9780321278654
+.. _Patterns of Enterprise Application Architecture: https://www.martinfowler.com/books/eaa.html
