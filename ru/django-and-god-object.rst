@@ -268,7 +268,7 @@ Django Framework и Божественный Объект
            self.environment = kwargs['environment']
 
        def get_template_names(self):
-           if settings.ENVIRONMENT == self.AVAILABLE_ENVIRONMENT.PRODUCTION:
+           if self.environment == self.AVAILABLE_ENVIRONMENT.PRODUCTION:
                return ['robots.production.txt']
            else:
                return ['robots.default.txt']
