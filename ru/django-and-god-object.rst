@@ -241,6 +241,7 @@ Django и Божественный Объект
 
 
    class RobotsTxtView(TemplateView):
+       AVAILABLE_ENVIRONMENT = AVAILABLE_ENVIRONMENT
        environment = None
 
        def __init__(self, *args, **kwargs):
@@ -248,10 +249,12 @@ Django и Божественный Объект
            self.environment = kwargs['environment']
 
        def get_template_names(self):
-           if settings.ENVIRONMENT == AVAILABLE_ENVIRONMENT.PRODUCTION:
+           if settings.ENVIRONMENT == self.AVAILABLE_ENVIRONMENT.PRODUCTION:
                return ['robots.production.txt']
            else:
                return ['robots.default.txt']
+
+Я так же разместил константу AVAILABLE_ENVIRONMENT в пространстве имен класса, чтобы на нее распространялась концепция наследования.
 
 
 Code Smell "Switch Statements"
@@ -325,13 +328,140 @@ Code Smell "Switch Statements"
 
     ("Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_ by Robert C. Martin)
 
+Вообще-то проблема не так и страшна, и с ней можно было бы и смириться по совету Мартина Фаулера.
+Но мы пойдем дальше.
 
+Есть два способа решить эту проблему, простой ("Replace Subclass with Fields") [#fnrefactoring]_ и чистый ("Replace Type Code with State/Strategy") [#fnrefactoring]_.
+
+
+Простое решение
+---------------
+
+Если внимательно изучить класс ``django.views.generic.base.TemplateView``, то можно заметить, что он реализует метод "`Replace Subclass with Fields <https://www.refactoring.com/catalog/replaceSubclassWithFields.html>`__" [#fnrefactoring]_.
+А потому, нет причин этим не воспользоваться.
+Все что от нас требуется - это переместить условные операторы из метода объекта (т.е. его поведения) в его конструктор.
+
+
+.. code-block:: python
+   :caption: robots/views.py
+   :name: robots-views-py-v4
+   :linenos:
+
+   from django.views.generic import TemplateView
+   from environment.constants import AVAILABLE_ENVIRONMENT
+
+
+   class RobotsTxtView(TemplateView):
+       AVAILABLE_ENVIRONMENT = AVAILABLE_ENVIRONMENT
+       template_name = 'robots.default.txt'
+
+       def __init__(self, *args, **kwargs):
+           super().__init__(*args, **kwargs)
+           assert 'environment' in kwargs
+           assert kwargs['environment'] in self.AVAILABLE_ENVIRONMENT
+           if kwargs['environment'] == self.AVAILABLE_ENVIRONMENT.PRODUCTION:
+               self.template_name = 'robots.production.txt'
+
+
+Чистое решение
+--------------
+
+Чистое решение заключается в реализации метода "`Replace Type Code with State/Strategy <https://www.refactoring.com/catalog/replaceTypeCodeWithStateStrategy.html>`__" [#fnrefactoring]_.
+
+
+.. code-block:: python
+   :caption: robots/views.py
+   :name: robots-views-py-v5
+   :linenos:
+
+   import collections.abc
+   from django.views.generic import TemplateView
+
+
+   class DefaultTemplateNamesAccessor(collections.abc.Callable):
+       def __call__(self):
+           return ['robots.default.txt']
+
+
+   class ProductionTemplateNamesAccessor(collections.abc.Callable):
+       def __call__(self):
+           return ['robots.production.txt']
+
+
+   class RobotsTxtView(TemplateView):
+       def __init__(self, *args, **kwargs):
+           super().__init__(*args, **kwargs)
+           assert 'template_names_accessor' in kwargs
+           self.get_template_names = template_names_accessor
+
+
+.. code-block:: python
+   :caption: robots/factory.py
+   :name: robots-factory-py-v5
+   :linenos:
+
+   from environment.constants import AVAILABLE_ENVIRONMENT
+   from robots import views
+
+   class RobotsFactory:
+       AVAILABLE_ENVIRONMENT = AVAILABLE_ENVIRONMENT
+
+       @classmethod
+       def make_robots_txt_view(cls, environment):
+           return views.RobotsTxtView.as_view(
+               content_type="text/plain",
+               template_names_accessor=cls._make_template_names_accessor(environment)
+           )
+
+       @classmethod
+       def _make_template_names_accessor(cls, environment):
+           assert environment in AVAILABLE_ENVIRONMENT
+           if environment == AVAILABLE_ENVIRONMENT.PRODUCTION:
+               return cls._make_production_template_names_accessor()
+           return cls._make_default_template_names_accessor()
+       
+       @staticmethod
+       def _make_default_template_names_accessor():
+           return views.DefaultTemplateNamesAccessor()
+
+       @staticmethod
+       def _make_production_template_names_accessor():
+           return views.ProductionTemplateNamesAccessor()
+
+
+.. code-block:: python
+   :caption: robots/urls.py
+   :name: robots-urls-py-v5
+   :linenos:
+
+   from django.urls import path
+   from robots.factory import RobotsFactory
+
+
+   urlpatterns = [
+       path('robots.txt', RobotsFactory.make_robots_txt_view(), name='robots.txt'),
+   ]
+
+
+Как видите, чистое решение оказалось намного более многословным. Какое же решение предпочесть?
+
+Лично я всегда следую принципу "Designing Through Refactoring" [#fnxp]_, и, в соответствии с принципом Экстремального Программирования "The simplest thing that could possibly work", - всегда достигаю мнинимально-необходимого уровня косвенности (inderection).
+
+Если решение простое, и оно работает (т.е. проходит тесты), и оно не содержит дубликатов, - то работа завершена.
+Не должно быть принципов ради принципов.
+Каждый принцип должен решать какую-то конкретную задачу. Если он ничего не решает, то он - лишний.
+
+Не существует хороших или плохих решений.
+Все дело - в достигаемом результате.
+Задача Agile-методологии - поддерживать стоимость изменения программы низкой.
+Если эта цель соблюдена - нет смысла усложнять дальше. Любое усложнение - это удорожание стоимости изменения программы.
 
 
 .. rubric:: Footnotes
 
 .. [#fnccode] "`Clean Code: A Handbook of Agile Software Craftsmanship`_" by `Robert C. Martin`_
 .. [#fnrefactoring] "`Refactoring: Improving the Design of Existing Code`_" by `Martin Fowler`_, Kent Beck, John Brant, William Opdyke, Don Roberts
+.. [#fnxp] "`Extreme Programming Explained`_" by Kent Beck
 
 
 .. update:: Jan 02, 2018
@@ -341,3 +471,4 @@ Code Smell "Switch Statements"
 .. _Robert C. Martin: http://informit.com/martinseries
 .. _Refactoring\: Improving the Design of Existing Code: https://martinfowler.com/books/refactoring.html
 .. _Martin Fowler: https://martinfowler.com/aboutMe.html
+.. _Extreme Programming Explained: http://www.informit.com/store/extreme-programming-explained-embrace-change-9780321278654
