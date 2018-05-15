@@ -206,6 +206,32 @@ Django 1.9 и выше позволяет использовать `transaction.
 Я использую библиотеку `cache-dependencies <https://bitbucket.org/emacsway/cache-dependencies>`_, о чем я писал в статье ":doc:`cache-dependencies`".
 
 
+Версионирование данных
+----------------------
+
+Для Django существует множество библиотек для версионирования объектов, смотрите "`Model Auditing and History <https://djangopackages.org/grids/g/model-audit/>`__" и "`Versioning <https://djangopackages.org/grids/g/versioning/>`__". Однако, такого зрелого и совершенного решения как `sqlalchemy-continuum <https://github.com/kvesteri/sqlalchemy-continuum>`_ мне отыскать среди Django-библиотек так и не удалось.
+
+В результате пришлось писать библиотеку для версионинга самостоятельно, которая позволила бы воссоздавать состояние `агрегата <https://martinfowler.com/bliki/DDD_Aggregate.html>`__ (т.е. структуру взаимосвязанных объектов) для заданной версии, даже если какой-то из объектов агрегата был удален. Поскольку границы агрегата одновременно являются и границами транзакции, вопрос реализации версионированных связей был легко решен с помощью уже упомянутой библиотеки `django-composite-foreignkey`_, которая позволяет организовать композитные (включая номер версии объекта) связи между экземплярами моделей.
+
+Информационно мне помогли библиотеки и статьи:
+
+- `Automating an audit trail <https://code.djangoproject.com/wiki/AuditTrail>`__
+- `django-audit-log <https://github.com/vvangelovski/django-audit-log>`_
+- `cleanerversion <https://github.com/swisscom/cleanerversion>`_
+- `sqlalchemy-continuum`_
+- `Audit Log <https://martinfowler.com/eaaDev/AuditLog.html>`__
+- `Slowly changing dimension <https://en.wikipedia.org/wiki/Slowly_changing_dimension>`__
+- `Change data capture <https://en.wikipedia.org/wiki/Change_data_capture>`__
+- `Anchor modeling <https://en.wikipedia.org/wiki/Anchor_Modeling>`__
+- `Shadow table <https://en.wikipedia.org/wiki/Shadow_table>`__
+- `Audit trigger <https://wiki.postgresql.org/wiki/Audit_trigger>`__
+- `Audit trigger 91plus <https://wiki.postgresql.org/wiki/Audit_trigger_91plus>`__
+- `How to Implement Audit Functionality In PostgreSQL <http://kosalads.blogspot.fi/2014/06/implement-audit-functionality-in.html>`__
+- `PostgreSQL Audit Extension <https://github.com/2ndQuadrant/pgaudit>`__
+
+
+
+
 Django REST framework
 =====================
 
