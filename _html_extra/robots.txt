@@ -1,6 +1,4 @@
 User-Agent: *
 Disallow: /about/
-Disallow: /about/zakrevsky-resume.pdf
-Disallow: /bibliography/
 Disallow: /_images/me.jpg
 Disallow: /_website/_sources/
