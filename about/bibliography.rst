@@ -77,5 +77,3 @@ Bibliography
     * "Pattern-Oriented Software Architecture: Patterns for Resource Management, Volume 3" by Michael Kircher, Prashant Jain
     * "Pattern-Oriented Software Architecture: A Pattern Language for Distributed Computing, Volume 4" by Frank Buschmann, Kevin Henney, Douglas C. Schmidt
     * "Pattern-Oriented Software Architecture: On Patterns and Pattern Languages, Volume 5" by Frank Buschmann, Kevin Henney, Douglas C. Schmidt
-
-
