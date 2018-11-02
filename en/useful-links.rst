@@ -28,6 +28,7 @@ Sites
 - `CloudPatterns.org <http://www.cloudpatterns.org/>`__
 - `BigDataPatterns.org <http://www.bigdatapatterns.org/>`__
 - `Microservice Patterns <https://www.manning.com/books/microservice-patterns>`__
+- `Microservices patterns from Sam Newman <https://samnewman.io/patterns/>`__
 - `Domain Driven Design Community <http://dddcommunity.org/>`__
 - `Domain Driven Design Weekly <http://dddweekly.com/>`__
 - `Awesome Domain-Driven Design <https://github.com/heynickc/awesome-ddd>`__
