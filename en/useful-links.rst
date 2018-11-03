@@ -42,6 +42,11 @@ Sites
 - `PlanningPoker.com - Estimates Made Easy. Sprints Made Simple. <https://www.planningpoker.com/>`__
 
 
+Tools
+-----
+
+- `A Pomodoro Timer for GNOME <http://gnomepomodoro.org/>`__
+
 
 Articles
 --------
