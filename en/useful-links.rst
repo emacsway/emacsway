@@ -37,6 +37,7 @@ Sites
 - `XUnit Test Patterns <http://xunitpatterns.com/>`__
 - `Microsoft Application Architecture Guide, 2nd Edition <https://msdn.microsoft.com/en-us/library/ff650706.aspx>`__
 - `Cloud Design Patterns | Microsoft Docs <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__
+- `.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__
 - `Azure Architecture Center | Microsoft Docs <https://docs.microsoft.com/en-us/azure/>`__
 - `Agile Alliance <https://www.agilealliance.org/>`__
 - `Passionate about data <https://www.sadalage.com/>`__
