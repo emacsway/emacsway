@@ -43,6 +43,7 @@ Sites
 - `Passionate about data <https://www.sadalage.com/>`__
 - `PlanningPoker.com - Estimates Made Easy. Sprints Made Simple. <https://www.planningpoker.com/>`__
 - `Awesome Microservices <https://github.com/mfornos/awesome-microservices>`__
+- `All Things Distributed <https://www.allthingsdistributed.com/2008/12/eventually_consistent.html>`__
 
 
 Tools
