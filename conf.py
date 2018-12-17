@@ -219,7 +219,8 @@ language = None
 exclude_patterns = [
     '.*',
     'README.rst',
-    'ru/medplus.rst'
+    'ru/medplus.rst',
+    'ru/about-quality-of-comments.rst',
 ]
 
 # The reST default role (used for this markup: `text`) to use for all
