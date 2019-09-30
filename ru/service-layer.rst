@@ -110,6 +110,9 @@ Layered Architecture
     \- это то, что обеспечивает и координирует работу Бизнес-Логики.
 
 
+Подвиды Business Rules
+----------------------
+
 Robert Martin в Clean Architecture подразделяет Бизнес-Правила на два вида:
 
 - application-specific Business Rules
@@ -119,11 +122,51 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
 
     Thus we find the system divided into decoupled horizontal layers—the UI, application-specific Business Rules, application-independent Business Rules, and the database, just to mention a few.
 
-    \- Clean Architecture by Robert Martin
+    \- "Clean Architecture" by Robert Martin
 
 Главы 16, 20 и 22 of Clean Architecture разъясняют в подробностях типы Бизнес-Правил.
 
 И, хотя, Robert Martin выделяет отдельную категортю классов UseCase (Interactor) для application-specific Business Rules, на практике этот уровень часто округляется до уровня Application Layer.
+Так, например, Martin Fowler разделяет "business logic" на два вида - логика домена (domain logic) и логика приложения (application logic):
+
+    Подобно сценарию транзакции (Transaction Script, 133) и модели предметной области
+    (Domain Model, 140), слой служб представляет собой типовое решение по организации
+    бизнес-логики. Многие проектировщики, и я в том числе, любят разносить **бизнес-логику**
+    по двум категориям: логика домена (domain logic) имеет дело только с предметной
+    областью как таковой (примером могут служить стратегии вычисления зачтенного дохода
+    по контракту), а логика приложения (application logic) описывает сферу ответственности
+    приложения [11] (скажем, уведомляет пользователей и сторонние приложения о протекании
+    процесса вычисления доходов). Логику приложения часто называют также
+    "логикой рабочего процесса", несмотря на то что под "рабочим процессом" часто понимаются
+    совершенно разные вещи.
+
+    Like Transaction Script (110) and Domain Model (116), Service Layer is a pattern for organizing **business logic**.
+    Many designers, including me, like to divide "**business logic**" into two kinds: "domain logic," having to
+    do purely with the problem domain (such as strategies for calculating revenue recognition on a contract), and
+    "application logic," having to do with application responsibilities [Cockburn UC] (such as notifying contract
+    administrators, and integrated applications, of revenue recognition calculations). Application logic is
+    sometimes referred to as "workflow logic," although different people have different interpretations of
+    "workflow."
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler
+
+Там же он склонен относить "business rules" к доменой логике (domain logic):
+
+    Проблемы возникли с усложнением логики предметной области - бизнес-правил, алгоритмов вычислений, условий проверок и т.д.
+
+    The problem came with domain logic: business rules, validations, calculations, and the like.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler
+
+И даже признает наличие определенной расплывчатости.
+
+    Не стоит забывать и о том, что принято обозначать расплывчатым термином бизнес-логика.
+    Я нахожу его забавным, поскольку могу припомнить только несколько вещей, менее логичных, нежели так называемая бизнес-логика.
+
+    Then there's the matter of what comes under the term "business logic."
+    I find this a curious term because there are few things that are less logical than business logic.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler
 
 
 Почему важно отделять Business Rules от Application Logic?
@@ -201,40 +244,6 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
 Традиционно Сервисный Слой относится к логике уровня Приложения.
 Т.е. Сервисный Слой имеет более низкий уровень, чем слой предметной области (domain logic), именуемый так же деловыми регламентами (business rules).
 Из этого также следует и то, что объекты предметной области не должны быть осведомлены о наличии Сервисного Слоя.
-
-Следует обратить внимание на тот факт, что под термином "business rules" Eric Evans понимает логику предметной области (см. выше), в то время как Martin Fowler понимает под термином "business logic" не только логику предметной области:
-
-    Подобно сценарию транзакции (Transaction Script, 133) и модели предметной области
-    (Domain Model, 140), слой служб представляет собой типовое решение по организации
-    бизнес-логики. Многие проектировщики, и я в том числе, любят разносить **бизнес-логику**
-    по двум категориям: логика домена (domain logic) имеет дело только с предметной
-    областью как таковой (примером могут служить стратегии вычисления зачтенного дохода
-    по контракту), а логика приложения (application logic) описывает сферу ответственности
-    приложения [11] (скажем, уведомляет пользователей и сторонние приложения о протекании
-    процесса вычисления доходов). Логику приложения часто называют также
-    "логикой рабочего процесса", несмотря на то что под "рабочим процессом" часто понимаются
-    совершенно разные вещи.
-
-    Like Transaction Script (110) and Domain Model (116), Service Layer is a pattern for organizing **business logic**.
-    Many designers, including me, like to divide "**business logic**" into two kinds: "domain logic," having to
-    do purely with the problem domain (such as strategies for calculating revenue recognition on a contract), and
-    "application logic," having to do with application responsibilities [Cockburn UC] (such as notifying contract
-    administrators, and integrated applications, of revenue recognition calculations). Application logic is
-    sometimes referred to as "workflow logic," although different people have different interpretations of
-    "workflow."
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
-
-Мы будем рассматривать под термином "business rules" (правила делового регламента) исключительно логику предметной области, тем более, что Martin Fowler на это косвенно указывает:
-
-    The problem came with domain logic: business rules, validations, calculations, and
-    the like.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
-
-..
-
-    Then there's the matter of what comes under the term "business logic." I find this a curious term because there
-    are few things that are less logical than business logic.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
 
 Тем более, что Eric Evans явно разделяет Сервисы на три уровня логики:
 
