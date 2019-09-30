@@ -115,8 +115,8 @@ Layered Architecture
 
 Robert Martin в Clean Architecture подразделяет Бизнес-Правила на два вида:
 
-- application-specific Business Rules
-- application-independent Business Rules
+- Application-specific Business Rules
+- Application-independent Business Rules
 
     То есть систему можно разделить на горизонтальные уровни: пользовательский интерфейс, Бизнес-Правила, характерные для приложения, Бизнес-Правила, не зависящие от приложения, и база данных — кроме всего прочего.
 
