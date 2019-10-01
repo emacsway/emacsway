@@ -221,6 +221,7 @@ exclude_patterns = [
     'README.rst',
     'ru/medplus.rst',
     'ru/about-quality-of-comments.rst',
+    'ru/redux-and-flux-for-oop-programmers.rst',
 ]
 
 # The reST default role (used for this markup: `text`) to use for all
