@@ -316,7 +316,80 @@ Eric Evans разделяет Сервисы на три уровня логик
 
 Это самый многочисленный представитель Сервисов.
 Именно его часто называют Сервисный Слой (Service Layer).
-Сервисы Логики Приложения, в свою очередь, разделяются Хореографические и Оркестровые.
+
+
+Подвиды Сервисов Логики Приложения (Application Logic)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Сервисы Логики Приложения, в свою очередь, разделяются на `Оркестровые <https://en.wikipedia.org/wiki/Orchestration_(computing)>`__ ("request/response", т.е. сервис осведомлен об интерфейсе других сервисов) и `Хореографические <https://en.wikipedia.org/wiki/Service_choreography>`__ (Event-Driven, т.е. loosely coupled).
+Главный недостаток первого - это высокая осведомленность об интерфейсе других Сервисов, т.е. Высокое Сопряжение (High Coupling), что снижает их реиспользование.
+Последний является разновидностью паттерна Command, и используется в CQRS-приложениях (reducers в Redux - наглядный пример).
+
+
+Оркестровые Сервисы
+"""""""""""""""""""
+
+Оркестровые Сервисы являются представителями классического Сервисного Слоя, и подробнее рассматриваются ниже по тексту.
+
+
+Хореографические Сервисы
+""""""""""""""""""""""""
+
+Существует интересная статья "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan, на которую ссылается Martin Fowler в своей статье "`CQRS <https://martinfowler.com/bliki/CQRS.html>`__".
+
+И в этой статье есть интересный момент.
+
+    The reason you don’t see this layer explicitly represented in CQRS is that it isn’t really there...
+
+    \- "Clarified CQRS" by Udi Dahan
+
+На самом деле, обработчик команды - это и есть Сервис, только событийно-ориентированный, который следует заданному интерфейсу.
+Он должен содержать логику уровня приложения (а не бизнес-логику).
+
+    Our command processing objects in the various autonomous components actually make up our service layer.
+
+    \- "Clarified CQRS" by Udi Dahan
+
+
+Частые ошибки проектирования Хореографических Сервисов
+******************************************************
+
+Иногда, особенно у frontend-разработчиков, можно наблюдать как они проксируют Оркестровыми Сервисами обращения к Хореографическим Сервисам.
+Имея слабо-сопряженные (Low Coupling) событийно-ориентированные Сервисы в виде обработчиков команды, было бы проектной ошибкой пытаться связать их в сильно-зацепленные (High Coupling) классические Сервисы Оркестрового типа (с единственной целью - помочь Логике Приложения скрыть их от самой же себя).
+
+   Each command is independent of the other, so why should we allow the objects which handle them to depend on each other?
+
+   \- "Clarified CQRS" by Udi Dahan
+
+
+Тут, правда, возникает вопрос осведомленности обработчиков команды и самого приложения об интерфейсе конкретной реализации CQRS.
+Для выравнивания интерфейсов служит паттерн Adapter, которому, при необходимости, можно предусмотреть место.
+
+Другой распространенной ошибкой является размещение Бизнес-Логики в Хореографических Сервисах и искусственное вырождение поведения Доменных Моделей с выносом всей бизнес-логики в обработчики команд, т.е. в Сервисы.
+
+Это приводит к появлению проблемы, о которой говорил Eric Evans:
+
+    "Если требования архитектурной среды к распределению обязанностей таковы, что элементы, реализующие концептуальные объекты, оказываются физически разделенными, то код больше не выражает модель.
+
+    Нельзя разделять до бесконечности, у человеческого ума есть свои пределы, до которых он еще способен соединять разделенное;
+    если среда выходит за эти пределы, разработчики предметной области теряют способность расчленять модель на осмысленные фрагменты."
+
+    "If the framework's partitioning conventions pull apart the elements implementing the
+    conceptual objects, the code no longer reveals the model.
+
+    There is only so much partitioning a mind can stitch back together, and if the framework uses 
+    it all up, the domain developers lose their ability to chunk the model into meaningful pieces."
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans
+
+В приложениях с обширной бизнес-логикой это может сильно ухудшить качество бизнес-моделирования, и препятствовать процессу дистилляции моделей по мере переработки бизнес-знаний [#fnddd]_.
+Также такой код обретает признаки "Divergent Change" [#fnr]_ и "Shotgun Surgery" [#fnr]_, что сильно затруднят исправление ошибок бизнес-моделирования и Итерационное Проектирование (Evolutionary Design).
+В конечном итоге это приводит к стремительному росту стоимости изменения программы.
+
+Должен заметить, что Udi Dahan в своей статье допускает и использование `Transaction Script <https://martinfowler.com/eaaCatalog/transactionScript.html>`__ для организации бизнес-логики.
+В таком случае, выбор между Transaction Script и `Domain Model <https://martinfowler.com/eaaCatalog/domainModel.html>`__ подробно рассмотрен в "Patterns of Enterprise Application Architecture" by M. Fowler and others.
+Transaction Script может быть уместным при сочетании Redux и GraphQL для минимизации сетевого трафика.
+При использовании же REST-API, и наличии обширной бизнес-логики, более уместным будет использование Domain Model и DDD.
 
 
 Сервисы уровня Инфраструктурного Слоя (Infrastructure Layer)
@@ -358,12 +431,32 @@ Eric Evans разделяет Сервисы на три уровня логик
 Назначение Сервисного Слоя
 ==========================
 
-    Слой служб определяет границы приложения и множество операций, предоставляемых им для интерфейсных клиентских слоев кода.
-    Он инкапсулирует бизнес-логику приложения, управляет транзакциями и координирует реакции надействия.
+    Слоя служб устанавливает множество доступных действий и координирует отклик приложения на каждое действие.
 
     Defines an application's boundary with a layer of services that establishes a set of available
     operations and coordinates the application's response in each operation.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
+
+..
+
+    Корпоративные приложения обычно подразумевают применение разного рода интерфейсов к хранимым данным и реализуемой логике — загрузчиков данных, интерфейсов пользователя, шлюзов интеграции и т.д.
+    Несмотря на различия в назначении, подобные интерфейсы часто нуждаются в одних и тех же функциях взаимодействия с приложением для манипулирования данными и выполнения бизнес-логики.
+    Функции могут быть весьма сложными и способны включать транзакции, охватывающие многочисленные ресурсы, а также операции по координации реакций на действия.
+    Описание логики взаимодействия в каждом отдельно взятом интерфейсе сопряжено с многократным повторением одних и тех же фрагментов кода.
+
+    Слой служб определяет границы приложения и множество операций, предоставляемых им для интерфейсных клиентских слоев кода.
+    Он инкапсулирует бизнес-логику приложения, управляет транзакциями и координирует реакции надействия.
+
+    Enterprise applications typically require different kinds of interfaces to the data they store and the logic they implement: data loaders, user interfaces, integration gateways, and others.
+    Despite their different purposes, these interfaces often need common interactions with the application to access and manipulate its data and invoke its business logic.
+    The interactions may be complex, involving transactions across multiple resources and the coordination of several responses to an action.
+    Encoding the logic of the interactions separately in each interface causes a lot of duplication.
+
+    A Service Layer defines an application's boundary and its set of available operations from the perspective of interfacing client layers.
+    It encapsulates the application's business logic, controlling transactions and coordinating responses in the implementation of its operations.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 ..
 
@@ -383,7 +476,8 @@ Eric Evans разделяет Сервисы на три уровня логик
     with more than one kind of client of its business logic, and complex responses in its use cases involving
     multiple transactional resources, it makes a lot of sense to include a Service Layer with container-managed
     transactions, even in an undistributed architecture.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 ..
 
@@ -412,7 +506,8 @@ Eric Evans разделяет Сервисы на три уровня логик
     transaction control and security. This gives you a simple model of taking each method in the Service Layer
     (133) and describing its transactional and security characteristics. A separate properties file is a common
     choice for this, but .NET's attributes provide a nice way of doing it directly in the code.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 Традиционно Сервисный Слой относится к логике уровня Приложения.
 Т.е. Сервисный Слой имеет более низкий уровень, чем слой предметной области (domain logic), именуемый так же деловыми регламентами (business rules).
@@ -428,6 +523,9 @@ Eric Evans разделяет Сервисы на три уровня логик
 - Сервисный слой можно использовать в качестве концентратора запросов, если он стоит поверх паттерна `Repository`_ и использует паттерн `Query object`_. Дело в том, что паттерн Repository ограничивает свой интерфейс посредством интерфейса Query Object. А так как класс не должен делать предположений о своих клиентах, то накапливать предустановленные запросы в классе `Repository`_ нельзя, ибо он не может владеть потребностями всех клиентов. Клиенты должны сами заботиться о себе. А сервисный слой как раз и создан для обслуживания клиентов.
 
 В остальных случаях логику сервисного слоя можно размещать прямо на уровне приложения (обычно - контроллер).
+
+Когда Сервисный Слой не нужен?
+==============================
 
     Гораздо легче ответить на вопрос, когда слой служб не нужно использовать. Скорее
     всего, вам не понадобится слой служб, если у логики приложения есть только одна категория
@@ -446,7 +544,8 @@ Eric Evans разделяет Сервисы на три уровня логик
     layer.
     But as soon as you envision a second kind of client, or a second transactional resource in use case responses, it
     pays to design in a Service Layer from the beginning.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 Тем не менее, широко распространена точка зрения, что доступ к модели должен всегда производиться через сервисный слой:
 
@@ -460,25 +559,25 @@ Eric Evans разделяет Сервисы на три уровня логик
     approach is to assume that I don't need one and only add it if it seems that the application needs it. However, I
     know many good designers who always use a Service Layer (133) with a fair bit of logic, so feel free to ignore
     me on this one.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 ..
 
-    Идея вычленения слоя служб из слоя предметной области основана на подходе, пред-
-    полагающем возможность отмежевания логики процесса от "чистой" бизнес-логики.
+    Идея вычленения слоя служб из слоя предметной области основана на подходе, предполагающем возможность отмежевания логики процесса от "чистой" бизнес-логики.
     Уровень служб обычно охватывает логику, которая относится к конкретному варианту
     использования системы или обеспечивает взаимодействие с другими инфраструктурами
-    (например, с помощью механизма сообщений). Стоит ли иметь отдельные слои служб и
-    предметной области — вопрос, достойный обсуждения. Я склоняюсь к мысли о том, что
-    подобное решение может оказаться полезным, хотя и не всегда, но некоторые уважае-
-    мые мною коллеги эту точку зрения не разделяют.
+    (например, с помощью механизма сообщений).
+    Стоит ли иметь отдельные слои служб и предметной области — вопрос, достойный обсуждения.
+    Я склоняюсь к мысли о том, что подобное решение может оказаться полезным, хотя и не всегда, но некоторые уважаемые мною коллеги эту точку зрения не разделяют.
 
     The idea of splitting a services layer from a domain layer is based on a separation of workflow logic from
     pure domain logic. The services layer typically includes logic that's particular to a single use case and also
     some communication with other infrastructures, such as messaging. Whether to have separate services and
     domain layers is a matter some debate. I tend to look as it as occasionally useful rather than mandatory, but
     designers I respect disagree with me on this.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 
 Сервис - не обертка для DataMapper
@@ -772,6 +871,7 @@ This article in English ":doc:`../en/service-layer`".
 .. [#fnpoeaa] «`Patterns of Enterprise Application Architecture`_» by `Martin Fowler`_, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 .. [#fnddd] «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans
 .. [#fngof] «Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
+.. [#fnr] "Refactoring: Improving the Design of Existing Code" by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
 
 
 .. update:: 28 May, 2018
