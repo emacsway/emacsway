@@ -17,7 +17,7 @@
 Виды логики
 ===========
 
-Прежде чем копнуть вглубь, было бы неплохо разобраться с тем, что такое Application Logic (Логика Приложения) и чем она отличается от Business Rules (Business Logic, Бизнес-Логики).
+Прежде чем копнуть вглубь, было бы неплохо разобраться с тем, что такое Логика Приложения (Application Logic) и чем она отличается от Бизнес-Логики (Business Logic).
 
 
 Layered Architecture
@@ -54,13 +54,13 @@ Layered Architecture
 
     \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans
 
-Но что означает сам термин Business?
+Но что означает сам термин Бизнес (Business)?
 Непонимание этого термина часто приводит к серьезным проблемам проектирования.
 В это трудно поверить, но большинство разработчиков, даже с многолетним стажем, этого не понимают, и полагают что это что-то связанное с финансами.
 
 
-Что такое Business Rules (Бизнес-Логика)?
------------------------------------------
+Что такое Бизнес-Логика (Business Logic)?
+------------------------------------------
 
 Самое авторитетное пояснение термина `Business <http://wiki.c2.com/?CategoryBusiness>`__ можно найти, как обычно, на сайте Ward Cunningham:
 
@@ -110,8 +110,8 @@ Layered Architecture
     это то, что обеспечивает и координирует работу Бизнес-Логики.
 
 
-Подвиды Business Rules
-----------------------
+Подвиды Бизнес-Правил (Business Rules)
+--------------------------------------
 
 Robert Martin в Clean Architecture подразделяет Бизнес-Правила на два вида:
 
@@ -126,8 +126,8 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
 
 Главы 16, 20 и 22 of Clean Architecture разъясняют в подробностях типы Бизнес-Правил.
 
-И, хотя, Robert Martin выделяет отдельную категортю классов UseCase (Interactor) для application-specific Business Rules, на практике этот уровень часто округляется до уровня Application Layer.
-Так, например, Martin Fowler разделяет "business logic" на два вида - логика домена (domain logic) и логика приложения (application logic):
+И, хотя, Robert Martin выделяет отдельную категортю классов UseCase (Interactor) для Application-specific Business Rules, на практике этот уровень часто округляется до уровня Application Logic.
+Так, например, Martin Fowler разделяет "Business Logic" на два вида - Логика Домена (Domain Logic) и Логика Приложения (Application Logic):
 
     Подобно сценарию транзакции (Transaction Script, 133) и модели предметной области
     (Domain Model, 140), слой служб представляет собой типовое решение по организации
@@ -150,7 +150,7 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
 
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler
 
-Там же он склонен относить "business rules" к доменой логике (domain logic):
+Там же он склонен относить "Business Rules" к Доменой Логике (Domain Logic):
 
     Проблемы возникли с усложнением доменой логики - бизнес-правил, алгоритмов вычислений, условий проверок и т.д.
 
@@ -176,12 +176,133 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
 Это потому, что Логика Приложения будет меняться с другой частотой и по другим причинам.
 
 
+Организация Сервисов по уровням логики
+======================================
+
+Eric Evans разделяет Сервисы на три уровня логики:
+
+    Partitioning Services into Layers
+
+    Application
+        Funds Transfer App Service
+
+        - Digests input (such as an XML request).
+        - Sends message to domain service for fulfillment.
+        - Listens for confirmation.
+        - Decides to send notification using infrastructure service.
+    Domain
+        Funds Transfer Domain Service
+
+        - Interacts with necessary Account and Ledger objects, making appropriate debits and credits.
+        - Supplies confirmation of result (transfer allowed or not, and so on).
+    Infrastructure Send Notification Service
+        Sends e-mails, letters, and other communications as directed by the application.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+..
+
+    Most SERVICES discussed in the literature are purely technical and belong in the infrastructure layer.
+    Domain and application SERVICES collaborate with these infrastructure SERVICES.
+    For example, a bank might have an application that sends an e-mail to a customer when an account balance falls below a specific threshold.
+    The interface that encapsulates the e-mail system, and perhaps alternate means of notification, is a SERVICE in the infrastructure layer.
+
+    It can be harder to distinguish application SERVICES from domain SERVICES.
+    The application layer is responsible for ordering the notification.
+    The domain layer is responsible for determining if a threshold was met—though this task probably does not call for a SERVICE, because it would fit the responsibility of an "account" object.
+    That banking application could be responsible for funds transfers.
+    If a SERVICE were devised to make appropriate debits and credits for a funds transfer,that capability would belong in the domain layer.
+    Funds transfer has a meaning in the banking domain language, and it involves fundamental business logic.
+    Technical SERVICES should lack any business meaning at all.
+
+    Many domain or application SERVICES are built on top of the populations of ENTITIES and VALUES, behaving like scripts that organize the potential of the domain to actually get something done.
+    ENTITIES and VALUE OBJECTS are often too fine-grained to provide a convenient access to the capabilities of the domain layer.
+    Here we encounter a very fine line between the domain layer and the application layer.
+    For example, if the banking application can convert and export our transactions into a spreadsheet file for us to analyze, that export is an application SERVICE.
+    There is no meaning of "file formats" in the domain of banking, and there are no business rules involved.
+
+    On the other hand, a feature that can transfer funds from one account to another is a domain SERVICE because it embeds significant business rules (crediting and debiting the appropriate accounts, for example) and because a "funds transfer" is a meaningful banking term.
+    In this case, the SERVICE does not do much on its own; it would ask the two Account objects to do most of the work.
+    But to put the "transfer" operation on the Account object would be awkward, because the operation involves two accounts and some global rules.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+
+Сервисы уровня Доменной Логики (Domain Logic)
+---------------------------------------------
+
+Политика самого высокого уровня принадлежит Доменной Логике (Domain Logic), поэтому, с нее и начнем.
+К счастью, это самый немногочисленный представитель Сервисов.
+
+Подробно тему Сервисов Логики Предметной Области и причины их существования раскрывает Vaughn Vernon:
+
+    Further, don’t confuse a Domain Service with an Application Service.
+    We don’t want to house business logic in an Application Service, but we do want business logic housed in a Domain Service.
+    If you are confused about the difference, compare with Application.
+    Briefly, to differentiate the two, an Application Service, being the natural client of the domain model, would normally be the client of a Domain Service.
+    You’ll see that demonstrated later in the chapter.
+    Just because a Domain Service has the word service in its name does not mean that it is required to be a coarse-grained, remote-capable, heavyweight transactional operation.
+
+    ...
+
+    You can use a Domain Service to
+
+    - Perform a significant business process
+    - Transform a domain object from one composition to another
+    - Calculate a Value requiring input from more than one domain object
+
+    \- "Implementing Domain-Driven Design" by Vaughn Vernon
+
+
+Сервисы уровня Логики Приложения (Application Logic)
+----------------------------------------------------
+
+Это самый многочисленный представитель Сервисов.
+Именно его часто называют Сервисный Слой (Service Layer).
+Сервисы Логики Приложения, в свою очередь, разделяются Хореографические и Оркестровые.
+
+
+Сервисы уровня Инфраструктурного Слоя (Infrastructure Layer)
+------------------------------------------------------------
+
+Отдельно следует выделять Сервисы уровня Инфраструктурного Слоя (Infrastructure Layer).
+
+    The infrastructure layer usually does not initiate action in the domain layer. Being "below" the
+    domain layer, it should have no specific knowledge of the domain it is serving. Indeed, such
+    technical capabilities are most often offered as SERVICES . For example, if an application needs to
+    send an e-mail, some message-sending interface can be located in the infrastructure layer and the
+    application layer elements can request the transmission of the message. This decoupling gives
+    some extra versatility. The message-sending interface might be connected to an e-mail sender, a
+    fax sender, or whatever else is available. But the main benefit is simplifying the application layer,
+    keeping it narrowly focused on its job: knowing when to send a message, but not burdened with
+    how.
+
+    The application and domain layers call on the SERVICES provided by the infrastructure layer. When
+    the scope of a SERVICE has been well chosen and its interface well designed, the caller can remain
+    loosely coupled and uncomplicated by the elaborate behavior the SERVICE interface encapsulates.
+
+    But not all infrastructure comes in the form of SERVICES callable from the higher layers. Some
+    technical components are designed to directly support the basic functions of other layers (such as
+    providing an abstract base class for all domain objects) and provide the mechanisms for them to
+    relate (such as implementations of MVC and the like). Such an "architectural framework" has
+    much more impact on the design of the other parts of the program.
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+..
+
+    Infrastructure Layer - Provides generic technical capabilities that support the higher layers:
+    message sending for the application, persistence for the domain, drawing
+    widgets for the UI, and so on. The infrastructure layer may also support
+    the pattern of interactions between the four layers through an
+    architectural framework.
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+
 Назначение Сервисного Слоя
 ==========================
 
-    Слой служб определяет границы приложения и множество операций, предоставляемых
-    им для интерфейсных клиентских слоев кода. Он инкапсулирует бизнес-логику
-    приложения, управляет транзакциями и координирует реакции надействия.
+    Слой служб определяет границы приложения и множество операций, предоставляемых им для интерфейсных клиентских слоев кода.
+    Он инкапсулирует бизнес-логику приложения, управляет транзакциями и координирует реакции надействия.
 
     Defines an application's boundary with a layer of services that establishes a set of available
     operations and coordinates the application's response in each operation.
@@ -244,73 +365,6 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
 Традиционно Сервисный Слой относится к логике уровня Приложения.
 Т.е. Сервисный Слой имеет более низкий уровень, чем слой предметной области (domain logic), именуемый так же деловыми регламентами (business rules).
 Из этого также следует и то, что объекты предметной области не должны быть осведомлены о наличии Сервисного Слоя.
-
-Тем более, что Eric Evans явно разделяет Сервисы на три уровня логики:
-
-    Partitioning Services into Layers
-
-    Application
-        Funds Transfer App Service
-
-        - Digests input (such as an XML request).
-        - Sends message to domain service for fulfillment.
-        - Listens for confirmation.
-        - Decides to send notification using infrastructure service.
-    Domain
-        Funds Transfer Domain Service
-
-        - Interacts with necessary Account and Ledger objects, making appropriate debits and credits.
-        - Supplies confirmation of result (transfer allowed or not, and so on).
-    Infrastructure Send Notification Service
-        Sends e-mails, letters, and other communications as directed by the application.
-
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
-
-..
-
-    Most SERVICES discussed in the literature are purely technical and belong in the infrastructure layer.
-    Domain and application SERVICES collaborate with these infrastructure SERVICES.
-    For example, a bank might have an application that sends an e-mail to a customer when an account balance falls below a specific threshold.
-    The interface that encapsulates the e-mail system, and perhaps alternate means of notification, is a SERVICE in the infrastructure layer.
-
-    It can be harder to distinguish application SERVICES from domain SERVICES.
-    The application layer is responsible for ordering the notification.
-    The domain layer is responsible for determining if a threshold was met—though this task probably does not call for a SERVICE, because it would fit the responsibility of an "account" object.
-    That banking application could be responsible for funds transfers.
-    If a SERVICE were devised to make appropriate debits and credits for a funds transfer,that capability would belong in the domain layer.
-    Funds transfer has a meaning in the banking domain language, and it involves fundamental business logic.
-    Technical SERVICES should lack any business meaning at all.
-
-    Many domain or application SERVICES are built on top of the populations of ENTITIES and VALUES, behaving like scripts that organize the potential of the domain to actually get something done.
-    ENTITIES and VALUE OBJECTS are often too fine-grained to provide a convenient access to the capabilities of the domain layer.
-    Here we encounter a very fine line between the domain layer and the application layer.
-    For example, if the banking application can convert and export our transactions into a spreadsheet file for us to analyze, that export is an application SERVICE.
-    There is no meaning of "file formats" in the domain of banking, and there are no business rules involved.
-
-    On the other hand, a feature that can transfer funds from one account to another is a domain SERVICE because it embeds significant business rules (crediting and debiting the appropriate accounts, for example) and because a "funds transfer" is a meaningful banking term.
-    In this case, the SERVICE does not do much on its own; it would ask the two Account objects to do most of the work.
-    But to put the "transfer" operation on the Account object would be awkward, because the operation involves two accounts and some global rules.
-
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
-
-Более подробно тему Сервисов Предметной области и причины их существования раскрывает Vaughn Vernon:
-
-    Further, don’t confuse a Domain Service with an Application Service.
-    We don’t want to house business logic in an Application Service, but we do want business logic housed in a Domain Service.
-    If you are confused about the difference, compare with Application.
-    Briefly, to differentiate the two, an Application Service, being the natural client of the domain model, would normally be the client of a Domain Service.
-    You’ll see that demonstrated later in the chapter.
-    Just because a Domain Service has the word service in its name does not mean that it is required to be a coarse-grained, remote-capable, heavyweight transactional operation.
-
-    ...
-
-    You can use a Domain Service to
-
-    - Perform a significant business process
-    - Transform a domain object from one composition to another
-    - Calculate a Value requiring input from more than one domain object
-
-    («Implementing Domain-Driven Design» by Vaughn Vernon)
 
 Кроме перечисленного выше, сервисный слой может выполнять следующие обязанности:
 
@@ -662,42 +716,6 @@ Martin Fowler говорит что:
 Также реализация аннотаций в Django ORM делает невозможным использование паттерна `Identity Map`_.
 Storm ORM/SQLAlchemy реализуют аннотации более удачно.
 Если Вам все-таки пришлось работать с Django Model, воздержитесь от использования механизма Django аннотаций в пользу голого паттерна `DataMapper`_.
-
-
-Сервисы инфраструктурного уровня
-================================
-
-От сервисного слоя следует отличать сервисы инфраструктурного уровня.
-
-    The infrastructure layer usually does not initiate action in the domain layer. Being "below" the
-    domain layer, it should have no specific knowledge of the domain it is serving. Indeed, such
-    technical capabilities are most often offered as SERVICES . For example, if an application needs to
-    send an e-mail, some message-sending interface can be located in the infrastructure layer and the
-    application layer elements can request the transmission of the message. This decoupling gives
-    some extra versatility. The message-sending interface might be connected to an e-mail sender, a
-    fax sender, or whatever else is available. But the main benefit is simplifying the application layer,
-    keeping it narrowly focused on its job: knowing when to send a message, but not burdened with
-    how.
-
-    The application and domain layers call on the SERVICES provided by the infrastructure layer. When
-    the scope of a SERVICE has been well chosen and its interface well designed, the caller can remain
-    loosely coupled and uncomplicated by the elaborate behavior the SERVICE interface encapsulates.
-
-    But not all infrastructure comes in the form of SERVICES callable from the higher layers. Some
-    technical components are designed to directly support the basic functions of other layers (such as
-    providing an abstract base class for all domain objects) and provide the mechanisms for them to
-    relate (such as implementations of MVC and the like). Such an "architectural framework" has
-    much more impact on the design of the other parts of the program.
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
-
-..
-
-    Infrastructure Layer - Provides generic technical capabilities that support the higher layers:
-    message sending for the application, persistence for the domain, drawing
-    widgets for the UI, and so on. The infrastructure layer may also support
-    the pattern of interactions between the four layers through an
-    architectural framework.
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
 
 
 Особенности сервисного слоя на стороне клиента
