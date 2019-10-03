@@ -128,7 +128,7 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
 Главы 16, 20 и 22 of Clean Architecture разъясняют в подробностях типы Бизнес-Правил.
 
 И, хотя, Robert Martin выделяет отдельную категортю классов UseCase (Interactor) для Application-specific Business Rules, на практике этот уровень часто округляется до уровня Application Logic.
-Так, например, Martin Fowler разделяет "Business Logic" на два вида - Логика Домена (Domain Logic) и Логика Приложения (Application Logic):
+Так, например, Martin Fowler и Randy Stafford разделяют "Business Logic" на два вида - Логика Домена (Domain Logic) и Логика Приложения (Application Logic):
 
     Подобно сценарию транзакции (Transaction Script, 133) и модели предметной области
     (Domain Model, 140), слой служб представляет собой типовое решение по организации
@@ -149,7 +149,7 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
     sometimes referred to as "workflow logic," although different people have different interpretations of
     "workflow."
 
-    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler, Randy Stafford
 
 Там же он склонен относить "Business Rules" к Доменой Логике (Domain Logic):
 
@@ -467,7 +467,80 @@ Transaction Script может быть уместным при сочетани�
 Классификация Сервисов по состоянию
 ===================================
 
-Как правило все сервисы являются stateless, т.е. не имеют состояния.
+
+Stateless Services
+------------------
+
+Как правило большинство сервисов являются stateless, т.е. не имеют состояния.
+Они хорошо изучены, и добавить по ним нечего.
+
+
+Statefull Services
+------------------
+
+Классы UseCases/Interactors [#fncarch]_ являются Statefull разновидностью паттерна Команда (Command), и, в определенной мере, могут рассматриваться как Statefull Сервис.
+
+Похожую идею выражает и Eric Evans:
+
+    We might like to create a Funds Transfer object to represent the two entries plus the rules and history around the transfer. But we are still left with calls to SERVICES in the interbank networks.
+    What's more, in most development systems, it is awkward to make a direct interface between a domain object and external resources. We can dress up such external SERVICES with a FACADE that takes inputs in terms of the model, perhaps returning a Funds Transfer object as its result.
+    But whatever intermediaries we might have, and even though they don't belong to us, those SERVICES are carrying out the domain responsibility of funds transfer.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+И Randy Stafford с Martin Fowler:
+
+    Двумя базовыми вариантами реализации слоя служб являются создание интерфейса
+    доступа к домену (domain facade) и конструирование сценария операции (operation script).
+    При использовании подхода, связанного с интерфейсом доступа к домену, слой служб
+    реализуется как набор "тонких" интерфейсов, размещенных "поверх" модели предметной
+    области. В классах, реализующих интерфейсы, никакая бизнес-логика отражения не
+    находит — она сосредоточена исключительно в контексте модели предметной области.
+    Тонкие интерфейсы устанавливают границы и определяют множество операций, посредством
+    которых клиентские слои взаимодействуют с приложением, обнаруживая тем самым
+    характерные свойства слоя служб.
+
+    Создавая сценарий операции, вы реализуете слой служб как множество более "толстых"
+    классов, которые непосредственно воплощают в себе логику приложения, но за бизнес-логикой
+    обращаются к классам домена. Операции, предоставляемые клиентам слоя
+    служб, реализуются в виде сценариев, создаваемых группами в контексте классов, каждый
+    из которых определяет некоторый фрагмент соответствующей логики. Подобные
+    классы, расширяющие супертип слоя (Layer Supertype, 491) и уточняющие объявленные
+    в нем абстрактные характеристики поведения и сферы ответственности, формируют "службы"
+    приложения (в названиях служебных типов принято употреблять суффикс "Service").
+    Слой служб и заключает в себе эти прикладные классы.
+
+    The two basic implementation variations are the domain facade approach and the operation script approach. In
+    the domain facade approach a Service Layer is implemented as a set of thin facades over a Domain Model
+    (116). The classes implementing the facades don't implement any business logic. Rather, the Domain Model
+    (116) implements all of the business logic. The thin facades establish a boundary and set of operations through
+    which client layers interact with the application, exhibiting the defining characteristics of Service Layer.
+
+    In the operation script approach a Service Layer is implemented as a set of thicker classes that directly
+    implement application logic but delegate to encapsulated domain object classes for domain logic. The
+    operations available to clients of a Service Layer are implemented as scripts, organized several to a class
+    defining a subject area of related logic. Each such class forms an application "service," and it's common for
+    service type names to end with "Service." A Service Layer is comprised of these application service classes,
+    which should extend a Layer Supertype (475), abstracting their responsibilities and common behaviors.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler, Randy Stafford
+
+
+Обратите внимание на использование термина "`Domain Model`_".
+Эти ребята - последние из числа, кто может спутать "`Domain Model`_" и "`DataMapper`_", особенно, при таком количестве редакторов и рецензентов.
+Т.е. клиент ожидает от доменной модели интерфейс, который она, по какой-то причине (обычно это Single Responsibility Principle), не реализует и не должна реализовать.
+С другой стороны, клиент не может реализовать это поведение сам, так как это привело бы к появлению "G14: Feature Envy" [#fnccode]_.
+Для выравнивания интерфейсов служит паттерн Adapter (aka Wrapper), см. "Design Patterns Elements of Reusable Object-Oriented Software" [#fngof]_.
+Отличается Statefull Services от обычного Adapter только тем, что он содержит логику более низкого уровня, т.е. Логику Приложения (Application Logic), нежели Доменная Модель.
+
+Этот подход сильно напоминает мне "Cross-Cutting Concerns" [#fnccode]_ с тем только отличием, что "Cross-Cutting Concerns" реализует интерфейс оригинального объекта, в то время как domain facade дополняет его.
+Когда объект-обертка реализует интерфейс оригинального обекта, то его обычно называют Aspect или Decorator.
+Часто в таких случаях можно улышать термин Proxy, но, на самом деле паттерн Proxy имеет немного другое назначение.
+Такой подход часто используется для того, чтобы добавить в доменную модель логику доступа к связанным объектам, при этом оставляя доменные модели совершенно "чистыми" (т.е. без примесей поведения другого уровня логики).
+
+При работе с унаследованным кодом мне доводилось встречать разбухшие Доменные Модели с огромным числом методов (я встречал до нескольких сотен методов).
+При анализе таких моделей часто обнаруживаются посторонние обязанности в классе, а размер класса, как известно, измеряется количеством его обязанностей.
+Statefull Сервисы и паттерн Adapter - хорошая альтернатива для того, чтобы вынести из модели несвойственные ей обязанности, и заставить похудеть разбухшие модели.
 
 
 Назначение Сервисного Слоя
@@ -637,7 +710,7 @@ Transaction Script может быть уместным при сочетани�
 
     Identifying the operations needed on a Service Layer boundary is pretty straightforward. They're determined
     by the needs of Service Layer clients, the most significant (and first) of which is typically a user interface.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
 
 
 Реализация Сервисного Слоя
@@ -673,7 +746,7 @@ Transaction Script может быть уместным при сочетани�
     and uses the constructor arguments or setter methods provided to wire together the depen-
     dencies. Which dependent objects are actually used is specified through a configuration
     file or programmatically in a special-purpose construction module.
-    «Clean Code: A Handbook of Agile Software Craftsmanship» [#fnccode]_
+    "Clean Code: A Handbook of Agile Software Craftsmanship" [#fnccode]_
 
 Одна из основных обязанностей Сервисного Слоя - это сокрытие источника данных.
 Для тестирования можно использовать фиктивный Сервис (`Service Stub`_).
@@ -694,7 +767,7 @@ Transaction Script может быть уместным при сочетани�
 Нижележащий слой не должен ничего знать о вышестоящем слое.
 Логика уровня домена не должна быть осведомлена о логике уровня приложения.
 
-Классу django.db.models.Manager более всего соответствует класс Finder описанный в «Patterns of Enterprise Application Architecture» [#fnpoeaa]_.
+Классу django.db.models.Manager более всего соответствует класс Finder описанный в "Patterns of Enterprise Application Architecture" [#fnpoeaa]_.
 
     При реализации шлюза записи данных возникает вопрос: куда "пристроить" методы
     поиска, генерирующие экземпляр данного типового решения? Разумеется, можно
@@ -718,7 +791,7 @@ Transaction Script может быть уместным при сочетани�
     It's often hard to tell the difference between a Row Data Gateway and an Active Record (160). The crux of the
     matter is whether there's any domain logic present; if there is, you have an Active Record (160). A Row Data
     Gateway should contain only database access logic and no domain logic.
-    (Chapter 10. "Data Source Architectural Patterns : Row Data Gateway", «Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
+    (Chapter 10. "Data Source Architectural Patterns : Row Data Gateway", "Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
 
 Хотя Django не использует паттерн `Repository`_, она использует абстракцию критериев выборки, своего рода разновидность паттерна `Query Object`_.
 Подобно паттерну Repository, класс модели (`ActiveRecord`_) ограничивает свой интерфейс посредством интерфейса Query Object.
@@ -755,79 +828,7 @@ Transaction Script может быть уместным при сочетани�
     application's use case responsibilities. Second, encapsulating application logic in a "higher" layer
     dedicated to that purpose (which the data source layer isn't) facilitates changing the implementation of that
     layer perhaps to use a workflow engine.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
-
-
-Укрощение разбухших моделей
-===========================
-
-Часто можно встретить модели имеющие большое число методов (я встречал несколько сотен).
-При анализе таких моделей часто обнаруживаются посторонние обязанности в классе, а размер класса, как известно, измеряется количеством его обязанностей.
-Все обязанности, которые не относятся к Доменной области, следует вынести в Сервисный Слой.
-Но что делать с другими методами?
-
-Предположим, некая Модель имеет несколько десятков методов, которые не имеют общего применения, а используются только одним клиентом.
-Отнести их к обязанности клиентов нельзя, так как это привело бы к появлению "G14: Feature Envy" [#fnccode]_.
-
-Как уже упоминалось ранее, Service Layer обычно реализуется как объект без состояния.
-Если клиент относится к логике Приложения, то решением может быть создание Service Layer.
-
-Но если клиент относится к логике Доменной области, то нельзя допустить чтобы слой уровня Доменной логики был осведомлен о логике Приложения.
-А Service Layer - это логика уровня приложения.
-
-Иными словами, клиент требует от Доменной Модели интерфейс, который не должен быть реализован Доменной Моделью.
-Для выравнивания интерфейсов существует паттерн Adapter (aka Wrapper), см. «Design Patterns Elements of Reusable Object-Oriented Software» [#fngof]_.
-
-Иными словами, это враппер над инстанцией Модели, который оборачивает её и придает ей дополнительное поведение, которое требуется клиентом.
-Иногда такие обертки ошибочно называют Аспектом или Декоратором, но это неверно, так как они не изменяют интерфейса оригинального объекта.
-
-Вернемся к случаю, когда клиент относится к логике Приложения.
-Можно ли применять паттерн Adapter в этом случае?
-
-Martin Fowler говорит что:
-
-    Двумя базовыми вариантами реализации слоя служб являются создание интерфейса
-    доступа к домену (domain facade) и конструирование сценария операции (operation script).
-    При использовании подхода, связанного с интерфейсом доступа к домену, слой служб
-    реализуется как набор "тонких" интерфейсов, размещенных "поверх" модели предметной
-    области. В классах, реализующих интерфейсы, никакая бизнес-логика отражения не
-    находит — она сосредоточена исключительно в контексте модели предметной области.
-    Тонкие интерфейсы устанавливают границы и определяют множество операций, посредством
-    которых клиентские слои взаимодействуют с приложением, обнаруживая тем самым
-    характерные свойства слоя служб.
-
-    Создавая сценарий операции, вы реализуете слой служб как множество более "толстых"
-    классов, которые непосредственно воплощают в себе логику приложения, но за бизнес-логикой
-    обращаются к классам домена. Операции, предоставляемые клиентам слоя
-    служб, реализуются в виде сценариев, создаваемых группами в контексте классов, каждый
-    из которых определяет некоторый фрагмент соответствующей логики. Подобные
-    классы, расширяющие супертип слоя (Layer Supertype, 491) и уточняющие объявленные
-    в нем абстрактные характеристики поведения и сферы ответственности, формируют "службы"
-    приложения (в названиях служебных типов принято употреблять суффикс "Service").
-    Слой служб и заключает в себе эти прикладные классы.
-
-    The two basic implementation variations are the domain facade approach and the operation script approach. In
-    the domain facade approach a Service Layer is implemented as a set of thin facades over a Domain Model
-    (116). The classes implementing the facades don't implement any business logic. Rather, the Domain Model
-    (116) implements all of the business logic. The thin facades establish a boundary and set of operations through
-    which client layers interact with the application, exhibiting the defining characteristics of Service Layer.
-
-    In the operation script approach a Service Layer is implemented as a set of thicker classes that directly
-    implement application logic but delegate to encapsulated domain object classes for domain logic. The
-    operations available to clients of a Service Layer are implemented as scripts, organized several to a class
-    defining a subject area of related logic. Each such class forms an application "service," and it's common for
-    service type names to end with "Service." A Service Layer is comprised of these application service classes,
-    which should extend a Layer Supertype (475), abstracting their responsibilities and common behaviors.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
-
-Поскольку Martin Fowler прекрасно понимает отличие между "`Domain Model`_" и "`DataMapper`_", эта цитата сильно напоминает мне "Cross-Cutting Concerns" [#fnccode]_ с тем только отличием, что "Cross-Cutting Concerns" реализует интерфейс оригинального объекта, в то время как domain facade дополняет его.
-
-Похожую идею выражает и Eric Evans:
-
-    We might like to create a Funds Transfer object to represent the two entries plus the rules and history around the transfer. But we are still left with calls to SERVICES in the interbank networks.
-    What's more, in most development systems, it is awkward to make a direct interface between a domain object and external resources. We can dress up such external SERVICES with a FACADE that takes inputs in terms of the model, perhaps returning a Funds Transfer object as its result.
-    But whatever intermediaries we might have, and even though they don't belong to us, those SERVICES are carrying out the domain responsibility of funds transfer.
-    («Domain-Driven Design: Tackling Complexity in the Heart of Software» [#fnddd]_)
+    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
 
 
 Проблема Django-аннотаций
@@ -861,18 +862,18 @@ Storm ORM/SQLAlchemy реализуют аннотации более удачн
 Что почитать
 ============
 
-- «Clean Code: A Handbook of Agile Software Craftsmanship» by Robert C. Martin [#fnccode]_, главы:
+- "Clean Code: A Handbook of Agile Software Craftsmanship" by Robert C. Martin [#fnccode]_, главы:
     - Dependency Injection ... 157
     - Cross-Cutting Concerns ... 160
     - Java Proxies ... 161
     - Pure Java AOP Frameworks ... 163
-- «Patterns of Enterprise Application Architecture» by Martin Fowler [#fnpoeaa]_, главы:
+- "Patterns of Enterprise Application Architecture" by Martin Fowler [#fnpoeaa]_, главы:
     - Part 1. The Narratives : Chapter 2. Organizing Domain Logic : Service Layer
     - Part 1. The Narratives : Chapter 8. Putting It All Together
     - Part 2. The Patterns : Chapter 9. Domain Logic Patterns : Service Layer
-- «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans [#fnddd]_, глава:
+- "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans [#fnddd]_, глава:
     - Part II: The Building Blocks of a Model-Driven Design : Chapter Five. A Model Expressed in Software : Services
-- «Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma [#fngof]_, главы:
+- "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma [#fngof]_, главы:
     - Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139
     - Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175
 
@@ -885,10 +886,11 @@ This article in English ":doc:`../en/service-layer`".
 
 .. rubric:: Footnotes
 
-.. [#fnccode] «`Clean Code: A Handbook of Agile Software Craftsmanship`_» by `Robert C. Martin`_
-.. [#fnpoeaa] «`Patterns of Enterprise Application Architecture`_» by `Martin Fowler`_, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
-.. [#fnddd] «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans
-.. [#fngof] «Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
+.. [#fnccode] "`Clean Code: A Handbook of Agile Software Craftsmanship`_" by `Robert C. Martin`_
+.. [#fncarch] "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
+.. [#fnpoeaa] "`Patterns of Enterprise Application Architecture`_" by `Martin Fowler`_, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
+.. [#fnddd] "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans
+.. [#fngof] "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
 .. [#fnr] "Refactoring: Improving the Design of Existing Code" by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
 .. [#fnbm] "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
 
