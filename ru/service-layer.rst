@@ -234,8 +234,8 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
     \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
 
-Организация Сервисов по уровням логики
-======================================
+Классификация Сервисов по уровням логики
+========================================
 
 Eric Evans разделяет Сервисы на три уровня логики:
 
@@ -319,22 +319,59 @@ Eric Evans разделяет Сервисы на три уровня логик
 Именно его часто называют Сервисный Слой (Service Layer).
 
 
-Подвиды Сервисов Логики Приложения (Application Logic)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Сервисы уровня Инфраструктурного Слоя (Infrastructure Layer)
+------------------------------------------------------------
 
-Сервисы Логики Приложения, в свою очередь, разделяются на `Оркестровые <https://en.wikipedia.org/wiki/Orchestration_(computing)>`__ ("request/response", т.е. сервис осведомлен об интерфейсе других сервисов) и `Хореографические <https://en.wikipedia.org/wiki/Service_choreography>`__ (Event-Driven, т.е. loosely coupled).
+Отдельно следует выделять Сервисы уровня Инфраструктурного Слоя (Infrastructure Layer).
+
+    The infrastructure layer usually does not initiate action in the domain layer. Being "below" the
+    domain layer, it should have no specific knowledge of the domain it is serving. Indeed, such
+    technical capabilities are most often offered as SERVICES . For example, if an application needs to
+    send an e-mail, some message-sending interface can be located in the infrastructure layer and the
+    application layer elements can request the transmission of the message. This decoupling gives
+    some extra versatility. The message-sending interface might be connected to an e-mail sender, a
+    fax sender, or whatever else is available. But the main benefit is simplifying the application layer,
+    keeping it narrowly focused on its job: knowing when to send a message, but not burdened with
+    how.
+
+    The application and domain layers call on the SERVICES provided by the infrastructure layer. When
+    the scope of a SERVICE has been well chosen and its interface well designed, the caller can remain
+    loosely coupled and uncomplicated by the elaborate behavior the SERVICE interface encapsulates.
+
+    But not all infrastructure comes in the form of SERVICES callable from the higher layers. Some
+    technical components are designed to directly support the basic functions of other layers (such as
+    providing an abstract base class for all domain objects) and provide the mechanisms for them to
+    relate (such as implementations of MVC and the like). Such an "architectural framework" has
+    much more impact on the design of the other parts of the program.
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+..
+
+    Infrastructure Layer - Provides generic technical capabilities that support the higher layers:
+    message sending for the application, persistence for the domain, drawing
+    widgets for the UI, and so on. The infrastructure layer may also support
+    the pattern of interactions between the four layers through an
+    architectural framework.
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+
+Классификация Сервисов по способу взаимодействия
+================================================
+
+По способу взаимодействия Сервисы разделяются на `Оркестровые <https://en.wikipedia.org/wiki/Orchestration_(computing)>`__ ("request/response", т.е. сервис осведомлен об интерфейсе других сервисов) и `Хореографические <https://en.wikipedia.org/wiki/Service_choreography>`__ (Event-Driven, т.е. loosely coupled) [#fnbm]_.
+Их еще называют идиоматическими стилями взаимодействия.
 Главный недостаток первого - это высокая осведомленность об интерфейсе других Сервисов, т.е. Высокое Сопряжение (High Coupling), что снижает их реиспользование.
 Последний является разновидностью паттерна Command, и используется в CQRS-приложениях (reducers в Redux - наглядный пример).
 
 
 Оркестровые Сервисы
-"""""""""""""""""""
+-------------------
 
 Оркестровые Сервисы являются представителями классического Сервисного Слоя, и подробнее рассматриваются ниже по тексту.
 
 
 Хореографические Сервисы
-""""""""""""""""""""""""
+------------------------
 
 Существует интересная статья "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan, на которую ссылается Martin Fowler в своей статье "`CQRS <https://martinfowler.com/bliki/CQRS.html>`__".
 
@@ -351,9 +388,11 @@ Eric Evans разделяет Сервисы на три уровня логик
 
     \- "Clarified CQRS" by Udi Dahan
 
+Хореографические Сервисы бывают только уровя Логики Приложения, даже если они подписаны на Доменные События (Domain Event).
+
 
 Частые ошибки проектирования Хореографических Сервисов
-******************************************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Иногда, особенно у frontend-разработчиков, можно наблюдать как они проксируют Оркестровыми Сервисами обращения к Хореографическим Сервисам.
 Имея слабо-сопряженные (Low Coupling) событийно-ориентированные Сервисы в виде обработчиков команды, было бы проектной ошибкой пытаться связать их в сильно-зацепленные (High Coupling) классические Сервисы Оркестрового типа (с единственной целью - помочь Логике Приложения скрыть их от самой же себя).
@@ -393,40 +432,10 @@ Transaction Script может быть уместным при сочетани�
 При использовании же REST-API, и наличии обширной бизнес-логики, более уместным будет использование Domain Model и DDD.
 
 
-Сервисы уровня Инфраструктурного Слоя (Infrastructure Layer)
-------------------------------------------------------------
+Классификация Сервисов по способу обмена данными
+================================================
 
-Отдельно следует выделять Сервисы уровня Инфраструктурного Слоя (Infrastructure Layer).
-
-    The infrastructure layer usually does not initiate action in the domain layer. Being "below" the
-    domain layer, it should have no specific knowledge of the domain it is serving. Indeed, such
-    technical capabilities are most often offered as SERVICES . For example, if an application needs to
-    send an e-mail, some message-sending interface can be located in the infrastructure layer and the
-    application layer elements can request the transmission of the message. This decoupling gives
-    some extra versatility. The message-sending interface might be connected to an e-mail sender, a
-    fax sender, or whatever else is available. But the main benefit is simplifying the application layer,
-    keeping it narrowly focused on its job: knowing when to send a message, but not burdened with
-    how.
-
-    The application and domain layers call on the SERVICES provided by the infrastructure layer. When
-    the scope of a SERVICE has been well chosen and its interface well designed, the caller can remain
-    loosely coupled and uncomplicated by the elaborate behavior the SERVICE interface encapsulates.
-
-    But not all infrastructure comes in the form of SERVICES callable from the higher layers. Some
-    technical components are designed to directly support the basic functions of other layers (such as
-    providing an abstract base class for all domain objects) and provide the mechanisms for them to
-    relate (such as implementations of MVC and the like). Such an "architectural framework" has
-    much more impact on the design of the other parts of the program.
-    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
-
-..
-
-    Infrastructure Layer - Provides generic technical capabilities that support the higher layers:
-    message sending for the application, persistence for the domain, drawing
-    widgets for the UI, and so on. The infrastructure layer may also support
-    the pattern of interactions between the four layers through an
-    architectural framework.
-    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+По способу обмена данными Сервисы разделяются на Синхронные и Асинхронные.
 
 
 Назначение Сервисного Слоя
@@ -873,7 +882,7 @@ This article in English ":doc:`../en/service-layer`".
 .. [#fnddd] «Domain-Driven Design: Tackling Complexity in the Heart of Software» by Eric Evans
 .. [#fngof] «Design Patterns Elements of Reusable Object-Oriented Software» by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
 .. [#fnr] "Refactoring: Improving the Design of Existing Code" by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
-
+.. [#fnbm] "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
 
 .. update:: 28 May, 2018
 
