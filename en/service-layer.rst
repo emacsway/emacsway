@@ -368,29 +368,12 @@ But what to do with other methods?
 Suppose some Model has several dozen methods that do not have a common application, but are used by only one client.
 You can not assign them to the responsibility of the client, as this would lead to "G14: Feature Envy" [#fnccode]_.
 
-As mentioned previously, Service Layer is usually implemented as a stateless object.
-If the client belongs to the Application level logic, the solution may be to create a Service Layer.
-
-    Domain Models (116) are preferable to Transaction Scripts (110) for avoiding domain logic duplication and
-    for managing complexity using classical design patterns. But putting application logic into pure domain object
-    classes has a couple of undesirable consequences. First, domain object classes are less reusable across
-    applications if they implement application-specific logic and depend on application-specific packages.
-    Second, commingling both kinds of logic in the same classes makes it harder to reimplement the application
-    logic in, say, a workflow tool if that should ever become desirable. For these reasons Service Layer factors
-    each kind of business logic into a separate layer, yielding the usual benefits of layering and rendering the pure
-    domain object classes more reusable from application to application.
-    («Patterns of Enterprise Application Architecture» [#fnpoeaa]_)
-
-But if the client belongs to the Domain layer, then this client may not be aware of the Application Layer logic.
-But Service Layer is the logic of the Application Layer.
-
 In other words, the client requires an interface from the Domain Model, which should not be implemented by the Domain Model.
 For interface equalization we have to use the pattern Adapter (aka Wrapper), see «Design Patterns Elements of Reusable Object-Oriented Software» [#fngof]_ for more info.
 
 In other words, it is a wrapper over the Model instance that wraps it and gives it additional behavior that is required by the client.
 Sometimes such wrappers are wrongly called Aspect or Decorator, but this is incorrect, since they do not change the interface of the original object.
 
-Let's return to the case when the client belongs to the Application logic.
 Is it possible to use the Adapter pattern in this case?
 
 Martin Fowler says:
