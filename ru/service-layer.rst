@@ -9,7 +9,7 @@
    :author: Ivan Zakrevsky
    :redirect: ru/redux-and-flux-for-oop-programmers, ru/application-logic-management
 
-Эта статья посвящена вопросам проeктирования Сервисного Слоя (`Service Layer`_) и рассматривает широко распространенные ошибки.
+Эта статья посвящена вопросам управления Логикой Приложения и проектированию Сервисного Слоя (`Service Layer`_), Use Case, CQRS, Event Sourcing, MVC и др.
 
 
 .. contents:: Содержание
