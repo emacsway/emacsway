@@ -4,10 +4,10 @@
 
 .. post:: Jul 17, 2017
    :language: ru
-   :tags: Design, Architecture, ORM, Django Model, Service Layer
+   :tags: Design, Architecture, ORM, Django Model, Service Layer, Redux, Flux, Model, CQRS, Event Sourcing
    :category:
    :author: Ivan Zakrevsky
-   :redirect: ru/redux-and-flux-for-oop-programmers
+   :redirect: ru/redux-and-flux-for-oop-programmers, ru/application-logic-management
 
 Эта статья посвящена вопросам проeктирования Сервисного Слоя (`Service Layer`_) и рассматривает широко распространенные ошибки.
 
@@ -1006,7 +1006,7 @@ This article in English ":doc:`../en/service-layer`".
 .. [#fnbm] "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
 .. [#fnnetmsa] "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" edition v2.2.1 (`mirror <https://aka.ms/microservicesebook>`__) by Cesar de la Torre, Bill Wagner, Mike Rousos
 
-.. update:: 28 May, 2018
+.. update:: 04 Oct, 2019
 
 
 .. _Clean Code\: A Handbook of Agile Software Craftsmanship: http://www.informit.com/store/clean-code-a-handbook-of-agile-software-craftsmanship-9780132350884
