@@ -36,7 +36,8 @@
 
 ..
 
-    "A good architecture allows major decision to be deferred!" (`Robert Martin <https://youtu.be/Nltqi7ODZTM?t=19m40s>`__
+    "A good architecture allows major decision to be deferred!"
+    \- `Robert Martin <https://youtu.be/Nltqi7ODZTM?t=19m40s>`__
 
 .. "A good architecture allows you to defer critical decisions, it doesn’t force you to defer them. However, if you can defer them, it means you have lots of flexibility."
    \- "Clean Architecture" [#fnca]_
@@ -61,12 +62,12 @@
     what you had to, in hopes that the needs you anticipate for tomorrow wouldn't come
     true."
 
-    - Kent Beck [#fnxp]_
+    \- Kent Beck [#fnxp]_
 
 ..
 
     "The best architects remove architecture by figuring out how to make things shiftable."
-    - `Martin Fowler <https://youtu.be/VjKYO6DP3fo?t=17m59s>`__
+    \- `Martin Fowler <https://youtu.be/VjKYO6DP3fo?t=17m59s>`__
 
 Кроме того, у Вас появляется возможность реализовать паттерны `Identity Map`_ и `Unit of Work`_.
 Последний очень часто востребован, так как позволяет сохранять на сервере только измененные объекты окончательно сформированного агрегата вложенных объектов, либо выполнить откат состояния локальных объектов в случае, если сохранить данные невозможно (пользователь передумал или ввел невалидные данные).
@@ -97,7 +98,8 @@
     "Хороший дизайн размещает логику рядом с данными, в отношении которых она действует."
 
     "Good design puts the logic near the data it operates on."
-    - Kent Beck [#fnxp]_
+
+    \- Kent Beck [#fnxp]_
 
 ..
 
@@ -300,7 +302,7 @@ Domain-Driven Design подходит к связям более строго, �
 
     However, my experience is that the cost of change rises
     more steeply without objects than with objects.
-    - Kent Beck [#fnxp]_
+    \- Kent Beck [#fnxp]_
 
 А между тем, неясность намерений и целей автора - это ключевая проблема при чтении чужого кода.
 
