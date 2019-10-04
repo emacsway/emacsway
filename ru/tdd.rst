@@ -516,6 +516,7 @@ One assertion per test?
     Sometimes that approach makes the test more readable.
     When it doesn’t, I wouldn’t be too dogmatic about insisting on a single assertion.
 
+    \- "xUnit Test Patterns. Refactoring Test Code." by Gerard Meszaros
 
 .. rubric:: Footnotes
 
