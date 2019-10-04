@@ -177,6 +177,48 @@ Robert Martin в Clean Architecture подразделяет Бизнес-Пра
 Это потому, что Логика Приложения будет меняться с другой частотой и по другим причинам.
 
 
+Способы организации Логики Приложения (Application Logic)
+=========================================================
+
+Широко распространены четыре способа организации Логики Приложения (Application Logic):
+
+1. Оркестровый Сервис ("request/response", т.е. сервис осведомлен об интерфейсе других сервисов), он же - Сервисный Слой (Service Layer).
+
+2. Хореографический Сервис (Event-Driven, т.е. loosely coupled), который является разновидностью паттерна Command, и используется, как правило, в CQRS-приложениях.
+
+3. `Front Controller <https://martinfowler.com/eaaCatalog/frontController.html>`__ и `Application Controller <https://martinfowler.com/eaaCatalog/applicationController.html>`__ (которые тоже, по сути, является разновидностью паттерна Command).
+
+..
+
+    "A Front Controller handles all calls for a Web site, and is usually structured in two parts: a Web handler and a command hierarchy."
+
+    \- "Patterns of Enterprise Application Architecture"  [#fnpoeaa]_ by Martin Fowler and others.
+
+..
+
+    "For both the domain commands and the view, the application controller needs a way to store something it can invoke.
+    A Command [Gang of Four] is a good choice, since it allows it to easily get hold of and run a block of code."
+
+    \- "Patterns of Enterprise Application Architecture"  [#fnpoeaa]_ by Martin Fowler and others.
+
+4. `Use Case <https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html>`__, который также, является разновидностью паттерна Command.
+На 15:50 Robert C. Martin проводит `параллель между Use Case и паттерном Command <https://youtu.be/Nsjsiz2A9mg?t=15m45s>`__.
+
+Собственно говоря, производной паттерна Command является даже `Method Object <https://refactoring.com/catalog/replaceFunctionWithCommand.html>`__.
+
+Use Case обязан своим существованием именно наличию Бизнес-Логики, которая  application specific, и не имеет смысла вне контекста приложения.
+Его задача сводится к освобождению этих application specific Business Rules от зависимостей от приложения путем инверсии контроля (IoC).
+
+Если бы Use Case не содержал Бизнес-Логики, то не было бы и смысла отделять его от Page Controller, иначе приложение пыталось бы абстрагироваться от самого себя же.
+
+Мы видим, что в орагнизации Логики Приложения широко применяются разновидности паттерна Команда (Command).
+
+Рассмотренные способы организовывают, в первую очередь, Логику Приложения, и лишь во вторую очередь, Бизнес-Логику, которая не обязательно должна присутствовать, кроме случая Use Case, т.к. иначе он утратил бы причины для существования.
+
+При правильной организации Бизнес-Логики, и высоком качестве ORM (в случае его использования, конечно же), зависимость Бизнес-Логики от приложения будет минимальна.
+Основная сложность любого ORM заключается в том, чтобы организовать доступ к связанным объектам не подмешивая Логику Приложения (и логику доступа к данным) в Domain Models, - эту тему мы подробно рассмотрим в одном из следующих постов.
+
+
 Что такое Сервис?
 =================
 
