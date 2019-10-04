@@ -142,5 +142,5 @@ Event Sourcing
 ==========
 
 Понимание общих признаков в способах управления Логикой Приложения позволяет проектировать более гибкие приложения, и, как результат, более безболезненно заменять архитектурный шаблон, например, из Layered в Event-Driven.
-Частично эта тема затрагивается в Chapter 16 Independence of "Clean Architecture" by Robert C. Martin и в разделе "Premature Decomposition" of Chapter 3 "How to Model Services" of "Building Microservices" by Sam Newman.
+Частично эта тема затрагивается в Chapter 16 "Independence" of "Clean Architecture" by Robert C. Martin и в разделе "Premature Decomposition" of Chapter 3 "How to Model Services" of "Building Microservices" by Sam Newman.
 
