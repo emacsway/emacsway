@@ -402,14 +402,33 @@ With the abandonment of the object-oriented model, the issue of dependency injec
     And functional OO programming is also good once you know what it is.
     («OO vs FP» [#fnoovsop]_)
 
-It is also worth noting that not all kinds of relationships fit into the concept of aggregate.
-If the object does not logically belong to the aggregate, then we can not put it into the aggregate for the sake of the convenience of resolving the relationships.
-For in this case, the interface will follow the implementation, which fundamentally destroys the fundamental principle of abstraction.
-Also, the concept of an aggregate can not be used to emulate Many-To-Many relationships and cross-link hierarchies.
-
 
 Implementation of relationships by assigning
 --------------------------------------------
+
+Although an aggregate is not compatible with Many-To-Many relationships and cross-link hierarchies, it can still refer to the root of another aggregate:
+
+    Objects within the AGGREGATE can hold references to other AGGREGATE roots.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans
+
+..
+
+    Since one Aggregate instance can reference other Aggregate instances, can the associations be navigated deeply, modifying various objects along the way?
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon
+
+..
+
+    When designing Aggregates, we may desire a compositional structure that allows for traversal through deep object graphs, but that is not the motivation of the pattern. [Evans] states that one Aggregate may hold references to the Root of other Aggregates. However, we must keep in mind that this does not place the referenced Aggregate inside the consistency boundary of the one referencing it. The reference does not cause the formation of just one whole Aggregate. There are still two (or more), as shown in Figure 10.5.
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon
+
+..
+
+    Having an Application Service resolve dependencies frees the Aggregate from relying on either a Repository or a Domain Service. However, for very complex and domain-specific dependency resolutions, passing a Domain Service into an Aggregate command method can be the best way to go. The Aggregate can then double-dispatch to the Domain Service to resolve references. Again, in whatever way one Aggregate gains access to others, referencing multiple Aggregates in one request does not give license to cause modification on two or more of them.
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon
 
 The principle of physical assignment of related objects is `implemented also by the library js-data <http://www.js-data.io/v3.0/docs/relations#section-eagerly-loading-relations>`__.
 
