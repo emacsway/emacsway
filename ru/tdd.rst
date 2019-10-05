@@ -132,7 +132,7 @@ TDD именно именно это и делает - декомпозируе�
 
 Ну и Википедия о факторизации:
 
-    Factorization may also refer to more general decompositions of a mathematical object into the product of smaller or simpler objects. For example, every function may be factored into the composition of a surjective function with an injective function.
+    Factorization (or factoring) may also refer to more general decompositions of a mathematical object into the product of smaller or simpler objects. For example, every function may be factored into the composition of a surjective function with an injective function.
 
     \- "`Factorization <https://en.wikipedia.org/wiki/Factorization>`__", Wikipedia
 
