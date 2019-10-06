@@ -60,8 +60,8 @@ But what does the term Business itself mean?
 Misunderstanding of this term often leads to significant design problems.
 
 
-What is Business Logic?
------------------------
+What Business Logic is about?
+-----------------------------
 
 The most authoritative explanation of the term `Business <http://wiki.c2.com/?CategoryBusiness>`__ can be found, as usual, on the Ward Cunningham website:
 
