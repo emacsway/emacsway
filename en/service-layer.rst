@@ -343,9 +343,9 @@ Service is not a wrapper for Data Mapper
 
 Often `Service Layer`_ is mistakenly made in the for of wrapper over `DataMapper`_.
 This is not quite the right decision.
-Data Mapper serves Domain, while Service Layer serves client (or client group).
-The Service Layer can manipulate multiple Data Mappers and other Services within a business transaction or for the interests of the client.
-Therefore, the Service's methods usually contain the name of the returned Domain as a suffix (for example, getUser()), while the methods of the Data Mapper do not need this suffix (since the Domain name is present in the name of the Data Mapper class, and the Data Mapper serves only one Domain).
+A Data Mapper serves a Domain Model, a Repository serves an Aggregate [#fnnetmsa]_, but a Service serves a client (or a client group).
+The Service Layer can manipulate multiple Data Mappers, Repositories, other Services within a business transaction and in favour of a client.
+Therefore, Service's methods usually contain name of the returned Domain Model as a suffix (for example, getUser()), while methods of a Data Mapper (or a Repository) do not need such suffix (since the Domain name is already present in name of the Data Mapper class, and the Data Mapper serves only one Domain Model).
 
     Identifying the operations needed on a Service Layer boundary is pretty straightforward. They're determined
     by the needs of Service Layer clients, the most significant (and first) of which is typically a user interface.
