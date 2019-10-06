@@ -1,10 +1,10 @@
 
-Design of Service Layer
-=======================
+Design of Service Layer and Application Logic
+=============================================
 
 .. post:: Jul 17, 2017
    :language: en
-   :tags: Design, Architecture, ORM, Django Model
+   :tags: Design, Architecture, ORM, Django Model, Service Layer, Redux, Flux, Model, CQRS, Event Sourcing
    :category:
    :author: Ivan Zakrevsky
 
@@ -99,10 +99,10 @@ Wikipedia `gives us the following definition of the term Business Logic <https:/
 
 Let me summarize this in my own words:
 
-**Business Logic** -
+**Business Logic**
     is a modeling of objects and processes of the domain (i.e., the real world).
-**Application Logic** -
-    this is what provides and coordinates the operation of the business logic.
+**Application Logic**
+    is what provides and coordinates the operation of the business logic.
 
 
 Subtypes of Business Rules
