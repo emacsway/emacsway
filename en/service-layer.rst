@@ -395,7 +395,8 @@ Purpose of Service Layer
 
     Defines an application's boundary with a layer of services that establishes a set of available
     operations and coordinates the application's response in each operation.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 ..
 
@@ -405,7 +406,8 @@ Purpose of Service Layer
     with more than one kind of client of its business logic, and complex responses in its use cases involving
     multiple transactional resources, it makes a lot of sense to include a Service Layer with container-managed
     transactions, even in an undistributed architecture.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 ..
 
@@ -419,7 +421,8 @@ Purpose of Service Layer
     transaction control and security. This gives you a simple model of taking each method in the Service Layer
     (133) and describing its transactional and security characteristics. A separate properties file is a common
     choice for this, but .NET's attributes provide a nice way of doing it directly in the code.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 Traditionally `Service Layer`_ is an Application layer logic.
 This implies that level of Service Layer is lower than level of Domain Layer (i.e. layer of real world objects, which is also called "business rules").
@@ -447,7 +450,8 @@ When not to use Service Layer?
     layer.
     But as soon as you envision a second kind of client, or a second transactional resource in use case responses, it
     pays to design in a Service Layer from the beginning.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 However, the widely held view that access to the model should always be made through the Service Layer:
 
@@ -455,7 +459,8 @@ However, the widely held view that access to the model should always be made thr
     approach is to assume that I don't need one and only add it if it seems that the application needs it. However, I
     know many good designers who always use a Service Layer (133) with a fair bit of logic, so feel free to ignore
     me on this one.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 ..
 
@@ -464,7 +469,8 @@ However, the widely held view that access to the model should always be made thr
     some communication with other infrastructures, such as messaging. Whether to have separate services and
     domain layers is a matter some debate. I tend to look as it as occasionally useful rather than mandatory, but
     designers I respect disagree with me on this.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 
 Service is not a wrapper for Data Mapper
@@ -478,7 +484,8 @@ Therefore, Service's methods usually contain name of the returned Domain Model a
 
     Identifying the operations needed on a Service Layer boundary is pretty straightforward. They're determined
     by the needs of Service Layer clients, the most significant (and first) of which is typically a user interface.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 
 Implementation of Service Layer
@@ -535,7 +542,8 @@ The class django.db.models.Manager corresponds most closely to the class Finder 
     It's often hard to tell the difference between a Row Data Gateway and an Active Record (160). The crux of the
     matter is whether there's any domain logic present; if there is, you have an Active Record (160). A Row Data
     Gateway should contain only database access logic and no domain logic.
-    (Chapter 10. "Data Source Architectural Patterns : Row Data Gateway", "Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
+
+    \- Chapter 10. "Data Source Architectural Patterns : Row Data Gateway", "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 Although Django does not use the `Repository`_ pattern, it uses an abstraction of the selection criteria in the form similar to the `Query Object`_ pattern.
 Like the Repository pattern, the model class (`ActiveRecord`_) limits its interface using the Query Object interface.
@@ -559,7 +567,8 @@ This will allow painless ORM replace if necessary.
     application's use case responsibilities. Second, encapsulating application logic in a "higher" layer
     dedicated to that purpose (which the data source layer isn't) facilitates changing the implementation of that
     layer perhaps to use a workflow engine.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 
 Taming of swollen models
@@ -596,7 +605,8 @@ Martin Fowler says:
     defining a subject area of related logic. Each such class forms an application "service," and it's common for
     service type names to end with "Service." A Service Layer is comprised of these application service classes,
     which should extend a Layer Supertype (475), abstracting their responsibilities and common behaviors.
-    ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 Since Martin Fowler perfectly understands the difference between "`Domain Model`_" and "`DataMapper`_", this quote strongly reminds me "Cross-Cutting Concerns" [#fnccode]_ with the only difference being that "Cross-Cutting Concerns" implements the interface of the original object, while the domain facade complements it.
 
@@ -605,7 +615,8 @@ Eric Evans expresses a similar idea:
     We might like to create a Funds Transfer object to represent the two entries plus the rules and history around the transfer. But we are still left with calls to SERVICES in the interbank networks.
     What's more, in most development systems, it is awkward to make a direct interface between a domain object and external resources. We can dress up such external SERVICES with a FACADE that takes inputs in terms of the model, perhaps returning a Funds Transfer object as its result.
     But whatever intermediaries we might have, and even though they don't belong to us, those SERVICES are carrying out the domain responsibility of funds transfer.
-    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
 
 Problems of Django annotation
