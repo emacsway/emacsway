@@ -319,8 +319,8 @@ Eric Evans divides Services into three layers of logic:
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 
-Domain Services
----------------
+Domain Service
+--------------
 
 Higher-level policies belong to Domain Logic, so we start with it.
 Fortunately, this is not the most numerous type of Services.
@@ -343,6 +343,51 @@ In detail, the topic of Domain Services and the reasons for their existence  are
     - Calculate a Value requiring input from more than one domain object
 
     \- "Implementing Domain-Driven Design" by Vaughn Vernon
+
+
+Application Service
+-------------------
+
+This is the most numerous type of Services.
+Application Services are also known as Service Layer.
+
+
+Infrastructure Service
+----------------------
+
+Infrastructure Service should be separate of other types of Service.
+
+    The infrastructure layer usually does not initiate action in the domain layer. Being "below" the
+    domain layer, it should have no specific knowledge of the domain it is serving. Indeed, such
+    technical capabilities are most often offered as SERVICES . For example, if an application needs to
+    send an e-mail, some message-sending interface can be located in the infrastructure layer and the
+    application layer elements can request the transmission of the message. This decoupling gives
+    some extra versatility. The message-sending interface might be connected to an e-mail sender, a
+    fax sender, or whatever else is available. But the main benefit is simplifying the application layer,
+    keeping it narrowly focused on its job: knowing when to send a message, but not burdened with
+    how.
+
+    The application and domain layers call on the SERVICES provided by the infrastructure layer. When
+    the scope of a SERVICE has been well chosen and its interface well designed, the caller can remain
+    loosely coupled and uncomplicated by the elaborate behavior the SERVICE interface encapsulates.
+
+    But not all infrastructure comes in the form of SERVICES callable from the higher layers. Some
+    technical components are designed to directly support the basic functions of other layers (such as
+    providing an abstract base class for all domain objects) and provide the mechanisms for them to
+    relate (such as implementations of MVC and the like). Such an "architectural framework" has
+    much more impact on the design of the other parts of the program.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+..
+
+    Infrastructure Layer - Provides generic technical capabilities that support the higher layers:
+    message sending for the application, persistence for the domain, drawing
+    widgets for the UI, and so on. The infrastructure layer may also support
+    the pattern of interactions between the four layers through an
+    architectural framework.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
 
 Purpose of Service Layer
@@ -570,42 +615,6 @@ I often observed the problem when a new field was added to the Django Model, and
 Also, the implementation of annotations by Django ORM makes it impossible to use the pattern `Identity Map`_.
 Storm ORM / SQLAlchemy implement annotations more successfully.
 If you still had to work with Django Model, refrain from using Django annotation mechanism in favor of bare pattern `DataMapper`_.
-
-
-Services of infrastructure layer
-================================
-
-You have to distinguish the Service Layer from infrastructure layer services.
-
-    The infrastructure layer usually does not initiate action in the domain layer. Being "below" the
-    domain layer, it should have no specific knowledge of the domain it is serving. Indeed, such
-    technical capabilities are most often offered as SERVICES . For example, if an application needs to
-    send an e-mail, some message-sending interface can be located in the infrastructure layer and the
-    application layer elements can request the transmission of the message. This decoupling gives
-    some extra versatility. The message-sending interface might be connected to an e-mail sender, a
-    fax sender, or whatever else is available. But the main benefit is simplifying the application layer,
-    keeping it narrowly focused on its job: knowing when to send a message, but not burdened with
-    how.
-
-    The application and domain layers call on the SERVICES provided by the infrastructure layer. When
-    the scope of a SERVICE has been well chosen and its interface well designed, the caller can remain
-    loosely coupled and uncomplicated by the elaborate behavior the SERVICE interface encapsulates.
-
-    But not all infrastructure comes in the form of SERVICES callable from the higher layers. Some
-    technical components are designed to directly support the basic functions of other layers (such as
-    providing an abstract base class for all domain objects) and provide the mechanisms for them to
-    relate (such as implementations of MVC and the like). Such an "architectural framework" has
-    much more impact on the design of the other parts of the program.
-    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
-
-..
-
-    Infrastructure Layer - Provides generic technical capabilities that support the higher layers:
-    message sending for the application, persistence for the domain, drawing
-    widgets for the UI, and so on. The infrastructure layer may also support
-    the pattern of interactions between the four layers through an
-    architectural framework.
-    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
 
 
 Peculiar properties of Service Layer on client side

@@ -416,6 +416,7 @@ Eric Evans разделяет Сервисы на три уровня логик
     providing an abstract base class for all domain objects) and provide the mechanisms for them to
     relate (such as implementations of MVC and the like). Such an "architectural framework" has
     much more impact on the design of the other parts of the program.
+
     \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
 ..
@@ -425,6 +426,7 @@ Eric Evans разделяет Сервисы на три уровня логик
     widgets for the UI, and so on. The infrastructure layer may also support
     the pattern of interactions between the four layers through an
     architectural framework.
+
     \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
 
