@@ -255,6 +255,70 @@ What is Service about?
     \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
 
+Classification of Services by layers of logic
+=============================================
+
+Eric Evans divides Services into three layers of logic:
+
+    Partitioning Services into Layers
+
+    Application
+        Funds Transfer App Service
+
+        - Digests input (such as an XML request).
+        - Sends message to domain service for fulfillment.
+        - Listens for confirmation.
+        - Decides to send notification using infrastructure service.
+    Domain
+        Funds Transfer Domain Service
+
+        - Interacts with necessary Account and Ledger objects, making appropriate debits and credits.
+        - Supplies confirmation of result (transfer allowed or not, and so on).
+    Infrastructure Send Notification Service
+        Sends e-mails, letters, and other communications as directed by the application.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+..
+
+    Most SERVICES discussed in the literature are purely technical and belong in the infrastructure layer.
+    Domain and application SERVICES collaborate with these infrastructure SERVICES.
+    For example, a bank might have an application that sends an e-mail to a customer when an account balance falls below a specific threshold.
+    The interface that encapsulates the e-mail system, and perhaps alternate means of notification, is a SERVICE in the infrastructure layer.
+
+    It can be harder to distinguish application SERVICES from domain SERVICES.
+    The application layer is responsible for ordering the notification.
+    The domain layer is responsible for determining if a threshold was met—though this task probably does not call for a SERVICE, because it would fit the responsibility of an "account" object.
+    That banking application could be responsible for funds transfers.
+    If a SERVICE were devised to make appropriate debits and credits for a funds transfer,that capability would belong in the domain layer.
+    Funds transfer has a meaning in the banking domain language, and it involves fundamental business logic.
+    Technical SERVICES should lack any business meaning at all.
+
+    Many domain or application SERVICES are built on top of the populations of ENTITIES and VALUES, behaving like scripts that organize the potential of the domain to actually get something done.
+    ENTITIES and VALUE OBJECTS are often too fine-grained to provide a convenient access to the capabilities of the domain layer.
+    Here we encounter a very fine line between the domain layer and the application layer.
+    For example, if the banking application can convert and export our transactions into a spreadsheet file for us to analyze, that export is an application SERVICE.
+    There is no meaning of "file formats" in the domain of banking, and there are no business rules involved.
+
+    On the other hand, a feature that can transfer funds from one account to another is a domain SERVICE because it embeds significant business rules (crediting and debiting the appropriate accounts, for example) and because a "funds transfer" is a meaningful banking term.
+    In this case, the SERVICE does not do much on its own; it would ask the two Account objects to do most of the work.
+    But to put the "transfer" operation on the Account object would be awkward, because the operation involves two accounts and some global rules.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+..
+
+    Domain Models (116) are preferable to Transaction Scripts (110) for avoiding domain logic duplication and
+    for managing complexity using classical design patterns.
+    But putting application logic into pure domain object classes has a couple of undesirable consequences.
+    First, domain object classes are less reusable across applications if they implement application-specific logic and depend on application-specific packages.
+    Second, commingling both kinds of logic in the same classes makes it harder to reimplement the application
+    logic in, say, a workflow tool if that should ever become desirable.
+    For these reasons Service Layer factors each kind of business logic into a separate layer, yielding the usual benefits of layering and rendering the pure domain object classes more reusable from application to application.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
+
+
 Purpose of Service Layer
 ========================
 
@@ -289,54 +353,6 @@ Purpose of Service Layer
 Traditionally `Service Layer`_ is an Application layer logic.
 This implies that level of Service Layer is lower than level of Domain Layer (i.e. layer of real world objects, which is also called "business rules").
 This means that the objects of the Domain Layer should not be aware of the Service Layer.
-
-Eric Evans divides the Services into three levels of logic:
-
-    Partitioning Services into Layers
-
-    Application
-        Funds Transfer App Service
-
-        - Digests input (such as an XML request).
-        - Sends message to domain service for fulfillment.
-        - Listens for confirmation.
-        - Decides to send notification using infrastructure service.
-    Domain
-        Funds Transfer Domain Service
-
-        - Interacts with necessary Account and Ledger objects, making appropriate debits and credits.
-        - Supplies confirmation of result (transfer allowed or not, and so on).
-    Infrastructure Send Notification Service
-        Sends e-mails, letters, and other communications as directed by the application.
-
-    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
-
-..
-
-    Most SERVICES discussed in the literature are purely technical and belong in the infrastructure layer.
-    Domain and application SERVICES collaborate with these infrastructure SERVICES.
-    For example, a bank might have an application that sends an e-mail to a customer when an account balance falls below a specific threshold.
-    The interface that encapsulates the e-mail system, and perhaps alternate means of notification, is a SERVICE in the infrastructure layer.
-
-    It can be harder to distinguish application SERVICES from domain SERVICES.
-    The application layer is responsible for ordering the notification.
-    The domain layer is responsible for determining if a threshold was met—though this task probably does not call for a SERVICE, because it would fit the responsibility of an "account" object.
-    That banking application could be responsible for funds transfers.
-    If a SERVICE were devised to make appropriate debits and credits for a funds transfer,that capability would belong in the domain layer.
-    Funds transfer has a meaning in the banking domain language, and it involves fundamental business logic.
-    Technical SERVICES should lack any business meaning at all.
-
-    Many domain or application SERVICES are built on top of the populations of ENTITIES and VALUES, behaving like scripts that organize the potential of the domain to actually get something done.
-    ENTITIES and VALUE OBJECTS are often too fine-grained to provide a convenient access to the capabilities of the domain layer.
-    Here we encounter a very fine line between the domain layer and the application layer.
-    For example, if the banking application can convert and export our transactions into a spreadsheet file for us to analyze, that export is an application SERVICE.
-    There is no meaning of "file formats" in the domain of banking, and there are no business rules involved.
-
-    On the other hand, a feature that can transfer funds from one account to another is a domain SERVICE because it embeds significant business rules (crediting and debiting the appropriate accounts, for example) and because a "funds transfer" is a meaningful banking term.
-    In this case, the SERVICE does not do much on its own; it would ask the two Account objects to do most of the work.
-    But to put the "transfer" operation on the Account object would be awkward, because the operation involves two accounts and some global rules.
-
-    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
 
 In more detail, the topic of the Domain Services and the reasons for their existence are revealed by Vaughn Vernon:
 
