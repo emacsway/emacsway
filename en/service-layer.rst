@@ -319,6 +319,32 @@ Eric Evans divides Services into three layers of logic:
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 
+Domain Services
+---------------
+
+Higher-level policies belong to Domain Logic, so we start with it.
+Fortunately, this is not the most numerous type of Services.
+
+In detail, the topic of Domain Services and the reasons for their existence  are revealed Vaughn Vernon:
+
+    Further, don’t confuse a Domain Service with an Application Service.
+    We don’t want to house business logic in an Application Service, but we do want business logic housed in a Domain Service.
+    If you are confused about the difference, compare with Application.
+    Briefly, to differentiate the two, an Application Service, being the natural client of the domain model, would normally be the client of a Domain Service.
+    You’ll see that demonstrated later in the chapter.
+    Just because a Domain Service has the word service in its name does not mean that it is required to be a coarse-grained, remote-capable, heavyweight transactional operation.
+
+    ...
+
+    You can use a Domain Service to
+
+    - Perform a significant business process
+    - Transform a domain object from one composition to another
+    - Calculate a Value requiring input from more than one domain object
+
+    \- "Implementing Domain-Driven Design" by Vaughn Vernon
+
+
 Purpose of Service Layer
 ========================
 
@@ -353,25 +379,6 @@ Purpose of Service Layer
 Traditionally `Service Layer`_ is an Application layer logic.
 This implies that level of Service Layer is lower than level of Domain Layer (i.e. layer of real world objects, which is also called "business rules").
 This means that the objects of the Domain Layer should not be aware of the Service Layer.
-
-In more detail, the topic of the Domain Services and the reasons for their existence are revealed by Vaughn Vernon:
-
-    Further, don’t confuse a Domain Service with an Application Service.
-    We don’t want to house business logic in an Application Service, but we do want business logic housed in a Domain Service.
-    If you are confused about the difference, compare with Application.
-    Briefly, to differentiate the two, an Application Service, being the natural client of the domain model, would normally be the client of a Domain Service.
-    You’ll see that demonstrated later in the chapter.
-    Just because a Domain Service has the word service in its name does not mean that it is required to be a coarse-grained, remote-capable, heavyweight transactional operation.
-
-    ...
-
-    You can use a Domain Service to
-
-    - Perform a significant business process
-    - Transform a domain object from one composition to another
-    - Calculate a Value requiring input from more than one domain object
-
-    ("Implementing Domain-Driven Design" by Vaughn Vernon)
 
 In addition to the above, the Service Layer can carry the following responsibilities:
 
