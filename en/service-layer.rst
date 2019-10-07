@@ -145,6 +145,13 @@ And even he admits the presence of a certain vagueness:
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler
 
 
+Why is separation of Business Rules from Application Logic so important?
+------------------------------------------------------------------------
+
+Since the purpose of creating an application is precisely the implementation of Business Rules, it is important to ensure their portability and to separate them from the Application Logic.
+These two different kinds of rules will change  at different times, at different rates, and for different reasons - so they should be separated so that they can be independently changed [#fncarch]_ .
+Grady Booch said that "Architecture represents the significant design decisions that shape a system, where significant is measured by cost of change [#fncarch]_ ."
+
 Purpose of Service Layer
 ========================
 
@@ -566,10 +573,13 @@ Further Reading
 .. rubric:: Footnotes
 
 .. [#fnccode] "`Clean Code: A Handbook of Agile Software Craftsmanship`_" by `Robert C. Martin`_
+.. [#fncarch] "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
 .. [#fnpoeaa] "`Patterns of Enterprise Application Architecture`_" by `Martin Fowler`_, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 .. [#fnddd] "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans
 .. [#fngof] "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
-
+.. [#fnr] "Refactoring: Improving the Design of Existing Code" by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
+.. [#fnbm] "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
+.. [#fnnetmsa] "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" edition v2.2.1 (`mirror <https://aka.ms/microservicesebook>`__) by Cesar de la Torre, Bill Wagner, Mike Rousos
 
 .. update:: 28 May, 2018
 
