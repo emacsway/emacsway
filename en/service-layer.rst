@@ -152,6 +152,52 @@ Since the purpose of creating an application is precisely the implementation of 
 These two different kinds of rules will change  at different times, at different rates, and for different reasons - so they should be separated so that they can be independently changed [#fncarch]_ .
 Grady Booch said that "Architecture represents the significant design decisions that shape a system, where significant is measured by cost of change [#fncarch]_ ."
 
+
+Ways to Organize Application Logic
+==================================
+
+Four ways to organize Application Logic are widespread:
+
+1. Orchestration Service ("request/response", i.e. the service is aware of the interface of other services) aka Service Layer.
+
+2. Choreography Service (Event-Driven, т.е. loosely coupled), which is a derivative of Command pattern and is and used commonly in CQRS applications.
+
+3. `Front Controller <https://martinfowler.com/eaaCatalog/frontController.html>`__ and `Application Controller <https://martinfowler.com/eaaCatalog/applicationController.html>`__ (which are also kinds of Command pattern).
+
+..
+
+    "A Front Controller handles all calls for a Web site, and is usually structured in two parts: a Web handler and a command hierarchy."
+
+    \- "Patterns of Enterprise Application Architecture"  [#fnpoeaa]_ by Martin Fowler and others.
+
+..
+
+    "For both the domain commands and the view, the application controller needs a way to store something it can invoke.
+    A Command [Gang of Four] is a good choice, since it allows it to easily get hold of and run a block of code."
+
+    \- "Patterns of Enterprise Application Architecture"  [#fnpoeaa]_ by Martin Fowler and others.
+
+4. `Use Case <https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html>`__, which also is a kind of Command pattern.
+At 15:50 Robert C. Martin points to a `parallel between Use Case and Command pattern <https://youtu.be/Nsjsiz2A9mg?t=15m45s>`__.
+
+In fact, even `Method Object <https://refactoring.com/catalog/replaceFunctionWithCommand.html>`__ is a derivative of Command pattern.
+
+Use Case is necessary because there is Application-specific Business Logic which does not make sense outside the context of the application.
+It ensures that these application-specific Business Rules are independent of the Application Logic using inverse control (IoC).
+
+If the Use Case did not contain Business Logic, then there would be no sense in separating it from Page Controller, otherwise the application would try to abstract itself from itself.
+
+As you can see, varieties of the Command pattern are widely used to organize the Application Logic.
+
+The listed methods organize, first of all, Application Logic, and only then - Business Logic, which is not obligatory for them, except for Use Case, because otherwise it would have no reason to exist.
+
+With proper organization of the Business Logic, and high quality of ORM (if used, of course), the dependence of the Business Logic of the application will be minimal.
+The main difficulty of any ORM is to provide access to related objects without mixing Application Logic (and data access logic) into Domain Models, this topic we will discuss in one of the next posts.
+
+Understanding the common features of the methods of managing the Application Logic allows us to design more flexible applications, and, as a result, more painlessly change the architectural style, for example, from Layered to Event-Driven.
+This topic is covered in part in Chapter 16 "Independence" of "Clean Architecture" by Robert C. Martin, and in section "Premature Decomposition" of Chapter 3 "How to Model Services" of "Building Microservices" by Sam Newman.
+
+
 Purpose of Service Layer
 ========================
 
@@ -269,6 +315,10 @@ In addition to the above, the Service Layer can carry the following responsibili
 - The Service Layer can be used as an aggregator for queries if it is over the `Repository`_ pattern and uses the `Query object`_ pattern. The fact is that the Repository pattern limits its interface using the Query Object interface. And since class does not have to make assumptions about its clients, it is impossible to accumulate pre-defined queries in the `Repository`_ class, because it can not be aware about the all needs of all clients. Clients should take care of themselves. But the Service Layer was created for client service. Therefore, it's a responsibility of the Service Layer.
 
 In other cases, the logic of the Service Layer can be placed directly at the application level (usually a controller).
+
+
+When not to use Service Layer?
+==============================
 
     The easier question to answer is probably when not to use it. You probably don't need a Service Layer if your
     application's business logic will only have one kind of client say, a user interface and its use case responses
