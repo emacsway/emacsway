@@ -198,17 +198,69 @@ Understanding the common features of the methods of managing the Application Log
 This topic is covered in part in Chapter 16 "Independence" of "Clean Architecture" by Robert C. Martin, and in section "Premature Decomposition" of Chapter 3 "How to Model Services" of "Building Microservices" by Sam Newman.
 
 
+What is Service about?
+======================
+
+    SERVICE - An operation offered as an interface that stands alone in the model, with no encapsulated state.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+..
+
+    In some cases, the clearest and most pragmatic design includes operations that do not
+    conceptually belong to any object. Rather than force the issue, we can follow the natural contours
+    of the problem space and include SERVICES explicitly in the model.
+
+    There are important domain operations that can't find a natural home in an ENTITY or VALUE
+    OBJECT . Some of these are intrinsically activities or actions, not things, but since our modeling
+    paradigm is objects, we try to fit them into objects anyway...
+
+    A SERVICE is an operation offered as an interface that stands alone in the model, without
+    encapsulating state, as ENTITIES and VALUE OBJECTS do. S ERVICES are a common pattern in technical
+    frameworks, but they can also apply in the domain layer.
+
+    The name service emphasizes the relationship with other objects. Unlike ENTITIES and VALUE
+    OBJECTS , it is defined purely in terms of what it can do for a client. A SERVICE tends to be named for
+    an activity, rather than an entity—a verb rather than a noun. A SERVICE can still have an abstract,
+    intentional definition; it just has a different flavor than the definition of an object. A SERVICE should
+    still have a defined responsibility, and that responsibility and the interface fulfilling it should be
+    defined as part of the domain model. Operation names should come from the UBIQUITOUS
+    LANGUAGE or be introduced into it. Parameters and results should be domain objects.
+
+    SERVICES should be used judiciously and not allowed to strip the ENTITIES and VALUE OBJECTS of all
+    their behavior. But when an operation is actually an important domain concept, a SERVICE forms a
+    natural part of a MODEL-DRIVEN DESIGN . Declared in the model as a SERVICE, rather than as a
+    phony object that doesn't actually represent anything, the standalone operation will not mislead
+    anyone.
+
+    A good SERVICE has three characteristics.
+
+    1. The operation relates to a domain concept that is not a natural part of an ENTITY or VALUE
+    OBJECT .
+    2. The interface is defined in terms of other elements of the domain model.
+    3. The operation is stateless.
+
+    Statelessness here means that any client can use any instance of a particular SERVICE without
+    regard to the instance's individual history. The execution of a SERVICE will use information that is
+    accessible globally, and may even change that global information (that is, it may have side
+    effects). But the SERVICE does not hold state of its own that affects its own behavior, as most
+    domain objects do.
+
+    When a significant process or transformation in the domain is not a natural
+    responsibility of an ENTITY or VALUE OBJECT , add an operation to the model as a
+    standalone interface declared as a SERVICE . Define the interface in terms of the
+    language of the model and make sure the operation name is part of the UBIQUITOUS
+    LANGUAGE . Make the SERVICE stateless.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+
 Purpose of Service Layer
 ========================
 
     Defines an application's boundary with a layer of services that establishes a set of available
     operations and coordinates the application's response in each operation.
     ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
-
-..
-
-    SERVICE - An operation offered as an interface that stands alone in the model, with no encapsulated state.
-    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
 
 ..
 
@@ -345,54 +397,6 @@ However, the widely held view that access to the model should always be made thr
     domain layers is a matter some debate. I tend to look as it as occasionally useful rather than mandatory, but
     designers I respect disagree with me on this.
     ("Patterns of Enterprise Application Architecture" [#fnpoeaa]_)
-
-..
-
-    In some cases, the clearest and most pragmatic design includes operations that do not
-    conceptually belong to any object. Rather than force the issue, we can follow the natural contours
-    of the problem space and include SERVICES explicitly in the model.
-
-    There are important domain operations that can't find a natural home in an ENTITY or VALUE
-    OBJECT . Some of these are intrinsically activities or actions, not things, but since our modeling
-    paradigm is objects, we try to fit them into objects anyway...
-
-    A SERVICE is an operation offered as an interface that stands alone in the model, without
-    encapsulating state, as ENTITIES and VALUE OBJECTS do. S ERVICES are a common pattern in technical
-    frameworks, but they can also apply in the domain layer.
-
-    The name service emphasizes the relationship with other objects. Unlike ENTITIES and VALUE
-    OBJECTS , it is defined purely in terms of what it can do for a client. A SERVICE tends to be named for
-    an activity, rather than an entity—a verb rather than a noun. A SERVICE can still have an abstract,
-    intentional definition; it just has a different flavor than the definition of an object. A SERVICE should
-    still have a defined responsibility, and that responsibility and the interface fulfilling it should be
-    defined as part of the domain model. Operation names should come from the UBIQUITOUS
-    LANGUAGE or be introduced into it. Parameters and results should be domain objects.
-
-    SERVICES should be used judiciously and not allowed to strip the ENTITIES and VALUE OBJECTS of all
-    their behavior. But when an operation is actually an important domain concept, a SERVICE forms a
-    natural part of a MODEL-DRIVEN DESIGN . Declared in the model as a SERVICE, rather than as a
-    phony object that doesn't actually represent anything, the standalone operation will not mislead
-    anyone.
-
-    A good SERVICE has three characteristics.
-
-    1. The operation relates to a domain concept that is not a natural part of an ENTITY or VALUE
-    OBJECT .
-    2. The interface is defined in terms of other elements of the domain model.
-    3. The operation is stateless.
-
-    Statelessness here means that any client can use any instance of a particular SERVICE without
-    regard to the instance's individual history. The execution of a SERVICE will use information that is
-    accessible globally, and may even change that global information (that is, it may have side
-    effects). But the SERVICE does not hold state of its own that affects its own behavior, as most
-    domain objects do.
-
-    When a significant process or transformation in the domain is not a natural
-    responsibility of an ENTITY or VALUE OBJECT , add an operation to the model as a
-    standalone interface declared as a SERVICE . Define the interface in terms of the
-    language of the model and make sure the operation name is part of the UBIQUITOUS
-    LANGUAGE . Make the SERVICE stateless.
-    ("Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_)
 
 
 Service is not a wrapper for Data Mapper
