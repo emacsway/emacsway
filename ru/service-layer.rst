@@ -528,7 +528,7 @@ Stateless Services
 Statefull Services
 ------------------
 
-Классы UseCases/Interactors [#fncarch]_ являются Statefull разновидностью паттерна Команда (Command), и, в определенной мере, могут рассматриваться как Statefull Сервис.
+Классы UseCases/Interactors [#fncarch]_ являются разновидностью паттерна Команда (Command), и, в определенной мере, могут рассматриваться как Statefull Сервис.
 
 Похожую идею выражает и Eric Evans:
 

@@ -484,7 +484,7 @@ They are well known, and there is nothing to add.
 Statefull Services
 ------------------
 
-Классы UseCases/Interactors [#fncarch]_ являются Statefull разновидностью паттерна Команда (Command), и, в определенной мере, могут рассматриваться как Statefull Сервис.
+The UseCases/Interactors [#fncarch]_ classes are a variation of the Command pattern, and can be considered as a Statefull Service.
 
 Eric Evans has a similar idea:
 
