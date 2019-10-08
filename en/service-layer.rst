@@ -247,10 +247,10 @@ What is Service?
     domain objects do.
 
     When a significant process or transformation in the domain is not a natural
-    responsibility of an ENTITY or VALUE OBJECT , add an operation to the model as a
-    standalone interface declared as a SERVICE . Define the interface in terms of the
+    responsibility of an ENTITY or VALUE OBJECT, add an operation to the model as a
+    standalone interface declared as a SERVICE. Define the interface in terms of the
     language of the model and make sure the operation name is part of the UBIQUITOUS
-    LANGUAGE . Make the SERVICE stateless.
+    LANGUAGE. Make the SERVICE stateless.
 
     \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
@@ -393,8 +393,7 @@ Infrastructure Service should be separate of other types of Service.
 Service types by collaboration
 ==============================
 
-By collaboration of interaction the Services are divided into
-`Orchestration <https://en.wikipedia.org/wiki/Orchestration_(computing)>`__ Service ("request/response", i.e. the service is aware of the interface of other Services) and `Choreography <https://en.wikipedia.org/wiki/Service_choreography>`__ Service (Event-Driven, т.е. loosely coupled) [#fnbm]_.
+By collaboration of interaction the Services are divided into `Orchestration <https://en.wikipedia.org/wiki/Orchestration_(computing)>`__ Service ("request/response", i.e. the service is aware of the interface of other Services) and `Choreography <https://en.wikipedia.org/wiki/Service_choreography>`__ Service (Event-Driven, т.е. loosely coupled) [#fnbm]_.
 Them are two idiomatic styles of collaboration.
 The main drawback of the first one is a high awareness of the interface of other Services, i.e. High coupling, which reduces its reuse.
 The last one is a variation of the Command pattern, and is used commonly in Event-Driven Architecture (in particular, in CQRS and Event Sourcing applications; a reducer in Redux is a good example), and in DDD applications (a subscriber of Domain/Integration Event).
@@ -463,6 +462,93 @@ Udi Dahan in his article allows the use of `Transaction Script <https://martinfo
 In this case, the choice between Transaction Script и `Domain Model <https://martinfowler.com/eaaCatalog/domainModel.html>`__ is considered in detail in "Patterns of Enterprise Application Architecture" by M. Fowler and others.
 Transaction Script may be appropriate when an application uses Redux together with GraphQL to minimize network traffic.
 If an application uses the REST-API and has extensive Business Logic, the use of the Domain Model and DDD will be more appropriate.
+
+
+Service types by communication
+==============================
+
+By communication, Services are divided into Synchronous and Asynchronous.
+
+
+Service types by state
+======================
+
+
+Stateless Services
+------------------
+
+Typically, most Services are stateless.
+They are well known, and there is nothing to add.
+
+
+Statefull Services
+------------------
+
+Классы UseCases/Interactors [#fncarch]_ являются Statefull разновидностью паттерна Команда (Command), и, в определенной мере, могут рассматриваться как Statefull Сервис.
+
+Eric Evans has a similar idea:
+
+    We might like to create a Funds Transfer object to represent the two entries plus the rules and history around the transfer. But we are still left with calls to SERVICES in the interbank networks.
+    What's more, in most development systems, it is awkward to make a direct interface between a domain object and external resources. We can dress up such external SERVICES with a FACADE that takes inputs in terms of the model, perhaps returning a Funds Transfer object as its result.
+    But whatever intermediaries we might have, and even though they don't belong to us, those SERVICES are carrying out the domain responsibility of funds transfer.
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
+
+And Randy Stafford with Martin Fowler too:
+
+    The two basic implementation variations are the domain facade approach and the operation script approach. In
+    the domain facade approach a Service Layer is implemented as a set of thin facades over a Domain Model
+    (116). The classes implementing the facades don't implement any business logic. Rather, the Domain Model
+    (116) implements all of the business logic. The thin facades establish a boundary and set of operations through
+    which client layers interact with the application, exhibiting the defining characteristics of Service Layer.
+
+    In the operation script approach a Service Layer is implemented as a set of thicker classes that directly
+    implement application logic but delegate to encapsulated domain object classes for domain logic. The
+    operations available to clients of a Service Layer are implemented as scripts, organized several to a class
+    defining a subject area of related logic. Each such class forms an application "service," and it's common for
+    service type names to end with "Service." A Service Layer is comprised of these application service classes,
+    which should extend a Layer Supertype (475), abstracting their responsibilities and common behaviors.
+
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler, Randy Stafford
+
+..
+    It is often possible to find models with a large number of methods (I met several hundred).
+    If you analyze such models, you can often find outside responsibilities in the class.
+    As you know, the size of the class is measured by the amount of its responsibilities.
+    All responsibilities that are not related to the Domain Layer should be moved to the Service Layer.
+    But what to do with other methods?
+
+    Suppose some Model has several dozen methods that do not have a common application, but are used by only one client.
+    You can not assign them to the responsibility of the client, as this would lead to "G14: Feature Envy" [#fnccode]_.
+
+    In other words, the client requires an interface from the Domain Model, which should not be implemented by the Domain Model.
+    For interface equalization we have to use the pattern Adapter (aka Wrapper), see "Design Patterns Elements of Reusable Object-Oriented Software" [#fngof]_ for more info.
+
+    In other words, it is a wrapper over the Model instance that wraps it and gives it additional behavior that is required by the client.
+    Sometimes such wrappers are wrongly called Aspect or Decorator, but this is incorrect, since they do not change the interface of the original object.
+
+    Is it possible to use the Adapter pattern in this case?
+
+    Since Martin Fowler perfectly understands the difference between "`Domain Model`_" and "`DataMapper`_", this quote strongly reminds me "Cross-Cutting Concerns" [#fnccode]_ with the only difference being that "Cross-Cutting Concerns" implements the interface of the original object, while the domain facade complements it.
+
+..
+    Обратите внимание на использование термина "`Domain Model`_".
+    Эти ребята - последние из числа тех, кто может спутать "`Domain Model`_" и "`DataMapper`_", особенно, при таком количестве редакторов и рецензентов.
+    Т.е. клиент ожидает от доменной модели интерфейс, который она, по какой-то причине (обычно это Single Responsibility Principle), не реализует и не должна реализовать.
+    С другой стороны, клиент не может реализовать это поведение сам, так как это привело бы к появлению "G14: Feature Envy" [#fnccode]_.
+    Для выравнивания интерфейсов служит паттерн Adapter (aka Wrapper), см. "Design Patterns Elements of Reusable Object-Oriented Software" [#fngof]_.
+    Отличается Statefull Services от обычного Adapter только тем, что он содержит логику более низкого уровня, т.е. Логику Приложения (Application Logic), нежели Доменная Модель.
+
+    Этот подход сильно напоминает мне "Cross-Cutting Concerns" [#fnccode]_ с тем только отличием, что "Cross-Cutting Concerns" реализует интерфейс оригинального объекта, в то время как domain facade дополняет его.
+    Когда объект-обертка реализует интерфейс оригинального объекта, то его обычно называют Aspect или Decorator.
+    Часто в таких случаях можно услышать термин Proxy, но, на самом деле паттерн Proxy имеет немного другое назначение.
+    Такой подход часто используется для того, чтобы добавить в Доменную Модель логику доступа к связанным объектам, при этом оставляя доменные модели совершенно "чистыми" (т.е. без примесей поведения другого уровня логики).
+
+    При работе с унаследованным кодом мне доводилось встречать разбухшие Доменные Модели с огромным числом методов (я встречал до нескольких сотен методов).
+    При анализе таких моделей часто обнаруживаются посторонние обязанности в классе, а размер класса, как известно, измеряется количеством его обязанностей.
+    Statefull Сервисы и паттерн Adapter - хорошая альтернатива для того, чтобы вынести из модели несвойственные ей обязанности, и заставить похудеть разбухшие модели.
+
+.. TODO: complete the chapter
 
 
 Destination of Service Layer
@@ -644,54 +730,6 @@ This will allow painless ORM replace if necessary.
     layer perhaps to use a workflow engine.
 
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
-
-
-Taming of swollen models
-========================
-
-It is often possible to find models with a large number of methods (I met several hundred).
-If you analyze such models, you can often find outside responsibilities in the class.
-As you know, the size of the class is measured by the amount of its responsibilities.
-All responsibilities that are not related to the Domain Layer should be moved to the Service Layer.
-But what to do with other methods?
-
-Suppose some Model has several dozen methods that do not have a common application, but are used by only one client.
-You can not assign them to the responsibility of the client, as this would lead to "G14: Feature Envy" [#fnccode]_.
-
-In other words, the client requires an interface from the Domain Model, which should not be implemented by the Domain Model.
-For interface equalization we have to use the pattern Adapter (aka Wrapper), see "Design Patterns Elements of Reusable Object-Oriented Software" [#fngof]_ for more info.
-
-In other words, it is a wrapper over the Model instance that wraps it and gives it additional behavior that is required by the client.
-Sometimes such wrappers are wrongly called Aspect or Decorator, but this is incorrect, since they do not change the interface of the original object.
-
-Is it possible to use the Adapter pattern in this case?
-
-Martin Fowler says:
-
-    The two basic implementation variations are the domain facade approach and the operation script approach. In
-    the domain facade approach a Service Layer is implemented as a set of thin facades over a Domain Model
-    (116). The classes implementing the facades don't implement any business logic. Rather, the Domain Model
-    (116) implements all of the business logic. The thin facades establish a boundary and set of operations through
-    which client layers interact with the application, exhibiting the defining characteristics of Service Layer.
-
-    In the operation script approach a Service Layer is implemented as a set of thicker classes that directly
-    implement application logic but delegate to encapsulated domain object classes for domain logic. The
-    operations available to clients of a Service Layer are implemented as scripts, organized several to a class
-    defining a subject area of related logic. Each such class forms an application "service," and it's common for
-    service type names to end with "Service." A Service Layer is comprised of these application service classes,
-    which should extend a Layer Supertype (475), abstracting their responsibilities and common behaviors.
-
-    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
-
-Since Martin Fowler perfectly understands the difference between "`Domain Model`_" and "`DataMapper`_", this quote strongly reminds me "Cross-Cutting Concerns" [#fnccode]_ with the only difference being that "Cross-Cutting Concerns" implements the interface of the original object, while the domain facade complements it.
-
-Eric Evans expresses a similar idea:
-
-    We might like to create a Funds Transfer object to represent the two entries plus the rules and history around the transfer. But we are still left with calls to SERVICES in the interbank networks.
-    What's more, in most development systems, it is awkward to make a direct interface between a domain object and external resources. We can dress up such external SERVICES with a FACADE that takes inputs in terms of the model, perhaps returning a Funds Transfer object as its result.
-    But whatever intermediaries we might have, and even though they don't belong to us, those SERVICES are carrying out the domain responsibility of funds transfer.
-
-    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
 
 Problems of Django annotation

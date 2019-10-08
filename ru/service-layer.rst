@@ -273,10 +273,10 @@ Use Case обязан своим существованием именно на�
     domain objects do.
 
     When a significant process or transformation in the domain is not a natural
-    responsibility of an ENTITY or VALUE OBJECT , add an operation to the model as a
-    standalone interface declared as a SERVICE . Define the interface in terms of the
+    responsibility of an ENTITY or VALUE OBJECT, add an operation to the model as a
+    standalone interface declared as a SERVICE. Define the interface in terms of the
     language of the model and make sure the operation name is part of the UBIQUITOUS
-    LANGUAGE . Make the SERVICE stateless.
+    LANGUAGE. Make the SERVICE stateless.
 
     \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_
 
@@ -521,7 +521,7 @@ Transaction Script может быть уместным при сочетани�
 Stateless Services
 ------------------
 
-Как правило большинство сервисов являются stateless, т.е. не имеют состояния.
+Как правило, большинство сервисов являются stateless, т.е. не имеют состояния.
 Они хорошо изучены, и добавить по ним нечего.
 
 
