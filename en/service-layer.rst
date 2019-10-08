@@ -407,7 +407,7 @@ Orchestration Service is known as Service Layer and is cosidered in more detail 
 
 
 Choreography Service
----------------------
+--------------------
 
 There is an interesting article "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan, cited by Martin Fowler in his article "`CQRS <https://martinfowler.com/bliki/CQRS.html>`__".
 
@@ -425,6 +425,44 @@ It should contain Application Logic (not Business Logic).
     \- "Clarified CQRS" by Udi Dahan
 
 Choreography Services can only be at Application Logic, even if it is subscribed to a Domain Event.
+
+
+Common mistakes of design Choreography Service
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Sometimes, Orchestration Services proxy calls to Choreographic Services.
+This often happens with frontend-developers, for example, when Redux/NgRx is used together with an Angular based application, which uses Services a lot.
+
+Having Low Coupling Event-Driven Choreography Services as Command handlers, it would be a design mistake to try to bind them with the High Coupling classic Orchestration Service (with the only purpose of helping the Application Logic hide them from itself).
+
+   Each command is independent of the other, so why should we allow the objects which handle them to depend on each other?
+
+   \- "Clarified CQRS" by Udi Dahan
+
+
+However, there is a question of awareness of Command handlers and applications about the interface of a specific CQRS implementation.
+To align the interfaces, there is an Adapter pattern, which can be provided if necessary.
+
+Another common mistake is placing Business Logic in a Choreography Service and degenerating the behavior of Domain Models.
+
+This leads to the problem Eric Evans talked about:
+
+    "If the framework's partitioning conventions pull apart the elements implementing the
+    conceptual objects, the code no longer reveals the model.
+
+    There is only so much partitioning a mind can stitch back together, and if the framework uses 
+    it all up, the domain developers lose their ability to chunk the model into meaningful pieces."
+
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans
+
+In an application with extensive Business Logic, this can significantly degrade the quality of business modeling, and complicate the process of Model Distillation in a process of Knowledge Crunching [#fnddd]_.
+Also, such code acquires signs of "Divergent Change" [#fnr]_ and "Shotgun Surgery" [#fnr]_, which greatly complicates elimination of domain modeling mistakes in a process of Evolutionary Design.
+Ultimately, this leads to a rapid increase in the cost of code change.
+
+Udi Dahan in his article allows the use of `Transaction Script <https://martinfowler.com/eaaCatalog/transactionScript.html>`__ to organize Business Logic.
+In this case, the choice between Transaction Script и `Domain Model <https://martinfowler.com/eaaCatalog/domainModel.html>`__ is considered in detail in "Patterns of Enterprise Application Architecture" by M. Fowler and others.
+Transaction Script may be appropriate when an application uses Redux together with GraphQL to minimize network traffic.
+If an application uses the REST-API and has extensive Business Logic, the use of the Domain Model and DDD will be more appropriate.
 
 
 Destination of Service Layer
