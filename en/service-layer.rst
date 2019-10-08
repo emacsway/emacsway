@@ -8,7 +8,7 @@ Design of Service Layer and Application Logic
    :category:
    :author: Ivan Zakrevsky
 
-.. ru-revision: e23b8c164e4d
+.. ru-revision: ba2fc0f88c1b
 
 This article is about managing Application Logic and designing the `Service Layer`_, Use Case, CQRS, Event Sourcing, MVC, etc.
 
