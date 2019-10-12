@@ -105,6 +105,7 @@
 - "Clean Code: A Handbook of Agile Software Craftsmanship" by Robert C. Martin
 - "Code Complete" 2nd edition by Steve McConnell
 - "UML Distilled. A Brief Guide to the Standard Object Modeling Language" 3d edition by Martin Fowler
+- "`KISS Principles <https://people.apache.org/~fhanik/kiss.html>`__"
 
 
 Учимся быть эффективным
