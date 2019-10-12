@@ -62,7 +62,7 @@
 Непредвзятый и свободный взгляд намного важнее изобилия знаний.
 Путешествие должно быть на легке, как говорил Кент Бек.
 По сути, знания нужны только для того, чтобы избавиться от всего лишнего.
-Архитектура - это, на самом деле, наука об ограничениях.
+Архитектура - это, на самом деле, наука об ограничениях (о том, как не делать лишнего).
 
 
 Учимся обучению
@@ -104,6 +104,7 @@
 - "Refactoring: Improving the Design of Existing Code" 1st edition by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
 - "Clean Code: A Handbook of Agile Software Craftsmanship" by Robert C. Martin
 - "Code Complete" 2nd edition by Steve McConnell
+- "UML Distilled. A Brief Guide to the Standard Object Modeling Language" 3d edition by Martin Fowler
 
 
 Учимся быть эффективным
