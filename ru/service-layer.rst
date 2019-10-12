@@ -913,11 +913,20 @@ Storm ORM/SQLAlchemy реализуют аннотации более удачн
 Проблема параллельного обновления
 =================================
 
-Интернет открыл доступ к огромному количеству данных, которое несопоставимо велико с возможностями одного сервера.
+Появление интернета открыло доступ к огромному количеству данных, которое несопоставимо велико с возможностями одного сервера.
 Возникла необходимость в масштабировании и в распределенном хранении и обработке данных.
 
 Одна из самых острых проблем - это проблема параллельного обновления данных.
-Все состояния гонки (race condition), взаимоблокировки (deadlocks) и другие проблемы параллельного обновления обусловлены изменяемостью переменных.
+
+    Все состояния гонки (race condition), взаимоблокировки (deadlocks) и проблемы параллельного обновления обусловлены изменяемостью переменных.
+    Если в программе нет изменяемых переменных, она никогда не окажется в состоянии гонки и никогда не столкнется с проблемами одновременного изменения.
+    В отсутствие изменяемых блокировок программа не может попасть в состояние взаимоблокировки.
+
+    All race conditions, deadlock conditions, and concurrent update problems are due to mutable variables.
+    You cannot have a race condition or a concurrent update problem if no variable is ever updated.
+    You cannot have deadlocks without mutable locks.
+
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin
 
 Любой порядок выражается в правильном наложении ограничений.
 
@@ -958,6 +967,26 @@ Event Sourcing
 Примером Event Sourcing может быть принцип организации банковского счета в базе данных, когда счет не является источником истины, а просто отражает совокупное значение всех транзакций (т.е. событий).
 
 Наиболее ясно эта тема раскрывается в Chapter 6 "Functional Programming" of "Clean Architecture" by Robert C. Martin.
+
+    Что особенно важно, никакая информация не удаляется из такого хранилища и не изменяется.
+    Как следствие, от набора CRUD-операций в приложениях остаются только CR.
+    Также отсутствие операций изменения и/или удаления с хранилищем устраняет любые проблемы конкурирующих
+    обновлений.
+
+    Обладая хранилищем достаточного объема и достаточной вычислительной мощностью, мы можем сделать свои приложения полностью неизменяемыми — и, как следствие, **полностью функциональными**.
+
+    Если это все еще кажется вам абсурдным, вспомните, как работают системы управления версиями исходного кода.
+
+    More importantly, nothing ever gets deleted or updated from such a data store.
+    As a consequence, our applications are not CRUD; they are just CR. Also, because neither updates nor deletions occur in the data store, there cannot be any concurrent update issues.
+
+    If we have enough storage and enough processor power, we can make our applications entirely immutable—and, therefore, **entirely functional**.
+
+    If this still sounds absurd, it might help if you remembered that this is precisely the way your source code control system works.
+
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin
+
+..
 
     Event Sourcing is naturally functional.
     It's an append only log of facts that have happened in the past.

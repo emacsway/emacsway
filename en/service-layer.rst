@@ -750,6 +750,23 @@ If the client does not contain complex logic, allowing to interpret the prioriti
 In this case, it's easier to add a new method to the remote call service, and get rid of the need for prioritized queries.
 
 
+Concurrent update issue
+=======================
+
+The advent of the Internet has provided access to a huge amount of data that is excessively large with the capabilities of the server.
+There was a need for scalability and distributed storage and processing of data.
+
+One of the most acute problems is the concurrent update issue.
+
+    All race conditions, deadlock conditions, and concurrent update problems are due to mutable variables.
+    You cannot have a race condition or a concurrent update problem if no variable is ever updated.
+    You cannot have deadlocks without mutable locks.
+
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin
+
+An order is a correct imposition of restrictions.
+
+
 Further Reading
 ===============
 
