@@ -989,7 +989,7 @@ Event Sourcing
 
 ..
 
-    Event Sourcing is naturally functional.
+    **Event Sourcing is naturally functional.**
     It's an append only log of facts that have happened in the past.
     You can say that any projection any state is a left fold over your previous history.
 
