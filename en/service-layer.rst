@@ -767,6 +767,33 @@ One of the most acute problems is the concurrent update issue.
 An order is a correct imposition of restrictions.
 
 
+CQRS
+====
+
+The concurrent update issue can be significantly reduced by restricting bidirectional state changes by introducing unidirectional changes, i.e. by separating reading from writing.
+This is exactly the approach used by Redux.
+
+    "it allows us to host the two services differently eg: we can host the read service on 25 servers and the write service on two.
+    The processing of commands and queries is fundamentally asymmetrical, and scaling the services symmetrically does not make a lot of sense."
+
+    \- "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
+
+Organizing Application Logic and Business Logic is well covered in the article "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan.
+
+The use of CQRS facilitates the use of Functional Programming paradigm.
+
+Functional Programming inherently cannot produce side effects (since Functional Programming imposes a restriction on assignment (mutability)).
+This is the reason for its popularity growth in the era of distributed computing.
+No mutability - concurrent update issues.
+
+It is necessary to distinguish the Functional Programming paradigm from the languages supporting this paradigm, since quite often the languages supporting this paradigm allow not to follow it.
+
+However, despite the new opportunities to use Functional Programming in code, the data storage itself (IO device) is still prone to the concurrent update issues, since it has mutable rows, and, therefore, has a side effect.
+
+The solution to this problem is usually to replace CRUD (Create, Read, Update, Delete) with CR, i.e. imposing restrictions on Update and Delete rows in the storage, that is widespread with the name Event Sourcing.
+There are specialized storages that implement Event Sourcing, but it can also be implemented without specialized tools.
+
+
 Further Reading
 ===============
 
