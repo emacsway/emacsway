@@ -1053,6 +1053,7 @@ Event Sourcing
 - "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf, chapters:
     - 7. Message routing : Process manager
 - "`CQRS <https://martinfowler.com/bliki/CQRS.html>`__"
+- "`Command Query Separation <https://martinfowler.com/bliki/CommandQuerySeparation.html>`__
 - "`Event Sourcing <https://martinfowler.com/eaaDev/EventSourcing.html>`__"
 - "`What do you mean by "Event-Driven"? <https://martinfowler.com/articles/201701-event-driven.html>`__"
 - "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
