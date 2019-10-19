@@ -862,6 +862,8 @@ Further Reading
 - "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma [#fngof]_, chapters:
     - Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139
     - Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175
+- "Building Microservices. Designing Fine-Grained Systems" by Sam Newman, chapters:
+    - Chapter 3 How to Model Services : Premature Decomposition
 - "`Cloud Design Patterns. Prescriptive architecture guidance for cloud applications <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson, chapters:
     - `Command and Query Responsibility Segregation (CQRS) pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs>`__
     - `Event Sourcing pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing>`__
