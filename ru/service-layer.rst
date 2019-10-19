@@ -1008,18 +1008,30 @@ Event Sourcing
 Что почитать
 ============
 
-- "Clean Code: A Handbook of Agile Software Craftsmanship" by Robert C. Martin [#fnccode]_, главы:
+- "Clean Code: A Handbook of Agile Software Craftsmanship" by Robert C. Martin [#fnccode]_, chapters:
     - Dependency Injection ... 157
     - Cross-Cutting Concerns ... 160
     - Java Proxies ... 161
     - Pure Java AOP Frameworks ... 163
-- "Patterns of Enterprise Application Architecture" by Martin Fowler [#fnpoeaa]_, главы:
+- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin
+    - Chapter 6 Functional Programming : Event Sourcing
+    - Chapter 16 Independence
+    - Chapter 18 Boundary Anatomy : Services
+    - Chapter 20 Business Rules
+    - Chapter 22 The Clean Architecture
+    - Chapter 34 The Missing Chapter
+- "Patterns of Enterprise Application Architecture" by Martin Fowler [#fnpoeaa]_, chapters:
     - Part 1. The Narratives : Chapter 2. Organizing Domain Logic : Service Layer
     - Part 1. The Narratives : Chapter 8. Putting It All Together
     - Part 2. The Patterns : Chapter 9. Domain Logic Patterns : Service Layer
-- "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans [#fnddd]_, глава:
+- "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans [#fnddd]_, chapters:
+    - Part II: The Building Blocks of a Model-Driven Design : Chapter Four. Isolating the Domain : Layered Architecture
     - Part II: The Building Blocks of a Model-Driven Design : Chapter Five. A Model Expressed in Software : Services
-- "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma [#fngof]_, главы:
+- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon
+    - Chapter 7 Services
+    - Chapter 14 Application : Application Services
+    - Appendix A Aggregates and Event Sourcing: A+ES : Inside an Application Service
+- "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma [#fngof]_, chapters:
     - Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139
     - Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175
 - "`CQRS <https://martinfowler.com/bliki/CQRS.html>`__"
@@ -1036,6 +1048,7 @@ This article in English ":doc:`../en/service-layer`".
 .. [#fncarch] "Clean Architecture: A Craftsman's Guide to Software Structure and Design" by Robert C. Martin
 .. [#fnpoeaa] "`Patterns of Enterprise Application Architecture`_" by `Martin Fowler`_, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 .. [#fnddd] "Domain-Driven Design: Tackling Complexity in the Heart of Software" by Eric Evans
+.. [#fniddd] "Implementing Domain-Driven Design" by Vaughn Vernon
 .. [#fngof] "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma, Richard Helm, Ralph Johnson, John Vlissides, 1994
 .. [#fnr] "Refactoring: Improving the Design of Existing Code" by Martin Fowler, Kent Beck, John Brant, William Opdyke, Don Roberts
 .. [#fnbm] "Building Microservices. Designing Fine-Grained Systems" by Sam Newman
