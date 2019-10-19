@@ -1034,6 +1034,22 @@ Event Sourcing
 - "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma [#fngof]_, chapters:
     - Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139
     - Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175
+- "`Cloud Design Patterns. Prescriptive architecture guidance for cloud applications <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__" by Alex Homer, John Sharp, Larry Brader, Masashi Narumoto, Trent Swanson, chapters:
+    - `Command and Query Responsibility Segregation (CQRS) pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs>`__
+    - `Event Sourcing pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing>`__
+- "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" edition v2.2.1 (`mirror <https://aka.ms/microservicesebook>`__) by Cesar de la Torre, Bill Wagner, Mike Rousos, chapters:
+    - `Tackle Business Complexity in a Microservice with DDD and CQRS Patterns <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/>`__
+    - `Apply simplified CQRS and DDD patterns in a microservice <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/apply-simplified-microservice-cqrs-ddd-patterns>`__
+    - `Apply CQRS and CQS approaches in a DDD microservice in eShopOnContainers <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/eshoponcontainers-cqrs-ddd-microservice>`__
+    - `Implement reads/queries in a CQRS microservice <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/cqrs-microservice-reads>`__
+- "`CQRS Journey <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj554200(v=pandp.10)>`__" by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian, chapters:
+    - `Reference 1: CQRS in Context <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591560(v=pandp.10)>`__
+    - `Reference 2: Introducing the Command Query Responsibility Segregation Pattern <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591573(v=pandp.10)>`__
+    - `Reference 3: Introducing Event Sourcing <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591559(v=pandp.10)>`__
+    - `Reference 4: A CQRS and ES Deep Dive <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591577(v=pandp.10)>`__
+    - `Reference 6: A Saga on Sagas <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591569(v=pandp.10)>`__
+- "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf, chapters:
+    - 7. Message routing : Process manager
 - "`CQRS <https://martinfowler.com/bliki/CQRS.html>`__"
 - "`Event Sourcing <https://martinfowler.com/eaaDev/EventSourcing.html>`__"
 - "`What do you mean by "Event-Driven"? <https://martinfowler.com/articles/201701-event-driven.html>`__"
