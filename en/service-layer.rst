@@ -901,7 +901,7 @@ Further Reading
 - "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
 - "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan
 - "CQRS Documents <https://cqrs.files.wordpress.com/2010/11/cqrs_documents.pdf>"__ by Greg Young
-- "`Sagas <http://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf>__" by Hector Garcia-Molina and Kenneth Salem
+- "`Sagas <http://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf>`__" by Hector Garcia-Molina and Kenneth Salem
 
 Эта статья на Русском языке ":doc:`../ru/service-layer`".
 
