@@ -863,10 +863,11 @@ Further Reading
     - Chapter 14 Application : Application Services
     - Appendix A Aggregates and Event Sourcing: A+ES : Inside an Application Service
 - "`Microsoft Application Architecture Guide <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ff650706(v=pandp.10)?redirectedfrom=MSDN>`__" 2nd Edition (Patterns & Practices) by Microsoft Corporation (J.D. Meier, David Hill, Alex Homer, Jason Taylor, Prashant Bansode, Lonnie Wall, Rob Boucher Jr., Akshay Bogawat), chapters:
-    - Chapter 5: Layered Application Guidelines : Services and Layers ... 58
-    - Chapter 9: Service Layer Guidelines ... 115
-    - Chapter 21: Designing Web Applications : Service Layer ... 288
-    - Chapter 25: Designing Service Applications : Service Layer ... 371
+    - `Chapter 5: Layered Application Guidelines <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658109%28v%3dpandp.10%29>`__ ... 55
+    - `Chapter 5: Layered Application Guidelines : Services and Layers <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658109%28v%3dpandp.10%29#services-layer>`__ ... 58
+    - `Chapter 9: Service Layer Guidelines <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658090%28v%3dpandp.10%29>`__ ... 115
+    - `Chapter 21: Designing Web Applications : Service Layer <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658099%28v%3dpandp.10%29#service-layer>`__ ... 288
+    - `Chapter 25: Designing Service Applications : Service Layer <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/ee658114%28v%3dpandp.10%29#service-layer>`__ ... 371
 - "Design Patterns Elements of Reusable Object-Oriented Software" by Erich Gamma [#fngof]_, chapters:
     - Design Pattern Catalog : 4 Structural Patterns : Adapter ... 139
     - Design Pattern Catalog : 4 Structural Patterns : Decorator ... 175
