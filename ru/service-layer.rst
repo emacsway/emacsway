@@ -1061,6 +1061,10 @@ Event Sourcing
     - `Reference 6: A Saga on Sagas <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj591569(v=pandp.10)>`__
 - "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" by Gregor Hohpe, Bobby Woolf, chapters:
     - 7. Message routing : Process manager ... 278
+- "`Microservices Patterns: With examples in Java <https://microservices.io/patterns/index.html>`__" 1st Edition by Chris Richardson
+    - `Pattern: Command Query Responsibility Segregation (CQRS) <https://microservices.io/patterns/data/cqrs.html>`__
+    - `Pattern: Event sourcing <https://microservices.io/patterns/data/event-sourcing.html>`__
+    - `Pattern: Saga <https://microservices.io/patterns/data/saga.html>`__
 - "`CQRS <https://martinfowler.com/bliki/CQRS.html>`__"
 - "`Command Query Separation <https://martinfowler.com/bliki/CommandQuerySeparation.html>`__
 - "`Event Sourcing <https://martinfowler.com/eaaDev/EventSourcing.html>`__"
