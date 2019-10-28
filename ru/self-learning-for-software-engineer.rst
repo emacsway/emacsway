@@ -345,7 +345,7 @@ Online-каталоги
 - `SOAPatterns.org <http://soapatterns.org/>`__
 - `CloudPatterns.org <http://www.cloudpatterns.org/>`__
 - `BigDataPatterns.org <http://www.bigdatapatterns.org/>`__
-- `Microservice Patterns https://microservices.io/patterns/>`__
+- `Microservice Patterns <https://microservices.io/patterns/>`__
 - `Microservice Patterns (book) <https://www.manning.com/books/microservice-patterns>`__
 - `Microservices Patterns from Sam Newman <https://samnewman.io/patterns/>`__
 - `About DDD on the site of Ward Cunningham <http://ddd.fed.wiki.org/>`__
