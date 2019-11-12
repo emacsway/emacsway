@@ -396,6 +396,8 @@ Code Smell catalogs
 - `eShopOnContainers <https://github.com/dotnet-architecture/eShopOnContainers>`__ (CQRS, DDD, Microservices)
 - `Microsoft patterns & pratices CQRS Journey sample application <https://github.com/microsoftarchive/cqrs-journey>`__ (CQRS, DDD, Event Sourcing, SAGA transactions)
 
+..
+
     "A perfect example of this [you can see] if you go look at the CQRS and Event Sourcing by Microsoft Patterns and Practices, which is heavily focused on doing this inside of Azure using their toolkits."
 
     \- Greg Young, "`A Decade of DDD, CQRS, Event Sourcing <https://youtu.be/LDW0QWie21s?t=1092>`__" at 18:15
