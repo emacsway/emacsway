@@ -359,6 +359,8 @@ Eric Evans разделяет Сервисы на три уровня логик
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_
 
 
+.. _domain-service:
+
 Сервисы уровня Доменной Логики (Domain Logic)
 ---------------------------------------------
 
