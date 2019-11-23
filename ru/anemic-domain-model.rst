@@ -24,6 +24,28 @@
 Нужно заметить, что на этом месте многие начинают говорить о превосходствах функционального программирования, не понимая отличий межу функциональным программированием и процедурным.
 Если говорить о превосходствах функционального программирования, то Роберт Мартин уже все сказал в статье "`OO vs FP <http://blog.cleancoder.com/uncle-bob/2014/11/24/FPvsOO.html>`__".
 
+Нужно отличать Anemic Domain Model в объектно-ориентированной парадигме от Date Type в функциональной парадигме.
+Вот `здесь <https://youtu.be/dnUFEg68ESM?t=3085>`_, например, сам Eric Evans говорит о том, что в своей книге "Domain-Driven Design" он не рассматривал глубоко функциональную парадигму, потому что в 2003 она не имела такого применения как сегодня.
+А сегодня, в контексте Event Sourcing, она имеет уже совсем другое значение.
+
+    You know, functional is a big thing.
+    Maybe more than one thing.
+    And so there are people though who have been talking about modeling in the functional realm and very interesting things.
+    The things is models are just systems of abstraction.
+    And so you have a powerful mechanism for abstraction.
+    You should be able to implement, you should be able to express models.
+    Furthermore, if you want to, you know, bring that ubiquitous language to life in the code, well, some of the functional languages, I think, are really nice for making making language in the code.
+    And it might be a good mate with Event Sourcing.
+    I'm just sort of laying out like I'm pointing out that we have so many options.
+    Options that were really not there in 2003.
+
+    \- Eric Evans, "`Tackling Complexity in the Heart of Software <https://youtu.be/dnUFEg68ESM?t=3085>`__", Domain-Driven Design Europe 2016 - Brussels, January 26-29, 2016
+
+`Здесь <https://www.infoq.com/interviews/Technology-Influences-DDD/>`__ он возвращается к этому вопросу.
+А `здесь <https://vimeo.com/131636650>`__ Greg Young рассматривает переход от OOP к Functional Programming в Event Sourcing.
+
+Под Anemic Domain Model же понимается вырождение поведения модели именно в объектно-ориентированной парадигме, т.е. использование объектно-ориентированных языков в процедурном стиле.
+
 Но вернемся к обсуждаемой статье.
 Я так и не смог найти имя автора той статьи на том сайте.
 Нечего и говорить, что это - весомый аргумент для авторитета статьи, которая с легкостью берется опровергать статью Мартина Фаулера(!) "`Anemic Domain Model <https://www.martinfowler.com/bliki/AnemicDomainModel.html>`__".
@@ -55,7 +77,7 @@
 От перестановки мест слагаемых проблема не решается.
 
 Мне эта ситуация напомнила случай, когда Мартину Фаулеру сказали, что гибкое проектирование невозможно, потому что схему базы данных сложно изменить, а значит, ее нужно проектировать заблаговременно.
-Мартин Фаулер `ответил <https://youtu.be/VjKYO6DP3fo?t=16m11s>`__, что если схему базы сложно изменить, значит мы должны подумать о том, как можно сделать процесс миграций проще?
+Мартин Фаулер `ответил <https://youtu.be/VjKYO6DP3fo?t=16m11s>`__, что если схему базы сложно изменить, значит мы должны подумать о том, как можно сделать процесс миграций проще.
 Так появился механизм миграций базы данных, и гибкое проектирование Agile стало возможным.
 Т.е. возник вопрос - реакционно застрять на месте, потому что возникло препятствие, или же найти решение, устраняющее это препятствие, и продолжить движение вперед.
 
