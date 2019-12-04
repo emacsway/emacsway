@@ -393,6 +393,8 @@ Code Smell catalogs
 - `Microservice Weekly <https://microserviceweekly.com/>`__
 
 
+.. _reference-applications-ru:
+
 Эталонные демонстрационные приложения
 =====================================
 
