@@ -24,21 +24,24 @@ Domain Events в DDD
 Поэтому, я буду начинать всегда с первоисточника, т.е. с Eric Evans, Bertrand Meyer и др.
 Но так же буду делать обзор мнений его ключевых последователей - Vaughn Vernon, Jimmy Bogard, Greg Young, Udi Dahan, Kamil Grzybek, Scott Millett, Nick Tune и коллектив авторов руководств Microsoft по архитектуре. К счастью, при внимательном рассмотрении, противоречий между ними практически нет.
 
+
 Назначение Domain Event
-===============================
+=======================
 
     Something happened that domain experts care about.
     Model information about activity in the domain as a series of discrete events. Represent
 each event as a domain object.
-    ... A domain event is a full-fledged part of the domain model, a representation of something
-that happened in the domain.
+    \... A domain event is a full-fledged part of the domain model, a representation of something that happened in the domain.
 
     \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans
+
+
 Eventual Consistency vs Strong (Transactional) Consistency
-===================================================================
+==========================================================
+
 
 Eventual Consistency - это следствие, а не причина
--------------------------------------------------------------------------------------------
+--------------------------------------------------
 
     A distinct, though related set of issues arises in distributed systems.
     The state of a distributed system cannot be kept completely consistent at all times. We keep the aggregates internally consistent at all times, while making other changes asynchronously.
@@ -149,13 +152,15 @@ to a shared lock that I call a root lock (see Figure 16.4).
 
 
 Все решают бизнес-правила
-----------------------------------------------------
+-------------------------
 
     The main point to remember from this section is that business rules are the drivers for determining what must be whole, complete, and consistent at the end of a single transaction.
 
     \-  "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon
+
+
 Принцип "Ask Whose Job It Is"
--------------------------------------------------------
+-----------------------------
 
 Тем не менее, Vaughn Vernon не считает вопрос Strong (Transactional) Consistency vs Eventual Consistency однозначным, и приводит четыре причины, по которым выбор может отдаваться в пользу Strong (Transactional) Consistency.
 Цитировать все не буду - слишком много текста.
@@ -192,8 +197,9 @@ to a shared lock that I call a root lock (see Figure 16.4).
 
 Далее, в главе "Chapter 10 Aggregates :: Gaining Insight through Discovery :: Is It the Team Member’s Job?" он демонстрирует применение принципа "Ask Whose Job It Is" на практике.
 
+
 Strong Consistency для начинающих
------------------------------------------------------------------
+---------------------------------
 
 Вот что советует новичкам Vaughn Vernon:
 
@@ -207,8 +213,9 @@ Strong Consistency для начинающих
 
     \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon
 
+
 Мнение Scott Millett и Nick Tune
---------------------------------------------------------
+--------------------------------
 
     **Sometimes it is actually good practice to modify multiple aggregates within a transaction.**
     But it’s important to understand why the guidelines exist in the first place so that you can be aware of the consequences of ignoring them.
@@ -248,8 +255,9 @@ Strong Consistency для начинающих
 
     \- "Patterns, Principles, and Practices of Domain-Driven Design" [#fnddd] by Scott Millett, Nick Tune, Chapter "19 Aggregates :: Special Cases"
 
+
 Мнение Jimmy Bogard
-----------------------------------------
+-------------------
 
 Вот что говорит ".NET Microservices: Architecture for Containerized .NET Applications"со ссылкой на Jimmy Bogard:
 
@@ -299,8 +307,9 @@ Strong Consistency для начинающих
 
     \- "A better domain events pattern" [#fnjb2]_ by Jimmy Bogard
 
+
 Мнение Kamil Grzybek
------------------------------------
+--------------------
 
 Вот что говорит Kamil Grzybek:
 
@@ -361,14 +370,16 @@ Strong Consistency для начинающих
 
 И, в своем демонстрационном приложении sample-dotnet-core-cqrs-api, `он демонстрирует обработку Domain Event в одной транзакции с агрегатом <https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/blob/01a1d6517bc88773f004abc0cb9c6d79f537e575/src/SampleProject.Application/Orders/PlaceCustomerOrder/OrderPlacedDomainEventHandler.cs#L22>`__.
 
+
 In-process vs out-of-process
-================================
+============================
 
 Обычно считается, что in-process - это синхронное исполнение, а out-of-process - асинхронное.
 Хотя, сугубо технически, асинхронное исполнение может быть как in-process, так и out-of-process.
 К тому же асинхронное исполнение нужно подразделять на использующее event-loop и использующее внешнюю инфраструктуру (external event bus).
 
 В большинстве случаев, in-process подразумевает "в той же транзакции", т.е. Strong Consistency.
+
 
 Internal vs External
 ======================
@@ -478,8 +489,9 @@ Figure 18-2 illustrates how the sequence of events may occur in a typical use ca
 
     \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans
 
+
 One stage vs Two Stage
-===========================
+======================
 
 Ответ на вопрос о разделении доставки Domain Events во многом зависит от того, разделять ли Domain Events на внутренние и внешние?
 
@@ -530,8 +542,9 @@ Kamil Grzybek вводит явное разделение механизма д
 
     \- "`How to publish and handle Domain Events <http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/>`__" [#fnkgde1]_ by Kamil Grzybek
 
+
 Может ли Domain Event отменить событие его инициировавшее?
-=================================================================
+==========================================================
 
     Domain events are ordinarily immutable, as they are **a record of something in the past**.
     In addition to a description of the event, a domain event typically contains a timestamp for the time the event occurred and the identity of entities involved in the event.
@@ -555,15 +568,16 @@ Kamil Grzybek вводит явное разделение механизма д
 
     \- .. "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "6. Tactical Design with Domain Events  :: Designing, Implementing, and Using Domain Events"
 
+
 Решение - это баланс стоимости и обретаемой выгоды
-=================================================================
+==================================================
 
 Любое решение - это баланс выгод и затрат на его реализацию.
 Решение не должно базироваться на "религиозном" догматизме, основываясь на бездумной вере только в то, что кто-то так сказал, не понимая при этом причин и следствий.
 Нужно понимать причину решения, решаемую им проблему, и применять его сообразно стоящими перед конкретным проектом проблемами.
 
 Может ли CQRS-команда возвращать результат?
----------------------------------------------------------------------
+-------------------------------------------
 
 Хорошим примером, демонстрирующим архитектурную гибкость мышления, является ответ Jimmy Bogard по поводу того, может ли Команда в CQRS возвращать результат?
 
@@ -698,8 +712,9 @@ a value.
 
 Как результат, в одном из лучших демонстрационных приложений, Команда возвращает результат, смотрите `здесь <https://github.com/dotnet-architecture/eShopOnContainers/blob/b1021c88d55d96c247eab75bde650ab4b194f706/src/Services/Ordering/Ordering.API/Controllers/OrdersController.cs#L151>` и `здесь <https://github.com/dotnet-architecture/eShopOnContainers/blob/b1021c88d55d96c247eab75bde650ab4b194f706/src/Services/Ordering/Ordering.API/Application/Commands/CreateOrderDraftCommandHandler.cs#L40>`.
 
+
 Почему важно читать оригиналы вместо переводов
-============================================================
+==============================================
 
 В самом начале этого поста я говорил, что важно читать первоисточники.
 Теперь я хочу показать, почему важно читать оригиналы, а не их переводы.
@@ -742,8 +757,9 @@ a value.
 И даже если считать оригинальный смысл недостаточно ясным, допускающим несколько трактовок, из которых можно выбрать наиболее корректную исходя из контекста и предыдущих утверждений автора, то русский перевод такой возможности нас лишает.
 Я трактую эту фразу так, чтобы она находилась в согласованности с другими утверждениями Вернона, т.е. "Ниже мы обсудим, что произойдет **за пределами этого упрощенного механизма**", что полностью соответствует рис.8.1. и его описанию.
 
+
 Послесловие
-================
+===========
 
 Эта статья отражает мое мнение на текущий момент времени, которое, однако, я не спешил бы называть окончательно сформированным, поскольку существует еще достаточно большой пласт информации по этому вопросу, который мне только предстоит переработать.
 Основной посыл статьи - больше внимания уделять первоисточникам, и быть более гибким в принятии решений, хорошо осознавая их причины и следствия.
