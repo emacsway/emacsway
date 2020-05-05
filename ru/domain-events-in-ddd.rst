@@ -33,7 +33,7 @@ Domain Events в DDD
     <...>
     A domain event is a full-fledged part of the domain model, a representation of something that happened in the domain.
 
-    \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans
+    \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans, Chapter "Domain Events"
 
 
 Eventual Consistency vs Strong (Transactional) Consistency
@@ -47,7 +47,7 @@ Eventual Consistency - это следствие, а не причина
     The state of a distributed system cannot be kept completely consistent at all times. We keep the aggregates internally consistent at all times, while making other changes asynchronously.
     As changes propagate across nodes of a network, it can be difficult to resolve multiple updates arriving out of order or from distinct sources.
 
-    \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans
+    \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans, Chapter "Domain Events"
 
 ..
 
@@ -63,7 +63,7 @@ Eventual Consistency - это следствие, а не причина
     Keep an aggregate together on one server.
     Allow different aggregates to be distributed among nodes.
 
-    \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans
+    \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans, Chapter "Aggregates"
 
 Здесь мы видим, что краеугольной причиной Eventual Consistency является распределенное хранение данных.
 Это значит, что, в силу `CAP-теоремы <http://ksat.me/a-plain-english-introduction-to-cap-theorem>`__ (`перевод на Русский <https://habr.com/ru/post/130577/>`__), становится невозможным достигнуть одновременно Consistency и Availability при Partition Tolerance.
@@ -120,13 +120,13 @@ Eventual Consistency - это следствие, а не причина
     Through event processing, batch processing, or other update mechanisms, other dependencies can be resolved within some specified time.
     **But the invariants applied within an AGGREGATE will be enforced with the completion of each transaction.**
 
-    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans, Chapter "Six. The Life Cycle of a Domain Object :: Aggregates"
 
 А здесь он говорит о корне агрегата во множественном числе:
 
     Schemes have been developed for defining ownership relationships in the model. The following simple but rigorous system, distilled from those concepts, includes a set of rules for implementing transactions that modify the objects and their owners.
 
-    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans, Chapter "Six. The Life Cycle of a Domain Object :: Aggregates"
 
 Такую же причину озвучивает и Vaughn Vernon:
 
@@ -143,7 +143,7 @@ Eventual Consistency - это следствие, а не причина
     The aggregate's characteristics call for a Coarse-Grained Lock, since working with any of its members requires locking all of them. Locking an aggregate yields an alternative to a shared lock that I call a root lock (see Figure 16.4).
     By definition locking the root locks all members of the aggregate. The root lock gives us a single point of contention.
 
-    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
+    \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford, Chapter "16. Offline Concurrency Patterns :: Coarse-Grained Lock"
 
 Здесь говорится про единицу изменения, про бизнес-транзакцию и блокировку, но о связи бизнес-транзакции с системной транзакцией говорится только то, что "the system transaction in which you commit the business transaction", т.е. границы системной транзакции включают в себя границы бизнес-транзакции, но не ограничиваются ею.
 
@@ -156,7 +156,7 @@ Eventual Consistency - это следствие, а не причина
 
     The main point to remember from this section is that business rules are the drivers for determining what must be whole, complete, and consistent at the end of a single transaction.
 
-    \-  "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon
+    \-  "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "5. Tactical Design with Aggregates :: Why Used"
 
 
 Принцип "Ask Whose Job It Is"
@@ -211,7 +211,7 @@ Strong Consistency - новичкам
     **This will allow you to get used to the techniques without taking too big an initial step.**
     **Just understand that this is not the primary way that Aggregates are meant to be used, and you may experience transactional failures as a result.**
 
-    \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon
+    \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "5. Tactical Design with Aggregates :: Rule 4: Update Other Aggregates Using Eventual Consistency"
 
 
 Мнение Scott Millett и Nick Tune
@@ -391,7 +391,7 @@ Domain Events могут покидать пределы Bounded Context:
 
     "Using Domain Events will help you both to model explicitly and to share what has occurred within your model with the systems that need to know about it. The interested parties might be your own local Bounded Context and other remote Bounded Contexts."
 
-    \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon
+    \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "1. DDD for Me :: Tactical Design"
 
 Это выдвигает вопрос по отношению к Domain Events - нужно ли отделять внутренние от внешних?
 Проблему озвучивает сам Vaughn Vernon:
@@ -408,7 +408,7 @@ Domain Events могут покидать пределы Bounded Context:
     Rather, **they should depend only on the schema of the events**, that is, **their Published Language**.
     This generally means that if the events are published as JSON, or perhaps a more economical object format, the consumer should consume the events by parsing them to obtain their data attributes."
 
-    \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon
+    \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "6. Tactical Design with Domain Events:: Designing, Implementing, and Using Domain Events"
 
 
 Тут он четко обозначает проблему, которой рано или поздно задаются многие. И он делает две вещи:
@@ -489,7 +489,7 @@ Domain Events могут покидать пределы Bounded Context:
 
     Model information about activity in the domain as a series of discrete events. Represent each event as a domain object. These are distinct from system events that reflect activity within the software itself, although often a system event is associated with a domain event, either as part of a response to the domain event or as a way of carrying information about the domain event into the system.
 
-    \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans
+    \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans, Chapter "Domain Events"
 
 
 One stage vs Two Stage
@@ -520,7 +520,7 @@ One stage vs Two Stage
     Yet, wide broadcast does not forbid delivery of Events by consumers in the same Bounded Context.
     Refer back to Figure 8.1.
 
-    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "8. Domain Events :: Publishing Events from the Domain Model :: Subscribers"
 
 Kamil Grzybek вводит явное разделение механизма доставки на две ступени, первая - для внутренних Domain Events, вторая - для внешних:
 
@@ -551,7 +551,7 @@ Kamil Grzybek вводит явное разделение механизма д
     Domain events are ordinarily immutable, as they are **a record of something in the past**.
     In addition to a description of the event, a domain event typically contains a timestamp for the time the event occurred and the identity of entities involved in the event.
 
-    \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans
+    \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans, Chapter "Domain events"
 
 ..
 
@@ -559,7 +559,7 @@ Kamil Grzybek вводит явное разделение механизма д
     **So, a command may be rejected, but a Domain Event is a matter of history and cannot logically be denied.**
     Even so, in response to a time-based Domain Event it could be that the application will need to generate one or more commands in order to ask the application to carry out some set of actions.
 
-    \- .. "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "6. Tactical Design with Domain Events  :: Designing, Implementing, and Using Domain Events"
+    \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "6. Tactical Design with Domain Events  :: Designing, Implementing, and Using Domain Events"
 
 ..
 
@@ -568,7 +568,7 @@ Kamil Grzybek вводит явное разделение механизма д
     Other Domain Events are ReleaseScheduled, SprintScheduled, BacklogItemPlanned, and BacklogItemCommitted.
     Each of the names clearly and concisely states what happened in your Core Domain.
 
-    \- .. "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "6. Tactical Design with Domain Events  :: Designing, Implementing, and Using Domain Events"
+    \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "6. Tactical Design with Domain Events  :: Designing, Implementing, and Using Domain Events"
 
 
 Решение - это баланс стоимости и обретаемой выгоды
@@ -644,7 +644,7 @@ Kamil Grzybek вводит явное разделение механизма д
     1. If a method modifies the state of the object, it is a command, and its method must not return a value. In Java and C# the method must be declared void .
     2. **If a method returns some value, it is a query**, and it must not directly or indirectly cause the modification of the state of the object. In Java and C# the method must be declared with the type of the value it returns.
 
-    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "4. Architecture :: Command-Query Responsibility Segregation, or CQRS"
 
 Или из  CQRS Journey:
 
@@ -726,7 +726,7 @@ Kamil Grzybek вводит явное разделение механизма д
     Through event processing, batch processing, or other update mechanisms, other dependencies can be resolved within some specified time.
     But the invariants applied within an AGGREGATE will be enforced with the completion of each transaction.
 
-    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans, Chapter "Six. The Life Cycle of a Domain Object:: Aggregates"
 
 И ее смысл в переводе:
 
@@ -744,7 +744,7 @@ Kamil Grzybek вводит явное разделение механизма д
     To be clear, the mechanism being spoken of here goes well beyond the simple, lightweight Publish-Subscribe components just discussed.
     Here we are discussing what takes over **where the lightweight mechanism leaves off**.
 
-    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "8. Domain Events :: Spreading the News to Remote Bounded Contexts"
 
 Сравните с русским переводом:
 
@@ -763,6 +763,7 @@ Kamil Grzybek вводит явное разделение механизма д
 
 Эта статья отражает мое мнение на текущий момент времени, которое, однако, я не спешил бы называть окончательно сформированным, поскольку существует еще достаточно большой пласт информации по этому вопросу, который мне только предстоит переработать.
 Основной посыл статьи - больше внимания уделять первоисточникам, и быть более гибким в принятии решений, хорошо осознавая их причины и следствия.
+
 
 .. rubric:: Footnotes
 
