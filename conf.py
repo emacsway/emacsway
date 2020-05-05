@@ -40,7 +40,7 @@ blog_baseurl = u'https://{0}/'.format(os.environ.get('HOST', 'emacsway.github.io
 # links. Dictionary keys are what should be used in ``post`` directive
 # to refer to the author.  Default is ``{}``.
 blog_authors = {
-    'Ivan Zakrevsky': ('Ivan Zakrevsky', None),
+    'Ivan Zakrevskii': ('Ivan Zakrevskii', None),
 }
 
 
@@ -189,8 +189,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = u"@emacsway's blog"
-copyright = u'{}, Ivan Zakrevsky'.format(datetime.datetime.now().strftime('%Y'))
-author = u'Ivan Zakrevsky'
+copyright = u'{}, Ivan Zakrevskii'.format(datetime.datetime.now().strftime('%Y'))
+author = u'Ivan Zakrevskii'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
