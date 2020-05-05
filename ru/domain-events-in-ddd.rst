@@ -29,9 +29,9 @@ Domain Events в DDD
 =======================
 
     Something happened that domain experts care about.
-    Model information about activity in the domain as a series of discrete events. Represent
-each event as a domain object.
-    \... A domain event is a full-fledged part of the domain model, a representation of something that happened in the domain.
+    Model information about activity in the domain as a series of discrete events. Represent each event as a domain object.
+    <...>
+    A domain event is a full-fledged part of the domain model, a representation of something that happened in the domain.
 
     \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans
 
@@ -48,6 +48,7 @@ Eventual Consistency - это следствие, а не причина
     As changes propagate across nodes of a network, it can be difficult to resolve multiple updates arriving out of order or from distinct sources.
 
     \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans
+
 ..
 
     It is difficult to guarantee the consistency of changes to objects in a model with complex associations.
@@ -103,7 +104,7 @@ Eventual Consistency - это следствие, а не причина
     Atomic changes are often not needed by the business, and it is in any case the responsibility of the domain experts to say whether particular operations need atomic transactions or not.
     If an operation always needs an atomic transaction between multiple aggregates, you might ask whether your aggregate should be larger or was not correctly designed.
 
-    \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnesoc]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "Domain events: design and implementation :: Single transaction across aggregates versus eventual consistency across aggregates <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#single-transaction-across-aggregates-versus-eventual-consistency-across-aggregates>`__"
+    \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnesoc]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "`Domain events: design and implementation :: Single transaction across aggregates versus eventual consistency across aggregates <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#single-transaction-across-aggregates-versus-eventual-consistency-across-aggregates>`__"
 
 О проблемах ухудшения параллелизма говорит и Vaughn Vernon, причем, причиной проблемы может стать даже один-единственный крупный агрегат.
 Как видно, дело не столько в количестве агрегатов, сколько в размере границ транзакции.
@@ -119,19 +120,19 @@ Eventual Consistency - это следствие, а не причина
     Through event processing, batch processing, or other update mechanisms, other dependencies can be resolved within some specified time.
     **But the invariants applied within an AGGREGATE will be enforced with the completion of each transaction.**
 
-    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd] by Eric Evans
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans
 
 А здесь он говорит о корне агрегата во множественном числе:
 
     Schemes have been developed for defining ownership relationships in the model. The following simple but rigorous system, distilled from those concepts, includes a set of rules for implementing transactions that modify the objects and their owners.
 
-    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd] by Eric Evans
+    \- "Domain-Driven Design: Tackling Complexity in the Heart of Software" [#fnddd]_ by Eric Evans
 
 Такую же причину озвучивает и Vaughn Vernon:
 
     Accepting that **all Aggregate instances in a large-scale, high-traffic enterprise are never completely consistent** helps us accept that eventual consistency also makes sense in the smaller scale where just a few instances are involved.
 
-    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "Chapter 9. Modules :: Rule: Use Eventual Consistency Outside the Boundary"
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "9. Modules :: Rule: Use Eventual Consistency Outside the Boundary"
 
 Кстати, автором идеи агрегата является даже не Eric Evans, а David Siegel.
 Оригинальная работа  к сожалению, не опубликована (по крайней мере, мне ее отыскать не удалось).
@@ -139,8 +140,7 @@ Eventual Consistency - это следствие, а не причина
 
     Eric Evans and David Siegel [Evans] define an **aggregate as a cluster of associated objects that we treat as a unit for data changes**.
     Each aggregate has a root that provides the only access point to members of the set and a boundary that defines what's included in the set.
-    The aggregate's characteristics call for a Coarse-Grained Lock, since working with any of its members requires locking all of them. Locking an aggregate yields an alternative
-to a shared lock that I call a root lock (see Figure 16.4).
+    The aggregate's characteristics call for a Coarse-Grained Lock, since working with any of its members requires locking all of them. Locking an aggregate yields an alternative to a shared lock that I call a root lock (see Figure 16.4).
     By definition locking the root locks all members of the aggregate. The root lock gives us a single point of contention.
 
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
@@ -198,8 +198,8 @@ to a shared lock that I call a root lock (see Figure 16.4).
 Далее, в главе "Chapter 10 Aggregates :: Gaining Insight through Discovery :: Is It the Team Member’s Job?" он демонстрирует применение принципа "Ask Whose Job It Is" на практике.
 
 
-Strong Consistency для начинающих
----------------------------------
+Strong Consistency - новичкам
+-----------------------------
 
 Вот что советует новичкам Vaughn Vernon:
 
@@ -253,7 +253,7 @@ Strong Consistency для начинающих
     Imagine the business has decided that if the referral policy cannot be applied, it should not create the new account.
     Therefore, the transactional boundary encapsulates creating the new account and applying the referral policy to both accounts, as shown in Figure 25-3.
 
-    \- "Patterns, Principles, and Practices of Domain-Driven Design" [#fnddd] by Scott Millett, Nick Tune, Chapter "19 Aggregates :: Special Cases"
+    \- "Patterns, Principles, and Practices of Domain-Driven Design" [#fnpppddd]_ by Scott Millett, Nick Tune, Chapter "19 Aggregates :: Special Cases"
 
 
 Мнение Jimmy Bogard
@@ -266,7 +266,7 @@ Strong Consistency для начинающих
 
         Typically, I want the side effects of a domain event to occur within the same logical transaction, but not necessarily in the same scope of raising the domain event [...] Just before we commit our transaction, we dispatch our events to their respective handlers.
 
-    \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnesoc]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "Domain events: design and implementation :: Single transaction across aggregates versus eventual consistency across aggregates <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#single-transaction-across-aggregates-versus-eventual-consistency-across-aggregates>`__"
+    \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnesoc]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "`Domain events: design and implementation :: Single transaction across aggregates versus eventual consistency across aggregates <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#single-transaction-across-aggregates-versus-eventual-consistency-across-aggregates>`__"
 
 Сам Jimmy Bogard говорит следующее:
 
@@ -450,7 +450,7 @@ Domain Events могут покидать пределы Bounded Context:
 
     \- "`How to publish and handle Domain Events <http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/#comment-4602236620>`__" [#fnkgde1]_, comment of Kamil Grzybek
 
-Еще дальше идут авторы книги "Patterns, Principles, and Practices of Domain-Driven Design" [#fnddd]_, вводя явное разделение внутренних и внешних событий:
+Еще дальше идут авторы книги "Patterns, Principles, and Practices of Domain-Driven Design" [#fnpppddd]_, вводя явное разделение внутренних и внешних событий:
 
 .. figure:: /_media/en/domain-events-in-ddd/pppddd-18.1.png
    :alt: FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
@@ -472,16 +472,18 @@ Domain Events могут покидать пределы Bounded Context:
     This is another differentiator with internal events, because if you make breaking changes to an internal  event your code will not compile (if using a compiled programming language). So there’s no need to  version internal events.
 
     As you start to implement domain events, you will see that in a typical business use case there may  be a number of internal events raised, and just one or two external events that are raised by the  service layer.
-Figure 18-2 illustrates how the sequence of events may occur in a typical use case.
+    Figure 18-2 illustrates how the sequence of events may occur in a typical use case.
 
     With all of these differences in mind, it makes sense to put your events in different namespaces to  accentuate those that are internal from those that are external.
 
-    \- "Patterns, Principles, and Practices of Domain-Driven Design" [#fnddd]_ by Scott Millett, Nick Tune, Chapter "18 Domain Events :: Internal vs External Events"
+    \- "Patterns, Principles, and Practices of Domain-Driven Design" [#fnpppddd]_ by Scott Millett, Nick Tune, Chapter "18 Domain Events :: Internal vs External Events"
 
-.. image:: /_media/en/domain-events-in-ddd/pppddd-18.2.png
-   :alt: FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form the book "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
+.. figure:: /_media/en/domain-events-in-ddd/pppddd-18.2.png
+   :alt: FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
    :align: center
    :width: 70%
+
+   FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
 
 ..
 
@@ -497,13 +499,13 @@ One stage vs Two Stage
 
 Хотя у Vaughn Vernon такое разделение не совсем очевидное, он разделяет реализацию доставки  для подписчиков внутри Bounded Context за его пределами.
 
-.. figure:: /_media/en/domain-events-in-ddd/dddi-18.1.png
-   :alt: Figure 8.1. Aggregates create Events and publish them. Subscribers may store Events and then **forward them to remote subscribers**, or just forward them without storing. Immediate forwarding requires XA (two-phase commit) unless messaging middleware shares the model’s data store. The image is from "Implementing Domain-Driven Design" by Vaughn Vernon
+.. figure:: /_media/en/domain-events-in-ddd/iddd-8.1.png
+   :alt: Figure 8.1. Aggregates create Events and publish them. Subscribers may store Events and then forward them to remote subscribers, or just forward them without storing. Immediate forwarding requires XA (two-phase commit) unless messaging middleware shares the model’s data store. The image is from "Implementing Domain-Driven Design" by Vaughn Vernon
    :align: center
    :width: 70%
 
    Figure 8.1. Aggregates create Events and publish them.
-   **Subscribers** may store Events and then **forward them to remote subscribers**, or just forward them without storing.
+   **Subscribers may store Events and then forward them to remote subscribers, or just forward them without storing.**
    Immediate forwarding requires XA (two-phase commit) unless messaging middleware shares the model’s data store.
    The image is from "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon
 
@@ -648,14 +650,13 @@ Kamil Grzybek вводит явное разделение механизма д
 
     A query returns data and does not alter the state of the object; a command changes the state of an object but does not return any data.
 
-    \- "` CQRS Journey
- :: Reference 2: Introducing the Command Query Responsibility Segregation Pattern :: What is CQRS? <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/jj591573(v=pandp.10)#what-is-cqrs>`__"
+    \- "`CQRS Journey :: Reference 2: Introducing the Command Query Responsibility Segregation Pattern :: What is CQRS? <https://docs.microsoft.com/en-us/previous-versions/msp-n-p/jj591573(v=pandp.10)#what-is-cqrs>`__"
 
 Но как быть, если команда исполняется асинхронно, используя инфраструктуру  (Command Bus), и мы должны вернуть результат команды в исполнение требований `RFC-7231 <https://tools.ietf.org/html/rfc7231#page-25>`__  для HTTP-method POST REST API:
 
     the origin server SHOULD send a 201 (Created) response containing a Location header field that provides an identifier for the primary resource created (Section 7.1.2) and a representation that describes the status of the request while referring to the new resource(s).
 
-    \- `Section 4.3.3.  POST of RFC-7231 <https://tools.ietf.org/html/rfc7231#section-4.3.3>`__
+    \- "`Section 4.3.3. POST of RFC-7231 <https://tools.ietf.org/html/rfc7231#section-4.3.3>`__"
 
 Есть два варианта.
 
@@ -669,7 +670,7 @@ Kamil Grzybek вводит явное разделение механизма д
 
     The PUT method requests that the state of the target resource be created or replaced with the state defined by the representation enclosed in the request message payload. <...> If the target resource does not have a current representation and the PUT successfully creates one, then the origin server MUST inform the user agent by sending a 201 (Created) response.
 
-    \- "`Section 4.3.4. PUT  of RFC-7231 <https://tools.ietf.org/html/rfc7231#section-4.3.4>`"
+    \- "`Section 4.3.4. PUT of RFC-7231 <https://tools.ietf.org/html/rfc7231#section-4.3.4>`__"
 
 Идею второго варианта выразил самим Bertrand Meyer, в виде введения концепции буфера:
 
@@ -682,13 +683,13 @@ Kamil Grzybek вводит явное разделение механизма д
     next_element := buffer.item
     buffer.remove
 
-::
+..
 
     With the notation of this chapter, it is easy to obtain exclusive access without sacrificing the Command-Query Separation principle: simply enclose the two instructions above, with buffer replaced by b, in a procedure of formal argument b, and call that procedure with the attribute buffer as argument.
 
     \- "Object-Oriented Software Construction" [#fnoosc]_ 2nd edition by Bertrand Meyer, chapter "30.12 DISCUSSION :: Support for command-query separation"
 
-Если транслировать этот же принцип на REST-API, то мы получим паттерн "`Asynchronous Request-Reply pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/async-request-reply>`", использующий `202 Response Status Code <https://tools.ietf.org/html/rfc7231#section-6.3.3>`_.
+Если транслировать этот же принцип на REST-API, то мы получим паттерн "`Asynchronous Request-Reply pattern <https://docs.microsoft.com/en-us/azure/architecture/patterns/async-request-reply>`__", использующий `202 Response Status Code <https://tools.ietf.org/html/rfc7231#section-6.3.3>`_.
 
 У Bertrand Meyer в главе "23.1 SIDE EFFECTS IN FUNCTIONS :: Pseudo-random number generators: a design exercise" книги "Object-Oriented Software Construction" [#fnoosc]_ 2nd edition, есть пример с генератором случайных чисел, который решает задачу, аналогичную задаче с получением идентификатора ресурса.
 Цитировать не буду, ибо много текста, если интересно, можно посмотреть в книге.
@@ -697,8 +698,7 @@ Kamil Grzybek вводит явное разделение механизма д
 
 Так же он разделяет абстрактное состояние от конкретного состояния, и приводит пример, в значительной мере похожий на добавление нового ресурса через REST-API:
 
-    What this means for us is that a function that modifies a concrete object is harmless if the result of this modification still represents the same abstract object — yields the same
-a value.
+    What this means for us is that a function that modifies a concrete object is harmless if the result of this modification still represents the same abstract object — yields the same a value.
     For example assume in a function on stacks contains the operation
 
     representation.put (some_value, count + 1)
@@ -710,7 +710,7 @@ a value.
 
 Как видно, внимательное изучение первоисточника дает глубокое понимание целей, причин, спектра решаемых проблем, достоинств и недостатков, и, как следствие, приводит к более гибким и менее догматичным архитектурным решениям.
 
-Как результат, в одном из лучших демонстрационных приложений, Команда возвращает результат, смотрите `здесь <https://github.com/dotnet-architecture/eShopOnContainers/blob/b1021c88d55d96c247eab75bde650ab4b194f706/src/Services/Ordering/Ordering.API/Controllers/OrdersController.cs#L151>` и `здесь <https://github.com/dotnet-architecture/eShopOnContainers/blob/b1021c88d55d96c247eab75bde650ab4b194f706/src/Services/Ordering/Ordering.API/Application/Commands/CreateOrderDraftCommandHandler.cs#L40>`.
+Как результат, в одном из лучших демонстрационных приложений, Команда возвращает результат, смотрите `здесь <https://github.com/dotnet-architecture/eShopOnContainers/blob/b1021c88d55d96c247eab75bde650ab4b194f706/src/Services/Ordering/Ordering.API/Controllers/OrdersController.cs#L151>`__ и `здесь <https://github.com/dotnet-architecture/eShopOnContainers/blob/b1021c88d55d96c247eab75bde650ab4b194f706/src/Services/Ordering/Ordering.API/Application/Commands/CreateOrderDraftCommandHandler.cs#L40>`__.
 
 
 Почему важно читать оригиналы вместо переводов
@@ -770,7 +770,7 @@ a value.
 .. [#fndddr] "`Domain-Driven Design Reference <https://domainlanguage.com/ddd/reference/>`__" by Eric Evans
 .. [#fniddd] "`Implementing Domain-Driven Design <https://kalele.io/books/>`__" by Vaughn Vernon
 .. [#fndddd] "`Domain-Driven Design Distilled <https://kalele.io/books/>`__" by Vaughn Vernon
-.. [#fnddd] "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
+.. [#fnpppddd] "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
 .. [#fnesoc] "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" edition v2.2.1 (`mirror <https://aka.ms/microservicesebook>`__) by Cesar de la Torre, Bill Wagner, Mike Rousos
 .. [#fncqrsj] "`CQRS Journey <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj554200(v=pandp.10)>`__" by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian
 .. [#fnoosc] "Object-Oriented Software Construction" 2nd edition by Bertrand Meyer
