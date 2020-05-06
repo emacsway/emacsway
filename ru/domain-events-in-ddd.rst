@@ -518,7 +518,7 @@ Strong Consistency - новичкам
 
     for in-memory event based communication across disconnected aggregates that are part of the same domain model and part of the same transaction, domain events are great ensuring consistency across a single domain model within the same microservice or Bounded-Context.
 
-    \- "Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures" [#cdltdevie]_ by Cesar De la Torre, Principal Program Manager, .NET
+    \- "Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures" [#fncdltdevie]_ by Cesar De la Torre, Principal Program Manager, .NET
 
 
 In-process vs out-of-process
@@ -649,7 +649,7 @@ Domain Events могут покидать пределы Bounded Context:
     Basically, by differentiating between Domain Events and Integration Events you can solve the issue of dealing with transactions since domain events are always scoped within a transaction but integration events (using an EventBus.Publish()) are only published to the outside world if the transaction was committed successfully.
     By doing this you can be sure that other domain-models, microservices and external systems do not react on something that in fact has rolled back and does not exist anymore.
 
-    \- "Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures" [#cdltdevie]_ by Cesar De la Torre, Principal Program Manager, .NET
+    \- "Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures" [#fncdltdevie]_ by Cesar De la Torre, Principal Program Manager, .NET
 
 ..
 
@@ -1057,6 +1057,6 @@ Kamil Grzybek вводит явное разделение механизма д
 .. [#fnudde1] "`How to create fully encapsulated Domain Models <http://udidahan.com/2008/02/29/how-to-create-fully-encapsulated-domain-models/>`__" by Udi Dahan
 .. [#fnudde2] "`Domain Events – Take 2 <http://udidahan.com/2008/08/25/domain-events-take-2/>`__" by Udi Dahan
 .. [#fnudde3] "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/>`__" by Udi Dahan
-.. [#cdltdevie] "`Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures <https://devblogs.microsoft.com/cesardelatorre/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/>`__" by Cesar De la Torre, Principal Program Manager, .NET
+.. [#fncdltdevie] "`Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures <https://devblogs.microsoft.com/cesardelatorre/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/>`__" by Cesar De la Torre, Principal Program Manager, .NET
 
 .. .. update:: May 05, 2020
