@@ -554,7 +554,14 @@ Domain Events могут покидать пределы Bounded Context:
 
    FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
 
-Разделяют Domain Events на внутренние и внешние и специалисты .Net, см. "Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures" [#cdltdevie]_ by Cesar De la Torre, Principal Program Manager, .NET.
+Разделяют Domain Events на внутренние и внешние и специалисты .NET.
+
+    Basically, by differentiating between Domain Events and Integration Events you can solve the issue of dealing with transactions since domain events are always scoped within a transaction but integration events (using an EventBus.Publish()) are only published to the outside world if the transaction was committed successfully.
+    By doing this you can be sure that other domain-models, microservices and external systems do not react on something that in fact has rolled back and does not exist anymore.
+
+    \- "Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures" [#cdltdevie]_ by Cesar De la Torre, Principal Program Manager, .NET
+
+..
 
     Domain events versus integration events
 
@@ -588,7 +595,7 @@ Domain Events могут покидать пределы Bounded Context:
     \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans, Chapter "Domain Events"
 
 
-One stage vs Two Stage
+One-phase vs Two-phase
 ======================
 
 .. TODO: https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#domain-events-as-a-preferred-way-to-trigger-side-effects-across-multiple-aggregates-within-the-same-domain
