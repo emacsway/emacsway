@@ -495,6 +495,10 @@ Domain Events могут покидать пределы Bounded Context:
 One stage vs Two Stage
 ======================
 
+.. TODO: https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#domain-events-as-a-preferred-way-to-trigger-side-effects-across-multiple-aggregates-within-the-same-domain
+.. TODO: https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#single-transaction-across-aggregates-versus-eventual-consistency-across-aggregates
+.. TODO: В статье http://udidahan.com/2009/06/14/domain-events-salvation/ Уди Дахан рассматривает асинхронную обработку ивентов как в дополнение к синхронной, а не вместо неё.
+
 Ответ на вопрос о разделении доставки Domain Events во многом зависит от того, разделять ли Domain Events на внутренние и внешние?
 
 Хотя у Vaughn Vernon такое разделение не совсем очевидное, он разделяет реализацию доставки  для подписчиков внутри Bounded Context за его пределами.
@@ -519,6 +523,14 @@ One stage vs Two Stage
     The contract of Event publishing should have the potential to be at least as broad as the enterprise, or even broader.
     Yet, wide broadcast does not forbid delivery of Events by consumers in the same Bounded Context.
     Refer back to Figure 8.1.
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "8. Domain Events :: Publishing Events from the Domain Model :: Subscribers"
+
+При этом, Vaughn Vernon делает предостережение относительно первой ступени доставки, т.е. внутренних подписчиков, впрочем, это предостережение зависит от уже рассмотренного ранее вопроса Eventual Consistency vs Strong (Transactional) Consistency.
+
+    Remember, the Application Service controls the transaction.
+    Don't use the Event notification to modify a second Aggregate instance.
+    That breaks a rule of thumb to modify one Aggregate instance per transaction.
 
     \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "8. Domain Events :: Publishing Events from the Domain Model :: Subscribers"
 
