@@ -543,7 +543,7 @@ Domain Events могут покидать пределы Bounded Context:
 
    FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
 
-Разделяет их и Udi Dahan:
+Разделяет Domain Events на внутренние и внешние и Udi Dahan:
 
     I found this https://blogs.msdn.microsoft.com/cesardelatorre/2017/02/07/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/ article where talks about Domain Events and Integration Events.
     I think that answers my question.
