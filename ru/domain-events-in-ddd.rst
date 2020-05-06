@@ -502,6 +502,15 @@ Domain Events могут покидать пределы Bounded Context:
 
     \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "1. DDD for Me :: Tactical Design"
 
+..
+
+    Publishing the Event outward to any number Bounded Contexts of other Subdomains (2) emphasizes the word Domain in the term Domain Event.
+    In other words, Events are a domain-wide concept, not just a concept in a single Bounded Context.
+    The contract of Event publishing should have the potential to be at least as broad as the enterprise, or even broader.
+    Yet, wide broadcast does not forbid delivery of Events by consumers in the same Bounded Context.
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "8. Domain Events :: Publishing Events from the Domain Model :: Subscribers"
+
 Это выдвигает вопрос по отношению к Domain Events - нужно ли отделять внутренние от внешних?
 Проблему озвучивает сам Vaughn Vernon:
 
