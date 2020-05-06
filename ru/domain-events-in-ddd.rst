@@ -154,8 +154,8 @@ Eventual Consistency - это следствие, а не причина
 Здесь говорится про единицу изменения, про бизнес-транзакцию и блокировку, но о связи бизнес-транзакции с системной транзакцией говорится только то, что "the system transaction in which you commit the business transaction", т.е. границы системной транзакции включают в себя границы бизнес-транзакции, но не ограничиваются ею.
 
 
-Eventual Consistency
---------------------
+Eventual Consistency - основной способ согласования агрегатов
+-------------------------------------------------------------
 
 С одной стороны, Vaughn Vernon настоятельно рекомендует использовать Eventual Consistency между Агрегатами:
 
@@ -468,8 +468,8 @@ Strong Consistency - новичкам
     \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-74959>`__" [#fnudde3]_ comment of Udi Dahan
 
 
-Cesar De la Torre
------------------
+Мнение Cesar De la Torre
+------------------------
 
     When handling the event, any event handler subscribed to the event could run additional domain operations by using other AggregateRoot objects, but again, you still need to be within the same transaction scope.
 
@@ -743,8 +743,33 @@ Kamil Grzybek вводит явное разделение механизма д
 А вот Udi Dahan в своей статье "Domain Events – Salvation" [#fnudde3]_ предложил использовать единый Mediator как для внутренних синхронных подписчиков, вызываемых в той же транзакции, так и для асинхронных подписчиков.
 
 
-Может ли Domain Event отменить событие его инициировавшее?
-==========================================================
+Кто может издавать Domain Event?
+================================
+
+    One more point about what can cause a Domain Event is noteworthy.
+    Although often it is a user-based command emitted by the user interface that causes an event to occur, sometimes Domain Events
+    can be caused by a different source.
+    This might be from a timer that expires, such as at the end of the business day or the end of a week, month, or year.
+    In cases like this it won’t be a command that causes the event, because the ending of some time period is a matter of fact.
+    You can’t reject the fact that some time frame has expired, and if the business cares about this fact, the time expiration is modeled as a Domain Event, and not as a command.
+
+    \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "6. Tactical Design with Domain Events  :: Designing, Implementing, and Using Domain Events"
+
+..
+
+    Sometimes Events are designed to be created by direct request from clients.
+    This is done in response to some occurrence that is not the direct result of executing behavior on an instance of an Aggregate in the model.
+    Possibly a user of the system initiates some action that is considered an Event in its own right.
+    When that happens, the Event can be modeled as an Aggregate and retained in its own Repository.
+    Since it represents some past occurrence, its Repository would not permit its removal.
+    When Events are modeled in this way, like Aggregates they become part of the model’s structure.
+    Thus, they are not just a record of some past occurrence, although they are that also.
+
+    \-"Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "Chapter 8. Domain Events :: Modeling Events :: With Aggregate Characteristics"
+
+
+Может ли Domain Event отменить свою причину?
+============================================
 
     Domain events are ordinarily immutable, as they are **a record of something in the past**.
     In addition to a description of the event, a domain event typically contains a timestamp for the time the event occurred and the identity of entities involved in the event.
