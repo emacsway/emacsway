@@ -526,9 +526,14 @@ In-process vs out-of-process
 
 Обычно считается, что in-process - это синхронное исполнение, а out-of-process - асинхронное.
 Хотя, сугубо технически, асинхронное исполнение может быть как in-process, так и out-of-process.
-К тому же асинхронное исполнение нужно подразделять на использующее event-loop и использующее внешнюю инфраструктуру (external event bus).
+К тому же асинхронное исполнение нужно подразделять на использующее event-loop (async/await) и использующее внешнюю инфраструктуру (external event bus).
 
 В большинстве случаев, in-process подразумевает "в той же транзакции", т.е. Strong Consistency.
+
+    The reference app uses MediatR to propagate domain events synchronously across aggregates, within a single transaction.
+    However, you could also use some AMQP implementation like RabbitMQ or Azure Service Bus to propagate domain events asynchronously, using eventual consistency but, as mentioned above, you have to consider the need for compensatory actions in case of failures.
+
+    \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnnetms]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "`Domain events: design and implementation :: Conclusions on domain events <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#conclusions-on-domain-events>`__"
 
 
 Internal vs External
