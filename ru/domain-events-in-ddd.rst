@@ -375,16 +375,6 @@ Strong Consistency - новичкам
 Мнение Udi Dahan
 ----------------
 
-    I found this https://blogs.msdn.microsoft.com/cesardelatorre/2017/02/07/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/ article where talks about Domain Events and Integration Events.
-    I think that answers my question.
-    What he says **within a bounded context we can keep one logical transaction using in memory domain events**.
-    **However once one transaction is committed within bounded context then we send one way messaging using Service Bus that message is called integration message.**
-    This is the message on which other bounded context are interested.
-
-    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-96828>`__" [#fnudde3]_ comment of Udi Dahan
-
-..
-
     > This might be a bit of a late question. But shouldn’t domain events be handled after the transaction ends?
     Is there any specific reason for handle domain events within the same transaction scoping DoSomething?
 
@@ -440,8 +430,6 @@ Strong Consistency - новичкам
 
 Cesar De la Torre
 -----------------
-
-Именно на этого парня `ссылается Udi Dahan <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-96828>`__ по этому вопросу.
 
     When handling the event, any event handler subscribed to the event could run additional domain operations by using other AggregateRoot objects, but again, you still need to be within the same transaction scope.
 
@@ -566,15 +554,32 @@ Domain Events могут покидать пределы Bounded Context:
 
    FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
 
-Разделяет Domain Events на внутренние и внешние и Udi Dahan:
+Разделяют Domain Events на внутренние и внешние и специалисты .Net, см. "Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures" [#cdltdevie]_ by Cesar De la Torre, Principal Program Manager, .NET.
 
-    I found this https://blogs.msdn.microsoft.com/cesardelatorre/2017/02/07/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/ article where talks about Domain Events and Integration Events.
-    I think that answers my question.
-    What he says within a bounded context we can keep one logical transaction using in memory domain events.
-    **However once one transaction is committed within bounded context then we send one way messaging using Service Bus that message is called integration message.**
-    **This is the message on which other bounded context are interested.**
+    Domain events versus integration events
 
-    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-96828>`__" [#fnudde3]_ comment of Udi Dahan
+    Semantically, domain and integration events are the same thing: notifications about something that just happened.
+    However, their implementation must be different.
+    Domain events are just messages pushed to a domain event dispatcher, which could be implemented as an in-memory mediator based on an IoC container or any other method.
+
+    On the other hand, the purpose of integration events is to propagate committed transactions and updates to additional subsystems, whether they are other microservices, Bounded Contexts or even external applications.
+    Hence, they should occur only if the entity is successfully persisted, otherwise it's as if the entire operation never happened.
+
+    As mentioned before, integration events must be based on asynchronous communication between multiple microservices (other Bounded Contexts) or even external systems/applications.
+
+    Thus, the event bus interface needs some infrastructure that allows inter-process and distributed communication between potentially remote services.
+    It can be based on a commercial service bus, queues, a shared database used as a mailbox, or any other distributed and ideally push based messaging system.
+
+    \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnesoc]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "`Domain events: design and implementation :: Domain events versus integration events <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#domain-events-versus-integration-events>`__"
+
+..
+
+    Domain events can generate integration events to be published outside of the microservice boundaries
+
+    Finally, it's important to mention that you might sometimes want to propagate events across multiple microservices.
+    That propagation is an integration event, and it could be published through an event bus from any specific domain event handler.
+
+    \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnesoc]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "`Domain events: design and implementation :: Implement domain events :: Domain events can generate integration events to be published outside of the microservice boundaries <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#domain-events-can-generate-integration-events-to-be-published-outside-of-the-microservice-boundaries>`__"
 
 ..
 
@@ -921,6 +926,6 @@ Kamil Grzybek вводит явное разделение механизма д
 .. [#fnudde1] "`How to create fully encapsulated Domain Models <http://udidahan.com/2008/02/29/how-to-create-fully-encapsulated-domain-models/>`__" by Udi Dahan
 .. [#fnudde2] "`Domain Events – Take 2 <http://udidahan.com/2008/08/25/domain-events-take-2/>`__" by Udi Dahan
 .. [#fnudde3] "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/>`__" by Udi Dahan
-.. [#cdltdevie] "`Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures <https://devblogs.microsoft.com/cesardelatorre/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/>`__" by Cesar De la Torre, Principal Program Manager, .NET (`is cited by Udi Dahan <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-96828>`__)
+.. [#cdltdevie] "`Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures <https://devblogs.microsoft.com/cesardelatorre/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/>`__" by Cesar De la Torre, Principal Program Manager, .NET
 
 .. .. update:: May 05, 2020
