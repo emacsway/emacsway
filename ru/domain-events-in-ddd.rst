@@ -231,7 +231,7 @@ Eventual Consistency предпочтительней
 
 Можно заметить, что принцип "When examining the use case (or story), ask whether it’s the job of the user executing the use case to make the data consistent. **If it is, try to make it transactionally consistent, but only by adhering to the other rules of Aggregates.**" не противоречит приведенному ниже принципу "developers and architects like Jimmy Bogard are okay with spanning a single transaction across several aggregates - but only when those additional aggregates are related to side effects for the same original command."
 
-Здесь же Vaughn Vernon напоминает нам, что во главе угла стоит опять же, масштабирование и распределенность:
+Здесь же Vaughn Vernon напоминает нам, что во главе угла стоит, опять же, масштабирование и распределенность:
 
     We’ll have **consistency** where necessary [имеется ввиду CAP-theorem], and support for optimally performing and **highly scalable systems**.
 
