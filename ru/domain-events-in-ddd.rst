@@ -255,6 +255,47 @@ Strong Consistency - новичкам
     \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "5. Tactical Design with Aggregates :: Rule 4: Update Other Aggregates Using Eventual Consistency"
 
 
+Рекомендации ".NET Microservices"
+---------------------------------
+
+".NET Microservices: Architecture for Containerized .NET Applications" [#fnesoc]_ явно разделяет внутренние Domain Events (для подписчиков внутри Bounded Context) от внешних Integration Events.
+Внутренние Domain Events рекомендуется использовать для согласования Агрегатов.
+
+    Domain events as a preferred way to trigger side effects across multiple aggregates within the same domain
+
+    If executing a command related to one aggregate instance requires additional domain rules to be run on one or more additional aggregates, you should design and implement those side effects to be triggered by domain events.
+    As shown in Figure 7-14, and as one of the most important use cases, a domain event should be used to propagate state changes across multiple aggregates within the same domain model.
+
+    \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnesoc]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "`Domain events: design and implementation :: Domain events as a preferred way to trigger side effects across multiple aggregates within the same domain <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#domain-events-as-a-preferred-way-to-trigger-side-effects-across-multiple-aggregates-within-the-same-domain>`__"
+
+..
+
+    Be aware that transactional boundaries come into significant play here.
+    If your unit of work and transaction can span more than one aggregate (as when using EF Core and a relational database), this can work well.
+    But if the transaction cannot span aggregates, such as when you are using a NoSQL database like Azure CosmosDB, you have to implement additional steps to achieve consistency.
+
+    \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnesoc]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "`Domain events: design and implementation :: Implement domain events :: The deferred approach to raise and dispatch events <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#the-deferred-approach-to-raise-and-dispatch-events>`__"
+
+..
+
+    Actually, both approaches (single atomic transaction and eventual consistency) can be right.
+    It really depends on your domain or business requirements and what the domain experts tell you.
+    It also depends on how scalable you need the service to be (more granular transactions have less impact with regard to database locks).
+    And it depends on how much investment you are willing to make in your code, since eventual consistency requires more complex code in order to detect possible inconsistencies across aggregates and the need to implement compensatory actions.
+    Consider that if you commit changes to the original aggregate and afterwards, when the events are being dispatched, if there is an issue and the event handlers cannot commit their side effects, you will have inconsistencies between aggregates.
+
+    A way to allow compensatory actions would be to store the domain events in additional database tables so they can be part of the original transaction.
+    Afterwards, you could have a batch process that detects inconsistencies and runs compensatory actions by comparing the list of events with the current state of the aggregates.
+    The compensatory actions are part of a complex topic that will require deep analysis from your side, which includes discussing it with the business user and domain experts.
+
+    In any case, you can choose the approach you need.
+    But the initial deferred approach—raising the events before committing, so you use a single transaction—is the simplest approach when using EF Core and a relational database.
+    It is easier to implement and valid in many business cases.
+    It is also the approach used in the ordering microservice in eShopOnContainers.
+
+    \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnesoc]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "`Domain events: design and implementation :: Implement domain events :: Single transaction across aggregates versus eventual consistency across aggregates <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#single-transaction-across-aggregates-versus-eventual-consistency-across-aggregates>`__"
+
+
 Мнение Scott Millett и Nick Tune
 --------------------------------
 
@@ -646,10 +687,6 @@ Domain Events могут покидать пределы Bounded Context:
 
 One-phase vs Two-phase
 ======================
-
-.. TODO: https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#domain-events-as-a-preferred-way-to-trigger-side-effects-across-multiple-aggregates-within-the-same-domain
-.. TODO: https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#single-transaction-across-aggregates-versus-eventual-consistency-across-aggregates
-.. TODO: В статье http://udidahan.com/2009/06/14/domain-events-salvation/ Уди Дахан рассматривает асинхронную обработку ивентов как в дополнение к синхронной, а не вместо неё.
 
 Ответ на вопрос о разделении доставки Domain Events во многом зависит от того, разделять ли Domain Events на внутренние и внешние?
 
