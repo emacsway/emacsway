@@ -309,63 +309,6 @@ Strong Consistency - новичкам
     \- "A better domain events pattern" [#fnjbde2]_ by Jimmy Bogard
 
 
-Мнение Udi Dahan
-----------------
-
-
-    > This might be a bit of a late question. But shouldn’t domain events be handled after the transaction ends?
-    Is there any specific reason for handle domain events within the same transaction scoping DoSomething?
-
-    Domain events get handled by service layer objects in the same process which usually send out other messages – as such, we want those messages to be sent (or not) in the same transactional context.
-
-    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-4723>`__" [#fnudde3]_ comment of Udi Dahan
-
-..
-
-    > In message number 120 above, Lars asks about how to access the data if the event is fired before the commit.
-    I didn’t understand your response.
-    Maybe my situation is different so I’ll explain.
-
-    > I have 2 BCs.
-    One context deals with the merging of employee information.
-    I’d like to fire a domain event specifying that the employee was merged.
-    I’d like the 2nd BC to react to this event.
-    The issue is that the data won’t be committed at that point, and this data that changed is vital to the 2nd BC to react.
-
-    > Am I going down the wrong path by attempting to use domain events? Is there another solution you could suggest?
-
-    The question is whether you need both your BCs to be consistent with each other at \*all\* times – ergo in the same transaction.
-
-    **If the answer is yes, then you absolutely do want the event to be raised and handled in the same transaction – you’d also be deploying both BCs together.**
-
-    If the answer is no, then you should use some kind of message bus between the BCs.
-    The handler for the domain event would publish a message using the bus, and that would be enlisted in the same transaction – thus is the first BC rolled back, the message wouldn’t be sent.
-    The second BC would be invoked by the bus when the message arrives at its queue where its handling would then be done in a separate transaction.
-
-    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-4730>`__" [#fnudde3]_ comment of Udi Dahan
-
-..
-
-    > Shouldn’t the event only be handled when the transaction commits?
-    Until the transaction commits, the change to the domain object isn’t really permanent, right?
-
-    Not necessarily – sometimes you want loose-coupling within the same transaction.
-
-    I do agree that often where we find a place ready for logical decoupling it coincides with separate transaction boundaries.
-    In those cases, using a transactionally-aware technology like NServiceBus will be a better choice for publishing events.
-
-    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-4773>`__" [#fnudde3]_ comment of Udi Dahan
-
-..
-
-    > Domain event could alter multiple aggregates which is common, wouldn’t you be updating multiple aggregates in a single transaction?
-
-    **The more common case is where those multiple aggregates are updated in separate transactions**, usually as a result of some kind of "service bus" event being transmitted from the domain events.
-    That service bus event gets routed to multiple subscribers, behind which you’d have each of the respective aggregates that would updated in their own transactions.
-
-    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-74959>`__" [#fnudde3]_ comment of Udi Dahan
-
-
 Мнение Kamil Grzybek
 --------------------
 
@@ -427,6 +370,63 @@ Strong Consistency - новичкам
     \- "`Handling Domain Events: Missing Part <http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/>`__" [#fnkgde2]_ by Kamil Grzybek
 
 И, в своем демонстрационном приложении sample-dotnet-core-cqrs-api, `он демонстрирует обработку Domain Event в одной транзакции с агрегатом <https://github.com/kgrzybek/sample-dotnet-core-cqrs-api/blob/01a1d6517bc88773f004abc0cb9c6d79f537e575/src/SampleProject.Application/Orders/PlaceCustomerOrder/OrderPlacedDomainEventHandler.cs#L22>`__.
+
+
+Мнение Udi Dahan
+----------------
+
+
+    > This might be a bit of a late question. But shouldn’t domain events be handled after the transaction ends?
+    Is there any specific reason for handle domain events within the same transaction scoping DoSomething?
+
+    Domain events get handled by service layer objects in the same process which usually send out other messages – as such, we want those messages to be sent (or not) in the same transactional context.
+
+    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-4723>`__" [#fnudde3]_ comment of Udi Dahan
+
+..
+
+    > In message number 120 above, Lars asks about how to access the data if the event is fired before the commit.
+    I didn’t understand your response.
+    Maybe my situation is different so I’ll explain.
+
+    > I have 2 BCs.
+    One context deals with the merging of employee information.
+    I’d like to fire a domain event specifying that the employee was merged.
+    I’d like the 2nd BC to react to this event.
+    The issue is that the data won’t be committed at that point, and this data that changed is vital to the 2nd BC to react.
+
+    > Am I going down the wrong path by attempting to use domain events? Is there another solution you could suggest?
+
+    The question is whether you need both your BCs to be consistent with each other at \*all\* times – ergo in the same transaction.
+
+    **If the answer is yes, then you absolutely do want the event to be raised and handled in the same transaction – you’d also be deploying both BCs together.**
+
+    If the answer is no, then you should use some kind of message bus between the BCs.
+    The handler for the domain event would publish a message using the bus, and that would be enlisted in the same transaction – thus is the first BC rolled back, the message wouldn’t be sent.
+    The second BC would be invoked by the bus when the message arrives at its queue where its handling would then be done in a separate transaction.
+
+    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-4730>`__" [#fnudde3]_ comment of Udi Dahan
+
+..
+
+    > Shouldn’t the event only be handled when the transaction commits?
+    Until the transaction commits, the change to the domain object isn’t really permanent, right?
+
+    Not necessarily – sometimes you want loose-coupling within the same transaction.
+
+    I do agree that often where we find a place ready for logical decoupling it coincides with separate transaction boundaries.
+    In those cases, using a transactionally-aware technology like NServiceBus will be a better choice for publishing events.
+
+    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-4773>`__" [#fnudde3]_ comment of Udi Dahan
+
+..
+
+    > Domain event could alter multiple aggregates which is common, wouldn’t you be updating multiple aggregates in a single transaction?
+
+    **The more common case is where those multiple aggregates are updated in separate transactions**, usually as a result of some kind of "service bus" event being transmitted from the domain events.
+    That service bus event gets routed to multiple subscribers, behind which you’d have each of the respective aggregates that would updated in their own transactions.
+
+    \- "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/#comment-74959>`__" [#fnudde3]_ comment of Udi Dahan
 
 
 In-process vs out-of-process
