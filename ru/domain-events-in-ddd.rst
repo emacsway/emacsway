@@ -255,7 +255,7 @@ Strong Consistency - новичкам
     \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "5. Tactical Design with Aggregates :: Rule 4: Update Other Aggregates Using Eventual Consistency"
 
 
-Рекомендации ".NET Microservices"
+Рекомендации от ".NET Microservices"
 ---------------------------------
 
 ".NET Microservices: Architecture for Containerized .NET Applications" [#fnnetms]_ явно разделяет внутренние Domain Events (для подписчиков внутри Bounded Context) от внешних Integration Events.
