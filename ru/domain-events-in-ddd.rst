@@ -237,7 +237,7 @@ Eventual Consistency предпочтительней
 
     \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Reasons to Break the Rules :: Adhering to the Rules"
 
-Далее, в главе "Chapter 10 Aggregates :: Gaining Insight through Discovery :: Is It the Team Member’s Job?" он демонстрирует применение принципа "Ask Whose Job It Is" на практике.
+Далее, в главе "Chapter 10 Aggregates :: Gaining Insight through Discovery :: Is It the Team Member’s Job?" книги, он демонстрирует применение принципа "Ask Whose Job It Is" на практике.
 
 
 Strong Consistency - новичкам
@@ -259,7 +259,7 @@ Strong Consistency - новичкам
 Рекомендации от ".NET Microservices"
 ------------------------------------
 
-".NET Microservices: Architecture for Containerized .NET Applications" [#fnnetms]_ явно разделяет внутренние Domain Events (для подписчиков внутри Bounded Context) от внешних Integration Events.
+".NET Microservices: Architecture for Containerized .NET Applications" [#fnnetms]_ явно разделяет внутренние Domain Events (для подписчиков внутри Bounded Context) и внешние Integration Events.
 Внутренние Domain Events рекомендуется использовать для синхронизации Агрегатов внутри Bounded Context.
 
     Domain events as a preferred way to trigger side effects across multiple aggregates within the same domain
@@ -342,7 +342,7 @@ Strong Consistency - новичкам
 Мнение Jimmy Bogard
 -------------------
 
-Вот что говорит ".NET Microservices: Architecture for Containerized .NET Applications"со ссылкой на Jimmy Bogard:
+Вот что говорит ".NET Microservices: Architecture for Containerized .NET Applications" со ссылкой на Jimmy Bogard:
 
     However, other developers and architects like Jimmy Bogard are okay with spanning a single transaction across several aggregates - but only when those additional aggregates are related to side effects for the same original command.
     For instance, in `A better domain events pattern <https://lostechies.com/jimmybogard/2014/05/13/a-better-domain-events-pattern/>`__, Bogard says this:
