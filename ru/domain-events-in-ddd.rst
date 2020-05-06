@@ -839,6 +839,14 @@ Kamil Grzybek вводит явное разделение механизма д
 
     \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "6. Tactical Design with Domain Events  :: Designing, Implementing, and Using Domain Events"
 
+..
+
+    As noted earlier, an important characteristic of events is that since an event is something that happened in the past, it should not change.
+    Therefore, it must be an immutable class. You can see in the previous code that the properties are read-only.
+    There's no way to update the object, you can only set values when you create it.
+
+    \- ".NET Microservices: Architecture for Containerized .NET Applications" [#fnnetms]_ by Cesar de la Torre, Bill Wagner, Mike Rousos, Chapter "`Domain events: design and implementation :: Implement domain events <https://docs.microsoft.com/en-us/dotnet/architecture/microservices/microservice-ddd-cqrs-patterns/domain-events-design-implementation#implement-domain-events>`__"
+
 
 Решение - это баланс стоимости и обретаемой выгоды
 ==================================================
