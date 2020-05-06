@@ -44,7 +44,8 @@ Eventual Consistency - это следствие, а не причина
 --------------------------------------------------
 
     A distinct, though related set of issues arises in distributed systems.
-    The state of a distributed system cannot be kept completely consistent at all times. We keep the aggregates internally consistent at all times, while making other changes asynchronously.
+    The state of a distributed system cannot be kept completely consistent at all times.
+    We keep the aggregates internally consistent at all times, while making other changes asynchronously.
     As changes propagate across nodes of a network, it can be difficult to resolve multiple updates arriving out of order or from distinct sources.
 
     \- "Domain-Driven Design Reference" [#fndddr]_ by Eric Evans, Chapter "Domain Events"
@@ -523,6 +524,34 @@ One stage vs Two Stage
     The contract of Event publishing should have the potential to be at least as broad as the enterprise, or even broader.
     Yet, wide broadcast does not forbid delivery of Events by consumers in the same Bounded Context.
     Refer back to Figure 8.1.
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "8. Domain Events :: Publishing Events from the Domain Model :: Subscribers"
+
+В качестве первой ступени доставки внутренним подписчикам, Vaughn Vernon предлагает использовать обычные GOF-паттерны (Mediator, Observer), которые вызывают подписчиков в том же самом потоке и в той же самой транзакции.
+
+    Publishing Events from the Domain Model
+
+    Avoid exposing the domain model to any kind of middleware messaging infrastructure.
+    Those kinds of components live only in the infrastructure.
+    And while the domain model might at times use such infrastructure indirectly, it would never explicitly couple to it. We’ll use an approach that completely avoids the use of infrastructure.
+
+    One of the simplest and most effective ways to publish Domain Events without coupling to components outside the domain model is to create a lightweight Observer [Gamma et al.].
+    For the sake of naming I use Publish-Subscribe, which is acknowledged by [Gamma et al.] as another name for the same pattern.
+    The examples in that pattern and my use of it are lightweight because there is no network involved in subscribing to Events and publishing them.
+    All registered subscribers execute in the same process space with the publisher and run on the same thread.
+    When an Event is published, each subscriber is notified synchronously, one by one.
+    This also implies that **all subscribers are running within the same transaction**, perhaps controlled by an Application Service that is the direct client of the domain model.
+
+    Considering the two halves of Publish-Subscribe separately helps to explain them in a DDD context.
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "8. Domain Events :: Publishing Events from the Domain Model"
+
+..
+
+    What components register subscribers to Domain Events?
+    Generally speaking, Application Services (14), and sometimes Domain Services, will.
+    **The subscriber may be any component that is running on the same thread as the Aggregate that publishes the Event**, and that can subscribe prior to the Event being published.
+    This means that **the subscriber is registered in the method execution path that uses the domain model**.
 
     \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "8. Domain Events :: Publishing Events from the Domain Model :: Subscribers"
 
