@@ -69,7 +69,7 @@ Eventual Consistency - это следствие, а не причина
 
 Здесь мы видим, что краеугольной причиной Eventual Consistency является распределенное хранение данных.
 Это значит, что, в силу `CAP-теоремы <http://ksat.me/a-plain-english-introduction-to-cap-theorem>`__ (`перевод на Русский <https://habr.com/ru/post/130577/>`__), становится невозможным достигнуть одновременно Consistency и Availability при Partition Tolerance.
-Это та самая причина, по которой концепция Агрегата лежит в основе практически любого распределенного хранилища - агрегат просто хранится целиком на одном узле, поэтому, он всегда и доступен, и согласован одновременно.
+Это та самая причина, по которой концепция Агрегата лежит в основе практически любого распределенного NoSQL хранилища - агрегат просто хранится целиком на одном узле, поэтому, он всегда и доступен, и согласован одновременно.
 
 Представьте на минутку, что узлы автомобиля хранятся на разных узлах, и они не успели прийти в согласованное состояние после обновления агрегата, в котором был заменен типоразмер шин.
 Тогда у нас возникла бы вероятность получить из хранилища автомобиль с различными типоразмерами шин, что нарушило бы инвариант агрегата.
@@ -84,7 +84,7 @@ Eventual Consistency - это следствие, а не причина
 А вот синхронизация агрегатов различных сервисов может быть только асинхронной, либо же с использованием Two-Phase Commit.
 То же самое справедливо и для Bounded Contexts DDD-монолита.
 
-Избегание Two-Phase Commit в целях достижения a highly scalable подталкивает Vaughn Vernon к Eventual Consistency:
+Стремление избежать Two-Phase Commit, в целях достижения highly scalable, подталкивает Vaughn Vernon к Eventual Consistency:
 
     **It can eliminate the need for two-phase commits (global transactions) and support of the rules of Aggregates (10).**
     One rule of Aggregates states that only a single instance should be modified in a single transaction, and all other dependent changes must occur in separate transactions.
@@ -95,7 +95,7 @@ Eventual Consistency - это следствие, а не причина
 
     \-"Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "Chapter 8. Domain Events :: The When and Why of Domain Events"
 
-Но мы видим, что, кроме проблемы одновременной Согласованности и Доступности при распределенном хранении агрегатом, озвучивается еще одна причина - database locking.
+Но мы видим, что, кроме проблемы достижения одновременной Согласованности и Доступности при распределенном хранении агрегатов (и устойчивости к разделению), озвучивается еще одна причина - database locking.
 Означает ли проблема database locking то, что коммититься должен только один агрегат в одной транзакции при использовании RDBMS (Relational Database Management System)?
 Это означает только то, что транзакция должна быть fine-grained.
 "Fine-grained system transaction" != "one aggregate per transaction".
@@ -152,11 +152,11 @@ Eventual Consistency - это следствие, а не причина
 
     \- "Patterns of Enterprise Application Architecture" [#fnpoeaa]_ by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford, Chapter "16. Offline Concurrency Patterns :: Coarse-Grained Lock"
 
-Здесь говорится про единицу изменения, про бизнес-транзакцию и блокировку, но о связи бизнес-транзакции с системной транзакцией говорится только то, что "the system transaction in which you commit the business transaction", т.е. границы системной транзакции включают в себя границы бизнес-транзакции, но не ограничиваются ею.
+Здесь говорится про единицу изменения, про бизнес-транзакцию и блокировку, но о связи бизнес-транзакции с системной транзакцией говорится только то, что "the system transaction in which you commit the business transaction", т.е. границы системной транзакции включают в себя границы бизнес-транзакции, но не ограничиваются ими.
 
 
-Eventual Consistency - основной способ согласования агрегатов
--------------------------------------------------------------
+Eventual Consistency - основной способ синхронизации агрегатов
+--------------------------------------------------------------
 
 С одной стороны, Vaughn Vernon настоятельно рекомендует использовать Eventual Consistency между Агрегатами:
 
@@ -257,10 +257,10 @@ Strong Consistency - новичкам
 
 
 Рекомендации от ".NET Microservices"
----------------------------------
+------------------------------------
 
 ".NET Microservices: Architecture for Containerized .NET Applications" [#fnnetms]_ явно разделяет внутренние Domain Events (для подписчиков внутри Bounded Context) от внешних Integration Events.
-Внутренние Domain Events рекомендуется использовать для согласования Агрегатов.
+Внутренние Domain Events рекомендуется использовать для синхронизации Агрегатов внутри Bounded Context.
 
     Domain events as a preferred way to trigger side effects across multiple aggregates within the same domain
 
