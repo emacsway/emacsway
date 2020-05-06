@@ -166,6 +166,29 @@ Eventual Consistency
 
 И тут же объясняет - агрегаты в высоконагруженных масштабируемых распределенных приложениях, устойчивых к разделению, никогда не бывают доступны и согласованы между собой одновременно.
 
+    An invariant is a business rule that must always be consistent.
+    There are different kinds of consistency. One is transactional consistency, which is considered immediate and atomic.
+    There is also eventual consistency. When discussing invariants, we are referring to transactional consistency.
+
+    <...>
+
+    The consistency boundary logically asserts that everything inside adheres to a specific set of business invariant rules no matter what operations are performed.
+    The consistency of everything outside this boundary is irrelevant to the Aggregate.
+    Thus, Aggregate is synonymous with transactional consistency boundary.
+
+    <...>
+
+    When employing a typical persistence mechanism, we use a single `transaction <https://martinfowler.com/eaaCatalog/unitOfWork.html>`__ to manage consistency.
+    When the transaction commits, everything inside one boundary must be consistent.
+    A properly designed Aggregate is one that can be modified in any way required by the business with its invariants completely consistent within a single transaction.
+    And a properly designed Bounded Context modifies only one Aggregate instance per transaction in all cases.
+    What is more, we cannot correctly reason on Aggregate design without applying transactional analysis.
+    Limiting modification to one Aggregate instance per transaction may sound overly strict.
+    However, it is a rule of thumb and should be the goal in most cases.
+    It addresses the very reason to use Aggregates.
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Model True Invariants in Consistency Boundaries"
+
 
 Все решают бизнес-правила
 -------------------------
