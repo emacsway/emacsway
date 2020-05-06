@@ -112,7 +112,7 @@ Eventual Consistency - это следствие, а не причина
 
     Smaller Aggregates not only perform and scale better, they are also biased toward transactional success, meaning that conflicts preventing a commit are rare.
 
-    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "Chapter 9. Modules :: Rule: Design Small Aggregates"
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "Chapter 10 Aggregates :: Rule: Design Small Aggregates"
 
 Сам Eric Evans в своем известном выражении, которое многие приводят как первопричину Eventual Consistency, вовсе не требует одну транзакцию на агрегат, а говорит лишь о том, что после коммита инвариант каждого из агрегатов должен соблюдаться:
 
@@ -131,9 +131,14 @@ Eventual Consistency - это следствие, а не причина
 
 Такую же причину озвучивает и Vaughn Vernon:
 
+    **Transactions across distributed systems are not atomic.**
+    **The various systems bring multiple Aggregates into a consistent state eventually.**
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Reference Other Aggregates by Identity :: Scalability and Distribution"
+
     Accepting that **all Aggregate instances in a large-scale, high-traffic enterprise are never completely consistent** helps us accept that eventual consistency also makes sense in the smaller scale where just a few instances are involved.
 
-    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "9. Modules :: Rule: Use Eventual Consistency Outside the Boundary"
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Use Eventual Consistency Outside the Boundary"
 
 Кстати, автором идеи агрегата является даже не Eric Evans, а David Siegel.
 Оригинальная работа  к сожалению, не опубликована (по крайней мере, мне ее отыскать не удалось).
@@ -664,6 +669,19 @@ One-phase vs Two-phase
     That breaks a rule of thumb to modify one Aggregate instance per transaction.
 
     \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "8. Domain Events :: Publishing Events from the Domain Model :: Subscribers"
+
+В другом месте Vaughn Vernon приводит небольшой пример, по которому создается иллюзия, что якобы асинхронные подписчики уведомляются непосредственно (однофазно):
+
+    There is a practical way to support eventual consistency in a DDD model.
+    An Aggregate command method publishes a Domain Event that is in time delivered to one or more asynchronous subscribers:
+
+    Each of these subscribers then retrieves a different yet corresponding Aggregate instance and executes its behavior based on it.
+    Each of the subscribers executes in a separate transaction, obeying the rule of Aggregates to modify just one instance per transaction.
+
+    \- "Implementing Domain-Driven Design" [#fniddd]_ by Vaughn Vernon, Chapter "10 Aggregates :: Rule: Use Eventual Consistency Outside the Boundary"
+
+Однако, если найти этот пример в коде, то эта иллюзия рассеивается.
+См. `здесь <https://github.com/VaughnVernon/IDDD_Samples_NET/blob/90fcc52d9c1af29640ec2a8a3e0e7c692f3e6663/iddd_agilepm/Domain.Model/Products/BacklogItems/BacklogItem.cs#L201>`__ и `здесь <https://github.com/VaughnVernon/IDDD_Samples_NET/blob/90fcc52d9c1af29640ec2a8a3e0e7c692f3e6663/iddd_common/Domain.Model/DomainEventPublisher.cs#L77>`__
 
 Kamil Grzybek вводит явное разделение механизма доставки на две ступени, первая - для внутренних Domain Events, вторая - для внешних:
 
