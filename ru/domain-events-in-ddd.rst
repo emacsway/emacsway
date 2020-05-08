@@ -22,7 +22,7 @@ Domain Events в DDD
     \- "Agile!: The Good, the Hype and the Ugly" by Bertrand Meyer
 
 Поэтому, я буду начинать всегда с первоисточников, т.е. с Eric Evans, Bertrand Meyer и др.
-Но так же буду делать обзор мнений их ключевых последователей - Vaughn Vernon, Jimmy Bogard, Greg Young, Udi Dahan, Kamil Grzybek, Scott Millett, Nick Tune, коллектив авторов руководств Microsoft по архитектуре и др.
+Но также буду делать обзор мнений их ключевых последователей - Vaughn Vernon, Jimmy Bogard, Greg Young, Udi Dahan, Kamil Grzybek, Scott Millett, Nick Tune, коллектив авторов руководств Microsoft по архитектуре и др.
 К счастью, при внимательном рассмотрении, противоречий между ними практически нет.
 
 
@@ -1003,7 +1003,7 @@ Kamil Grzybek вводит явное разделение механизма д
 На примере с генератором случайных чисел хорошо видно, какую критическую роль играет правильное именование и правильное моделирование процессов предметной области.
 И как легко можно создать кривое решение, если не иметь ясного понимания этих процессов, или если использовать недостаточно ясное именование.
 
-Так же он разделяет абстрактное состояние от конкретного состояния, и приводит пример, в значительной мере похожий на добавление нового ресурса через REST-API:
+Также он разделяет абстрактное состояние от конкретного состояния, и приводит пример, в значительной мере похожий на добавление нового ресурса через REST-API:
 
     What this means for us is that a function that modifies a concrete object is harmless if the result of this modification still represents the same abstract object — yields the same a value.
     For example assume in a function on stacks contains the operation
@@ -1031,7 +1031,7 @@ Kamil Grzybek вводит явное разделение механизма д
 Проблема сохранения очередности Integration Events
 ==================================================
 
-Подписчики не всегда получают Integration Events в той же последовательности, в которой они были отправлены.
+Подписчики не всегда получают Integration Events в той же последовательности, в которой они были отправлены, по ряду причин.
 Одно из решений этой проблемы заключается в том, что, если получатель обнаруживает, что сообщение не соответствует ожидаемому порядку, то он просто не забирает его из очереди.
 
     Note that just saving the Domain Event in its causal order doesn’t guarantee that it will arrive at other distributed nodes in the same order.
@@ -1050,14 +1050,12 @@ Kamil Grzybek вводит явное разделение механизма д
 
     \- "Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka" [#fnrmp]_ by Vaughn Vernon, Chapter "5. Messaging Channels :: Point-to-Point Channel"
 
-Этой же проблема посвящена и глава "Chapter 7 Message Routing :: Resequencer" [#fnrmp]_ этой же книги.
+Этой же проблема посвящена и глава "Chapter 7 Message Routing :: Resequencer" [#fnrmp]_ той же книги.
 
-Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/messaging/Resequencer.html>`__ описан и в главе "7.Message Routing :: Resequencer" книги "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" [#fneip]_ by Gregor Hohpe, Bobby Woolf
+Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/messaging/Resequencer.html>`__ описан также и в главе "7.Message Routing :: Resequencer" книги "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" [#fneip]_ by Gregor Hohpe, Bobby Woolf.
 
 Существует open source integration framework `Camel <https://camel.apache.org/>`__, который предоставляет `готовую из коробки реализацию паттерна Resequencer <https://camel.apache.org/components/latest/eips/resequence-eip.html>`__.
 Он отлично интегрируется с различными системами обмена сообщениями, например, `с Nats <https://camel.apache.org/components/latest/nats-component.html>`__ (`подробнее <https://nats.io/blog/apache-camel-nats-connector/>`__).
-
-Message ordering https://docs.microsoft.com/ru-ru/previous-versions/msp-n-p/jj591565(v=pandp.10)#message-ordering
 
 В "CQRS Journey" [#fncqrsj]_ предлагается два варианта решения:
 
@@ -1066,11 +1064,11 @@ Message ordering https://docs.microsoft.com/ru-ru/previous-versions/msp-n-p/jj59
     The second alternative is to modify the handlers within the application to detect out-of-order messages through the use of sequence numbers or timestamps added to the messages when they are sent.
     **If the receiving handler detects an out-of-order message, it rejects the message and puts it back onto the queue or topic to be processed later**, after it has processed the messages that were sent before the rejected message.
 
-    \- "CQRS Journey" [#fncqrsj]_ by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian
+    \- "CQRS Journey" [#fncqrsj]_ by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian, Chapter "`Journey 6: Versioning Our System :: Message ordering <https://docs.microsoft.com/ru-ru/previous-versions/msp-n-p/jj591565(v=pandp.10)#message-ordering>`__"
 
-Ну а лучше всего эта тема раскрывается в Chapter "12 The Future of Data Systems :: Data Integration :: Combining Specialized Tools by Deriving Data :: Ordering events to capture causality" в "Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems" [#fneip]_ by Martin Kleppmann
+Ну а лучше всего эта тема раскрывается в Chapter "12 The Future of Data Systems :: Data Integration :: Combining Specialized Tools by Deriving Data :: Ordering events to capture causality" книги "Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems" [#fnddia]_ by Martin Kleppmann.
 
-Еще проблем распределенности хорошо освещаются в книге "Database Reliability Engineering. Designing and Operating Resilient Database Systems." [#fndre]_ by Laine Campbell and Charity Majors.
+Еще проблемы распределенности хорошо освещаются в книге "Database Reliability Engineering. Designing and Operating Resilient Database Systems." [#fndre]_ by Laine Campbell and Charity Majors.
 
 
 .. Transactional Client and Transactional Actor
@@ -1142,7 +1140,7 @@ Message ordering https://docs.microsoft.com/ru-ru/previous-versions/msp-n-p/jj59
 .. [#fnoosc] "Object-Oriented Software Construction" 2nd edition by Bertrand Meyer
 .. [#fnpoeaa] "`Patterns of Enterprise Application Architecture <https://www.martinfowler.com/books/eaa.html>`__" by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
 .. [#fneip] "`Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions <https://www.enterpriseintegrationpatterns.com/>`__" by Gregor Hohpe, Bobby Woolf
-.. [#fneip] "`Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems <https://dataintensive.net/>`__" by Martin Kleppmann
+.. [#fnddia] "`Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems <https://dataintensive.net/>`__" by Martin Kleppmann
 .. [#fndre] "Database Reliability Engineering. Designing and Operating Resilient Database Systems." by Laine Campbell and Charity Majors
 .. [#fnkgde1] "`How to publish and handle Domain Events <http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/>`__" by Kamil Grzybek
 .. [#fnkgde2] "`Handling Domain Events: Missing Part <http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/>`__" by Kamil Grzybek
