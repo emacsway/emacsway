@@ -1020,6 +1020,63 @@ Kamil Grzybek вводит явное разделение механизма д
 Как результат, в одном из лучших демонстрационных приложений, Команда возвращает результат, смотрите `здесь <https://github.com/dotnet-architecture/eShopOnContainers/blob/b1021c88d55d96c247eab75bde650ab4b194f706/src/Services/Ordering/Ordering.API/Controllers/OrdersController.cs#L151>`__ и `здесь <https://github.com/dotnet-architecture/eShopOnContainers/blob/b1021c88d55d96c247eab75bde650ab4b194f706/src/Services/Ordering/Ordering.API/Application/Commands/CreateOrderDraftCommandHandler.cs#L40>`__.
 
 
+.. Atomicity and Resiliency of Integration Events
+.. ==============================================
+
+.. - https://dzone.com/articles/event-driven-data-management-for-microservices-1
+.. - https://microservices.io/patterns/#transactional-messaging
+.. - https://docs.microsoft.com/en-us/dotnet/architecture/microservices/multi-container-microservice-net-applications/subscribe-events#designing-atomicity-and-resiliency-when-publishing-to-the-event-bus
+
+
+Проблема сохранения очередности Integration Events
+==================================================
+
+Подписчики не всегда получают Integration Events в той же последовательности, в которой они были отправлены.
+Одно из решений этой проблемы заключается в том, что, если получатель обнаруживает, что сообщение не соответствует ожидаемому порядку, то он просто не забирает его из очереди.
+
+    Note that just saving the Domain Event in its causal order doesn’t guarantee that it will arrive at other distributed nodes in the same order.
+    Thus, it is also the responsibility of the consuming Bounded Context to recognize proper causality.
+    It might be the Domain Event type itself that can indicate causality, or it may be metadata associated with the Domain Event, such as a sequence or causal identifier.
+    The sequence or causal identifier would indicate what caused this Domain Event, and **if the cause was not yet seen, the consumer must wait to apply the newly arrived event until its cause arrives**.
+    In some cases it is possible to ignore latent Domain Events that have already been superseded by the actions associated with a later one; in this case causality has a dismissible impact.
+
+    \- "Domain-Driven Design Distilled" [#fndddd]_ by Vaughn Vernon, Chapter "6. Tactical Design with Domain Events:: Designing, Implementing, and Using Domain Events"
+
+В книге "Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka" [#fnrmp]_ by Vaughn Vernon также говорится о том, что Actor должен сам решать, принимать ли ему сообщение:
+
+    Actors must be prepared to accept and reject messages based on their current state, which is reflected by the order in which previous messages were received.
+    Sometimes a latent message could be accepted even if it is not perfect timing, but the actor’s reaction to the latent message may have to carefully take into account its current state beforehand.
+    This may be dealt with more gracefully by using the actors become() capabilities.
+
+    \- "Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka" [#fnrmp]_ by Vaughn Vernon, Chapter "5. Messaging Channels :: Point-to-Point Channel"
+
+Этой же проблема посвящена и глава "Chapter 7 Message Routing :: Resequencer" [#fnrmp]_ этой же книги.
+
+Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/messaging/Resequencer.html>`__ описан и в главе "7.Message Routing :: Resequencer" книги "Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions" [#fneip]_ by Gregor Hohpe, Bobby Woolf
+
+Существует open source integration framework `Camel <https://camel.apache.org/>`__, который предоставляет `готовую из коробки реализацию паттерна Resequencer <https://camel.apache.org/components/latest/eips/resequence-eip.html>`__.
+Он отлично интегрируется с различными системами обмена сообщениями, например, `с Nats <https://camel.apache.org/components/latest/nats-component.html>`__ (`подробнее <https://nats.io/blog/apache-camel-nats-connector/>`__).
+
+Message ordering https://docs.microsoft.com/ru-ru/previous-versions/msp-n-p/jj591565(v=pandp.10)#message-ordering
+
+В "CQRS Journey" [#fncqrsj]_ предлагается два варианта решения:
+
+    The first option is to **use message sessions**, a feature of the Azure Service Bus. If you use message sessions, this guarantees that messages within a session are delivered in the same order that they were sent.
+
+    The second alternative is to modify the handlers within the application to detect out-of-order messages through the use of sequence numbers or timestamps added to the messages when they are sent.
+    **If the receiving handler detects an out-of-order message, it rejects the message and puts it back onto the queue or topic to be processed later**, after it has processed the messages that were sent before the rejected message.
+
+    \- "CQRS Journey" [#fncqrsj]_ by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian
+
+Ну а лучше всего эта тема раскрывается в Chapter "12 The Future of Data Systems :: Data Integration :: Combining Specialized Tools by Deriving Data :: Ordering events to capture causality" в "Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems" [#fneip]_ by Martin Kleppmann
+
+Еще проблем распределенности хорошо освещаются в книге "Database Reliability Engineering. Designing and Operating Resilient Database Systems." [#fndre]_ by Laine Campbell and Charity Majors.
+
+
+.. Transactional Client and Transactional Actor
+.. ============================================
+
+
 Почему важно читать оригиналы вместо переводов
 ==============================================
 
@@ -1078,11 +1135,15 @@ Kamil Grzybek вводит явное разделение механизма д
 .. [#fndddr] "`Domain-Driven Design Reference <https://domainlanguage.com/ddd/reference/>`__" by Eric Evans
 .. [#fniddd] "`Implementing Domain-Driven Design <https://kalele.io/books/>`__" by Vaughn Vernon
 .. [#fndddd] "`Domain-Driven Design Distilled <https://kalele.io/books/>`__" by Vaughn Vernon
+.. [#fnrmp] "`Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka <https://kalele.io/books/>`__" by Vaughn Vernon
 .. [#fnpppddd] "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
 .. [#fnnetms] "`.NET Microservices: Architecture for Containerized .NET Applications <https://docs.microsoft.com/en-us/dotnet/standard/microservices-architecture/index>`__" edition v2.2.1 (`mirror <https://aka.ms/microservicesebook>`__) by Cesar de la Torre, Bill Wagner, Mike Rousos
 .. [#fncqrsj] "`CQRS Journey <https://docs.microsoft.com/en-US/previous-versions/msp-n-p/jj554200(v=pandp.10)>`__" by Dominic Betts, Julián Domínguez, Grigori Melnik, Fernando Simonazzi, Mani Subramanian
 .. [#fnoosc] "Object-Oriented Software Construction" 2nd edition by Bertrand Meyer
 .. [#fnpoeaa] "`Patterns of Enterprise Application Architecture <https://www.martinfowler.com/books/eaa.html>`__" by Martin Fowler, David Rice, Matthew Foemmel, Edward Hieatt, Robert Mee, Randy Stafford
+.. [#fneip] "`Enterprise Integration Patterns: Designing, Building, and Deploying Messaging Solutions <https://www.enterpriseintegrationpatterns.com/>`__" by Gregor Hohpe, Bobby Woolf
+.. [#fneip] "`Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems <https://dataintensive.net/>`__" by Martin Kleppmann
+.. [#fndre] "Database Reliability Engineering. Designing and Operating Resilient Database Systems." by Laine Campbell and Charity Majors
 .. [#fnkgde1] "`How to publish and handle Domain Events <http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/>`__" by Kamil Grzybek
 .. [#fnkgde2] "`Handling Domain Events: Missing Part <http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/>`__" by Kamil Grzybek
 .. [#fnkgoutbox] "`The Outbox Pattern <https://www.kamilgrzybek.com/design/the-outbox-pattern/>`__ by Kamil Grzybek
