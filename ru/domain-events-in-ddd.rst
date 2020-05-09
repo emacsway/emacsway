@@ -928,6 +928,13 @@ Kamil Grzybek вводит явное разделение механизма д
 И в том, и в другом случае, решением является баланс между простотой реализации и потребностью в масштабировании.
 
 Впрочем, вопрос относительно того, должна ли Команда CQRS возвращать результат, и не противоречит ли это CQS принципу Bertrand Meyer, заслуживает на отдельное исследование.
+Как известно, термин CQRS ввел Greg Young, разделив CQS на два отдельных класса.
+
+    Starting with CQRS, CQRS is simply the creation of two objects where there was previously only one.
+    The separation occurs based upon whether the methods are a command or a query (the same definition that is used by Meyer in Command and Query Separation, a command is any method that mutates state and a query is any method that returns a value).
+
+    \- "CQRS, Task Based UIs, Event Sourcing agh!" [#fngycqrs]_ by Greg Young
+
 Забегая наперед, скажу, что не противоречит, при соблюдении определенных условий.
 
 Во-первых, в основе CQS лежит принцип функциональной чистоты:
@@ -1162,5 +1169,7 @@ Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/mes
 .. [#fnudde3] "`Domain Events – Salvation <http://udidahan.com/2009/06/14/domain-events-salvation/>`__" by Udi Dahan
 .. [#fncdltdevie] "`Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures <https://devblogs.microsoft.com/cesardelatorre/domain-events-vs-integration-events-in-domain-driven-design-and-microservices-architectures/>`__" by Cesar De la Torre, Principal Program Manager, .NET
 .. [#fnmvpe] "`Patterns for Decoupling in Distributed Systems: Explicit Public Events <https://verraes.net/2019/05/patterns-for-decoupling-distsys-explicit-public-events/>`__" by Mathias Verraes
+.. [#fngycqrs] "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
+
 
 .. .. update:: May 05, 2020
