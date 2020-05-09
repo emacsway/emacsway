@@ -1092,6 +1092,11 @@ Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/mes
 - "`Don't Settle for Eventual Consistency. Stronger properties for low-latency geo-replicated storage. <https://queue.acm.org/detail.cfm?id=2610533>`__" (`pdf <https://dl.acm.org/ft_gateway.cfm?id=2610533&ftid=1449165&dwn=1>`__) by Wyatt Lloyd, Facebook; Michael J. Freedman, Princeton University; Michael Kaminsky, Intel Labs; David G. Andersen, Carnegie Mellon University
 - "`Bolt-on Causal Consistency <http://www.bailis.org/papers/bolton-sigmod2013.pdf>`__" by Peter Bailis, Ali Ghodsi, Joseph M. Hellerstein†, Ion Stoica, UC Berkeley KTH/Royal Institute of Technology
 
+Ссылки для начинающих в Integration Events:
+
+- Хороший лаконичный обзорный блог-пост по возможностям NATS Streaming Server "`Guest Post: Use cases for persistent logs with NATS Streaming <https://nats.io/blog/use-cases-for-persistent-logs-with-nats-streaming/>`__" by Byron Ruth
+- Лучше один раз увидеть. `Живые примеры по работе с NATS Streaming Server <https://github.com/bruth/code-examples/tree/master/patterns-nats-streaming>`__.
+
 
 Почему важно читать оригиналы вместо переводов
 ==============================================
