@@ -524,6 +524,11 @@ Strong Consistency - новичкам
 
     \- "Domain Events vs. Integration Events in Domain-Driven Design and microservices architectures" [#fncdltdevie]_ by Cesar De la Torre, Principal Program Manager, .NET
 
+Ссылки по теме:
+
+- "`Eventually Consistent - Revisited <https://www.allthingsdistributed.com/2008/12/eventually_consistent.html>`__" by Werner Vogels, CTO - Amazon.com
+- "`Eventually Consistent <https://www.allthingsdistributed.com/2007/12/eventually_consistent.html>`__" by Werner Vogels, CTO - Amazon.com
+
 
 In-process vs out-of-process
 ============================
