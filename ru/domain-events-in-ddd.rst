@@ -1038,6 +1038,7 @@ Kamil Grzybek вводит явное разделение механизма д
 .. - https://dzone.com/articles/event-driven-data-management-for-microservices-1
 .. - https://microservices.io/patterns/#transactional-messaging
 .. - https://docs.microsoft.com/en-us/dotnet/architecture/microservices/multi-container-microservice-net-applications/subscribe-events#designing-atomicity-and-resiliency-when-publishing-to-the-event-bus
+.. - Готовая реализация паттерна outbox с примером (см. README) https://github.com/ThreeDotsLabs/watermill/tree/master/_examples/real-world-examples/transactional-events
 
 
 .. Transactional Client and Transactional Actor
