@@ -1033,6 +1033,10 @@ Kamil Grzybek вводит явное разделение механизма д
 .. - https://docs.microsoft.com/en-us/dotnet/architecture/microservices/multi-container-microservice-net-applications/subscribe-events#designing-atomicity-and-resiliency-when-publishing-to-the-event-bus
 
 
+.. Transactional Client and Transactional Actor
+.. ============================================
+
+
 Проблема сохранения очередности Integration Events
 ==================================================
 
@@ -1075,9 +1079,10 @@ Pattern `Resequencer <https://www.enterpriseintegrationpatterns.com/patterns/mes
 
 Еще проблемы распределенности хорошо освещаются в книге "Database Reliability Engineering. Designing and Operating Resilient Database Systems." [#fndre]_ by Laine Campbell and Charity Majors.
 
+Ссылки по теме:
 
-.. Transactional Client and Transactional Actor
-.. ============================================
+- "`Don't Settle for Eventual Consistency. Stronger properties for low-latency geo-replicated storage. <https://queue.acm.org/detail.cfm?id=2610533>`__" (`pdf <https://dl.acm.org/ft_gateway.cfm?id=2610533&ftid=1449165&dwn=1>`__) by Wyatt Lloyd, Facebook; Michael J. Freedman, Princeton University; Michael Kaminsky, Intel Labs; David G. Andersen, Carnegie Mellon University
+- "`Bolt-on Causal Consistency <http://www.bailis.org/papers/bolton-sigmod2013.pdf>`__" by Peter Bailis, Ali Ghodsi, Joseph M. Hellerstein†, Ion Stoica, UC Berkeley KTH/Royal Institute of Technology
 
 
 Почему важно читать оригиналы вместо переводов
