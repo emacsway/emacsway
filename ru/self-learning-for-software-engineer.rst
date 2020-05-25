@@ -278,6 +278,7 @@
 
 - "Extreme Programming Explained" 2nd edition by Kent Beck
 - "Planning Extreme Programming" by Kent Beck, Martin Fowler
+- "More Effective Agile: A Roadmap for Software Leaders" by Steve McConnell
 - "Clean Agile: Back to Basics" by Robert C. Martin
 - "Scrum and XP from the Trenches: How We Do Scrum" 2nd edition by Henrik Kniberg
 - "The Mythical Man-Month Essays on Software Engineering Anniversary Edition" by Frederick P. Brooks, Jr.
