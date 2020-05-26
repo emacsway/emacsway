@@ -296,6 +296,7 @@
 ===========
 
 - "Mastering PostgreSQL In Application Development" by Dimitri Fontaine
+- "The Art of PostgreSQL" 2nd edition by Dimitri Fontaine - is the new title of "Mastering PostgreSQL in Application Development"
 - "SQL Antipatterns. Avoiding the Pitfalls of Database Programming." by Bill Karwin
 - "Refactoring Databases. Evolutionary Database Design" by Scott J Ambler and Pramod J. Sadalage
 - "An Introduction to Database Systems" by C.J. Date
