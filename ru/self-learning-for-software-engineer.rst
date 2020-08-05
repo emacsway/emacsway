@@ -378,9 +378,6 @@
 - "Release It! Design and Deploy Production-Ready Software" 2nd edition by Michael Nygard
 - "`Microservices Patterns: With examples in Java <https://www.manning.com/books/microservice-patterns>`__" 1st edition by Chris Richardson (`more info <https://microservices.io/book>`__)
 - "Monolith to Microservices Evolutionary Patterns to Transform Your Monolith" by Sam Newman
-- "Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka" by Vaughn Vernon
-- "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
-- "Hands-On Domain-Driven Design with .NET Core: Tackling complexity in the heart of software by putting DDD principles into practice" by Alexey Zimarev
 - "The Site Reliability Workbook. Practical Ways to Implement SRE." by Betsy Beyer, Niall Richard Murphy, David K. Rensin, Kent Kawahara & Stephen Thorne
 - "Database Reliability Engineering. Designing and Operating Resilient Database Systems." by Laine Campbell and Charity Majors
 - "Designing Data-Intensive Applications. The Big Ideas Behind Reliable, Scalable, and Maintainable Systems" by Martin Kleppmann
@@ -391,6 +388,14 @@
 - "RESTful Web APIs: Services for a Changing World" by Leonard Richardson, Sam Ruby, Mike Amundsen
 - "Web API Design Crafting Interfaces that Developers Love" by Brian Mulloy
 - "REST API Design Rulebook" by Mark Massé
+
+
+Углубляем DDD
+-------------
+
+- "Reactive Messaging Patterns with the Actor Model: Applications and Integration in Scala and Akka" by Vaughn Vernon
+- "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
+- "Hands-On Domain-Driven Design with .NET Core: Tackling complexity in the heart of software by putting DDD principles into practice" by Alexey Zimarev
 
 
 Изучаем проектирование
@@ -407,6 +412,8 @@
 - "Object-Oriented Software Construction" 2nd edition by Bertrand Meyer
 - "Working Effectively with Legacy Code" by Michael C. Feathers
 - "Refactoring To Patterns" by Joshua Kerievsky
+- "Structure and Interpretation of Computer Programs" (aka SICP) 2nd edition (MIT Electrical Engineering and Computer Science) by Harold Abelson, Gerald Jay Sussman, Julie Sussman
+- "Object Oriented Software Engineering: A Use Case Driven Approach" by Ivar Jacobson
 
 
 POSA
