@@ -497,14 +497,14 @@ Donald E. Knuth:
 - "Microservices with Clojure. Develop event-driven, scalable, and reactive microservices with real-time monitoring" by Anuj Kumar
 
 
-Справочная информация
-=====================
-
-
 Справочники
 -----------
 
 - "Computing Handbook. Computer Science and Software Engineering." 3d edition by Allen Tucker, Teofilo Gonzalez, Jorge Diaz-Herrera
+
+
+Справочная информация
+=====================
 
 
 Online-каталоги
@@ -605,6 +605,11 @@ Others:
 
 - `DDD Sample Projects <https://github.com/heynickc/awesome-ddd#sample-projects>`__
 
+..
+    - "Rapid Development: Taming Wild Software Schedules" by Steve McConnell
+    - "The Definitive Guide to MongoDB" by David Hows, Peter Membrey, Eelco Plugge, Tim Hawkins
+    - "High Performance MySQL" by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
+    - "PostgreSQL: Up and Running" by Regina Obe and Leo Hsu
 
-.. update:: Jan 22, 2020
+.. update:: Aug 05, 2020
 
