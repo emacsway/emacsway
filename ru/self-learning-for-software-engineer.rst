@@ -322,6 +322,11 @@ Bounded Context and Microservices:
 - "`Tackling Complexity in Microservices <https://vladikk.com/2018/02/28/microservices/>`__" by Vladik Khononov
 - "`DDDDD: Bounded Contexts, Microservices, and Everything In Between <https://youtu.be/Z0RgR9xIQE4>`__" by Vladik Khononov
 
+- "`Reactive Microservices <https://kalele.io/reactive-microservices/>`__" by Vaughn Vernon
+- "`Microservices and [Micro]services <https://kalele.io/microservices-and-microservices/>`__" by Vaughn Vernon
+
+- "`About Bounded Contexts and Microservices <https://blog.avanscoperta.it/2020/06/11/about-bounded-contexts-and-microservices/>`__" by Alberto Brandolini
+
 
 API-Design:
 
