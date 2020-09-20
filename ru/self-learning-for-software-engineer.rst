@@ -280,7 +280,8 @@
 - "`Domain-Driven Design Distilled <https://kalele.io/books/>`__" by V.Vernon
 
 
-Статьи на частые вопросы по DDD.
+Статьи на частые вопросы по DDD
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 Aggregate & Domain Modeling:
