@@ -36,7 +36,7 @@
 
 Все дело в том, что в функциональном программировании обеспечивается ссылочная прозрачность, т.е. накладывается ограничение на изменяемость данных. А между тем, основной недостаток утраты инкапсуляции в Anaemic Domain Model заключается именно в утрате контроля за изменением состояния и обеспечением инвариантов.
 
-    OO makes code understandable by encapsulating moving parts.  FP makes code understandable by minimizing moving parts.
+    "OO makes code understandable by encapsulating moving parts. FP makes code understandable by minimizing moving parts."
     \- `Michael Feathers <https://twitter.com/mfeathers/status/29581296216>`__
 
 Нужно отличать Anemic Domain Model в объектно-ориентированной парадигме от Date Type в функциональной парадигме.
