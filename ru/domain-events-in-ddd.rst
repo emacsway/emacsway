@@ -730,11 +730,11 @@ Domain Events могут покидать пределы Bounded Context:
 Еще дальше идут авторы книги "Patterns, Principles, and Practices of Domain-Driven Design" [#fnpppddd]_, вводя явное разделение внутренних и внешних событий:
 
 .. figure:: /_media/en/domain-events-in-ddd/pppddd-18.1.png
-   :alt: FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
+   :alt: FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is from "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
    :align: center
    :width: 70%
 
-   FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
+   FIGURE pppddd-18-1: Ensuring correct transactional behavior. The image is from "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
 
 ..
 
@@ -756,11 +756,11 @@ Domain Events могут покидать пределы Bounded Context:
     \- "Patterns, Principles, and Practices of Domain-Driven Design" [#fnpppddd]_ by Scott Millett, Nick Tune, Chapter "18 Domain Events :: Internal vs External Events"
 
 .. figure:: /_media/en/domain-events-in-ddd/pppddd-18.2.png
-   :alt: FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
+   :alt: FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is from "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
    :align: center
    :width: 70%
 
-   FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is form "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
+   FIGURE pppddd-18-2: Flow of internal and external events in a typical business use case. The image is from "Patterns, Principles, and Practices of Domain-Driven Design" by Scott Millett, Nick Tune
 
 Разделяют Domain Events на внутренние и внешние и специалисты .NET.
 
