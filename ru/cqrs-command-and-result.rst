@@ -442,7 +442,7 @@ Referential Transparency означает, что вызов функции мо
     -- "`Put your controllers on a diet: POSTs and commands <https://lostechies.com/jimmybogard/2013/12/19/put-your-controllers-on-a-diet-posts-and-commands/>`__" by Jimmy Bogard
 
 Обратите внимание, в последнем предложении он говорит о том, как вернуть и результат, и ошибку одновременно.
-Именно об этом шла речь здесь: https://t.me/emacsway_log/279
+Это является решением именно того вопроса, который пытался разрешить B.Meyer с помощью side-effect-free style здесь: https://t.me/emacsway_log/279
 
 Причины такого решения он раскрывает в другой своей статье:
 
