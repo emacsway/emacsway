@@ -456,7 +456,7 @@ Modelling
 --------------------------------------------
 
 - "The Pragmatic Programmer: From Journeyman to Master" 1st edition by David Thomas, Andrew Hunt
-    - "The Pragmatic Programmer: your journey to mastery, 20th Anniversary Edition" 2nd edition by David Thomas, Andrew Hunt
+- "The Pragmatic Programmer: your journey to mastery, 20th Anniversary Edition" 2nd edition by David Thomas, Andrew Hunt
 - "A Mind for Numbers: How to Excel at Math and Science" by Barbara Ann Oakley
 - "Systems Thinking. Quality Software Management. New York: Dorset House." by Gerald M. Weinberg, 1992,  ISBN: 0932633226
 - "An Introduction to General Systems Thinking" by Gerald M. Weinberg
@@ -477,6 +477,23 @@ Modelling
 - "Refactoring Databases. Evolutionary Database Design" by Scott J Ambler and Pramod J. Sadalage
 - "An Introduction to Database Systems" by C.J. Date
 - "PostgreSQL 10 High Performance" by Ibrar Ahmed, Gregory Smith, Enrico Pirozzi
+
+PostgresPro представил `три книги <https://postgrespro.ru/education/books>`__ для трех разных уровней подготовленности читателей, от совершенно неосведомленного человека до разработчика баз данных.
+Книги дают комплексные знания в лаконичной форме.
+Все книги доступны для скачивания в свободном доступе:
+
+1. "`Postgres: первое знакомство <https://postgrespro.ru/education/books/introbook>`__" / Л.П. Вениаминович, Р.Е. Валерьевич, Л.И. Викторович
+2. "`PostgreSQL. Основы языка SQL: учеб. пособие <https://postgrespro.ru/education/books/sqlprimer>`__"  / Е.П. Моргунов; под ред. Е.В. Рогова, П.В. Лузанова.
+3. "`Основы технологий баз данных: учеб. пособие <https://postgrespro.ru/education/books/dbtech>`__" / Б. А. Новиков, Е. А. Горшкова, Н. Г. Графеева; под ред. Е. В. Рогова.
+
+Так же доступны `учебные материалы курсов <https://postgrespro.ru/education/courses>`__: слайды, видео, руководства. Скачать можно все материалы каждого курса одним архивом.
+
+`Видеозаписи курсов <https://postgrespro.ru/education/where>`__.
+
+Превосходная подборка статей с фундаментальной информацией простым языком о внутреннем устройстве PostgreSQL, от разработчиков PostgresPro:
+
+- `MVCC-1. Изоляция <https://m.habr.com/ru/company/postgrespro/blog/442804/>`__
+- `WAL в PostgreSQL: 1. Буферный кеш <https://m.habr.com/ru/company/postgrespro/blog/458186/>`__
 
 
 Изучаем распределенные системы. Третий заход.
