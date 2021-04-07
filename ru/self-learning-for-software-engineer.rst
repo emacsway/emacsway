@@ -335,6 +335,7 @@ CQRS & Event Sourcing
 
 - "`CQRS, Task Based UIs, Event Sourcing agh! <http://codebetter.com/gregyoung/2010/02/16/cqrs-task-based-uis-event-sourcing-agh/>`__" by Greg Young
 - "`Clarified CQRS <http://udidahan.com/2009/12/09/clarified-cqrs/>`__" by Udi Dahan
+- "`Busting some CQRS myths <https://lostechies.com/jimmybogard/2012/08/22/busting-some-cqrs-myths/>`__" by Jimmy Bogard
 
 
 Bounded Context and Microservices
@@ -435,10 +436,8 @@ Modelling
 ====================================
 
 
-Учимся делать команду эффективной. Углубляем навыки.
-----------------------------------------------------
-
-Теперь можно прочесть и второе издание XP.
+Agile
+-----
 
 - "Extreme Programming Explained" 2nd edition by Kent Beck
 - "Planning Extreme Programming" by Kent Beck, Martin Fowler
@@ -446,10 +445,18 @@ Modelling
 - "Clean Agile: Back to Basics" by Robert C. Martin
 - "Agile! The Good, the Hype and the Ugly" by Bertrand Meyer
 - "Scrum and XP from the Trenches: How We Do Scrum" 2nd edition by Henrik Kniberg
-- "The Mythical Man-Month Essays on Software Engineering Anniversary Edition" by Frederick P. Brooks, Jr.
+- "Essential Scrum: A Practical Guide to the Most Popular Agile Process" by Kenneth Rubin
 - "Succeeding with Agile: Software Development Using Scrum" by Mike Cohn
 - "User Stories Applied: For Agile Software Development" by Mike Cohn
+
+
+Менеджмент
+----------
+
+- "The Mythical Man-Month Essays on Software Engineering Anniversary Edition" by Frederick P. Brooks, Jr.
 - "`Systems Thinking <https://less.works/less/principles/systems-thinking.html>`__" by Craig Larman (`перевод на Русский <https://less.works/ru/less/principles/systems-thinking.html>`__)
+- "Art of Project Management" by Scott Berkun
+- "Менеджмент: Учебник для вузов." 3-е изд. Глухов В. В.
 
 
 Развитие личностных профессиональных качеств
@@ -638,6 +645,20 @@ Donald E. Knuth:
 - "`ISO/IEC/IEEE 42020:2019 Software, systems and enterprise — Architecture processes <https://www.iso.org/standard/68982.html>`__"
 - "`ISO/IEC/IEEE 42030:2019 Software, systems and enterprise — Architecture evaluation framework <https://www.iso.org/standard/73436.html>`__"
 - `ГОСТ Р 57100-2016 Системная и программная инженерия. Описание архитектуры <https://allgosts.ru/35/080/gost_r_57100-2016>`__
+
+
+Аналитика
+---------
+
+- "Software Requirements (Developer Best Practices)" 3rd Edition by Karl Wiegers
+
+Аналитика в Agile:
+
+- "Agile Software Requirements: Lean Requirements Practices for Teams, Programs, and the Enterprise" by Dean Leffingwell
+- Whitepaper "`A Lean and Scalable Requirements Information Model for the Agile Enterprise <https://scalingsoftwareagility.files.wordpress.com/2007/03/a-lean-and-scalable-requirements-information-model-for-agile-enterprises-pdf.pdf>`__" by Dean Leffingwell with Juha‐Markus Aalto
+- "`An Agile Architectural Epic Kanban System: Part 2 – The Model <https://scalingsoftwareagility.wordpress.com/2010/03/05/an-agile-architectural-epic-kanban-system-part-2-%E2%80%93-the-model/>`__" by Dean Leffingwell
+
+- `Литература по аналитике на сайте Systems.Education <https://systems.education/books>`__
 
 
 Изучаем оценивание задач
@@ -833,5 +854,5 @@ Others:
     - "High Performance MySQL" by Baron Schwartz, Peter Zaitsev, and Vadim Tkachenko
     - "PostgreSQL: Up and Running" by Regina Obe and Leo Hsu
 
-.. update:: Aug 05, 2020
+.. update:: Apr 07, 2021
 
