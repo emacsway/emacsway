@@ -451,6 +451,7 @@ Agile
 - "Scaling Software Agility: Best Practices for Large Enterprises" by Dean Leffingwell
 - "Agile Software Requirements: Lean Requirements Practices for Teams, Programs, and the Enterprise" by Dean Leffingwell
 - "SAFe® 5.0: The World’s Leading Framework for Business Agility" by Richard Knaster, Dean Leffingwell
+- "`LeSS <https://less.works/less/framework/introduction>`__" (`перевод на Русский <https://less.works/ru/less/framework/introduction>`__)
 
 
 Менеджмент
