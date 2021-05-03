@@ -50,8 +50,15 @@
 ==============
 
 1. "`Architecture Ownership Patterns For Team Topologies. Part 1: A Business Architecture Model <https://medium.com/nick-tune-tech-strategy-blog/team-responsibility-ownership-patterns-part-1-a-business-architecture-model-63597c4e60e1>`__" by Nick Tune
-2. "`Architecture Ownership Patterns for Team Topologies. Part 2: Single Team Patterns <https://medium.com/nick-tune-tech-strategy-blog/architecture-ownership-patterns-for-team-topologies-part-2-single-team-patterns-943d31854285>`__" by Nick Tune
+#. "`Architecture Ownership Patterns for Team Topologies. Part 2: Single Team Patterns <https://medium.com/nick-tune-tech-strategy-blog/architecture-ownership-patterns-for-team-topologies-part-2-single-team-patterns-943d31854285>`__" by Nick Tune
 
+1. "`Agile Teams <https://www.scaledagileframework.com/agile-teams/>`__"
+#. "`Organizing Agile Teams and ARTs: Team Topologies at Scale <https://www.scaledagileframework.com/organizing-agile-teams-and-arts-team-topologies-at-scale/>`__"
+#. "`System and Solution Architect/Engineering <https://www.scaledagileframework.com/system-and-solution-architect-engineering/>`__"
+#. "`Enterprise Architect <https://www.scaledagileframework.com/enterprise-architect/>`__"
+#. "`Architectural Runway <https://www.scaledagileframework.com/architectural-runway/>`__"
+#. "`Agile Architecture in SAFe <https://www.scaledagileframework.com/agile-architecture/>`__"
 
+- "`Open Agile Architecture. A Standard of The Open Group <https://pubs.opengroup.org/architecture/o-aa-standard/>`__"
 
 .. .. update:: May 03, 2021
