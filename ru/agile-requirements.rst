@@ -15,7 +15,11 @@
 
 .. contents:: Содержание
 
+    System Architect/Engineering is an individual or team that defines the overall architecture of the system. They work at a level of abstraction above the teams and components and define Non-Functional Requirements (NFRs), major system elements, subsystems, and interfaces.
 
+    -- "SAFe® 5.0: The World’s Leading Framework for Business Agility" by Richard Knaster, Dean Leffingwell
+
+По Скраму за NFR отвечат Product Owner, а по SAFe - Architect.
 
 
 
