@@ -21,6 +21,9 @@
 
 По Скраму за NFR отвечат Product Owner, а по SAFe - Architect.
 
+- "`Agile Modeling :: Requirements-Analysis Models <http://agilemodeling.com/artifacts/#Requirements>`__"
+- "`SAFe Requirements Model <https://www.scaledagileframework.com/safe-requirements-model/>`__"
+- "`Nonfunctional Requirements <https://www.scaledagileframework.com/nonfunctional-requirements/>`__"
 
 
 
