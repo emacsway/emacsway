@@ -4,7 +4,7 @@
 
 .. post:: Oct 11, 2019
    :language: ru
-   :tags: Software Architecture, DDD, Clean Architecture, Clean Code, Event-Driven, Microservices, CQRS, Event Sourcing, Extreme Programming, TDD, XP, Refactoring, Programming, Software Construction
+   :tags: Software Architecture, DDD, Clean Architecture, Clean Code, Event-Driven, Microservices, CQRS, Event Sourcing, Extreme Programming, TDD, XP, Refactoring, Programming, Software Construction, Career
    :category:
    :author: Ivan Zakrevsky
    :redirect: en/eda-reference-applications
