@@ -3,7 +3,7 @@
 
 .. post:: Aug 21, 2016
    :language: ru
-   :tags: programming
+   :tags: Programming, Software Construction
    :category:
    :author: Ivan Zakrevsky
 

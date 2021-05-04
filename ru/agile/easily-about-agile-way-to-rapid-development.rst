@@ -4,7 +4,7 @@
 
 .. post:: Sep 15, 2018
    :language: ru
-   :tags: Agile, XP, Scrum, Extreme Programming, Refactoring, Architecture
+   :tags: Agile, XP, Scrum, Extreme Programming, Refactoring, Software Architecture
    :category:
    :author: Ivan Zakrevsky
    :redirect: ru/easily-about-agile-way-to-rapid-development
