@@ -463,6 +463,7 @@ Agile
 - "SAFe® 5.0: The World’s Leading Framework for Business Agility" by Richard Knaster, Dean Leffingwell
 - "Large-Scale Scrum: More with LeSS" by Craig Larman
 - "`LeSS <https://less.works/less/framework/introduction>`__" (`перевод на Русский <https://less.works/ru/less/framework/introduction>`__)
+- "`Agile Practice Guide <https://www.pmi.org/pmbok-guide-standards/practice-guides/agile>`__" by Project Management Institute
 
 
 Менеджмент
