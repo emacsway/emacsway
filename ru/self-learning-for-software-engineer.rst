@@ -473,6 +473,7 @@ Agile
 - "`Systems Thinking <https://less.works/less/principles/systems-thinking.html>`__" by Craig Larman (`перевод на Русский <https://less.works/ru/less/principles/systems-thinking.html>`__)
 - "Art of Project Management" by Scott Berkun
 - "Менеджмент: Учебник для вузов." 3-е изд. Глухов В. В.
+- "Оргуправленческое мышление. Идеология, методология, технология" / Щедровицкий Георгий Петрович
 
 
 Развитие личностных профессиональных качеств
