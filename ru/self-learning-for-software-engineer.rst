@@ -384,7 +384,6 @@ API-Design
 - "`Web API Design - Crafting Interfaces that Developers Love <https://pages.apigee.com/rs/apigee/images/api-design-ebook-2012-03.pdf>`__"
 - "`REST vs. GraphQL: A Critical Review <https://goodapi.co/blog/rest-vs-graphql>`__"
 - "`5 reasons you shouldn’t be using GraphQL <https://blog.logrocket.com/5-reasons-you-shouldnt-be-using-graphql-61c7846e7ed3/?gi=f67074d77004>`__" (`перевод на Русский <https://medium.com/devschacht/esteban-herrera-5-reasons-you-shouldnt-use-graphql-bae94ab105bc>`__)
-- "`Microservice API Patterns <https://microservice-api-patterns.org/>`__"
 - "`OpenAPIs <https://www.openapis.org/>`__"
 - "`AsyncAPI <https://www.asyncapi.com/>`__"
 - "`Resource Query Language (RQL) <http://www.persvr.org/rql/>`__"
