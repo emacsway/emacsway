@@ -381,6 +381,7 @@ API-Design
 - "`OData protocol <https://docs.oasis-open.org/odata/odata/v4.0/errata03/os/complete/part2-url-conventions/odata-v4.0-errata03-os-part2-url-conventions-complete.html#_Toc453752358>`__"
 - "`Google REST API Guidelines <https://google.aip.dev/general>`__"
 - "`Microservice API Patterns <https://microservice-api-patterns.org/>`__"
+- "`Good Practices for Capability URLs <https://w3ctag.github.io/capability-urls/>`__", W3C Draft
 - "`Web API Design - Crafting Interfaces that Developers Love <https://pages.apigee.com/rs/apigee/images/api-design-ebook-2012-03.pdf>`__"
 - "`REST vs. GraphQL: A Critical Review <https://goodapi.co/blog/rest-vs-graphql>`__"
 - "`5 reasons you shouldn’t be using GraphQL <https://blog.logrocket.com/5-reasons-you-shouldnt-be-using-graphql-61c7846e7ed3/?gi=f67074d77004>`__" (`перевод на Русский <https://medium.com/devschacht/esteban-herrera-5-reasons-you-shouldnt-use-graphql-bae94ab105bc>`__)
@@ -390,6 +391,7 @@ API-Design
 - "`JSON:API <https://jsonapi.org/>`__"
 - "`JSONPath specification - XPath for JSON <https://goessner.net/articles/JsonPath/>`__", "`Introduction to JsonPath <https://www.baeldung.com/guide-to-jayway-jsonpath>`__"
 - "`Falcor <https://netflix.github.io/falcor/starter/what-is-falcor.html>`__"
+- "`Cheat Sheet a.k.a. API Design Heuristics <https://microservice-api-patterns.org/cheatsheet>`__" - шпаргалка по "Microservices API Patterns"
 
 
 Event Storming
@@ -783,7 +785,7 @@ Online-каталоги
 - `Anti Patterns Catalog <http://c2.com/cgi/wiki?AntiPatternsCatalog>`__
 - `Catalog of Patterns of Enterprise Application Architecture <https://martinfowler.com/eaaCatalog/>`__
 - `List of DSL Patterns <https://www.martinfowler.com/dslCatalog/>`__
-- `Enterprise Integration Patterns <http://www.enterpriseintegrationpatterns.com/>`__
+- `Enterprise Integration Patterns <http://www.enterpriseintegrationpatterns.com/>`__ (`шпаргалка по EIP <https://www.enterpriseintegrationpatterns.com/download/EIPTutorialReferenceChart.pdf>`__)
 - `Service Design Patterns <http://servicedesignpatterns.com>`__
 - `SOAPatterns.org <http://soapatterns.org/>`__
 - `CloudPatterns.org <http://www.cloudpatterns.org/>`__
