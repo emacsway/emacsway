@@ -160,7 +160,7 @@ Robert Martin в "Clean Architecture" подразделяет Бизнес-Пр
 
     Thus we find the system divided into decoupled horizontal layers—the UI, application-specific Business Rules, application-independent Business Rules, and the database, just to mention a few.
 
-    \- "Clean Architecture" by Robert Martin
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin
 
 Главы 16, 20 и 22 of Clean Architecture разъясняют в подробностях типы Бизнес-Правил.
 
@@ -172,7 +172,7 @@ Robert Martin в "Clean Architecture" подразделяет Бизнес-Пр
 
     Strictly speaking, business rules are rules or procedures that make or save the business money.
 
-    \- "Clean Architecture" by Robert Martin, Chapter 20 "Business Rules"
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
 
 При этом, у него можно наблюдать небольшое противоречие.
 С одной стороны, вся суть "Business Rules" у него сводится к тому, что они относятся исключительно к реальному миру:
@@ -191,7 +191,7 @@ Robert Martin в "Clean Architecture" подразделяет Бизнес-Пр
     The fact that a bank charges N% interest for a loan is a business rule that makes the bank money.
     **It doesn’t matter if a computer program calculates the interest, or if a clerk with an abacus calculates the interest.**
 
-    \- "Clean Architecture" by Robert Martin, Chapter 20 "Business Rules"
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
 
 Далее Robert Martin говорит важную информацию - "Business Rules" являются причиной существования Приложения.
 Из этого следует, что Приложение уже не может являться причиной существования "Business Rules":
@@ -214,7 +214,7 @@ Robert Martin в "Clean Architecture" подразделяет Бизнес-Пр
     Ideally, the code that represents the business rules should be the heart of the system, with lesser concerns being plugged in to them.
     The business rules should be the most independent and reusable code in the system.
 
-    \- "Clean Architecture" by Robert Martin, Chapter 20 "Business Rules"
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
 
 Однако, с другой стороны, он допускает существование "Business Rules" в контексте функционирования приложения:
 
@@ -226,7 +226,7 @@ Robert Martin в "Clean Architecture" подразделяет Бизнес-Пр
     **Some business rules make or save money for the business by defining and constraining the way that an automated system operates.**
     These rules would not be used in a manual environment, because **they make sense only as part of an automated system.**
 
-    \- "Clean Architecture" by Robert Martin, Chapter 20 "Business Rules"
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
 
 Не совсем понятно - "Business Rules" **являются причиной существования Приложения**, или **имеют имеют смысл только как часть Приложения**?
 "Business rules are the reason a software system exists" или "they make sense only as part of an automated system"?
@@ -243,7 +243,7 @@ Robert Martin в "Clean Architecture" подразделяет Бизнес-Пр
     It specifies the input to be provided by the user, the output to be returned to the user, and the processing steps involved in producing that output.
     A use case describes **application-specific business rules** as opposed to the **Critical Business Rules** within the Entities.
 
-    \- "Clean Architecture" by Robert Martin, Chapter 20 "Business Rules"
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
 
 Но далее он сводит обязанности Use Case к обязанностям Application Logic, и подчеркивает, что Use Case координирует "Critical Business Rules", реализованных в виде Entities:
 
@@ -267,7 +267,7 @@ Robert Martin в "Clean Architecture" подразделяет Бизнес-Пр
     **Entities are generalizations that can be used in many different applications, so they are farther from the inputs and outputs of the system.**
     Use cases depend on Entities; Entities do not depend on use cases.
 
-    \- "Clean Architecture" by Robert Martin, Chapter 20 "Business Rules"
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
 
 Хотя, Robert Martin выделяет отдельную категорию классов UseCase (Interactor) для Application-specific Business Rules, на практике этот уровень часто "округляется" до уровня Application Logic.
 Так, например, Martin Fowler и Randy Stafford разделяют "Business Logic" на два вида - Логика Домена (Domain Logic) и Логика Приложения (Application Logic):

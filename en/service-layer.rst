@@ -153,7 +153,7 @@ In "Clean Architecture," Robert Martin divides Business Rules into two types:
 
     Thus we find the system divided into decoupled horizontal layers—the UI, application-specific Business Rules, application-independent Business Rules, and the database, just to mention a few.
 
-    \- "Clean Architecture" by Robert Martin
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin
 
 Chapters 16, 20 and 22 of Clean Architecture explain in detail the types of Business Rules.
 
@@ -163,7 +163,7 @@ It should be noted that by "Business Rules" Robert Martin means not only rules, 
 
     Strictly speaking, business rules are rules or procedures that make or save the business money.
 
-    \- "Clean Architecture" by Robert Martin, Chapter 20 "Business Rules"
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
 
 Here is a slight contradiction.
 On the one hand, he reduces the whole essence of "Business Rules" to the fact that they belong exclusively to the real world:
@@ -175,7 +175,7 @@ On the one hand, he reduces the whole essence of "Business Rules" to the fact th
     The fact that a bank charges N% interest for a loan is a business rule that makes the bank money.
     **It doesn’t matter if a computer program calculates the interest, or if a clerk with an abacus calculates the interest.**
 
-    \- "Clean Architecture" by Robert Martin, Chapter 20 "Business Rules"
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
 
 Next Robert Martin says important information - "Business Rules" are the reason for the existence of the Application.
 It follows from this that the Application can no longer be the cause for the existence of "Business Rules": 
@@ -189,7 +189,7 @@ It follows from this that the Application can no longer be the cause for the exi
     Ideally, the code that represents the business rules should be the heart of the system, with lesser concerns being plugged in to them.
     The business rules should be the most independent and reusable code in the system.
 
-    \- "Clean Architecture" by Robert Martin, Chapter 20 "Business Rules"
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
 
 However, on the other hand, he admits the existence of "Business Rules" in the context of the application's operation:
 
@@ -197,7 +197,7 @@ However, on the other hand, he admits the existence of "Business Rules" in the c
     **Some business rules make or save money for the business by defining and constraining the way that an automated system operates.**
     These rules would not be used in a manual environment, because **they make sense only as part of an automated system.**
 
-    \- "Clean Architecture" by Robert Martin, Chapter 20 "Business Rules"
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
 
 It's not clear - "Business rules are the reason a software system exists" or "they make sense only as part of an automated system"?
 
@@ -209,7 +209,7 @@ It is clear that there is a lack of a term for expressing different things, and 
     It specifies the input to be provided by the user, the output to be returned to the user, and the processing steps involved in producing that output.
     A use case describes **application-specific business rules** as opposed to the **Critical Business Rules** within the Entities.
 
-    \- "Clean Architecture" by Robert Martin, Chapter 20 "Business Rules"
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
 
 But then he reduces the responsibilities of the Use Case to those of the Application Logic, and emphasizes that the Use Case coordinates the "Critical Business Rules" implemented as Entities:
 
@@ -223,7 +223,7 @@ But then he reduces the responsibilities of the Use Case to those of the Applica
     **Entities are generalizations that can be used in many different applications, so they are farther from the inputs and outputs of the system.**
     Use cases depend on Entities; Entities do not depend on use cases.
 
-    \- "Clean Architecture" by Robert Martin, Chapter 20 "Business Rules"
+    \- "Clean Architecture: A Craftsman's Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin, Chapter 20 "Business Rules"
 
 Although, Robert Martin allocate the separate category UseCase (Interactor) classes for Application-specific Business Rules, in practice, this level is often rounded to Application Logic level.
 For example, Martin Fowler and Randy Stafford divide Business Logic into two types - Domain Logic and Application Logic:
