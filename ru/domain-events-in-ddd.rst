@@ -737,13 +737,19 @@ Domain Events могут покидать пределы Bounded Context:
 
     \- "`How to publish and handle Domain Events <http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/>`__" [#fnkgde1]_ by Kamil Grzybek
 
-В одном из своих комментариев он прямо связывает их с "Integration Events":
+В одном из своих комментариев он  связывает "Domain Event Notification" с "Integration Events":
 
-    Domain Event Notification often becomes an **Integration Event** which is sent to Events Bus to other Bounded Context.
+My approach is similar to Vaughn Vernon - I try always handle event in separate transaction if it is possible. To do that I have two types of events: Domain Events (private, handled in the same transaction) and Domain Events Notifications (handled outside transaction). Domain Event Notification often becomes an **Integration Event** which is send to Events Bus to other Bounded Context. This way I support all cases - immediate consistency, eventual consistency and integrations scenarios.
 
     \- "`How to publish and handle Domain Events <http://www.kamilgrzybek.com/design/how-to-publish-and-handle-domain-events/#comment-4602236620>`__" [#fnkgde1]_, comment of Kamil Grzybek
 
-Правда, в другом комментарии, он вносит уточнение:
+Обратите внимание на окончание - там перечислены три сценария:
+
+1. Immediate consistency
+2. Eventual consistency
+3. Integrations scenarios
+
+В другом комментарии он вносит уточнение:
 
     Domain Event - private event, not persisted [Outbox], part of UL
 
@@ -753,13 +759,13 @@ Domain Events могут покидать пределы Bounded Context:
 
     \- "`Handling Domain Events: Missing Part <http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/#comment-5205858557>`__" [#fnkgde2]_ by Kamil Grzybek
 
-Здесь у него наблюдается противоречие с предыдущим его комментарием:
+Здесь у него, правда, наблюдается небольшое противоречие с предыдущим его комментарием:
 
     If you want to process Domain Event in separate transaction, you need to create Domain Event Notification **(public event)** which is saved within the same transaction to the Outbox but processed in different (Outbox processing).
 
     \- "`Handling Domain Events: Missing Part <http://www.kamilgrzybek.com/design/handling-domain-events-missing-part/#comment-4507778871>`__" [#fnkgde2]_ by Kamil Grzybek
 
-А так же, наблюдается противоречие с другим его выражением, где он, ссылаясь на определение Mathias Verraes, приравнивает Domain Event Notification к public event:
+А так же, наблюдается противоречие с другим его выражением, где он, ссылаясь на определение Mathias Verraes, приравнивает Domain Event Notification к "public event":
 
     3. If we want to process something outside the transaction, we need to create a **public event** based on the Domain Event. I call it Domain Event Notification, `some people call it a public event <http://verraes.net/2019/05/patterns-for-decoupling-distsys-explicit-public-events/>`__, but the concept is the same.
 
@@ -771,7 +777,7 @@ Domain Events могут покидать пределы Bounded Context:
 
     -- "`Patterns for Decoupling in Distributed Systems: Explicit Public Events <https://verraes.net/2019/05/patterns-for-decoupling-distsys-explicit-public-events/>`__" by Mathias Verraes
 
-Но, в целом, понятно, что Domain Event обрабатывается внутри транзакции, Domain Event Notification - вне транзакции (и может требовать Outbox pattern), и Integration Event - вне Bounded Context.
+Но, в целом, понятно, что Domain Event обрабатывается внутри транзакции, Domain Event Notification - вне транзакции (и может требовать Outbox pattern), и Integration Event - за пределами Bounded Context.
 
 Еще дальше идут авторы книги "Patterns, Principles, and Practices of Domain-Driven Design" [#fnpppddd]_, вводя явное разделение внутренних и внешних событий:
 
