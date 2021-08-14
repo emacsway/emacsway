@@ -662,7 +662,7 @@ Donald E. Knuth:
 Архитектура
 -----------
 
-- "Software Architecture in Practice" 3d edition by Len Bass, Paul Clements, Rick Kazman
+- "Software Architecture in Practice" 4th edition by Len Bass, Paul Clements, Rick Kazman
 - "Documenting Software Architectures: Views and Beyond" 2nd edition by Paul Clements, Felix Bachmann, Len Bass, David Garlan, James Ivers, Reed Little, Paulo Merson, Robert Nord, Judith Stafford
 - "Software Systems Architecture: Working With Stakeholders Using Viewpoints and Perspectives" 2nd edition by Nick Rozanski, Eóin Woods
 - "Designing Software Architectures: A Practical Approach (SEI Series in Software Engineering)" 1st edition by Humberto Cervantes, Rick Kazman
