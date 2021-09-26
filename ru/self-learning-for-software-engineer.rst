@@ -794,9 +794,10 @@ Online-каталоги
 - `Catalog of Patterns of Enterprise Application Architecture <https://martinfowler.com/eaaCatalog/>`__
 - `List of DSL Patterns <https://www.martinfowler.com/dslCatalog/>`__
 - `Enterprise Integration Patterns <http://www.enterpriseintegrationpatterns.com/>`__ (`шпаргалка по EIP <https://www.enterpriseintegrationpatterns.com/download/EIPTutorialReferenceChart.pdf>`__)
-- `Service Design Patterns <http://servicedesignpatterns.com>`__
-- `SOAPatterns.org <http://soapatterns.org/>`__
-- `CloudPatterns.org <http://www.cloudpatterns.org/>`__
+- `DDD and Messaging Architectures <https://verraes.net/2019/05/ddd-msg-arch/>`__ - an overview of different series on patterns in distributed systems by Mathias Verraes.
+- `Service Design Patterns <http://servicedesignpatterns.com/>`__
+- `SOAPatterns.org <https://patterns.arcitura.com/soa-patterns>`__
+- `CloudPatterns.org <https://patterns.arcitura.com/cloud-computing-patterns>`__
 - `BigDataPatterns.org <https://patterns.arcitura.com/big-data-patterns>`__
 - `Cloud Design Patterns | Microsoft Docs <https://docs.microsoft.com/en-us/azure/architecture/patterns/>`__
 - `Workflow Patterns <http://workflowpatterns.com/patterns/>`__
