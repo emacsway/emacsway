@@ -662,7 +662,7 @@ Donald E. Knuth:
 Архитектура
 -----------
 
-- "Software Architecture in Practice" 3d edition by Len Bass, Paul Clements, Rick Kazman
+- "Software Architecture in Practice" 4th edition by Len Bass, Paul Clements, Rick Kazman
 - "Documenting Software Architectures: Views and Beyond" 2nd edition by Paul Clements, Felix Bachmann, Len Bass, David Garlan, James Ivers, Reed Little, Paulo Merson, Robert Nord, Judith Stafford
 - "Software Systems Architecture: Working With Stakeholders Using Viewpoints and Perspectives" 2nd edition by Nick Rozanski, Eóin Woods
 - "Designing Software Architectures: A Practical Approach (SEI Series in Software Engineering)" 1st edition by Humberto Cervantes, Rick Kazman
@@ -903,6 +903,12 @@ Code Smell catalogs
 - `The examples for the book "Reactive Messaging Patterns with the Actor Model" <https://github.com/VaughnVernon/ReactiveMessagingPatterns_ActorModel>`__ by Vaughn Vernon
 - `A Stock Trader system to demonstrate reactive systems development <https://github.com/VaughnVernon/reactive-stock-trader>`__ (`source <https://github.com/RedElastic/reactive-stock-trader>`__ by RedElastic)
 - `ContosoUniversityDotNetCore-Pages <https://github.com/jbogard/ContosoUniversityDotNetCore-Pages>`__ by Jimmy Bogard
+
+- `RedElastic: reactive-stock-trader <https://github.com/RedElastic/reactive-stock-trader>`__ - A reference architecture for stock trading to demonstrate the concepts of reactive systems development. Based on the original Stock Trader by IBM and implemented with Lagom by Lightbend.
+"`Reactive in practice: A complete guide to event-driven systems development in Java. <https://developer.ibm.com/series/reactive-in-practice/>`__"
+
+- `IBM Stock Trader <https://github.com/IBMStockTrader>`__ - Org containing a repository per microservice in the IBM Stock Trader cloud-native sample application.
+"`Introduction to the IBM Stock Trader sample. <https://developer.ibm.com/blogs/introducing-stocktrader/>`__"
 
 - `Refactoring from Anemic Domain Model Towards a Rich One <https://github.com/vkhorikov/AnemicDomainModel>`__ by Vladimir Khorikov
 - `DDD in Practice <https://github.com/vkhorikov/DddInAction>`__ by Vladimir Khorikov
