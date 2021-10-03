@@ -392,6 +392,7 @@ API-Design
 - "`JSONPath specification - XPath for JSON <https://goessner.net/articles/JsonPath/>`__", "`Introduction to JsonPath <https://www.baeldung.com/guide-to-jayway-jsonpath>`__"
 - "`Falcor <https://netflix.github.io/falcor/starter/what-is-falcor.html>`__"
 - "`Cheat Sheet a.k.a. API Design Heuristics <https://microservice-api-patterns.org/cheatsheet>`__" - шпаргалка по "Microservices API Patterns"
+- "`REST API Design - Resource Modeling  <https://www.thoughtworks.com/insights/blog/rest-api-design-resource-modeling>`__" by Prakash Subramaniam, WhoughtWorks
 
 
 Event Storming
