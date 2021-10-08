@@ -434,7 +434,8 @@ Tools:
 Modelling
 ~~~~~~~~~
 
-- "`Domain-Driven Design Starter Modelling Process <https://github.com/ddd-crew/ddd-starter-modelling-process>`__" by Nick Tune
+- "`Getting started with DDD. Definitions of DDD and fundamental concepts to reduce the learning curve and confusion. <https://github.com/ddd-crew/welcome-to-ddd>`__" by Nick Tune & DDD-Crew
+- "`Domain-Driven Design Starter Modelling Process. If you're new to DDD and not sure where to start, this process will guide you step-by-step. <https://github.com/ddd-crew/ddd-starter-modelling-process>`__" by Nick Tune & DDD-Crew
 - "`Legacy Architecture Modernisation With Strategic Domain-Driven Design <https://medium.com/nick-tune-tech-strategy-blog/legacy-architecture-modernisation-with-strategic-domain-driven-design-3e7c05bb383f>`__" by Nick Tune
 
 
