@@ -393,6 +393,9 @@ API-Design
 - "`Falcor <https://netflix.github.io/falcor/starter/what-is-falcor.html>`__"
 - "`Cheat Sheet a.k.a. API Design Heuristics <https://microservice-api-patterns.org/cheatsheet>`__" - шпаргалка по "Microservices API Patterns"
 - "`REST API Design - Resource Modeling  <https://www.thoughtworks.com/insights/blog/rest-api-design-resource-modeling>`__" by Prakash Subramaniam, WhoughtWorks
+- "`CQRS and REST: the perfect match <https://lostechies.com/jimmybogard/2016/06/01/cqrs-and-rest-the-perfect-match/>`__" by Jimmy Bogard
+- "`Entities aren’t resources, resources aren’t representations <https://lostechies.com/jimmybogard/2016/05/12/entities-arent-resources-resources-arent-representations/>`__" by Jimmy Bogard
+
 
 
 Event Storming
