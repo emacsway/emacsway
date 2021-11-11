@@ -916,6 +916,7 @@ Code Smell catalogs
 - `eventuate-examples <https://github.com/eventuate-examples>`__ by Chris Richardson
 - `Sample code for the book Principles, Practices and Patterns of Domain-Driven Design <https://github.com/elbandit/PPPDDD>`__ by Scott Millett, Nick Tune
 - `Hands-On Domain-Driven Design with .NET Core, published by Packt <https://github.com/PacktPublishing/Hands-On-Domain-Driven-Design-with-.NET-Core>`__ by Alexey Zimarev
+- "`dotnet-sample <https://github.com/Eventuous/dotnet-sample>`__" - Sample application using Eventuous .NET by Alexey Zimarev
 - `Extended code samples related to the book "Domain Modeling Made Functional" <https://github.com/swlaschin/DomainModelingMadeFunctional>`__ by Scott Wlaschin
 - `Railway-Oriented-Programming-Example <https://github.com/swlaschin/Railway-Oriented-Programming-Example>`__ by Scott Wlaschin
 - `DDD with Actors <https://github.com/VaughnVernon/DDDwithActors>`__ by Vaughn Vernon
