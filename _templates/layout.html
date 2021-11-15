@@ -1,6 +1,6 @@
 {% extends "!layout.html" %}
-{% set script_files = script_files + ["_static/jquery-toast-plugin/jquery.toast.min.js", ] %}
-{% set css_files = css_files + ["_static/jquery-toast-plugin/jquery.toast.min.css", "_static/fa/css/all.min.css", ] %}
+{% set script_files = script_files + [] %}
+{% set css_files = css_files + ["_static/fa/css/all.min.css", ] %}
 
 {% if pagename in ablog %}
     {% if ablog[pagename].language[0].name == 'English' %}
