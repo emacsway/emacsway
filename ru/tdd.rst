@@ -516,6 +516,13 @@ Black Box or White Box?
 
     \- "Clean Architecture: A Craftsman’s Guide to Software Structure and Design" [#fncarch]_ by Robert C. Martin
 
+..
+
+    "Mock across architecturally significant boundaries, but not within those boundaries."
+
+    -- "`When to Mock <https://blog.cleancoder.com/uncle-bob/2014/05/10/WhenToMock.html>`__" by Robert C. Martin
+
+
 
 Sociable or Solitary?
 =====================
