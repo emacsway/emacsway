@@ -265,9 +265,6 @@ html_theme_options = {
     'logo': "logo.jpg",
     'logo_name': True,
     'github_button': False,
-    'extra_nav_links': {
-        '<i class="fab fa-telegram"></i> Telegram': 'https://t.me/emacsway_log',
-    },
     # 'analytics_id': 'UA-69288289-1',
 }
 
